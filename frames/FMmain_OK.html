@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+         <title>Fernando Gehm Moraes </title>
+         <link rel="icon"  type="image/jpg" href="../figs/fer_icon.jpg">
+         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+         <script>
+                 var picPaths = ['../figs/wordle.png','../figs/wordle3.png'];
+                 var curPic = -1;
+                 //preload the images for smooth animation
+                 var imgO = new Array();
+                 for(i=0; i < picPaths.length; i++) {
+                 imgO[i] = new Image();
+                 imgO[i].src = picPaths[i];
+                 }
+                 function swapImage() {
+                 curPic = (++curPic > picPaths.length-1)? 0 : curPic;
+                 imgCont.src = imgO[curPic].src;
+                 setTimeout(swapImage,2000);
+                 }
+                 window.onload=function() {
+                 imgCont = document.getElementById('imgBanner');
+                 swapImage();
+                 }
+        </script>
+        <STYLE>
+            
+            body{ font-family: Calibri, sans-serif; text-align: center; text-decoration: none;  font-size: 10pt;  font-weight: normal;  color: blue; margin:0;  padding:0; }
+            
+            /**** DEFINITION OF THE MENU BOTTONS AND SELECTIONS *************************************/
+            .personalizar-select{  border: 1px solid navy;  height: 18px; color: white;  font-size: 9pt; background: darkblue;  width: 145px;   border-radius: 8px;  }
+            .personalizar-button{ border: 1px solid navy;  height: 16px; color: white;  font-size: 9pt; background: darkblue;  width: 125px;   border-radius: 5px;
+                                   text-align: left; line-height: 16px;   padding: 0px 10px;  margin: 0px 0px;  display: inline-block;  }
+            
+            h1, h2, h3 { font-family: Optima, Arial, sans-serif; font-weight: bold;  margin: 0px; }
+            h1 {  font-size: 18pt;  color: black;   }
+            h2 {  font-size: 10pt;  color: purple;  }
+            h3 {  font-size: 12pt;  color: purple;  margin-bottom: 4px;}
+            
+            ul, li, a { font-weight: normal;   line-height: 1.3;   margin: 0px;  list-style-type: circle;   text-align: left; }
+            li a { text-decoration: underline;  }
+            ul {  padding-left: 2px;  padding-top: 5px;  }
+            ul.novo {  padding-left: 20px;  padding-top: 5px;  }
+
+            table.sup {  width: 100%;  background-color: #f2f2ff; }
+            table.inf {  width: 100%;  background-color: #f2f2f2;  }
+
+            td.w15 {  width: 15%;  }
+            td.contorno{
+                    width: 33vw;
+                    border: 1px #666666 solid;
+                    border-radius: 20px 0px 0px 0px;
+                    overflow: hidden;
+                    padding: 20px;
+                    padding-bottom: 1px;
+                    padding-top:    1px;
+                    vertical-align: top;
+                    border-right: 0px;
+                    border-bottom: 0px;
+            }
+            td.contorno_c{
+                    width: 33vw;
+                    border: 1px #666666 solid;
+                    border-radius: 20px 0px 0px 0px;
+                    overflow: hidden;
+                    padding: 4px;
+                    padding-bottom: 1px;
+                    padding-top:    1px;
+                    vertical-align: center;
+                    border-right: 0px;
+                    border-bottom: 0px;
+            }
+            p.p_atual {
+                  color: gray;
+                  font-size: 8pt;
+                  line-height: 11px;
+                  margin-top: 2px;
+                  text-align: left;
+            }           
+            a:hover {
+                   background: lightgreen;
+                   text-decoration: none;
+                   color: black;
+            }
+            hr  {  height: 3px;
+                   border: 1px dotted #606;
+                   width: 80vw;
+            }
+         </STYLE>
+      </head>
+
+  <body>
+            
+      <!-- **** LOGO DA PUC, MINHA APRESENTAÇÃO E ENDEREÇO COLOCADOS DE FORMA ABSOLUTA *********** -->
+      <!-- **** primeiro div é só para a cor de fundo ********************************************* -->
+      <div style="position: absolute; height: 90px; margin-left: 0; width:100% ;  background-color: #f2f2ff; z-index: 1;"> </div>
+
+      <div style="position: absolute; margin-left: 2.5%; margin-top: 1.5%;  z-index: 999;">
+           <a HREF="http://www.pucrs.br">
+           <IMG SRC="../figs/pucrs.png"  width="150" alt="pucrs">  </a>
+      </div>
+      
+      <div style="position: absolute; top: 15px; right: 0;  margin-right: 1%;  color: gray;  font-size: 8pt;  line-height: 11px;  text-align: right;  z-index: 999;">
+             PUCRS - Escola Politécnica  <br>
+             Av. Ipiranga 6681 - Prédio 32 <br>
+             Porto Alegre - Brasil - 90619-900  <br>
+             work: +55 51 3353 8717  <br>
+             fernando.moraes at pucrs.br
+
+      </div>
+
+      <div style="position: absolute; top: 10px;  margin: 0; margin-top: 40px; position: absolute;  left: 50%;
+             transform: translate(-50%, -50%);  z-index: 999;">
+                   <h1> FERNANDO GEHM MORAES</h1>
+                   <h2> Professor at PUCRS - School of Technology  <br>
+                        IEEE Senior Member - SBC Member   <br>
+                        Bolsista de Produtividade em Pesquisa do CNPq Nível 1B  <br>
+                        <a href="http://www.pucrs.br/pesquisadores/fernando-gehm-moraes" target="_top"> Pesquisadores PUCRS </a>
+                   </h2>
+
+      </div>
+
+<div style="position: absolute; margin-top: 90px; width:100% ;">
+
+      <!-- ************************************************************************************************************************ -->
+      <!-- ********************************* CABEÇALHO DE APRESENTAÇÃO E MENUS (purs e endereço no final com DIV) ***************** -->
+      <!-- ************************************************************************************************************************ -->
+      <table class="sup" >
+            <!-- ****** logos **************************************************************************************************** -->
+             <tr>
+                  <td> <a HREF="http://lattes.cnpq.br/2509301929350826">
+                       <IMG SRC="../figs/logo-curriculo.png"  width="70" alt="lattes">  </a>
+                  </td>    
+                  <td> <a href="http://scholar.google.com/citations?user=XNjum_8AAAAJ"  TARGET="_top">
+                       <IMG SRC="../figs/google_scholar_logo.gif"  width="80" alt="scholar"> </a>
+                  </td>              
+                  <td> <a HREF="https://dblp.org/pid/m/FernandoGehmMoraes.html">
+                       <IMG SRC="../figs/dblp.png"  width="100" alt="dblp">  </a>
+                  </td>
+                  <td> <a href="http://orcid.org/0000-0001-6126-6847"  TARGET="_top">
+                       <IMG SRC="../figs/orcid.png"  width="70" alt="orcid">  </a>
+                 </td>
+                 <td>  <a href="http://www.linkedin.com/in/moraesfg"  TARGET="_top">
+                       <IMG SRC="../figs/linked.png"  width="70" alt="linkedin"> </a>
+                 </td>
+                 <td>  <a href="https://www.scopus.com/authid/detail.uri?authorId=7005891217"  TARGET="_top">
+                       <IMG SRC="../figs/scopust.png"  width="90" alt="scopus"> </a>
+                </td>
+            </tr>
+            <!-- ****** MENUS **************************************************************************************************** -->
+            <tr>
+                  <td class="w15"> <a class="personalizar-button" HREF="pub_journals.html" >    Journals      </a>  </td>
+                  <td class="w15"> <a class="personalizar-button" HREF="pub_conferences.html">  Conferences   </a>  </td>
+                  <td class="w15"> <a class="personalizar-button" HREF="adv_thesis.html">       Thesis        </a>  </td>
+                  <td class="w15"> <a class="personalizar-button" HREF="adv_master.html">       Dissertations </a>  </td>
+                  <td class="w15"> <a class="personalizar-button" HREF="adv_tcc.html">          TCC           </a>  </td>
+                  <td class="w15">
+                      <select class="personalizar-select" onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="website">
+                          <option value=""> Research </option>
+                          <option value="http://www.inf.pucrs.br/gaph">                        GAPH </option>
+                          <option value="http://www.inf.pucrs.br/hemps">                       HeMPS MPSoC </option>
+                          <option value="https://corfu.pucrs.br/redmine/projects/atlas/wiki">  HERMES NOC </option>
+                      </select>
+                  </td>
+            </tr>
+            
+            <tr>
+                  <td class="w15"> <a class="personalizar-button" HREF="../microel/index.html"> Microeletrônica  </a> </td>    
+                  <td class="w15"> <a class="personalizar-button" HREF="../sichip/index.html">  Sist. Int. Chip  </a> </td>
+                  <td  class="w15">
+                      <select class="personalizar-select" onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="website">
+                          <option value=""> My citations </option>
+                          <option value="http://scholar.google.com/citations?user=XNjum_8AAAAJ">        Google Scholar </option>
+                          <option value="https://dblp.org/pid/m/FernandoGehmMoraes.html">               DBLP </option>
+                          <option value="http://dl.acm.org/author_page.cfm?id=81100359054">             Acad. ACM </option>
+                          <option value="http://www.scopus.com/authid/detail.url?authorId=7005891217">  Scopus </option>
+                          <option value="http://www.researcherid.com/rid/F-7488-2012">                  ResearcherID  </option>
+                          <option value="http://orcid.org/0000-0001-6126-6847">                         Orcid </option>
+                          <option value="pub_bibbase.html">                                             BibBase </option>
+                      </select>
+                  </td>
+                  <td class="w15">
+                      <select class="personalizar-select" onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="website">
+                          <option value=""> PUCRS </option>
+                          <option value="../99AK.pdf"> 98AK ECo - Grade</option>
+                          <option value="http://www.pucrs.br/politecnica-prov/wp-content/uploads/sites/166/2017/11/fluxograma.computacao.4450.pdf"> 4450 ECo - Grade</option>
+                          <option value="http://www.pucrs.br">                  Site PUCRS </option>
+                          <option value="http://www.pucrs.br/politecnica/programa-de-pos-graduacao-em-ciencia-da-computacao">   PPGCC </option>
+                          <option value="http://www.pucrs.br/politecnica">      Politecnica </option>
+                          <option value="http://www.pucrs.br/politecnica/curso/engenharia-de-computacao/">  Eco - Informações Gerais </option>
+                          <option value="http://www.politecnica.pucrs.br/programas/"> Eco - Programas Disciplinas</option>
+                          <option value="http://www.pucrs.br/grade-corpo-docente/dados-do-curso/?slug=engenharia-de-computacao">ECo - PPC</option>
+                          <option value="http://www.pucrs.br/biblioteca">   Biblioteca </option>
+                      </select>
+                  </td>
+                  <td class="w15">
+                      <select class="personalizar-select" onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="website">
+                          <option value=""> Administrative </option>
+                          <option value="http://moodle.pucrs.br">             MOODLE </option>
+                          <option value="http://sarc.pucrs.br/Default">       SARC </option>
+                          <option value="https://webapp.pucrs.br/atas">       Notas Grad </option>
+                          <option value="http://webapp3.pucrs.br/ataspos">    Notas Pós </option>
+                          <option value="https://webapp3.pucrs.br/sipesq/">   SIPESQ </option>
+                          <option value="http://webapp.pucrs.br/sibic">       IC PUCRS </option>
+                          <option value="http://impressora.pucrs.br/SafePrint/Home/Login">   Imp. 3213 </option>
+                      </select>
+                  </td>
+                  <td class="w15">
+                      <select class="personalizar-select" onchange="window.open(this.options[this.selectedIndex].value,'_top')" name="website">
+                          <option value=""> General </option>
+                          <option value="../docs/cal_2021.pdf">              Cal. PUC </option>
+                          <option value="FMfotos.html">                      Photos </option>
+                          <option value="FMdicas.htm">                       Dicas </option>
+                          <option value="https://groups.google.com/g/gaph">  GAPH-L </option>
+                          <option value="http://www.pucrs.br/facin-prov/wp-content/uploads/sites/19/2016/03/padrao_teses_dissertacoes_monografias_PPGCC.pdf">  Formato Monog. </option>
+                          <option value="scholar.htm">  H PPGCC  </option>
+                          <option value="http://www.inf.pucrs.br/calazans" >  Ney </option>
+                          <option value="https://www.lboro.ac.uk/departments/meme/staff/luciano-ost/">  Ost </option>
+                      </select>
+                  </td>
+            </tr>
+    </table>
+
+   <!-- ************************************************************************************************************************ -->
+   <!-- ********************************* INTERESSES, FORMAÇÃO, JOURNALS , PPGCC  ********************************************** -->
+   <!-- *********************************  unidade relativa à janela - viewport: 1/100th viewport width ****************************** -->
+   <!-- ************************************************************************************************************************ -->
+   <table class="inf">
+   
+   <tr>
+      <td class="contorno">
+           <h3>ACADEMIC BACKGROUND</h3><p>
+            <ul>
+                  <li> PhD in Microelectronics at <a HREF="http://www.lirmm.fr">LIRMM</a> (1994) <p>  </li>
+                  <li> MSc in Computer Science at <a HREF="http://www.inf.ufrgs.br">PPGC-UFRGS</a>   (1990) <p> </li>
+                  <li> BS in Electrical Engineering at <a HREF="http://www.ufrgs.br/delet">EE-UFRGS</a>  (1987) </li>
+            </ul>
+      </td>
+      <td  class="contorno" >
+            <h3>RESEARCH INTERESTS</h3>
+            <ul>
+                  <li>microelectronics </li>
+                  <li>security in embedded systems </li>
+                  <li>multiprocessor systems on chip (many-cores / MPSoCs)</li>
+                  <li>networks-on-chip (NoCs)</li>
+                  <li>reliability in embedded systems </li>
+                  <li>design and verification of VLSI systems (ASICs)</li>
+                  <li>rapid prototyping of digital systems using FPGAs</li>
+                  <li>design tools for VLSI systems (EDA / CAD)  </li>
+                  <li>applications in telecommunications </li>
+            </ul>
+      </td>
+      <td  class="contorno" >
+            <img height="180" id="imgBanner"  alt="clodword" src="../figs/wordle.png" >
+      </td>
+   </tr>
+
+   <tr>
+      <td  class="contorno">
+            <h3>SECURITY</h3>
+            <a HREF="../docs/Emicro_2021_Security.pdf">
+            <img  alt="security" SRC="../figs/emicro2021.png"  height="160"> </a>
+      </td>
+      <td  class="contorno">
+            <h3>MPSOCS /  MANY-CORES</h3>
+            <a HREF="https://www.inf.pucrs.br/hemps/memphis.html">
+            <img  alt="hemps" SRC="../figs/hemps.png"  height="160"></a>
+      </td>
+      <td class="contorno">
+            <h3>NoCs - Networks-on-chip</h3>
+            <a HREF="../docs/atlas_distrib.tar">
+            <img  alt="nocs" SRC="../figs/atlas.png"  height="160"></a>
+      </td>
+   </tr>
+
+   <tr>
+      <td class="contorno">
+            <h3> HeMPS Debug </h3>
+            <iframe  height="180" src="https://www.youtube.com/embed/nvgtvFcCc60" frameborder="0" allowfullscreen></iframe>
+      </td>
+      <td class="contorno_c">
+            <a HREF="https://sbmicro.org.br/chip-in-the-fields-2021/SBCCI2021">
+            <img  alt="sbcci" SRC="../figs/sbcci2021.png"  height="170"></a>
+      </td>
+      <td class="contorno_c">
+            <h3> Venha fazer Mestrado ou Doutorado! </h3>
+            <a HREF="http://www.pucrs.br/politecnica/programa-de-pos-graduacao-em-ciencia-da-computacao/"> PPGCC-PUCRS </a> <p><p>
+            <img  alt="ppgcc" SRC="../figs/ppgcc.jpg"  height="90">
+      </td>
+  </tr>
+</table>
+
+<table class="sup">
+  <tr>
+       <td class="contorno"  >
+            <h3>  NEWS </h3>
+            <div  style="height: 200px; font-size: 9pt;  overflow: auto;" >
+                <ul class="novo">
+                  <li> March/21 - paper published at  <a href="https://dx.doi.org/10.1109/MDAT.2021.3068914"> IEEE Design & Test </a> - <b> Hardware Accelerator for Runtime Temperature Estimation in Many-cores</b>  </li>
+                  <li> February/21 - paper published at  <a href="https://doi.org/10.1049/cdt2.12017"> IET Computers and Digital Techniques</a>: <b> Evaluation of the Soft Error Assessment Consistency of a JIT-based Virtual Platform Simulator </b> </li>
+                  <li> January/21 - papers published at  <a href="http://dx.doi.org/10.1109/MDAT.2021.3049710"> IEEE Design & Test </a> and
+                  <a href="http://dx.doi.org/10.1007/s10470-020-01756-0"> Analog Integrated Circuits and Signal Processing </a> </li>
+                  <li> September/20 - paper published at IEEE Access : <b>SDN-Based Secure Application Admission and Execution for Many-Cores </b>  <a href="https://ieeexplore.ieee.org/document/9200593">  link </a> <i> Open Access </i>  </li>
+                  <li> June/20 - paper published at IEEE Access : <b>A Systemic and Secure SDN Framework for NoC-based Many-cores </b>  <a href="https://ieeexplore.ieee.org/document/9109286">  link </a>  -  <i> Open Access </i> </li>
+                  <li> March/20 - paper published at Analog Integrated Circuits and Signal Processing: <b>System management recovery in NoC-based many-core systems </b>  <a href="http://link.springer.com/article/10.1007/s10470-020-01631-y">  link </a> </li>
+                  <li> Set/19 - artigo publicado no SBCCI'19 como um dos '5 Best Paper Finalists': <b>Fine-grain Temperature Monitoring for Many-Core Systems </b>  </li>
+                  <li> August/19 - published article in Design Automation for Embedded Systems Journals: <b>
+                  Memphis: a Framework for Heterogeneous Many-core SoCs Generation and Validation </b>  </li>
+                  <li> May/19 - published articles in the JSA and TEC Journals: <b>The Power Impact of Hardware and Software Actuators on Self-Adaptable Many-core Systems</b> and <b> Self-Adaptive QoS Management at Communication and Computation Levels for Many-Core SoCs</b></li>
+                  <li> January/19 - published article in the JSA Journal: <b> Hierarchical adaptive Multi-objective resource management for many-core systems </b></li>
+                  <li> December/18 - missão BRAFITEC na França para elaboração do duplo diploma Escola Politécnica PUCRS - Polytech Montpellier </li>
+                  <li> August/18: new papers in the <a href="https://wp.ufpel.edu.br/chipinthepampa2018/sbcci-2018-technical-program/"> SBCCI conference </a>
+                  <li> Maio/18: Aprovada bolsa de recém-doutor para Marcelo Ruaro -
+                        <a href="http://fapergs.rs.gov.br/upload/arquivos/201805/14151748-resultado-preliminar-analise-de-merito-edital-04-2018.pdf"> FAPERGS </a>  </li>
+                  <li> Abril/18: Dois alunos da Eng. Comp. indo para Montpellier no contexto do projeto Brafitec: Gelmar Luiz Da Costa e Lucas Zini </li>
+                  <li> Sept/17: Published article in the Microelectronics Journal: BrNoC: A broadcast NoC for control messages in many-core systems  </li >
+                  <li> Mar/17: <a HREF="http://capes.gov.br/images/stories/download/editais/11042017-Edital-24-2016-Brafitec-resultado-listagem.pdf"> BRAFITEC  FORCINT</A>: Projeto de Mobilidade Acadêmica aprovado! Três bolsas para realizar intercâmbio para alunos da Eng. Comp. e Eng. Elétrica! </li>
+                  <li> Jan/17: <a HREF="http://aufildeleau.polytech.univ-montp2.fr/N-180-9-fevrier-2017_193.html"> Professor convidado na França </a> </li>
+              </ul>
+          </div>
+      </td>
+    </tr>
+   </table>
+
+   <hr>
+   <p class="p_atual"> Last update: January 11<sup>th</sup> 2022 </p>
+   <p>  &nbsp; </p>
+
+</div>
+
+</body>
+</html>

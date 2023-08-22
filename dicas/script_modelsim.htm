@@ -1,0 +1,157 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Uso de Script para ModelSim</title>
+</head>
+
+<body>
+
+<div align="center">
+  <pre wrap><font size="6" color="#0000FF" face="Arial">Uso de Script para ModelSim</font></pre>
+</div>
+<pre wrap><b><font size="4" face="Arial">Arquivos necessários para esta demonstração:</font></b></pre>
+<ol>
+  <li>
+  <pre wrap><i><b><font face="Arial" size="3" color="#6600FF">user_logic.vhd</font></b></i></pre>
+  </li>
+  <li>
+  <pre wrap><i><b><font face="Arial" size="3" color="#6600FF">user_logic_TB.vhd</font></b></i></pre>
+  </li>
+  <li>
+  <pre wrap><b><i><font face="Arial" size="3" color="#6600FF">wave.do</font></i></b></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3"><font color="#6600FF"></font><b><i><font color="#6600FF">load.do
+</font>
+</i></b>Este script contém instruções para <i>coverage</i> (cobertura de código)</font></pre>
+  </li>
+</ol>
+<pre wrap><font face="Arial" size="3">
+</font><font face="Arial" size="4"><b> Passos para a execução desta demonstração:</b></font></pre>
+<ol>
+  <li>
+  <pre wrap><font face="Arial" size="3">Salve os 4 arquivos em um diretório qualquer.</font></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3"> No console do ModelSim (janela <i>Transcript</i>) digite &quot;pwd&quot; para visualizar o diretório  corrente. Digite o comando &quot;cd&quot; para ir para o diretório de trabalho. Exemplo:
+
+</font><b><font size="2" face="Courier New" color="#0000FF">    pwd
+    # C:/Modeltech_6.1f/examples
+    cd z:/cleo_vsim
+</font></b><font face="Arial" size="3">
+ Digitando &quot;dir&quot; visualizamos a lista dos 4 diretórios.</font></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3">Ao contrário do ActiveHDL, que tem que se criar projeto e tudo o mais, no ModelSim é<b class="moz-txt-star"><span class="moz-txt-tag"> </span></b><i><b><font color="#6600FF">bem mais simples</font></b></i>, basta executar o script fornecido, digitando:
+
+      </font><b><font face="Courier New" color="#0000FF"><font size="2"> do load.do</font></font></b><font face="Arial" size="3">
+
+    Para que funcione corretamente, deve-se alterar o script load.do para apontar  corretamente o diretório da biblioteca unisim.  Abrir o load.do e alterar a linha &quot;vmap unisim C:/Modeltech_6.1f/unisim&quot;
+
+    Para quem não tem na instalação do ModelSim a biblioteca unisim pode-se buscá-la na cila ou em \\moraes\public.
+
+    Há também em \\moraes\public (e na cila) a última versão do ModelSim (6.1f).
+</font></pre>
+  </li>
+</ol>
+<pre wrap><b><font face="Arial" size="4">CODE COVERAGE:</font><font face="Arial" size="3">
+</font></b><font face="Arial" size="3">  
+     Indica a qualidade do test bench escrito, ou seja, por quais linhas do test bench passamos, se as decisões (ifs, cases, whem... - branchs) são tomados ou não, etc.
+
+     É extremamente útil, pois ao escrevermos test benchs muitas vezes não testamos  todo o nosso circuito.</font></pre>
+<ul>
+  <li>
+  <pre wrap><font face="Arial" size="3">na janela &quot;workspace&quot; clique na aba &quot;sim&quot; - temos a hierarquia do projeto. Selecionar o top (user_logic_tb).</font></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3">agora observem na janela &quot;instance coverage&quot; as coberturas. A ULA está coberta em apenas 84.6% nos statments e 83.3% nos braches.</font></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3">Por quê? Selecione a instância alu e analise a janela &quot;missed coverage&quot;. Nas abas statment e branch temos as linhas de código não exercitadas pelo test bench.</font></pre>
+  </li>
+  <li>
+  <pre wrap><font face="Arial" size="3">Na aba &quot;files&quot; do &quot;workspace&quot; abra o arquivo user_logic.vhd. Nas linhas 399-420 temos a ULA e seu problemas. As colunas Hits e BC fornecem as estatísticas de hits e branchs, e os respectivos problemas (mais detalhes na documentação).
+</font></pre>
+  </li>
+</ul>
+<pre wrap><b><font face="Arial" size="4">EXPLICAÇÃO DO SCRIPT <i>load.do </i>LINHA A LINHA:</font></b></pre>
+<div align="left">
+  <table border="0" cellpadding="5" cellspacing="3" style="border-collapse: collapse" bordercolor="#111111" height="370">
+    <tr>
+      <td width="471" height="16"><font size="2" face="Courier New"><b>if {[file 
+      isdirectory work]} { vdel -all -lib work }</b></font></td>
+      <td width="707" height="16"><font size="2" face="Arial" color="#000080">
+      apaga o diretório work se ele existe</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="32"><font size="2" face="Courier New"><b>#PARA 
+      MODELSIM NO PC<br>
+      vmap unisim C:/Modeltech_6.1f/unisim</b></font></td>
+      <td width="707" height="32"><font size="2" face="Arial" color="#000080">
+      mapeamento da unisim <b>alterar</b></font></td>
+    </tr>
+    <tr>
+      <td width="471" height="32"><b><font size="2" face="Courier New">#PARA 
+      MODELSIM NA SUN<br>
+      #vmap unisim /soft/mentor/modeltech/unisim&nbsp;&nbsp; </font></b></td>
+      <td width="707" height="32"><font size="2" face="Arial" color="#000080">
+      mapeamento da unisim na SUN</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="32"><b><font size="2" face="Courier New">vlib work&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <br>
+      vmap work work </font></b></td>
+      <td width="707" height="32"><font size="2" face="Arial" color="#000080">
+      definição da biblioteca work<br>
+      &quot;conecta&quot; o work do VHDL ao diretório work</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="32"><b><font size="2" face="Courier New">vcom -cover 
+      bcesx user_logic.vhd&nbsp;&nbsp; <br>
+      vcom -cover bcesx user_logic_TB.vhd</font></b></td>
+      <td width="707" height="32"><font face="Arial" color="#000080">
+      <font size="2">compilação dos códigos VHDL</font></font></td>
+    </tr>
+    <tr>
+      <td width="471" height="16"><b><font size="2" face="Courier New">vsim -coverage 
+      -t 10ps&nbsp; work.user_logic_tb</font></b></td>
+      <td width="707" height="16"><font size="2" face="Arial" color="#000080">&nbsp;inicia 
+      a simulação, com coverage, passo de 10 ps (necessário ao unisim) e ativa o 
+      coverage</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="16"><b><font size="2" face="Courier New">do wave.do</font></b></td>
+      <td width="707" height="16"><font size="2" face="Arial" color="#000080">
+      abre a waveform com os sinais que desejamos visualizar,&nbsp; obtém uma 
+      wave.do gravando os sinais de uma simulação</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="16"><font size="2" face="Courier New"><b>set 
+      StdArithNoWarnings 1 </b></font></td>
+      <td width="707" height="16"><font size="2" face="Arial" color="#000080">
+      comando <b>mágico</b> - remove os irritantes warnings do StdLogicArith</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="16"><b><font size="2" face="Courier New">run 2 ms</font></b></td>
+      <td width="707" height="16"><font size="2" face="Arial" color="#000080">
+      executa por 2 ms (tempo de simulação)</font></td>
+    </tr>
+    <tr>
+      <td width="471" height="32"><font size="2" face="Courier New"><b>coverage 
+      report -file coverage_rep<br>
+      </b></font><b><font size="2" face="Courier New">coverage save&nbsp; 
+      coverag</font></b></td>
+      <td width="707" height="32"><font size="2" face="Arial" color="#000080">
+      geração de arquivos de relatório</font></td>
+    </tr>
+  </table>
+</div>
+<pre wrap><font face="Arial" size="3">       Fernando Moraes - 13/junho/2006</font></pre>
+
+</body>
+
+</html>

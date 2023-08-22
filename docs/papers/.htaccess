@@ -1,0 +1,6 @@
+AuthUserFile /home/PORTOALEGRE/10049372/passmoraes
+AuthName "SEND E-MAIL TO fernando.moraes@pucrs.br TO GET THE FULL TEXT OF THE PUBLICATION"
+AuthType Basic
+<Limit GET>
+require user moraes
+</Limit>

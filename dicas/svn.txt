@@ -1,0 +1,79 @@
+ECLIPSE+SVN: UM AMBIENTE INTEGRADO DE DESENVOLVIMENTO E CONTROLE DE VERSAO DE PROJETO
+
+   (Moraes - 26/set/2008)
+
+
+1. INTRODUCAO
+
+  O presente documento tem por objetivo prover suporte para o uso inicial do ambiente de desenvolvimento de projeto (Eclipse) integrado com a ferramenta de controle de versao (SVN). A partir dele, a instalacao, configuracao e utilizacao basica pode ser realizada.
+
+
+2. INSTALANDO A FERRAMENTA ECLIPSE  
+
+  A versao do Eclipse adotada para o projeto eh a "Eclipse Classic 3.3".
+  
+  Ha duas formas de capturar esta ferramenta. A primeira eh acessando a naxos. Lah o Eclipse classic esta armazenado no home do usuario softinstall em ~softinstall/#general_software/programming/eclipse-SDK-3.3-win32+svn.zip. Neste arquivo jah esta contido o plugin para o SVN. A segunda forma eh acessando o site da Eclipse (www.eclipse.org/downloads) e capturar a versao "Eclipse Classic 3.3" da ferramenta. Ali, a ferramenta eh disponibilizada com os recursos basicos, ou seja, o plugin para o SVN nao esta presente. A forma de instalacao deste plugin sera descrita mais adiante.
+  
+  De posse do arquivo, independente se foi capturado na naxos ou no site da Eclipse, descompacte-o em sua máquina de trabalho de preferencia na raiz do "C:" em um diretório "Eclipse" para padronizar as instalacoes. Esta ferramenta nao requer instalacao, apenas a descompactacao do arquivo.
+  
+  Para iniciar o Eclipse, ha um arquivo nomeado "eclipse.exe". Duplo clique e faz-se a luz....
+  
+  2.1 INSTALANDO O PLUGIN SVN
+    Caso a versao de Eclipse que tenha sido instalada nao possui o plugin SVN, uma atualizacao do ambiente pode ser realizada para corrigir o problema. Apos executar o Eclipse, siga os passos.
+  
+    1) Vá no menu HELP > SOFTWARE UPDATES > FIND AND INSTALL
+    2) Selecione a segunda opcao "SEARCH FOR NEW FEATURES TO INSTALL" e clique NEXT
+    3) Na janela que se abrira, clique em "NEW REMOTE SITE"
+    4) Digite conforme o campo:
+        Name: Subversive
+        URL: http://www.polarion.org/projects/subversive/download/1.1/update-site/"
+       Em seguida clique OK
+    5) Deixe somente o campo Subversive selecionado e clique FINISH
+    6) ...Aguarde...Aguarde...
+    7) Ao abrir uma nova janela, selecione a opcao referente ao Subversive
+    8) ...Aguarde...Aguarde...
+    9) Caso a versao mais basica do Eclipse classic esteja sendo usada, um erro pode ser apresentado devido a ausencia de alguns pacotes. Para resolver o problema, abra a arvore do Subversive. Em um determinado momento, 4 itens serao listados no mesmo nivel. Desmarque a opcao "Subversive Integration Plug-in's". Neste momento a mensagem de erro no topo da janela deve desaparecer. Em seguida, clique finish.
+    10) ...Aguarde muuuuuuuuuuuuuito... Os plugins necessarios para o uso do SVN serao capturados...
+    11) Ao finalizar a captura dos arquivos, uma nova janela eh apresentada. Clique em "INSTALL ALL"
+    12) Finalizada a instalacao, uma nova janela pedindo o reinicio de seu ambiente de trabalho aparecerah. Clique "YES"...
+    13) Ao reiniciar seu Eclipse, o plugin de SVN devera esta disponibilizado.
+    
+
+3. FAZENDO USO DO PLUGIN SVN
+
+  Dentro da ferramenta Eclipse, as diferentes visoes que se tem do ambiente sao tidas como perspectivas. Assim, ha perspectivas de desenvolvimento, perspectivas de depuracao de projeto e etc. Neste contexto, o plugin SVN eh tratado como uma perspectiva.
+  
+  Para acessar a perspectiva de SVN, duas formas sao possiveis. A primeira eh atraves de um icone disponibilizado no canto superior direito. Clicando sobre o icone, um pop-up contendo as entrada "Debug", "Java", "Java Browsing" e "Other" eh apresentado. Clique em "Other". Uma nova janela sera aberta. Nela selecione a opcao "SVN Repository Exploring" e clique OK. A segunda forma de acessar a perspectiva eh atraves do menu WINDOW > OPEN PERSPECTIVE > OTHERS. Uma nova janela sera aberta. Nela selecione a opcao "SVN Repository Exploring" e clique OK.
+  
+  3.1) ACESSANDO O REPOSITORIO SVN
+    Atualmente, o repositorio SVN a ser utilizado pelo grupo esta limitado para acesso interno a PUCRS, ou seja, garantidamente as configuracoes que serao aqui apresentadas funcionam em nosso laboratorio.
+    
+    Na perspectiva SVN, a esquerda da ferramenta, um painel contendo abas referindo-se ao REPOSITORIO SVN e ANOTACOES sera apresentada. Clique na aba referente ao REPOSITORIO SVN. Em seguida clique no icone ilustrado por um cilindro com um sinal de soma. Uma janela será aberta. Nesta janela, na aba GENERAL, digite "svn://naxos/gaph". Este eh o caminho referente ao repositorio de projetos. para confirmar o bom/a funcionamento/configuracao do ambiente, clique em Browser. Uma nova janela, com a arvore de projetos no repositorio deve ser apresentada ali. Para evitar erro, cancele a janela, pois um mau apontamento de projeto pode ser assumido clicando-se OK. Caso a janela que deveria conter a arvore de projetos abra, mas um erro impeca a listagem dos mesmos, falem com o Moraes. Estando correto o acesso ao repositorio SVN, basta clicar FINISH na janela inicial de configuracao.
+    
+    Neste momento, o painel referente ao repositorio SVN devera estar listando os projetos do repositorio.
+    
+4) INICIANDO OS TRABALHOS
+
+    Sendo entao acessivel o repositorio SVN, inicia a faze de trabalho no projeto, certo? Errado!!! O passo inicial é disponibilizar o projeto localmente. A listagem dos projetos, disponivel no painel de repositorio SVN, nada mais eh do que uma visao remota.
+    
+    4.1) CAPTURANDO UM PROJETO
+      Para baixar um projeto, clique sobre o mesmo com o botao direito do mouse e selecione a opcao "CHECK OUT". Esta operacao fara a captura da ultima versao armazenada e disponivel do projeto no repositorio para a maquina local. Esta operacao eh recursiva, ou seja, caso a raiz do projeto seja selecionada, toda a sua arvore de diretorios e arquivos sera capturada. Esta arvore do projeto estara salva no diretorio definido como WORKSPACE quando da execucao do Eclipse.
+    
+      Para exemplificar o passo anterior, vamos capturar o projeto XUXU. Dentro da perspectiva "SVN Repository Exploring", na aba repositorio SVN, navege em TRUNK. Dentro dele, ha um diretorio nomeado XUXU. Clique com o botao direito sobre este diretorio e em seguida selecione a opcao "CHECK OUT". Em seguida a magica se faz e os arquivos estarao disponibilizados na sua maquina.
+      
+      Finalizada a captura dos arquivos, a perspectiva tera de ser novalmente alterada. A perspectiva "SVN Repository Exploring" nao permite que o gerenciamento do repositorio e dos projetos. Alteracao de arquivos devera ser realizada a partir de uma outra perspectiva. Neste momento, a perspectiva JAVA pode ser utilizada.
+
+    4.2) ALTEREI O CODIGO NO PROJETO E AGORA?
+      No repositorio definido para o projeto, todos usuarios tem acesso a leitura do repositorio, mas apenas alguns usuarios tem direito de salvamento no repositorio. Esta medida eh adotada para evitar a proliferacao de versoes de projeto e facilitar o gerenciamento do repositorio. Para tanto, algumas pessoas serao responsaveis por controlar as versoes que serao salvas no repositorio. Tais pessoas receberao usuario e senha adequados para tal operacao. Os demais projetistas nao precisam de usuario e senha para capturar os arquivos do repositorio.
+      
+      Tendo entao alterado o codigo de seu projeto e validado o mesmo, faz-se contato com o responsavel pelo armazenamento dos arquivos. Dentro da perspectiva de trabalho, por exemplo a perspectiva "JAVA", selecionar o arquivo(s) e/ou diretorio(s) que serao salvos e em seguida clicar com o botao direito sobre os mesmos. Um pop-up sera aberto contendo varios comando. Siga para TEAM > COMMIT. Uma janela contendo um campo "COMMENT" sera aberta. Preencha o campo com a informacao pertinentes as alteracoes e/ou inclusoes que estao sendo realizadas para facilitar o gerenciamento do controle de versoes do projeto. Em seguida clique OK. Para os arquivos novos, uma versao inicial sera anotada. Jah para os arquivos alterados, uma nova versao sera automaticamente anotada no repositorio.
+      
+    4.3) TRABALHO COOPERATIVO <> BAGUNCA
+      Durante o salvamento de um dado conjunto de arquivos ou diretorio, um erro pode ser apresentado caso as versoes de arquivo disponiveis na sua maquina sejam mais antigas a aquelas armazenadas no repositorio. Isto eh normal de acontecer quando varias pessoas trabalham sobre um mesmo projeto, significando apenas que outro projetista pode ter alterado um conjunto de arquivos do projeto, salvo no repositorio e voce nao tenha ficado sabendo. Para garantir a funcionalidade e atualidade de seu desenvolvimento, o SVN permite que sejam feitas atualizacoes da versao que esta disponivel na sua maquina local.
+      
+      Para atualizar seu projeto disponivel na maquina, dentro da perspectiva de projeto, no nosso casos a perspectiva "JAVA", clique com o botao direito sobre a raiz de seu projeto. Um pop-up contendo um conjunto de comandos sera apresentado. Siga para TEAM > UPDATE. Este comando captura os arquivos mais novos do repositorio e compara com os seus. Casos haja algum conflito nas diferentes versoes de arquivo, os mesmos serao automaticamente tratados quando possível, caso contrario serao apontados.
+      
+5) CONCLUSAO
+  O presente documento descreveu alguns passos iniciais de trabalho com o ambiente de desenvolvimento de projeto Eclipse e a adocao da ferramenta de controle de versoes SVN. Nele, conceitos basicos necessarios para o acesso a projetos armazenados em um repositorio remoto e desenvolvimento/salvamento controlado de projeto eh apresentado.
+  
+  

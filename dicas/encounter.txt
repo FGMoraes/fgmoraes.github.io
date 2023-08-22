@@ -1,0 +1,225 @@
+
+
+   RESUMO DO CURSO NSCAD NO ENCOUTER -  18/ago/2007
+   
+      MORAES
+      
+       -------------------------------------------------
+
+  Resumo das minhas anoações para o encounter - *abaixo* o script apontando para o desing_kit
+que está na naxos - ou seja, já podem ir fazendo a síntese
+
+1) Depois do CVS ir para a pasta onde foi feito o write encounter
+
+          ~curso_nscad/1.1.0/rtl_syn/rc/rsa_core/output/encounter
+
+2) Lançar o encounter:  encounter
+
+    [laçar do diretório onde se executou a síntes com o rc]
+
+
+3) Design --> Import.  Vai raduz de rtl para gds (layout)
+
+  pega o configuração gerado no diretório do diretório output/encounter
+  (foi o write encounter que escreveu)
+
+  ** VERIFICAR SE ESTÁ COMO ABAIXO (os LEF são inseridos a mão)
+ 
+  => Files: output/encounter/rsa_core.v
+
+  => common timing libraries:
+         /soft/design_kits/xl035/synopsys/xl035/D_CELLS_33.lib
+
+  ==> LEF files (nesta ordem)
+       /soft/design_kits/xl035/cadence/xl035/LEF/xl035_m3/xl035m3.lef
+       /soft/design_kits/xl035/cadence/xl035/LEF/xl035_m3/D_CELLS.lef       => Na tab advanced
+        - IPO / CTS - in place optimization / clock tree synthesis
+        - openaccess - banco de dados com todas as informações do projeto
+        - power -  *DEFINIR*  'vdd!'  e  'gnd!'
+        - rc extraction -  *DEFINIR*  -
+               - capturar as tabelas de capacitância os min/typ/max
+               - no diretório xh035_CapTbl
+        - SI - signal integrety
+
+   *****  Salvar o config  ******
+
+4) Salvar o desing de tempos em tempos - File --> Save Desing as --> SoCE
+
+5) Mover os blocos usando o botao cruz  (short cut R)
+
+    - colocar os três blocos na área do std cell
+       - sugestão - manter em 70 %
+       - define manualmente o formato dos blocos - floorplaning "grosseiro"
+
+6) Floorplan - specify floorplan - permite alterar a forma dos blocos
+
+    => Especificar uma borda "core to IO boundry"         => no exemplo colocar o tamanho em 400x400 e a borda 40
+        => colocar novamente os blocos na área do core
+        ==> muito útil o "relative floorplaning" - amarra os blocos
+        entre si
+       7) Flooplan - connect global nets
+
+       pin / global net - vdd! e gnd! - apply all
+             Define redes globais para vcc/gnd
+
+8)  Usar a régua para medidas
+ 
+     [Régua - para apagar a régua shifk-K]
+
+
+9) Edit --> Pin Editor
+
+       - desegrupar os pinos para abrir os barramentos
+             - a função do pin editor é facilitar a vida do anel de pads,
+         colocando-se os pinos em uma ordem natural para as E/S
+               -> exemplo: todos os outputs (core_dat_o[x]) not top,
+          fixed, along entire edge             10) Bloqueio parcial - util para inserir macro-blocos
+
+     Pode-se definir restrição para proibir roteamento sobre os blocos
+     (abrir a caixa de propriedades do interdição da área de rot)
+
+
+11) Depois de fazer o
+       a/  floorplaning com "amarrações" relativas
+       b/  conexão das net globais
+       c/  inserção de regiões proibidas
+         gravar o floorplanig (desging->save->floorplaning). Gera-se os arquivos:
+       - definição dos posições:  *.fp
+       - *.spr - trilhas
+       - *.relFPlan  - posicoes relativas
+       12) INSERÇÃO DOS ANÉIS DE ALIMENTAÇÃO
+
+   a/ power -> power planning -> add rings
+          -> dica: width 10 e spacing 5
+         -> escolher M3 (top/botton) /M2 (left/right) (update)
+             (power planning)
+        (power --> syntheteze power planning -> entra com pot de pico)
+                Cololcar distância ao core em offset em 10
+           (se errar colocar a mão)              b/  power -> power planning -> add stripes   
+        --> no exercício se colocou em M2, dois sets (dois pares vdd/gnd)
+            não esquecer de definir as distâncias da esquerda / direita
+            (no exercício 100/150)
+                        c/ route -> special route  ==> OK, ele gera toda as linhas de alimentacao
+     do circuito, M1 horizontal, e o M2 dos stripes do passo anterior
+ 
+                 (Place --> filler --> add end cap  (não etá no exemplo))
+             Observações:
+           1) save -> save desing as -> rsa_core_power_routed.enc
+          (é bom ter esta versão para poder voltar atrás - não tem UNDO!)
+                2) o bloco "proíbido" teve roteamento por cima. Pode-se evitar
+          isto colocando-se restrição nas propriedades da máscara de
+          interdição de roteamento.
+    
+12) Placement e Routing automático
+
+    a/ place -> standard cells and bloks -> run  full  placement
+            -> primeira opção
+        -> depois "run incremental placement"  (demora muito)
+        b/ Routing -> Trial route -> primeira iteração de rotamento
+     13) Design -> load -> def   (cadeias de scan)
+
+     rsa_core_scan.df
+     place -> display -> scan
+         [este passo não fiz, pois o script que utilizei não pos cadeia de scan...)
+    14)  Timing
+
+     -> extract RC  - marcar a primeia e duas últimas posições
+         -> generate -> wire load model
+         -> timimg calculate delay
+         -> timing optimize   (Pre CTS - pré Clock tree synthesis)
+         +--------------------+---------+---------+---------+---------+---------+---------+
+     |     Setup mode     |   all   | reg2reg | in2reg  | reg2out | in2out  | clkgate |
+     +--------------------+---------+---------+---------+---------+---------+---------+
+     |           WNS (ns):|  3.676  |  3.676  |  6.567  |  7.195  |   N/A   |   N/A   |
+        worst negate slack
+            Routing Overflow: 0.00% H and 0.95% V
+                       Se deu overflow é sinal NÃO ROTEADO!!!!!!!
+                 15) CTS - clock tree synthesis  
+   a/ clock -> design clock
+          gen spec.... -> escolhe células  (tive pb com os níveis de roteamento)
+       (solução: em mode->CTS alterei para M3/M2)
+
+   b/  clock --> display -> clock tree
+            (dá para ver por níveis - muito interessante)
+
+   c/ Timing -> optimize -> pos-cts. Novo timing:
+
+       WNS (ns):|  3.671  |  3.671  |  6.993  |  6.703  |   N/A   |   N/A   |
+         d/ salver o projeto com clock tree
+       (é bom, por o roteamento final é suscetivel a erros)       16)  nanoRoute -> 180 nano para baixo
+
+     Wrouter -> para projetos "comuns"
+           Cuidar violaçõs
+             Verify --> violation browser
+             ==> dá para mover as células para mover células de lugar para resolver problemas
+
+      -> timing -> optimiza -> pos-route
+
+      17) Place  - add filler cells  - colocar em ordem
+
+
+18) Desing - save - gds --> para ir para o ASSURA  (rsa.vds)
+
+
+                       -x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+
+
+
+### PARA REMOVER UM PROJETO :  rm /designs/rsa_core/
+### ao sair digitar "reset"no terminal / ou no menu.... aver no putty
+##
+##  no rc: write_template para gerar um script ###
+##
+## cdnshelp
+##
+## cdnshelp -hierarchy /soft/cadence/ferramentas/ET62
+##
+## Getting Started with the Generic Flow
+##
+## http://www.nscad.org.br/wiki/index.php?title=Especial:Allpages
+
+##  PARA EXECUTAR ESTE SCRIPT
+##   rc -file gera.tcl
+
+set_attribute information_level 9 /
+set_attribute hdl_search_path ../rtl_src /
+set_attribute lib_search_path /soft/design_kits/xl035/synopsys/xl035
+set_attribute hdl_vhdl_read_version 1993
+
+set_attribute library D_CELLS_33.lib /
+
+read_hdl -vhdl {rsa_core.vhd rsa_core_mult.vhd rsa_core_mod.vhd \
+	rsa_core_ctrl.vhd}
+	
+elaborate rsa_core
+
+define_clock -domain 100MHz -period 10000 -name core_clk core_clk
+
+set ports_in [find  -port ports_in/*]
+set ports_in_index [lsearch -glob $ports_in *core_clk]
+set ports_in [lreplace $ports_in $ports_in_index $ports_in_index]
+external_delay -clock [find -clock core_clk] -input 2000 \
+	-name input_delay $ports_in
+external_delay -clock [find -clock core_clk] -output 2000 \
+	-name output_delay [find  -port ports_out/*]
+
+## condicoes de síntese	
+set_attribute operating_conditions Best_3.60V_-40
+set_attribute operating_conditions Worst_3.00V_85
+
+synthesize -to_generic -effort low rsa_core
+
+synthesize -to_mapped -effort low rsa_core
+
+synthesize -to_mapped -effort high rsa_core	
+
+report gates
+report power
+report area
+
+check_design -all rsa_core
+
+ write_encounter design -basename output/encounter/rsa_core
+
+
+     ****  fim ***

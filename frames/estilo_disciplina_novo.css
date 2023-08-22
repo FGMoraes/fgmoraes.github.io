@@ -1,0 +1,82 @@
+/* ESTILOS UTILIZADOS NAS DISCIPLINAS - FERNADO MORAES - FEV 2019 */
+body {  margin: 0px; 
+        background-color:white;
+        font-family: Helvetica,Verdana,Arial; 
+        line-height: 1.5;
+         margin-left: 8pt;
+     }
+
+      .personalizar-select{  border: 1px solid navy;   height: 28px;  color: purple;   font-size: 11pt;   font-weight: bold;  background: white;     }
+
+      div.sessao{   visibility:hidden; 
+                    position:absolute; 
+                    width: 100%;  
+                    height: 85%;  
+                    left: 0px; 
+                    top: 115px; 
+                    z-index: 5; 
+                    overflow-y: scroll; }
+
+      table           { background-color:white;  border: 1px solid black;  margin-left:auto;  margin-right:auto; }
+      table.sem_borda { border: none; background-color:#d1d1e0; margin-left:10px; }
+      table.w70       { width: 70%; }
+
+      table.w100      { width: 95%; margin-left:2.5%; }
+      
+      td, th {  border: 1px solid darkgray;  padding-left: 8px; padding-right: 8px; }
+
+      td         {  font-weight: normal;   font-size: 10pt;     color:darkblue;     text-align: center;   }
+      td.title   {  font-weight: bold;     font-size: 11pt;     color:darkblue;     text-align: left;     } 
+      td.livro   {  font-weight: normal;   font-size: 11pt;     color:darkblue;     text-align: left;     }  
+      td.lab     {  font-weight: bold;     font-size: 11pt;     color:red;          text-align: left;     }  
+      td.prazo   {  font-weight: bold;     font-size: 10pt;     color:green;        text-align: center; line-height: 1; }
+      th         {  font-weight: bold;     font-size: 12pt;     color:black;        text-align: center;    }
+
+      ol {   font-weight: normal;          font-size: 11pt;     color:blue; 
+             list-style-position: outside;
+             list-style-type: decimal;  
+          }
+        
+      li  {  font-weight: normal;   font-size: 10pt;     color:blue;    
+             text-align: left;
+           }
+
+      h1 {   font-weight: bold;   font-size: 14pt;         color:black;     line-height: 1.0;  
+             padding-top:  0px; 
+             padding-left: 40px;
+         }      
+
+      h2 {   font-weight: bold;   font-size: 12pt;      color:darkblue;     
+             background-color: #B0C0DE;
+             padding: 1px; 
+             padding-left: 20px;
+         }
+     
+      h3 {   font-weight: bold;    font-size: 11pt;      color:green;    
+             padding-left: 20px;
+         }
+     
+      p {    font-weight: normal;  font-size: 10pt;      color:blue;      }
+             
+      p.tz {    margin-left: 15pt; font-weight: bold;    font-size: 11pt;       color:red;        
+           }
+
+      hr {   border-top: 1px solid white;  }
+
+      bkk {    font-weight: bold;
+               font-size: 10pt;
+               text-align: left;
+               margin-top:0px;
+               color: red;
+               animation: blinker 1s linear infinite;
+           }
+
+       @keyframes blinker { 50% { opacity: 0; } }
+
+
+/* Definições de estilo para links. */
+a:link       { color: black; }
+a:visited    { color: black; }
+a:active     { color: black; }
+a:hover      { background: yellow;  text-decoration: none;  color: red;   }
+
