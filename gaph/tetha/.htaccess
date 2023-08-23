@@ -1,6 +1,0 @@
-AuthUserFile /home/PORTOALEGRE/10049372/passmoraes
-AuthName "Projeto Tetha"
-AuthType Basic
-<Limit GET>
-require user moraes
-</Limit>
