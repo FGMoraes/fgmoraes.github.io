@@ -1,0 +1,12 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/task_migration.c" name="/home/ruaro/hemps/hemps_trunk/software/modules/task_migration.c">
+<area shape="rect" id="node2" href="$task__migration_8h.html" title="This module defines function relative to task migration. " alt="" coords="254,109,373,136"/>
+<area shape="rect" id="node6" href="$local__scheduler_8h.html" title="Defines Scheduling structure. &#160;This struct is used to manages the scheduling informations relative to..." alt="" coords="432,266,555,293"/>
+<area shape="rect" id="node7" href="$services_8h.html" title="Kernel services definitions. This services are used to identifies a packet. " alt="" coords="667,109,805,136"/>
+<area shape="rect" id="node8" href="$plasma_8h.html" title="Plasma Hardware Definitions. " alt="" coords="830,109,962,136"/>
+<area shape="rect" id="node9" href="$task__location_8h.html" title="This module defines function relative to task location structure. &#160;The TaskLocation structure is defi..." alt="" coords="25,184,135,211"/>
+<area shape="rect" id="node10" href="$communication_8h.html" title="Defines the PipeSlot and MessageRequest structures. " alt="" coords="470,109,591,136"/>
+<area shape="rect" id="node12" href="$utils_8h.html" title="This module defines utils functions. " alt="" coords="986,109,1043,136"/>
+<area shape="rect" id="node4" href="$packet_8h.html" title="This module defines the ServiceHeader structure. This structure is used by all software components to..." alt="" coords="211,184,283,211"/>
+<area shape="rect" id="node5" href="$task__control_8h.html" title="This module defines function relative to task control block (TCB) &#160;The TCB structure is defined..." alt="" coords="307,184,411,211"/>
+<area shape="rect" id="node11" href="$api_8h.html" title="Implements the API for the user&#39;s task and defines the structure Message, used by tasks to exchange m..." alt="" coords="485,184,592,211"/>
+</map>

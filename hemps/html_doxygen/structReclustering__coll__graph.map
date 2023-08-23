@@ -1,0 +1,4 @@
+<map id="Reclustering" name="Reclustering">
+<area shape="rect" id="node2" href="$structTask.html" title="This structure stores variables useful to manage a task from a manager kernel perspective &#160;Some of th..." alt="" coords="27,95,78,121"/>
+<area shape="rect" id="node3" href="$structDependence.html" title="This structure stores the communication dependences of a given task &#160;This structure is fulfilled by t..." alt="" coords="5,5,100,32"/>
+</map>

@@ -1,0 +1,66 @@
+OTN Alarms Summary
+Functional Description
+$Id: OTN_alarms_summary.t2t,v 1.6 2008/04/30 20:27:21 paulo Exp $
+
+%!target: html
+%!options: --toc --toc-level 4
+%!options: --style style.css
+%!encoding: iso-8859-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ OTU / OCh +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+|| Abbreviation | Name                                             |  Detection Criteria                   | Recommendation |
+ | OCh-LOS      | OCh Loss of signal                               | Incoming signal absent                |                |
+ | OTU-OOF      | OTU Out of frame                                 | 5 errored FAS                         |  G.798         |
+ | OTU-LOF      | OTU Loss of frame defect                         | If OOF persists for 3ms               |  G.798         |
+ | OTU-OOM      | OTU Out of multiframe                            | 5 errored MFAS                        |  G.798         |
+ | OTU-LOM      | OTU Loss of multiframe defect                    | if OOM persists for 3ms               |  G.798         |
+ | OTU-AIS      | OTU Alarm indication signal defect               | PN-11 sequence detected               |  G.798         |
+ | SM-DEG       | OTU SM Signal degrade defect                     | Errored blocks >= Degraded Threshold  |  G.798/G.806   |
+ | SM-BEI       | OTU SM Backward error indication                 |                                       |                |
+ | SM-IAE       | OTU SM Incomming alignment error defect          | SM IAE bit set for 5 frames           |  G.798         |
+ | SM-BIAE      | OTU SM Backward incoming alignment error defect  | BEI/BIAE equal to "1011" for 3 frames |  G.798         |
+ | SM-TIM       | OTU SM Trail trace identifier mismatch           | SM TTI not equal to expected          |  G.798         |
+ | SM-BDI       | OTU SM Backward defect indication defect         | SM BDI bit = '1' for 5 frames         |  G.798         |
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ ODU - Path Monigoring (PM) +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+|| Abbreviation | Name                                             |  Detection Criteria                   | Recommendation |
+ | PM-DEG       | ODU PM Signal degrade defect                     | Errored blocks >= Degraded Threshold  |  G.798/G.806   |
+ | PM-BEI       | ODU PM Backward error indication                 |                                       |                |
+ | PM-IAE       | ODU PM Incomming alignment error defect          | PM STAT = "010" for 3 frames          |  G.798         | 
+ | PM-BIAE      | ODU PM Backward incoming alignment error defect  | PM BEI/BIAE = "1011" for 3 frames     |  G.798         |
+ | ODU-AIS      | ODU Alarm indication signal defect               | PM STAT = "111" for 3 frames          |  G.798         |
+ | ODU-OCI      | ODU Open connection indication defect            | PM STAT = "110" for 3 frames          |  G.798         |
+ | ODU-LCK      | ODU Locked defect                                | PM STAT = "101" for 3 frames          |  G.798         |
+ | PM-BDI       | ODU PM Backward defect indication defect         | PM BDI bit = '1' for 5 frames         |  G.798         |
+ | PM-TIM       | ODU PM Trail trace identifier mismatch           | PM TTI not equal to expected          |  G.798         |
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ ODU - Tandem Connection Monitoring (TCM) +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+|| Abbreviation | Name                                              |  Detection Criteria                   | Recommendation |
+ | TCM-LTC      | ODU TCM Loss of Tandem Connection                 | TCM STAT = "000" for 3 frames         |  G.798         |
+ | TCM-BEI      | ODU TCM Backward error indication                 |                                       |                |
+ | TCM-BIAE     | ODU TCM Backward incoming alignment error defect  | TCM BEI/BIAE = "1011" for 3 frames    |  G.798         |
+ | TCM-AIS      | ODU TCM Alarm indication signal defect            | TCM STAT = "111" for 3 frames         |  G.798         |
+ | TCM-OCI      | ODU TCM Open connection indication defect         | TCM STAT = "110" for 3 frames         |  G.798         |
+ | TCM-LCK      | ODU TCM Locked defect                             | TCM STAT = "101" for 3 frames         |  G.798         |
+ | TCM-BDI      | ODU TCM Backward defect indication defect         | TCM BDI bit = '1' for 5 frames        |  G.798         | 
+ | TCM-TIM      | ODU TCM Trail trace identifier mismatch           | TCM TTI not equal to expected         |  G.798         | 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ OPU +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+|| Abbreviation | Name                                              |  Detection Criteria                   | Recommendation |
+ | OPU-PLM      | OPU Payload Mismatch                              | PSI PT field not equal to expected    |  G.798         |
+ | CBR-AIS      | CBR client Alarm Indication Signal                | PN-11 sequence found in OPU payload   |  G.798         |

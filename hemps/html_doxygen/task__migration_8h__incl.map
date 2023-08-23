@@ -1,0 +1,5 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/task_migration.h" name="/home/ruaro/hemps/hemps_trunk/software/modules/task_migration.h">
+<area shape="rect" id="node3" href="$packet_8h.html" title="This module defines the ServiceHeader structure. This structure is used by all software components to..." alt="" coords="89,109,161,136"/>
+<area shape="rect" id="node4" href="$task__control_8h.html" title="This module defines function relative to task control block (TCB) &#160;The TCB structure is defined..." alt="" coords="185,109,289,136"/>
+<area shape="rect" id="node5" href="$local__scheduler_8h.html" title="Defines Scheduling structure. &#160;This struct is used to manages the scheduling informations relative to..." alt="" coords="175,191,298,218"/>
+</map>

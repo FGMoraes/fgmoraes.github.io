@@ -1,0 +1,50 @@
+9
+
+dir
+552
+svn://naxos/x10/x10Giga/tags/x10GiGa-v0.0/Simulacao
+svn://naxos/x10
+
+
+
+2008-11-12T21:04:20.950813Z
+541
+leoheck
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d93b28e6-b49b-48d0-958d-34e30c95aafd
+
+
+
+
+
+
+0
+
+CasoA
+dir
+
+CasoB
+dir
+
+CasoC
+dir
+
+CasoD
+dir
+
+Mainbus
+dir
+

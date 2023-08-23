@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<link rel="icon" href="resources/icone.png">
+	<head>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<link rel="stylesheet" type="text/css" media="all" href="common.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="workview.js"></script>
+		<title>HeMPS Multiprocessor System on Chip</title>
+	</head>
+	<body>
+		<header role="banner">
+
+
+
+        <div>
+        <h1 class="pageName">HeMPS</h1>
+        <h1 id="slogan">Hermes Multiprocessor System on Chip</h1>
+        <p><a href="https://github.com/GaphGroup/hemps" > <img src="resources/Github.png"></a> </p>
+        </div>
+        </header>
+        <div id="floating_menu-anchor"></div> <!--Ver depois como fazer isso sozinho -->
+        <div id="floating_menu">
+        <ul>
+            <li><a href="index.html">HeMPS</a></li>
+            <li><a href="memphis.html">Memphis</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="relatedwork.html">Publications</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="html_doxygen/files.html">Soft.Doc.</a></li>
+            <li><a href="about.html">About Gaph</a></li>
+            <!--<li><a href="faq.html">FAQ</a></li>-->
+        </ul>
+        </div>
+        
+
+		<div class=container>
+			<h1 style="padding-left: 0px">HeMPS Publications </h1><b>HEMPS</b>: description of the DMNI module, responsible to make the interface between the NoC and the memory
+		<ul>
+	 		 <li>DMNI: A Specialized Network Interface for NoC-based MPSoCs  <br>
+	     	 RUARO, Marcelo ; LAZZAROTTO, Felipe ; MARCON, Cesar ; MORAES, Fernando Gehm <br>
+	     		In: ISCAS, 2016. 
+	 		 </li>
+		</ul><b>SCHEDULING</b>: description of the real-time scheduler adapted for multiprocessor systems
+		<ul>
+	 		 <li> Dynamic Real-Time Scheduler for Large-Scale MPSoCs <br>
+          	 RUARO, Marcelo ; MORAES, Fernando Gehm <br>
+          	 In: <a href="http://dx.doi.org/10.1145/2902961.2903027"> GLSVLSI, 2016 </a>
+	    </li>
+		</ul>
+		<b>DEBUG</b>: debugging tools, able to trace the messages exchanged between PEs, enabling debugging at the protocol level
+		<ul>
+		  <li> Tool-Set for NoC-Based MPSoC Debugging - a Protocol View Perspective <br>
+		   RUARO, Marcelo ; CARARA, Everton Alceu ; MORAES, Fernando Gehm <br>
+           In: <a href="http://dx.doi.org/10.1109/ISCAS.2014.6865688"> ISCAS, 2014 </a>  
+	 	 </li>
+		</ul>
+		<b>FRAMEWORK</b>: steps to generate the hardware and the software of the HeMPS platform
+		<ul>
+	  <li> A Framework for MPSoC Generation and Distributed Applications Evaluation <br>
+           CASTILHOS, Guilherme ; WACHTER, Eduardo ; MADALOZZO, Guilherme ; ERICHSEN, Augusto ; MONTEIRO, Thiago ; MORAES, Fernando Gehm <br>
+           In: <a href="http://dx.doi.org/10.1109/ISQED.2014.6783353"> ISQED, 2014 </a>
+	  </li>
+		</ul>
+		<b>HIERARCHICAL MANAGEMENT</b>: introduction to the hierarchical cluster management method
+    	<ul>
+     	 <li> Distributed Resource Management in NoC-Based MPSoCs with Dynamic Cluster Sizes 
+           CASTILHOS, Guilherme, MANDELLI, Marcelo, MADALOZZO, Guilherme, MORAES, Fernando Gehm <br>
+           In: <a href="http://dx.doi.org/10.1109/ISVLSI.2013.6654651"> ISVLSI, 2013 </a>
+      	</li>
+   	 </ul>
+   	 <b>FPGA PROTOTYPING</b>: presents the HeMPS implementation in FPGAs
+    <ul>
+      <li> HeMPS-S: A Homogeneous NoC-Based MPSoCs Framework Prototyped in FPGAs <br>
+           WACHTER, Eduardo ; BIAZI, Adelcio ; MORAES, Fernando Gehm <br>
+           In: <a href="http://dx.doi.org/10.1109/ReCoSoC.2011.5981498"> RECOSOC, 2011 </a>
+      </li>
+    </ul><b>HEMPS</b>: presentation of the HeMPS architecture
+    <ul>
+      <li> HeMPS - A Framework for NoC-Based MPSoC Generation <br>
+           CARARA, Everton Alceu ; OLIVEIRA, Roberto ; CALAZANS, Ney ; MORAES, Fernando Gehm <br>
+           In: <a href="http://dx.doi.org/10.1109/ISCAS.2009.5118013"> ISCAS, 2009 </a>
+      </li>
+    </ul><h1 style="padding-bottom: 0px; padding-left: 0px">Mapping Publications</h1>
+    		<p style="font-size: 20px">Task mapping plays a crucial role in the performance of the MPSoC. Several mapping heuristics were developed since 2010, aiming to: (i) optimize the communication energy; (ii) improve reliability; (iii) distribute the workload targeting the system lifetime.</p>
+		<b>Hierarchical Energy Aware Mapping (HEAT)
+		</b>: mapping heuristic that distributes the workload evenly into the system - uses runtime energy monitoring to guide the mapping heuristic
+    	<ul>
+    		  <li> Hierarchical Energy Monitoring for Task Mapping in Many-core Systems <br>CASTILHOS, Guilherme; MANDELLI, Marcelo; OST, Luciano; MORAES, Fernando Gehm <br>
+          	 <a href="http://dx.doi.org/10.1016/j.sysarc.2016.01.005">
+           	Journal of Systems Architecture, 2016</a>
+     		 </li>
+   		 </ul><b>Energy Aware Mapping</b>: mapping heuristic that distributes the workload evenly into the system - uses data obtained from the application profiling
+    <ul>
+      <li> A Distributed Energy-aware Task Mapping to Achieve Thermal Balancing and Improve Reliability of Many-core Systems <br>
+           MANDELLI, Marcelo ; CASTILHOS, Guilherme, SASSATELLI, Gilles ; OST, Luciano ; MORAES, Fernando Gehm  <br>
+           In: <a href="http://dx.doi.org/10.1145/2800986.2800992"> SBCCI, 2015 </a>
+      </li>
+    </ul><b>LEC-DN</b>: mapping that makes a tradeoff between processors’ load and NoC communication volume, aiming to increase system reliability 
+    <ul>
+      <li> Trading-off System Load and Communication in Mapping Heuristics for Improving NoC-Based MPSoCs Reliability  <br>
+           MANDELLI, Marcelo ; OST, Luciano    SASSATELLI, Gilles ; MORAES, Fernando Gehm  <br>
+           In: <a href="http://dx.doi.org/10.1109/ISQED.2015.7085457"> ISQED, 2015 </a> 
+      </li>
+    </ul><b> Communication energy </b>: mapping heuristics that minimizes the communication energy 
+    <ul>
+      <li> Dynamic Task Mapping for MPSoCs <br> 
+           CARVALHO, Ewerson; CALAZANS, Ney; MORAES, Fernando Gehm <br>
+           <a href="http://dx.doi.org/10.1109/MDT.2010.106">  IEEE Design and Test of Computers </a> 
+      </li>
+    </ul>
+    <h1 style="padding-bottom: 10px; padding-left: 0px">Monitoring Publications</h1>
+   		Monitoring is a key feature to achieve adaptability. Examples of monitoring techniques include temperature (SBCCI, 2016) and energy (ICECS 2015) monitoring.
+	<ul>
+      <li> A Lightweight Software-based Runtime Temperature Monitoring Model for Multiprocessor Embedded Systems <br>
+           CASTILHOS, Guilherme; OST, Luciano ; MORAES, Fernando Gehm <br> 
+           In: SBCCI, 2016. 
+      </li>
+    </ul>
+    <ul>
+      <li> Hierarchical Energy Monitoring for Many-Core Systems  <br>
+           MARTINS, Andre, RUARO, Marcelo, MORAES, Fernando Gehm  <br>
+           In: <a href="http://dx.doi.org/10.1109/ICECS.2015.7440402">  ICECS, 2015 </a> 
+      </li>
+    </ul>
+    <h1 style="padding-left: 0px"> Quality of service Publications </h1><b>Runtime adaptation</b> - This work investigates the runtime adaptation of the NoC resources (switching mode and priorities), according to the QoS requirements of each application running in the MPSoC. Deadlines, throughput and latency are monitored at runtime, and the system acts over the communication infrastructure, adapting it to reach the constraints.
+    <ul>
+      <li> Runtime Adaptive Circuit-Switching and Flow Priority in NoC-Based MPSoCs <br>
+           RUARO, R.; CARARA, Everton Alceu; MORAES, Fernando Gehm  <br>
+           <a href="http://dx.doi.org/10.1109/TVLSI.2014.2331135"> IEEE Transactions on Very Large Scale Integration Systems, 2015 </a> 
+      </li>
+    </ul><b> QoS API </b> - This work links the hardware level of NoCs to the MPSoC application level, proposing the development of a communication API that exposes the communication services offered by the NoC to the application developer. 
+    <ul>
+      <li> Differentiated Communication Services for NoC-Based MPSoCs  <br> 
+           CARARA, Everton Alceu; CALAZANS, Ney; MORAES, Fernando Gehm  <br>
+           <a href="http://dx.doi.org/10.1109/tc.2012.123"> IEEE Transactions on Computers, 2014 </a>
+      </li>
+    </ul><h1 style="padding-left:0px"> NoC Publication </h1>
+
+
+This reference NoC used by HeMPS was published in the following publication: 
+
+    <ul>
+      <li> HERMES: an Infrastructure for Low Area Overhead Packet-switching Networks on Chip <br>
+           MORAES, Fernando Gehm; CALAZANS, Ney; MELLO, Aline; MOLLER, Leandro; OST, Luciano <br>
+           <a href="http://dx.doi.org/10.1016/j.vlsi.2004.03.003"> Integration, 2004 </a>
+      </li>
+    </ul><table>
+		</div>
+		
+		<div class="footer">
+			<h5>
+				Gaph Group 2016
+			</h5>
+		</div>
+	</body>
+</html>

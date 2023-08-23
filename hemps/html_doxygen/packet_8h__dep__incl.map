@@ -1,0 +1,12 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/packet.h" name="/home/ruaro/hemps/hemps_trunk/software/modules/packet.h">
+<area shape="rect" id="node2" href="$kernel__master_8c.html" title="Kernel master is the system manager kernel. " alt="" coords="5,213,183,269"/>
+<area shape="rect" id="node3" href="$reclustering_8h.html" title="/home/ruaro/hemps/hemps\l_trunk/software/modules\l/reclustering.h" alt="" coords="155,109,332,165"/>
+<area shape="rect" id="node4" href="$reclustering_8c.html" title="This module implements function relative to reclustering This module is used by the kernel manager &#160;R..." alt="" coords="207,213,384,269"/>
+<area shape="rect" id="node5" href="$kernel__slave_8c.html" title="Kernel slave is the system slave used to execute user&#39;s tasks. " alt="" coords="609,213,787,269"/>
+<area shape="rect" id="node6" href="$pending__service_8h.html" title="This module defines function relative a FIFO of the incomming packets received by slave by which not ..." alt="" coords="408,109,585,165"/>
+<area shape="rect" id="node8" href="$task__migration_8h.html" title="This module defines function relative to task migration. " alt="" coords="661,109,839,165"/>
+<area shape="rect" id="node10" href="$local__scheduler_8c.html" title="local_scheduler is a kernel module in charge of implementing task scheduling following a LST (Least S..." alt="" coords="863,109,1040,165"/>
+<area shape="rect" id="node11" href="$packet_8c.html" title="This module implements function relative to programming the DMNI to send and receibe a packet..." alt="" coords="1064,109,1241,165"/>
+<area shape="rect" id="node7" href="$pending__service_8c.html" title="This module implements function relative a FIFO of the incomming packets (ServiceHeader FIFO) receive..." alt="" coords="408,213,585,269"/>
+<area shape="rect" id="node9" href="$task__migration_8c.html" title="This module implements function relative to task migration. This module is used by slave kernel..." alt="" coords="811,213,988,269"/>
+</map>

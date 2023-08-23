@@ -1,0 +1,97 @@
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ PHY Interface +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+$Id: phy_interface.t2t,v 1.2 2008/05/14 18:29:14 paulo Exp $
+
+There are two interfaces between the FPGA and the PHY. The data path LVDS interface and the MII configuration interface:
+
+  [figures/phy_interface.png]  
+
+
+LVDS Connection:
+
+  [figures/lvds_buffers.jpg]     
+
+LVDS Voltage levels:
+
+  [figures/lvds_levels.jpg]     
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Data Path ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The FPGA interfaces to the PHY through a 16-bit parallel data path in each direction plus a Rx and a Tx clock. This is a SDR interface
+(see timing diagram below) and the bus clock rate depends on the line interface protocol, as table below:
+
+
+  ||  Line protocol    |   Bus clock rate                   |
+   |  STM-64           | 622.080MHz                         |
+   |  OTU2             | 669.327MHz (622.080 x 255/237)     |
+   |  10GbE            | 644.531MHz (625.000 x 66/64)       |      
+   
+Timing diagram:
+
+  [figures/phy_interface_timing.png]  
+  
+It must be noted that the 622MHz clocks cannot be routed through the FPGA clock network, because the frequency is too high. This
+frequency is also greater than the maximum operating frequency of the Digital Clock Manager (DCM). 
+
+To deal with this problem, both the Tx and Rx clocks must be divided by two usign a BUFIO resource, as shown in picture below:
+
+  [figures/phy_clk_dv.png]  
+  
+As the clock rate is now the half of the data rate, DDR flip-flops must be used. In Xilinx FPGAs, the DDR flip-flops are located inside
+the IOB. The input direction has an IDDR and the output has an ODDR, as shown in picture below.
+  
+  [figures/io_ddr.png]   
+  
+
+The IDDR samples the input data using both rising and falling clock edges and generates two data bits to the FPGA fabric. The ODDR
+receives two data bits from the FPGA fabric and generates the DDR output.
+
+DATACOM's //ddr_bus_interface// block contains all the features neeed to implement a DDR interface, including PRBS generation and
+training machine.
+
+Figure below shows the interface at the line (OTN) side:
+
+  [figures/otn_line_interface.png]  
+
+
+The client interface is show below. For more information on the OTN framer client interface signals, please refer to the
+[OTN Framer Funcional Description otn_framer/otn_framer_functional.html].
+
+  [figures/otn_client_interface.png]    
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Training +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Eye diagram:  
+
+  [figures/eye.jpg]  
+
+
+The training process optimally centers the sampling clock to the data valid window of the incoming data. The valid window is determined
+by shifting the sampling point and checking a PRBS pattern, as shown in picture below:
+
+  [figures/training.png]  
+  
+The phase adjust can be performed by shifting the sampling clock phase (using a DCM) or by shifting the data (using an IDELAY).
+  
+  [figures/phase_adjust.png]    
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ MII Configuration Interface ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The PHY configuration is performed though a serial IEEE802.3u MII Management Interface. Communication occurs across two wires and is
+formatted in frames. The two wires are clock (MDC) and data (MDIO). DATACOM's //mii_interface// is used to implement this interface.
+More information is available in [MII Interface Functional Description serial_interface/mii_interface_functional.html] and 
+[MII Interface Datasheet serial_interface/mii_interface_ds.html].

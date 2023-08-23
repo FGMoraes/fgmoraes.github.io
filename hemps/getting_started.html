@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <link rel="icon" href="resources/icone.png">
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" media="all" href="common.css" />
+        <meta http-equiv="Content-Type" content="text/html;  charset=utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="workview.js"></script>
+        <title>HeMPS Multiprocessor System on Chip</title>
+    </head>
+    <body>
+        <header role="banner">
+
+
+
+        <div>
+        <h1 class="pageName">HeMPS</h1>
+        <h1 id="slogan">Hermes Multiprocessor System on Chip</h1>
+        <p><a href="https://github.com/GaphGroup/hemps" > <img src="resources/Github.png"></a>  </p>
+        </div>
+        </header>
+        <div id="floating_menu-anchor"></div> <!--Ver depois como fazer isso sozinho -->
+        <div id="floating_menu">
+        <ul>
+            <li><a href="index.html">HeMPS</a></li>
+            <li><a href="memphis.html">Memphis</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="relatedwork.html">Publications</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="html_doxygen/files.html">Soft.Doc.</a></li>
+            <li><a href="about.html">About Gaph</a></li>
+            <!--<li><a href="faq.html">FAQ</a></li>-->
+        </ul>
+        </div>
+
+        <div class=container>
+            <div class=texto>
+
+<h1>TUTORIALS</h1>
+            <ol style="padding-left:100px">
+              <li> <a href="docs/HeMPS_presentation.pdf">HeMPS presentation</a> </li>
+              <li> <a href="docs/HeMPS_8.5_tutorial.pdf">Tutorial (in Portuguese)</a> </li>
+              <li> <a href="docs/HeMPS_Messages.pdf">Formato dos Pacotes</a> </li>
+              <li> <a href="docs/HeMPS_Protocols.pdf">Transações dos Protocols</a> </li>
+              <li> Ler <a href="http://www.inf.pucrs.br/moraes/docs/dissertacoes/dissertacao_castilhos.pdf"> Capítulos 3 e 4 </a> da Dissertação do Guilherme Castilhos </li>
+              <li> Ler <a href="http://www.inf.pucrs.br/moraes/docs/teses/tese_carara.pdf"> Capítulo 3 </a> da Tese do Everton Carara </li>
+            </ol>
+
+<h1>What do you need?</h1>
+            <ol style="padding-left:100px">
+                        <li>Ubuntu 12+ enabled to execute 32 bits applications</li>
+                        <li>GCC</li>
+                        <li>mips-gcc cross compiler:<a href="https://github.com/GaphGroup/hemps">download here</a></li> 
+                        <li>Python 2.6+</li>
+                        <li>SystemC 2.3+</li>
+                        <li>Java JRE 7+</li>
+                        <li>ModelSim or Questa (necessary to VHDL simulation)</li>
+            </ol>
+
+<h1> Download HeMPS from GitHub </h1>
+<ul style="padding-left:80px">
+
+     <li> <a href="https://github.com/GaphGroup/hemps">Download link</a> </li>
+     <li> ou:  "git clone https://github.com/GaphGroup/hemps.git" </li>
+</ul>
+                        
+      
+                    
+<h1>  Enviroment variables </h1>
+
+<ol style="padding-left:80px">
+            
+<li> Create a <i>source_hemps</i> file with the following contents:
+<br><textarea rows="45" cols="90">
+
+##################################################################
+# HEMPS CONFIGURATION
+##################################################################
+
+###### VARIABLES THAT ARE A FUNTION OF THE LOCAL INSTALATION ####
+
+SYSTEMC=/soft64/util/accelera/systemc/2.3.1
+MODEL=/soft64/mentor/ferramentas/modelsim/10.3c/modeltech
+MIPS=/soft64/util/mips-elf/gcc-4.1.1-hemps
+HEMPS=$HOME/hemps8.5
+
+###### SYSTEMC VARIABLES  ########################################
+
+export C_INCLUDE_PATH=$SYSTEMC/include
+export CPLUS_INCLUDE_PATH=/$SYSTEMC/include
+export SYSTEMC_HOME=$SYSTEMC
+export SYSTEMC=$SYSTEMC
+export SYSTEMC_PATH=$SYSTEMC
+export LIBRARY_PATH=/$SYSTEMC/lib-linux64:${LIBRARY_PATH}
+export LD_LIBRARY_PATH=$SYSTEMC/lib-linux64:\${LIBRARY_PATH}
+
+###### MODELSIM VARIABLES ######################################
+
+export LM_LICENSE_FILE=xxxxxxx  (installation dependent)
+export MGLS_LICENSE_FILE=xxxxxxx
+
+export MODELSIM_HOME=$MODEL
+export MTI_BYPASS_SC_PLATFORM_CHECK=1
+export MTI_VCO_MODE="64"
+export MTI_HOME=$MODEL
+
+export PATH=$MODEL/bin:$MODEL/linux_x86_64:/bin:${PATH}
+
+###### MIPS VARIABLES ###########################################
+
+export PATH=$MIPS/bin:${PATH}
+export MANPATH=$MIPS/man:${MANPATH}
+
+###### HEMPS VARIABLES ##########################################
+
+export PATH=$PATH:$HEMPS/build_env:$HEMPS/build_env/bin
+export HEMPS_PATH=$HEMPS
+
+</textarea>
+</li>
+
+<li> Execute <i>source source_hemps</i> </li>
+
+</ol>
+
+
+    <h1 >Creating and running a <i>Hello World</i> Application</h1>
+
+                        
+    <blockquote>
+        <b>Creating a Hello World Application</b>
+        <br>The next steps creates two communicating tasks that print the Hello World text at each communication iteration.<br><br>
+    </blockquote>                   
+    
+    <ol style="padding-left:80px; ">           
+            <li>Enter into hemps/applications directory (This directory contains the application code)
+                        <br><i>->&nbsp cd $HEMPS_PATH/applications</i> 
+            </li><br>
+                        
+            <li>Create a new directory called hello_world_app
+                        <br><i>->&nbsp mkdir hello_world_app</i> 
+            </li><br>
+                        
+            
+            <li>Enter into directory hello_world_app
+                        <br><i>->&nbsp cd hello_world_app</i> 
+            </li><br>
+                        
+            <li>Create the producer application's task (.c file) called prod_hello_world
+                        <br><i>->&nbsp gedit prod_hello_world.c</i> 
+            </li><br>
+                        
+            <li>Inserts the following code into prod_hello_world.c
+
+<br><textarea rows="18" cols="50">
+#include <api.h>
+#include <stdlib.h>
+Message msg;
+int main(){
+    int i, j,t;
+    Echo("task prod_hello_world started.");
+    Echo(itoa(GetTick()));
+    for(i=0;i<250;i++){
+        msg.length = 30;
+        for(j=0;j<30;j++) msg.msg[j]=i;
+        Send(&msg,cons_hello_world);
+        Echo("Message sent");
+    }
+    Echo(itoa(GetTick()));
+    Echo("task prod_hello_world finished.");
+    exit();
+}
+</textarea>
+             </li><br>
+
+
+              <li>Create the consumer application's task (.c file) called cons_hello_world
+                        <br><i>->&nbsp gedit cons_hello_world.c</i> </li>
+              </li><br>       
+
+                        
+               <li>Inserts the following code into cons_hello_world.c
+
+<br><textarea rows="16" cols="50">
+#include <api.h>
+#include <stdlib.h>
+Message msg;
+int main(){
+    int i;
+    Echo("task cons_hello_world started.");
+    Echo(itoa(GetTick()));
+    for(i=0;i<250;i++){
+        Receive(&msg,prod_hello_world);
+        Echo("Message received");
+    }
+    Echo(itoa(GetTick()));
+    Echo("task cons_hello_world finished.");
+    exit();
+}
+</textarea>
+               </li>
+</ol>
+
+<p>  &nbsp;  </p>
+
+    <blockquote>
+        
+   
+                       
+               <b>Creating a Hello World testcase file</b>
+               <br>The next steps creates a simplified testcase file used by HeMPS to generate, compile and simulate a given testcase.
+               <br>You can see a detailed testcase description into the  example.yaml file
+     </blockquote>
+
+    <ol style="padding-left:80px; ">           
+                        <li>Enter into testcases directory
+                        <br><i>->&nbsp cd ../../testcases</i> </li>
+                        
+                        <br><li>Create the file hello_world.yaml
+                        <br><i>->&nbsp gedit hello_world.yaml</i> </li>
+                        
+                        <br><li>Inserts the following code into hello_world.yaml
+<br><textarea rows="14" cols="50">
+hw:
+  page_size_KB: 32
+  tasks_per_PE: 1 
+  repository_size_MB: 1
+  model_description: sc
+  noc_buffer_size: 8
+  mpsoc_dimension: [2,2]
+  cluster_dimension: [2,2]
+  master_location: LB 
+
+apps: 
+  - name: hello_world_app
+    start_time_ms: 5
+</textarea>
+                        
+                        <br><br><b>Generating, compiling and running the testcase</b><br>The next steps compile and simulate the hello_world testcase
+                        
+                        <br><br><li>Call the hemps-run script passing the testcase file and the simulation time in milliseconds. <b> Important: </b> path to SystemC and MIPS cross-compiler must be set.
+                        <br><i>->&nbsp hemps-run hello_world.yaml 15</i> </li>
+                        
+                        <br><b>The simulation must start and the Graphical Debugger must be automatically opened</b>
+                        <br><br>By clicking into play button (>) it is possible to follow the communication between the tasks observing the red arrows.
+                        <img style=" width:50%" src="resources/debugger_tc_main.png" alt="debugger" align="middle">
+                        
+                        <br><br>You can open the task mapping view (tools->task mapping overview) to observe the processor where the task were allocated.
+                        <br><img style=" width:50%" src="resources/mapping_tc.png" alt="debugger" align="middle">
+                        
+                        <br><br>You can observe the log genated by each task by calling the Deloream tool (tools->Deloream) and performing a two-click above of the desired task.
+                        <br><img style=" width:50%" src="resources/delorem.png" alt="debugger" align="middle">
+                        
+                        <br><br>You can also oberve the CPU utilization of the PE running each task by clicking above the desired PE and going to Scheduling tab and scheduling report.
+                        <br><img style=" width:50%" src="resources/cpu_tc.png" alt="debugger" align="middle">
+                        
+                    </ol>
+                </h2>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h5>
+                Gaph Group 2017
+            </h5>
+        </div>
+    </body>
+</html>
+

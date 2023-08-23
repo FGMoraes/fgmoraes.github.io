@@ -1,0 +1,12 @@
+X10GIGA Functional Description
+PD1461
+$Id: x10giga_functional.t2t,v 1.1 2008/05/14 18:21:39 paulo Exp $
+ 
+%!target: html
+%!options: --toc --toc-level 3
+%!options: --style style.css
+%!encoding: iso-8859-1
+
+
+%!include: hw_overview.t2t
+%!include: phy_interface.t2t

@@ -1,0 +1,148 @@
+html,body,head,a,h1,h2,h3,h4,h5,h6,pre,sup,sub { 
+	margin: 0px;
+    /*padding: 0px;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Calibri;
+    font-size: 1 em;
+    color: black;
+}
+
+.texto h2 {
+	margin: 0px;
+    padding-top: 0px; /* Tava em 20 */
+    font-family: Calibri;
+    font-size: 14pt;
+    color: black;
+    font-weight: normal;
+}
+
+header{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 100%;
+	width: auto;
+	position: relative;
+	text-align: center;
+	background-image: url("resources/mpsoc_banner.png"); /*Troque aqui o banner */
+	display: block;
+	vertical-align: top;
+}
+
+
+
+html,body{
+	min-height: 100%;
+	width:100%
+	height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+header p{ /*Para nao ficar uma parte em branco no topo */
+	margin-top: 0px;
+}
+
+
+.pageName{
+	font-size: 80px;
+	padding-top:90px;
+	color: black;
+	text-decoration: underline;
+	font-family: Times New Roman;
+	text-shadow: 2px 2px gray;
+}
+
+#slogan{
+	padding-top: 1px;
+	font-size: 50px;
+	padding-bottom:20px;
+	color: white;
+	font-family: Times New Roman;
+	text-shadow: 2px 2px gray;
+}
+
+.container { /*As informacoes de cada pagina aqui dentro O Container Central*/
+    width: inherit;
+    height: inherit;
+    margin: 60px;
+    padding-top: 0px; /* Tava em 20 */
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+}
+
+.container > h1,h2,h3,h4,h5{ /* Dentro do container, espaco em baixo */
+	padding-bottom: 20px;
+}
+
+.footer{
+	color: #B3B3B3;
+	margin-top: 40px;
+	padding-top: 10px;
+	border-top: 1px solid #DFDFDF;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+table{
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+
+
+
+#floating_menu {
+	font-family: sans-sea rif;
+	background-color: black;
+	padding: 5px;
+	width: 100%;
+	text-align: center;
+	text-shadow: 3px 2px 3px #333333;
+	/*border-radius: 8px;*/
+	opacity: 0.9;
+}
+
+#floating_menu.floating_menu{
+	margin-top: 0;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+}
+
+#floating_menu li{
+	font-size: 23px;
+    display: inline;
+   	padding: 1px;
+    text-decoration: none;
+}
+
+
+#floating_menu li:hover{
+	background-color: gray;
+}
+
+#floating_menu a{
+	text-decoration: none;
+	display: inline;
+	color: white;
+}
+
+#floating_menu ul {
+    height: auto;
+    padding: 8px 0px;
+    margin: 0px;
+}
+
+
+#refList{ /*Usar tipo isso p/ criar lista de artigos p/ referencia */
+	border: 1px solid black;
+	height: 100px;
+	width: 600px;
+	overflow: auto;
+	list-style-type: none;
+}
+

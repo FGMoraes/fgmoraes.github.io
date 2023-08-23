@@ -1,0 +1,2665 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
+<TITLE>OTN Framer Datasheet</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<P ALIGN="center"><CENTER><H1>OTN Framer Datasheet</H1>
+<FONT SIZE="4">
+<I>$Id: otn_framer_ds.t2t,v 1.17 2008/08/28 21:17:52 paulo Exp $</I><BR>
+</FONT></CENTER>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+  <UL>
+  <LI><A HREF="#toc1">1. Introduction</A>
+  <LI><A HREF="#toc2">2. Receive Processing</A>
+    <UL>
+    <LI><A HREF="#toc3">2.1. OTU Receive Processing</A>
+      <UL>
+      <LI><A HREF="#OCH_LOS">2.1.1. Optical Channel Loss of Signal (OCh-LOS) Detection</A>
+      <LI><A HREF="#OTU_AIS">2.1.2. OTU Alarm Indication Signal (OTU-AIS) Monitoring</A>
+      <LI><A HREF="#OTU_OOF">2.1.3. Frame Alignment Process</A>
+      <LI><A HREF="#OTU_LOF">2.1.4. Frame Alignment Supervision (OTU-LOF generation)</A>
+      <LI><A HREF="#OTU_OOM">2.1.5. Multiframe Alignment Process</A>
+      <LI><A HREF="#OTU_LOM">2.1.6. Multiframe Alignment Supervision (LOM generation)</A>
+      <LI><A HREF="#OTU_SSF">2.1.7. OTU Rx Server Signal Fail (SSF) Monitor</A>
+      <LI><A HREF="#SM_TIM">2.1.8. OTU SM Trail Trace Identifier (TTI) Monitoring</A>
+      <LI><A HREF="#OTU_TSF">2.1.9. OTU Rx Trail Signal Fail (TSF) Monitor</A>
+      <LI><A HREF="#SM_BIP">2.1.10. OTU SM BIP-8 Error Monitoring</A>
+      <LI><A HREF="#SM_BEI">2.1.11. OTU SM Backward Error Indication (BEI) Monitoring</A>
+      <LI><A HREF="#SM_BIAE">2.1.12. OTU SM Backward Incoming Alignment Error (BIAE) Detection</A>
+      <LI><A HREF="#SM_BDI">2.1.13. OTU SM Backward Defect Indication (BDI) Monitoring</A>
+      <LI><A HREF="#SM_IAE">2.1.14. OTU SM Incoming Alignment Error (IAE) Monitoring</A>
+      <LI><A HREF="#toc18">2.1.15. OTU Forward Error Correction (FEC) Processing</A>
+      </UL>
+    <LI><A HREF="#toc19">2.2. ODU Receive Processing</A>
+      <UL>
+      <LI><A HREF="#toc20">2.2.1. ODU Path Monitoring</A>
+      <LI><A HREF="#ODU_TSF">2.2.2. ODU Trail Signal Fail (TSF) Monitor</A>
+      <LI><A HREF="#toc22">2.2.3. ODU Tandem Connection Monitoring</A>
+      <LI><A HREF="#toc23">2.2.4. FTFL Message Acess</A>
+      <LI><A HREF="#toc24">2.2.5. APS/PCC Monitoring</A>
+      </UL>
+    <LI><A HREF="#toc25">2.3. OPU Receive Processing</A>
+      <UL>
+      <LI><A HREF="#OPU_PLM">2.3.1. OPU Payload Mismatch (PLM) Supervision</A>
+      <LI><A HREF="#toc27">2.3.2. OPU Multiplex Structure Identifier Mismatch (MSIM) Supervision</A>
+      <LI><A HREF="#toc28">2.3.3. Client Data Extraction</A>
+      <LI><A HREF="#toc29">2.3.4. Client AIS Monitoring</A>
+      <LI><A HREF="#toc30">2.3.5. OPU PRBS Monitoring</A>
+      </UL>
+    </UL>
+  <LI><A HREF="#toc31">3. Transmit Processing</A>
+    <UL>
+    <LI><A HREF="#toc32">3.1. OTU Layer Transmit Processing</A>
+      <UL>
+      <LI><A HREF="#toc33">3.1.1. FAS and MFAS Insertion</A>
+      <LI><A HREF="#toc34">3.1.2. SMOH-TTI Insertion</A>
+      <LI><A HREF="#toc35">3.1.3. SMOH-BDI Insertion</A>
+      <LI><A HREF="#toc36">3.1.4. SMOH-BEI/BIAE Insertion</A>
+      <LI><A HREF="#toc37">3.1.5. SMOH-BIP8 Insertion</A>
+      <LI><A HREF="#toc38">3.1.6. SMOH-IAE Insertion</A>
+      </UL>
+    <LI><A HREF="#toc39">3.2. ODU Layer Transmit Processing</A>
+      <UL>
+      <LI><A HREF="#toc40">3.2.1. PMOH-TTI Insertion</A>
+      <LI><A HREF="#toc41">3.2.2. PMOH-BDI Insertion</A>
+      <LI><A HREF="#toc42">3.2.3. PMOH-BEI Insertion</A>
+      <LI><A HREF="#toc43">3.2.4. PMOH-BIP8 Insertion</A>
+      <LI><A HREF="#toc44">3.2.5. PMOH-STAT Insertion</A>
+      <LI><A HREF="#toc45">3.2.6. ODU LCK Maintenance Signal Insertion</A>
+      <LI><A HREF="#toc46">3.2.7. ODU OCI Maintenance Signal Insertion</A>
+      <LI><A HREF="#toc47">3.2.8. ODU AIS Insertion</A>
+      </UL>
+    <LI><A HREF="#toc48">3.3. OPU Layer Transmit Processing</A>
+      <UL>
+      <LI><A HREF="#toc49">3.3.1. Client Data Mapping and Justification Control</A>
+      <LI><A HREF="#toc50">3.3.2. Payload Type (PT) Insertion</A>
+      <LI><A HREF="#toc51">3.3.3. OPU PRBS Insertion</A>
+      </UL>
+    </UL>
+  <LI><A HREF="#toc52">4. Microprocessor Interface</A>
+    <UL>
+    <LI><A HREF="#toc53">4.1. Signals</A>
+    <LI><A HREF="#toc54">4.2. Conventions</A>
+      <UL>
+      <LI><A HREF="#toc55">4.2.1. Bit numbering conventions</A>
+      <LI><A HREF="#toc56">4.2.2. Status register conventions</A>
+      <LI><A HREF="#REGISTER_TYPES">4.2.3. Register Types</A>
+      </UL>
+    </UL>
+  <LI><A HREF="#REGISTER_DESCRIPTION">5. Register Description</A>
+    <UL>
+    <LI><A HREF="#toc59">5.1. Register Map</A>
+    <LI><A HREF="#toc60">5.2. OTU Layer Registers</A>
+      <UL>
+      <LI><A HREF="#OTU_STS_PTR">5.2.1. OTU_STS_PTR - OTU Status Pointer (0x00)</A>
+      <LI><A HREF="#OTU_STS">5.2.2. OTU_STS - OTU Status (0x01)</A>
+      <LI><A HREF="#OTU_CFG_PTR">5.2.3. OTU_CFG_PTR - OTU Configuration Pointer (0x02)</A>
+      <LI><A HREF="#OTU_CFG">5.2.4. OTU_CFG - OTU Configuration (0x03)</A>
+      <LI><A HREF="#SM_BEI_CNT">5.2.5. SM_BEI_CNT - OTU SM BEI Counter (0x04)</A>
+      <LI><A HREF="#SM_BIP_CNT">5.2.6. SM_BIP_CNT - OTU SM BIP-8 Error Counter (0x05)</A>
+      <LI><A HREF="#OTU_OOF_CNT">5.2.7. OTU_OOF_CNT - OTU Out of Frame Event Counter (0x06)</A>
+      <LI><A HREF="#OTU_FRAME_CNT">5.2.8. OTU_FRAME_CNT - OTU Received Frames Counter (0x07)</A>
+      </UL>
+    <LI><A HREF="#toc69">5.3. ODU Layer Path Monitoring Registers</A>
+      <UL>
+      <LI><A HREF="#ODU_PM_STS">5.3.1. ODU_PM_STS - ODU Path Monitoring Status (0x0C)</A>
+      <LI><A HREF="#PM_BEI_CNT">5.3.2. PM_BEI_CNT - ODU Path BEI Counter (0x0E)</A>
+      <LI><A HREF="#PM_BIP_CNT">5.3.3. PM_BIP_CNT - ODU BIP Path Error Counter (0x0F)</A>
+      <LI><A HREF="#ODU_PM_CFG">5.3.4. ODU_PM_CFG - ODU PM Configuration (0x0D)</A>
+      </UL>
+    <LI><A HREF="#toc74">5.4. ODU Layer Tandem Connection Monitoring Registers</A>
+      <UL>
+      <LI><A HREF="#TCM_STS_PTR">5.4.1. TCM_STS_PTR - TCM Status Pointer (0x13)</A>
+      <LI><A HREF="#ODU_TCM_STS">5.4.2. ODU_TCM_STS - ODU Tandem Connection Status (0x15)</A>
+      <LI><A HREF="#TCM_BEI_CNT">5.4.3. TCM_BEI_CNT - ODU TCM BEI Counter (0x17)</A>
+      <LI><A HREF="#TCM_BIP_CNT">5.4.4. TCM_BIP_CNT - ODU TCM BIP Error Counter (0x18)</A>
+      <LI><A HREF="#TCM_CFG_PTR">5.4.5. TCM_CFG_PTR - TCM Configuration Pointer (0x14)</A>
+      <LI><A HREF="#ODU_TCM_CFG">5.4.6. ODU_TCM_CFG - ODU Tandem Connection Configuration (0x16)</A>
+      </UL>
+    <LI><A HREF="#FTFL_ACCESS">5.5. FTFL Access</A>
+      <UL>
+      <LI><A HREF="#FTFL_ACCESS_CTRL">5.5.1. FTFL_ACCESS_CTRL - FTFL Access Control (0x0A)</A>
+      <LI><A HREF="#FTFL_DATA">5.5.2. FTFL_DATA - FTFL Data Register (0x0B)</A>
+      </UL>
+    <LI><A HREF="#toc84">5.6. OPU Layer Path Monitoring Registers</A>
+      <UL>
+      <LI><A HREF="#OPU_CFG">5.6.1. OPU_CFG - OPU Configuration (0x19)</A>
+      <LI><A HREF="#OPU_STS">5.6.2. OPU_STS - OPU Status (0x1A)</A>
+      <LI><A HREF="#OPU_EXP_PT">5.6.3. OPU_EXP_PT - ODU Expected Payload Types (0x11)</A>
+      <LI><A HREF="#OPU_TX_PT">5.6.4. OPU_TX_PT - ODU Tx Payload Type (0x12)</A>
+      <LI><A HREF="#OPU_RX_PT">5.6.5. OPU_RX_PT - OPU Rx Payload Type (0x10)</A>
+      <LI><A HREF="#OPU_TSE_CNT">5.6.6. OPU_TSE_CNT - OPU PRBS Test Sequence Error Counter (0x23)</A>
+      <LI><A HREF="#TX_PJUST_CNT">5.6.7. TX_PJUST_CNT - Tx Positive Justification Events Counter</A>
+      <LI><A HREF="#TX_NJUST_CNT">5.6.8. TX_NJUST_CNT - Tx Negative Justification Events Counter</A>
+      <LI><A HREF="#RX_PJUST_CNT">5.6.9. RX_PJUST_CNT - Rx Positive Justification Events Counter</A>
+      <LI><A HREF="#RX_NJUST_CNT">5.6.10. RX_NJUST_CNT - Rx Negative Justification Events Counter</A>
+      </UL>
+    <LI><A HREF="#TTI_ACCESS">5.7. TTI Access</A>
+      <UL>
+      <LI><A HREF="#TTI_ACCESS_CTRL">5.7.1. TTI_ACCESS_CTRL - Trail Trace Identifier Access Control (0x08)</A>
+      <LI><A HREF="#TTI_DATA">5.7.2. TTI_DATA - Trail Trace Identifier Data Register (0x09)</A>
+      </UL>
+    <LI><A HREF="#toc98">5.8. FEC Registers</A>
+      <UL>
+      <LI><A HREF="#FEC_STS_PTR">5.8.1. FEC_STS_PTR - FEC Status Pointer (0x1F)</A>
+      <LI><A HREF="#FEC_CORRERR_CNT_HI">5.8.2. FEC_CORRERR_CNT_HI - FEC Corrected Errors Counter Higher Bits (0x20)</A>
+      <LI><A HREF="#FEC_CORRERR_CNT_LO">5.8.3. FEC_CORRERR_CNT_LO - FEC Corrected Errors Counter Lower Bits (0x21)</A>
+      <LI><A HREF="#FEC_UNCORR_CNT">5.8.4. FEC_UNCORR_CNT - FEC Uncorrectable Errors Counter (0x22)</A>
+      </UL>
+    </UL>
+  </UL>
+
+<P></P>
+<HR NOSHADE SIZE=1>
+<P></P>
+<A NAME="toc1"></A>
+<H1>1. Introduction</H1>
+<P>
+The purpose of this document is to describe a hardware-software interface for the OTN framer block. All the specifications are based on
+the requirements of recommendation G.798, which describes the OTN equipment functional blocks.
+</P>
+<P>
+Tandem connection monitoring (TCM) specifications are preliminary. Further study is needed before hardware implementation of the TCM
+functionalities.
+</P>
+<P>
+ITU-T uses a layering concept with client/server relationships between adjacent layers to represent a transport network.
+Any two adjacent network layers are associated in a client/server relationship. Each transport network layer provides transport to the
+layer above and uses transport from the layers below. The layer providing transport is termed a server; the layer using transport is
+termed client (G.806/3.14).
+</P>
+<P>
+The OTN layers and client/server relationships are shown in picture below. The termination of the OTS, OMS and OCh layers is performed
+at the optical level of the OTN, which is out of the purpose of this document.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otn_layers.png" BORDER="0" ALT=""></center>  
+<P>
+The OPU encapsulates the Client signal (e.g. SONET/SDH) and does any rate justification that is needed. It is analogous to the Path
+layer in SONET/SDH in that it is mapped at the source, demapped at the sink, and not modified by the network.
+</P>
+<P>
+The ODU performs similar functions as the Line Overhead in SONET/SDH.
+</P>
+<P>
+The OTU contains the FEC and performs similar functions as the Section Overhead in SONET/SDH. After the FEC are added, the signal is
+then sent to a SERDES (Serializer/Deserializer) to be converted to the Optical Domain.
+</P>
+<P>
+Figure below provides a better view of the digital (electrical) domain layers (Figure 6-2/G.709).
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otn_digital_layers.png" BORDER="0" ALT=""></center>  
+<P>
+Recommendation G.798 specifies a library of basic building blocks and a set of rules by which they may be combined in order to describe
+an OTN equipment. These building blocks are called 'functions'. There are three types of functions:
+</P>
+  <OL>
+  <LI>Adaptation functions
+  <LI>Trail termination functions
+  <LI>Connection functions
+  </OL>
+
+<P></P>
+<P>
+An adaptation function represents the conversion process between server and client layers. Some of the processes that may be present
+in an adaptation function are:
+</P>
+  <UL>
+  <LI>Scrambling/descrambling
+  <LI>Frame alignment
+  <LI>Frequency justification
+  <LI>Payload type identification
+  </UL>
+
+<P></P>
+<P>
+The trail termination function performs the signal integrity supervision of the layer. This includes:
+</P>
+ <UL>
+ <LI>Error detection code (parity)
+ <LI>Trail trace identifier (i.e. source/destination identifiers)
+ <LI>Backward error and defect indications
+ </UL>
+
+<P></P>
+<P>
+A connection function provides routing, grooming, protection and restoration. A exemple of connection function is a switching matrix.
+The OTN framer implements no connection function.
+</P>
+<P>
+Figure below shows a diagram of the OTN framer structure in terms of G.798 functions. The receive side functions are called "Sink",
+while the transmit side functions are called "Source".
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otn_blocks.png" BORDER="0" ALT=""></center>  
+<A NAME="toc2"></A>
+<H1>2. Receive Processing</H1>
+<P>
+Figure below depicts all receive processing functions and the status (alarms and performance monitoring data) generated by each one.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otn_rx_processing.png" BORDER="0" ALT=""></center>  
+<P>
+In the receive direction, every layer receives a server signal fail indication (SSF) from its server layer, performs supervision of
+parameters pertaining to the layer, and generates a server signal fail indication to its client layer. The signal fail state of the
+layer is forwarded/indicated via an alarm indication signal (AIS). This is shown in figure below:
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otn_signal_fail.png" BORDER="0" ALT=""></center>  
+<P>
+The trail signal fail (TSF) indications are generated by a trail termination sink functions to its subsequent adaptation function.
+</P>
+<A NAME="toc3"></A>
+<H2>2.1. OTU Receive Processing</H2>
+<P>
+The OTU receive process includes the following functions:
+</P>
+ <OL>
+ <LI>OCh to OTU adaptation sink function with FEC (G.798/12.3.1.3)
+ <LI>OTU trail termination sink function (G.798/13.2.1.2)
+ <LI>OTU to ODU adaptation sink function (G.798/13.3.1.2)
+ </OL>
+
+<P></P>
+<P>
+The OCh to OTU dataptation sink function (G.798/12.3.1.3) performs following processes:
+</P>
+ <OL>
+ <LI><B>Clock recovery:</B> This function is performed by the PHY chip. It recovers the OTU clock signal from the incoming data. Jitter and
+wander tolerace are specified in G.825;
+ <LI><B>Frame alignment:</B> The function recovers the OTU frame start as described in clause 8.2.1 of G.798;
+ <LI><B>Descrambler:</B> The function performs descrambling as defined in clause 11.2 of G.709;
+ <LI><B>FEC decoder:</B> The function extracts the RS(255,239) FEC data from the OTU FEC area and perform error correction as defined in
+Annex A of G.709. The number of corrected bits are reported;
+ <LI><B>Multiframe alignment:</B> The function recovers the OTU multiframe start as described in clause 8.2.2.
+ </OL>
+
+<P></P>
+<P>
+The OTU trail termination sink function (G.798/13.2.1.2) reports the state of the OTU trail. It computes the BIP8, extracts section
+monitoring overhead (SMOH) – including the TTI, BIP8, IAE, BDI and BEI signals – in the SM overhead field from the OTU signal,
+detects for TIM, DEG and BDI defects, counts errors (detected via the BIP8) and defects, and forwards the error and defect information
+as backward indications to the OTU trail termination source function.
+</P>
+<P>
+The OTU to ODU adaptation sink function (G.798/13.3.1.2) extracts the ODU signal from the OTU. It may insert ODU-AIS under signal fail
+conditions (<A HREF="#OTU_TSF">OTU-TSF</A>). The following processes are performed:
+</P>
+  <OL>
+  <LI><B>Extract ODU from OTU:</B> The function extracts the ODU frame from the incoming OTU frame as defined in clause 11.1 of G.709;
+  <LI><B>ODU-LCK, ODU-AIS:</B> The function generates the ODU-LCK and ODU-AIS signals as defined in G.709;
+  <LI><B>Selector:</B> The normal signal may be replaced by either the ODU-AIS or the ODU-LCK signal. The ODU-LCK signal is specified as a
+repeating "0101 0101" pattern in the entire ODU signal. ODU-AIS is specified as all "1"s in the entire ODU signal.
+  </OL>
+
+<P></P>
+<A NAME="OCH_LOS"></A>
+<H3>2.1.1. Optical Channel Loss of Signal (OCh-LOS) Detection</H3>
+<P>
+The optical channel loss of signal (OCh-LOS) status comes from the SFP/XFP RX_LOS pin. According to the Small Form-factor Pluggable
+(SFP) Transceiver MultiSource Agreement (MSA), this pin is set to high during a loss of signal condition. The microprocessor can read
+the OCh-LOS status though register <A HREF="#OTU_STS">OTU_STS</A>. When a LOS occurs, the OCH_LOS bit in register <A HREF="#OTU_STS">OTU_STS</A> is set high. This bit is not set
+low until <A HREF="#OTU_STS">OTU_STS</A> has been read by the microprocessor.
+</P>
+<A NAME="OTU_AIS"></A>
+<H3>2.1.2. OTU Alarm Indication Signal (OTU-AIS) Monitoring</H3>
+<P>
+(G.798/6.2.6.3.1)
+</P>
+<P>
+For OTU-AIS detection, the reverse PN-11 process is applied to the entire received data. At the output of this process an all-ZEROs
+pattern will occur if the input data is the PN-11 generic AIS sequence. Both the output and input signals are constantly checked over
+an 8192-bit interval for the number of none ZERO bits (= ONE bits). If the number of ONE bits per interval at the output is less than
+256 and the number of ONE bits per interval at the input is above or equal to 256 in 3 consecutive intervals, OTU-AIS is raised.
+If the number of ONE bits at the output is above or equal to 256 or the number of ONE bits at the input is below 256 in 3 consecutive
+intervals, OTU-AIS is cleared. The reverse PN-11 process is described in G.798/6.2.6.3.3. OTU-AIS is set to false when OCh-LOS is
+active.
+</P>
+<P>
+The OTU-AIS status is available through register <A HREF="#OTU_STS">OTU_STS</A>.
+</P>
+<A NAME="OTU_OOF"></A>
+<H3>2.1.3. Frame Alignment Process</H3>
+<P>
+(G.798/8.2.1)
+</P>
+<P>
+The frame alignment block searches for the OA1 and OA2 (0xF6 and 0x28 respectively) FAS bytes contained in the OTU frame.
+The alignment process has two states, out-of-frame (OOF) and in-frame (IF). In the OOF state, the framing pattern searched for is a
+4-byte subset of the OA1 and OA2 bytes. The IF is entered if this subset is found and confirmed one frame period later. In the IF
+state, the frame signal is continuously checked with the presumed frame start position for correct alignment. The framing pattern
+checked for is the OA1OA2OA2 pattern (bytes 3, 4 and 5 of the first row of the OTU frame). The OOF state is entered if this
+subset is not found at the correct position in 5 consecutive frames.
+</P>
+<P>
+If the framer transitions to OOF state, it keeps the current frame position while it hunts for the new frame alignment. While hunting
+for the new frame alignment, this frame position is the expected frame position. If the new Frame Alignment is found, causing a
+transition to the IF state, and this new frame has a different frame position than expected, the framer will lock to the new frame,
+causing a change in the position of the frame. Whenever the framer changes its frame position, it causes an Incoming Alignment Error
+(OTU-IAE) alarm to be raised in register <A HREF="#OTU_STS">OTU_STS</A> and a Backward Incoming Alignment Error (BIAE) to be sent upstream (G798/8.10).
+</P>
+<P>
+If the frame alignment process is in the OOF state, the bit OTU_OOF is set high in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is not set low until
+<A HREF="#OTU_STS">OTU_STS</A> has been read by the microprocessor. A 10-bit counter is provided to accumulate the count of OOF events (a OOF event is a
+change from state IF to OOF). This counter is accessible via  register <A HREF="#OTU_OOF_CNT">OTU_OOF_CNT</A>.
+</P>
+<P>
+The count of received frames is also accumulated in a 12-bit counter, available via register <A HREF="#OTU_FRAME_CNT">OTU_FRAME_CNT</A>.
+</P>
+<P>
+OTU-OOF is set to false during OCh-LOS and OTU-AIS.
+</P>
+<A NAME="OTU_LOF"></A>
+<H3>2.1.4. Frame Alignment Supervision (OTU-LOF generation)</H3>
+<P>
+(G.798/6.2.5.1)
+</P>
+<P>
+OTU Loss of Frame (OTU-LOF) defect is generated based on the state of the frame alignment process described above.
+If the frame alignment process is in the out-of-frame (OOF) state for 3 ms, a OTU-LOF is declared.
+To provide for the case of intermittent OOFs, the integrating timer is not reset to zero until an in-frame (IF) condition persists
+continuously for 3 ms. OTU-LOF is cleared when the IF state persists continuously for 3 ms. During OTU-LOF, the bit OTU_LOF is set high
+in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is not cleared until <A HREF="#OTU_STS">OTU_STS</A> has been read by the microprocessor.
+</P>
+<P>
+OTU-LOF is set to false during OCh-LOS and OTU-AIS.
+</P>
+<A NAME="OTU_OOM"></A>
+<H3>2.1.5. Multiframe Alignment Process</H3>
+<P>
+(G.798/8.2.2)
+</P>
+<P>
+The OTU multiframe alignment is found based on the MFAS byte contained in the OTU frame. The process has two states,
+out-of-multiframe (OOM) and in-multiframe (IM). In the IM state, OOM is assumed when the received MFAS does not match with the expected
+multiframe number in 5 consecutive OTU frames. In the OOM state, multiframe alignment is assumed to be recovered, the multiframe counter
+is set to the new MFAS, and the IM state is entered, when a valid MFAS sequence is found in two consecutive OTU frames.
+The MFAS sequence is valid if the MFAS of the second frame is the increment of the MFAS of the first frame. The multiframe start is
+maintained during the OOM state.
+</P>
+<P>
+If the multiframe alignment process is in the OOM state, the bit OTU_OOM is set high in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is not set low
+until <A HREF="#OTU_STS">OTU_STS</A> has been read by the microprocessor.
+</P>
+<P>
+OTU-OOM is set to false during OCh-LOS, OTU-AIS and OTU-LOF.
+</P>
+<A NAME="OTU_LOM"></A>
+<H3>2.1.6. Multiframe Alignment Supervision (LOM generation)</H3>
+<P>
+(G.798/6.2.5.2)
+</P>
+<P>
+If the multiframe alignment process is persistently in the out-of-multiframe (OOM) state for 3 ms, OTU-LOM is declared.
+OTU-LOM is cleared immediately when the multiframe alignment process is in the in-multiframe (IM) state. During OTU-LOM, the bit
+OTU_LOM is set high in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is not cleared until <A HREF="#OTU_STS">OTU_STS</A> has been read by the microprocessor.
+</P>
+<P>
+OTU-LOM is set to false during OCh-LOS, OTU-AIS and OTU-LOF.
+</P>
+<A NAME="OTU_SSF"></A>
+<H3>2.1.7. OTU Rx Server Signal Fail (SSF) Monitor</H3>
+<P>
+A Server Signal Fail alarm (OTU-SSF) is activated if a Loss of Signal (OCh-LOS) or a Loss of Frame (OTU-LOF) or a Loss of Multiframe
+(OTU-LOM) or a Alarm Indication Signal (OTU-AIS) alarm is active. The OTU-SSF is an output of the OCh to OTU dataptation sink function
+(G.798/12.3.1.3).
+</P>
+<PRE>
+  OTU-SSF &lt;- OCh-LOS or OTU-LOF or OTU-LOM or OTU-AIS
+</PRE>
+<P></P>
+<P>
+During OTU-SSF the Section Monitoring overhead (SMOH) is not processed and all SM alarms are set to false.
+</P>
+<A NAME="SM_TIM"></A>
+<H3>2.1.8. OTU SM Trail Trace Identifier (TTI) Monitoring</H3>
+<P>
+(G.798/6.2.2)
+</P>
+<P>
+The OTU-TTI monitoring process reports the trace identifier mismatch defect (SM-TIM). The process is based on the comparison of
+expected APIs (<I>i.e</I>., SAPI and DAPI) with the APIs in the incoming signal. The APIs are part of the 64 byte TTI as defined in ITU-T
+G.709. The comparison result is "match" if all 16 bytes are equal, and "mismatch" if one or more bytes are unequal. A persistence check
+is used in order to prevent wrong/toggling TIM information during bit errors (According to G.798 appendix IV.2).
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/tti_format.png" BORDER="0" ALT=""></center>  
+<P>
+Depending on the value of bits TTI_SAPI_EVAL and TTI_DAPI_EVAL of register <A HREF="#OTU_CFG">OTU_CFG</A>, only the SAPI, only the DAPI or both SAPI
+and DAPI are taken into account for the mismatch detection. The operator specific field is not take into account.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>OTU_CFG[TTI_SAPI_EVAL]</TH>
+<TH>OTU_CFG[TTI_DAPI_EVAL]</TH>
+<TH>SM-TIM behaviour</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">0</TD>
+<TD>SM-TIM generation is disabled</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">1</TD>
+<TD>Only the DAPI field is take into account for SM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">0</TD>
+<TD>Only the SAPI field is take into account for SM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">1</TD>
+<TD>Both DAPI and SAPI fields are take into account for SM-TIM generation</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+SM-TIM status is accessible via register <A HREF="#OTU_STS">OTU_STS</A>. The recevied TTI string is accessible through the TTI Access registers
+(see section <A HREF="#TTI_ACCESS">TTI Access</A>\ of this document). In order to avoid a wrong string to be reported during bit errors, the APIs
+must be present for three consecutive multiframes before being accepted. This is the persistence process described in G.789 appendix
+IV.2. The persistence process runs independently for SAPI, DAPI and Operator Specific fields.
+</P>
+<P>
+An unstable condition in the persistence process is reported in register <A HREF="#OTU_STS">OTU_STS</A> as SM-TIU (Trail Trace identifier unstable).
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_SSF">OTU-SSF</A>), SM-TIM is set to false.
+</P>
+<A NAME="OTU_TSF"></A>
+<H3>2.1.9. OTU Rx Trail Signal Fail (TSF) Monitor</H3>
+<P>
+A OTU Trail Signal Fail alarm (OTU-TSF) is activated if a <A HREF="#OTU_SSF">OTU-SSF</A> or a SM-TIM alarm is active.
+</P>
+<PRE>
+  OTU-TSF &lt;- OTU-SSF or SM-TIM
+</PRE>
+<P></P>
+<P>
+During OTU-TSF, the ODU data is replaced by a all-ones (ODU-AIS).
+</P>
+<A NAME="SM_BIP"></A>
+<H3>2.1.10. OTU SM BIP-8 Error Monitoring</H3>
+<P>
+The incommig OTU SM BIP-8 is monitored and the block errors are accumulated in a 15-bit counter accessible via register <A HREF="#SM_BIP_CNT">SM_BIP_CNT</A>.
+When an error occurs, the bit SM_BIP is set in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+The OTU SM BIP-8 error count is used by the microprocessor in order to generate the SM-DEG alarm.
+</P>
+<P>
+Note: No errored blocks are counted during signal fail condition (<A HREF="#OTU_TSF">OTU-TSF</A>).
+</P>
+<A NAME="SM_BEI"></A>
+<H3>2.1.11. OTU SM Backward Error Indication (BEI) Monitoring</H3>
+<P>
+The incommig Backward Error Indications (BEI) are accumulated in a 15-bit counter accessible via register <A HREF="#SM_BEI_CNT">SM_BEI_CNT</A>. When
+an error occurs, the bit SM_BEI is set in register <A HREF="#OTU_STS">OTU_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+Note: No errors are counted during signal fail condition (<A HREF="#OTU_TSF">OTU-TSF</A>).
+</P>
+<A NAME="SM_BIAE"></A>
+<H3>2.1.12. OTU SM Backward Incoming Alignment Error (BIAE) Detection</H3>
+<P>
+(G.798/6.2.6.11.1)
+</P>
+<P>
+SM-BIAE is declared if the BEI/BIAE bits in the SM overhead field (byte 3, bits 1 to 4) are "1011" for 3 consecutive frames.
+BIAE is cleared if the BEI/BIAE bits in the SM overhead field are not equal to "1011" for 3 consecutive frames.
+SM-BIAE status is accessible via register <A HREF="#OTU_STS">OTU_STS</A>.
+</P>
+<P>
+During signal fail condition (<A HREF="#OTU_TSF">OTU-TSF</A>), SM-BIAE is set to false.
+</P>
+<A NAME="SM_BDI"></A>
+<H3>2.1.13. OTU SM Backward Defect Indication (BDI) Monitoring</H3>
+<P>
+(G.798/6.2.6.6.1)
+</P>
+<P>
+SM-BDI is declared if the BDI bit in the SM overhead field (byte 3, bit 5) is "1" for 5 consecutive frames. SM-BDI is cleared if the
+BDI bit in the SM overhead field is "0" for 5 consecutive frames. SM-BDI status is available through register <A HREF="#OTU_STS">OTU_STS</A>.
+</P>
+<P>
+During signal fail condition (<A HREF="#OTU_TSF">OTU-TSF</A>), SM-BDI is set to false.
+</P>
+<A NAME="SM_IAE"></A>
+<H3>2.1.14. OTU SM Incoming Alignment Error (IAE) Monitoring</H3>
+<P>
+(G.798/6.2.6.10.1)
+</P>
+<P>
+SM-IAE is declared if the IAE bit in the SM overhead field (byte 3, bit 6) is "1" for 5 consecutive frames. SM-IAE is cleared if
+the IAE bit in the SM overhead field is "0" for 5 consecutive frames. The SM-IAE status is available through register <A HREF="#OTU_STS">OTU_STS</A>.
+</P>
+<P>
+During signal fail condition (<A HREF="#OTU_TSF">OTU-TSF</A>), SM-IAE is set to false.
+</P>
+<A NAME="toc18"></A>
+<H3>2.1.15. OTU Forward Error Correction (FEC) Processing</H3>
+<P>
+The FEC processing function extracts the RS(255,239) FEC data from the OTU FEC area and performs error correction as defined in
+Annex A of ITU-T G.709. The number of corrected bits are reported via registers <A HREF="#FEC_CORRERR_CNT_HI">FEC_CORRERR_CNT_HI</A> and <A HREF="#FEC_CORRERR_CNT_LO">FEC_CORRERR_CNT_LO</A>.
+No corrected bits are counted during signal fail conditions (<A HREF="#OTU_SSF">OTU-SSF</A>).
+</P>
+<P>
+An additional counter is used to accumulate the number of sub-rows containing uncorrectable errors. This counter is accessible
+through register <A HREF="#FEC_UNCORR_CNT">FEC_UNCORR_CNT</A>.
+</P>
+<A NAME="toc19"></A>
+<H2>2.2. ODU Receive Processing</H2>
+<P>
+The ODU receive processing includes the following functions:
+</P>
+ <OL>
+ <LI>ODU PM trail termination sink function (G.798/14.2.1.2)
+ <LI>ODU TCM trail termination sink function (G.798/14.5.1.1.2 and 14.5.1.1.3)
+ </OL>
+
+<P></P>
+<P>
+The ODU PM trail termination sink function reports the state of the ODU trail (path). It computes the BIP8, extracts path monitoring
+overhead (PMOH) – including the TTI, BIP8, BDI, BEI and STAT signals – in the PM overhead field from the ODU signal,
+detects for AIS, OCI, LCK, TIM, DEG and BDI defects and forwards the error and defect information as backward indications to the
+ODU PM trail termination source.
+</P>
+<P>
+The ODU TCM trail termination sink function reports the state of the ODU monitored tandem connection. It computes the BIP8, extracts
+tandem connection monitoring overhead (TCMOH) – including the TTI, BIP8, BDI and BEI signals – in all TCMOH fields from the ODU
+signal, detects for AIS, OCI, LCK, TIM, DEG and BDI defects.
+</P>
+<A NAME="toc20"></A>
+<H3>2.2.1. ODU Path Monitoring</H3>
+<A NAME="PM_TIM"></A>
+<H4>2.2.1.1. ODU PM Trail Trace Identifier (TTI) Monitoring</H4>
+<P>
+(G.798/6.2.2)
+</P>
+<P>
+The ODU PM TTI monitoring process reports the trace identifier mismatch defect (PM-TIM). The process is based on the comparison of
+expected APIs (<I>i.e.</I>, SAPI and DAPI) with the APIs in the incoming signal. The APIs are part of the 64 byte TTI as defined in ITU-T
+G.709. The comparison result is "match" if all 16 bytes are equal, and "mismatch" if one or more bytes are unequal. A persistence check
+is used in order to prevent wrong/toggling TIM information during bit errors (According to G.798 appendix IV.2).
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/tti_format.png" BORDER="0" ALT=""></center>  
+<P>
+Depending on the value of bits TTI_SAPI_EVAL and TTI_DAPI_EVAL of register <A HREF="#ODU_PM_CFG">ODU_PM_CFG</A>, only the SAPI, only the DAPI or both SAPI
+and DAPI are taken into account for the mismatch detection. The operator specific field is not take into account.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>ODU_PM_CFG[TTI_SAPI_EVAL]</TH>
+<TH>ODU_PM_CFG[TTI_DAPI_EVAL]</TH>
+<TH>PM-TIM behaviour</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">0</TD>
+<TD>PM-TIM generation is disabled</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">1</TD>
+<TD>Only the DAPI field is take into account for PM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">0</TD>
+<TD>Only the SAPI field is take into account for PM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">1</TD>
+<TD>Both DAPI and SAPI fields are take into account for PM-TIM generation</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+PM-TIM status is accessible via register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>. The recevied TTI string is accessible through the TTI Access registers
+(see section <A HREF="#TTI_ACCESS">TTI Access</A> of this document). In order to avoid a wrong string to be reported during bit errors, the APIs
+must be present for three consecutive multiframes before being accepted. This is the persistence process described in in G.789 appendix
+IV.2. The persistence process runs independently for SAPI, DAPI and Operator Specific fields. An unstable condition in the persistence
+process is reported in register <A HREF="#ODU_PM_STS">ODU_PM_STS</A> as PM-TIU (Trail Trace identifier unstable).
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), PM-TIM is set to false.
+</P>
+<A NAME="ODU_AIS"></A>
+<H4>2.2.1.2. ODU Alarm Indication Signal (ODU-AIS) Detection</H4>
+<P>
+(G.798/6.2.6.3.2)
+</P>
+<P>
+ODU-AIS is declared if the received STAT information is "111" for 3 consecutive frames. ODU-AIS is cleared if the received STAT
+information is not equal to "111" for 3 consecutive frames.
+</P>
+<P>
+The ODU-AIS status is accessible via register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>.
+</P>
+<P>
+On declaration of ODU-AIS an all-ONEs pattern is output within 2 frames. On clearing of ODU-AIS the all-ONEs pattern is removed
+within 2 frames, with normal data being output downstream.
+</P>
+<A NAME="ODU_OCI"></A>
+<H4>2.2.1.3. ODU Open Connection Indication defect (ODU-OCI) Detection</H4>
+<P>
+(G.798/6.2.6.8.2)
+</P>
+<P>
+ODU-OCI is declared if the received STAT information is "110" for 3 consecutive frames. ODU-OCI is cleared if the received STAT
+information is not equal to "110" for 3 consecutive frames.
+</P>
+<P>
+The ODU-OCI status is accessible via register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>.
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), ODU-OCI is set to false.
+</P>
+<A NAME="ODU_LCK"></A>
+<H4>2.2.1.4. ODU Locked Defect (ODU-LCK) Detection</H4>
+<P>
+(G.798/6.2.6.9.1)
+</P>
+<P>
+ODU-LCK is declared if the received STAT information is "101" for 3 consecutive frames. ODU-LCK is cleared if the received STAT
+information is not equal to "101" for 3 consecutive frames.
+</P>
+<P>
+The ODU-LCK status is accessible via register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>.
+During signal fail conditions of the data signal (<A HREF="#OTU_TSF">OTU-TSF</A>), ODU-LCK is set to false.
+</P>
+<A NAME="ODU_TSF"></A>
+<H3>2.2.2. ODU Trail Signal Fail (TSF) Monitor</H3>
+<P>
+A ODU Trail Signal Fail alarm (ODU-TSF) is activated if a <A HREF="#OTU_SSF">OTU-TSF</A> or a <A HREF="#PM_TIM">PM-TIM</A> or a ODU-LCK or a ODU-OCI or a
+ODU-AIS alarm is active.
+</P>
+<PRE>
+  ODU-TSF &lt;- OTU-TSF or PM-TIM or ODU-LCK or ODU-OCI or ODU-AIS
+</PRE>
+<P></P>
+<A NAME="PM_BIP"></A>
+<H4>2.2.2.1. ODU PM BIP-8 Error Monitoring</H4>
+<P>
+The incommig ODU BIP-8 is monitored and the errors are accumulated in a 15-bit counter accessible via register <A HREF="#PM_BIP_CNT">PM_BIP_CNT</A>. When
+an error occurs, the bit PM_BIP is set in register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+Note: No errored blocks are counted during signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>).
+</P>
+<A NAME="PM_BEI"></A>
+<H4>2.2.2.2. ODU PM Backward Error Indication (BEI) Monitoring</H4>
+<P>
+The incommig Backward Error Indications (BEI) are accumulated in a 15-bit counter accessible via register <A HREF="#PM_BEI_CNT">PM_BEI_CNT</A>. When
+an error occurs, the bit PM_BEI is set in register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+Note: No errors are counted a signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>).
+</P>
+<A NAME="PM_BIAE"></A>
+<H4>2.2.2.3. ODU PM Backward Incoming Alignment Error (BIAE) Detection</H4>
+<P>
+(G.798/6.2.6.11.1)
+</P>
+<P>
+PM-BIAE is declared if the BEI/BIAE bits in the PM overhead field (byte 3, bits 1 to 4) are "1011" for 3 consecutive frames.
+PM-BIAE is cleared if the BEI/BIAE bits in the PM overhead field are not equal to "1011" for 3 consecutive frames. PM-BIAE status
+is accessible via register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>.
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), PM-BIAE is set to false.
+</P>
+<A NAME="PM_BDI"></A>
+<H4>2.2.2.4. ODU PM Backward Defect Indication (BDI) Monitoring</H4>
+<P>
+(G.798/6.2.6.6.1)
+</P>
+<P>
+PM-BDI is declared if the BDI bit in the PM overhead field (byte 3, bit 5) is "1" for 5 consecutive frames. PM-BDI is cleared if the
+PM-BDI bit in the PM overhead field is "0" for 5 consecutive frames. PM-BDI status is available through register <A HREF="#ODU_PM_STS">ODU_PM_STS</A>.
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), PM-BDI is set to false.
+</P>
+<A NAME="PM_IAE"></A>
+<H4>2.2.2.5. ODU PM Incoming Alignment Error (IAE) Monitoring</H4>
+<P>
+(G.798/6.2.6.10.2)
+</P>
+<P>
+PM-IAE is declared if the STAT bits in the PM overhead are equal to "010" for 3 consecutive frames. PM-IAE is cleared if the STAT
+bits in the PM overhead are not equal to "010" for 3 consecutive frames process. PM-IAE status is accessible through register
+<A HREF="#ODU_PM_STS">ODU_PM_STS</A>
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), PM-IAE is set to false.
+</P>
+<A NAME="toc22"></A>
+<H3>2.2.3. ODU Tandem Connection Monitoring</H3>
+<A NAME="TCM_AIS"></A>
+<H4>2.2.3.1. ODU TCM Alarm Indication Signal (AIS) Detection</H4>
+<P>
+(G.798/6.2.6.3.2)
+</P>
+<P>
+TCM-AIS is declared if the received STAT information is "111" for 3 consecutive frames. TCM-AIS is cleared if the received STAT
+information is not equal to "111" for 3 consecutive frames.
+</P>
+<P>
+The TCM-AIS status is accessible via register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>.
+</P>
+<A NAME="TCM_OCI"></A>
+<H4>2.2.3.2. ODU TCM Open Connection Indication defect (OCI) Detection</H4>
+<P>
+(G.798/6.2.6.8.2)
+</P>
+<P>
+The purpose of monitoring OCI is to qualify a downstream loss of signal defect by indicating that the loss of signal defect is due
+to an output connection point not connected to an input connection point.
+</P>
+<P>
+TCM-OCI is declared if the received STAT information is "110" for 3 consecutive frames. TCM-OCI is cleared if the received STAT
+information is not equal to "110" for 3 consecutive frames.
+</P>
+<P>
+The TCM-OCI status is accessible via register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>.
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>), TCM-OCI is set to false.
+</P>
+<A NAME="TCM_LCK"></A>
+<H4>2.2.3.3. ODU TCM Locked Defect (LCK) Detection</H4>
+<P>
+(G.798/6.2.6.9.1)
+</P>
+<P>
+TCM-LCK is declared if the received STAT information is "101" for 3 consecutive frames. TCM-LCK is cleared if the received STAT
+information is not equal to "101" for 3 consecutive frames.
+</P>
+<P>
+The TCM-LCK status is accessible via register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>.
+During signal fail conditions of the data signal (<A HREF="#OTU_TSF">OTU-TSF</A>), TCM-LCK is set to false.
+</P>
+<A NAME="TCM_LTC"></A>
+<H4>2.2.3.4. ODU Loss of Tandem Connection (LTC) Detection</H4>
+<P>
+(Pending)
+</P>
+<A NAME="TCM_TIM"></A>
+<H4>2.2.3.5. ODU TCM Trail Trace Identifier (TTI) Monitoring</H4>
+<P>
+(G.798/6.2.2)
+</P>
+<P>
+The ODU TCM TTI monitoring process reports the trace identifier mismatch defect (TCM-TIM). The process is based on the comparison of
+expected APIs (<I>i.e.</I>, SAPI and DAPI) with the APIs in the incoming signal. The APIs are part of the 64 byte TTI as defined in ITU-T
+G.709. The comparison result is "match" if all 16 bytes are equal, and "mismatch" if one or more bytes are unequal. A persistence check
+is used in order to prevent wrong/toggling TIM information during bit errors (According to G.798 appendix IV.2).
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/tti_format.png" BORDER="0" ALT=""></center>  
+<P>
+Depending on the value of bits TTI_SAPI_EVAL and TTI_DAPI_EVAL of register <A HREF="#ODU_TCM_CFG">ODU_TCM_CFG</A>, only the SAPI, only the DAPI or both SAPI
+and DAPI are taken into account for the mismatch detection. The operator specific field is not take into account.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>ODU_TCM_CFG[TTI_SAPI_EVAL]</TH>
+<TH>ODU_TCM_CFG[TTI_DAPI_EVAL]</TH>
+<TH>TCM-TIM behaviour</TH>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">0</TD>
+<TD>TCM-TIM generation is disabled</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">1</TD>
+<TD>Only the DAPI field is take into account for TCM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">0</TD>
+<TD>Only the SAPI field is take into account for TCM-TIM generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">1</TD>
+<TD>Both DAPI and SAPI fields are take into account for TCM-TIM generation</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+TCM-TIM status is accessible via register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>. The recevied TTI string is accessible through the TTI Access registers
+(see section <A HREF="#TTI_ACCESS">TTI Access</A> of this document). In order to avoid a wrong string to be reported during bit errors, the APIs
+must be present for three consecutive multiframes before being accepted. This is the persistence process described in in G.789 appendix
+IV.2. The persistence process runs independently for SAPI, DAPI and Operator Specific fields.
+</P>
+<P>
+An unstable condition in the persistence process is reported in register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A> as TCM-TIU (Trail Trace identifier unstable).
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>, TCM-AIS, TCM-LCK and TCM-OCI), TCM-TIM is set to false.
+</P>
+<A NAME="TCM_BIP"></A>
+<H4>2.2.3.6. ODU TCM BIP-8 Error Monitoring</H4>
+<P>
+The incommig ODU TCM BIP-8 is monitored and the errors are accumulated in a 15-bit counter accessible via register <A HREF="#TCM_BIP_CNT">TCM_BIP_CNT</A>. When
+an error occurs, the bit TCM_BIP is set in register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+Note: No errored blocks are counted during <A HREF="#OTU_TSF">OTU-TSF</A> and TCM-AIS.
+</P>
+<A NAME="TCM_BEI"></A>
+<H4>2.2.3.7. ODU TCM Backward Error Indication (BEI) Monitoring</H4>
+<P>
+The incommig Backward Error Indications (BEI) are accumulated in a 15-bit counter accessible via register <A HREF="#TCM_BEI_CNT">TCM_BEI_CNT</A>. When
+an error occurs, the bit TCM_BEI is set in register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>. This bit is automatically reset when register is read.
+</P>
+<P>
+Note: No errors are counted during <A HREF="#OTU_TSF">OTU-TSF</A>, TCM-TIM, TCM-AIS, TCM-LCK and TCM-OCI.
+</P>
+<A NAME="TCM_BIAE"></A>
+<H4>2.2.3.8. ODU TCM Backward Incoming Alignment Error (BIAE) Detection</H4>
+<P>
+(G.798/6.2.6.11.1)
+</P>
+<P>
+TCM-BIAE is declared if the BEI/BIAE bits in the TCM overhead field (byte 3, bits 1 to 4) are "1011" for 3 consecutive frames.
+TCM-BIAE is cleared if the BEI/BIAE bits in the TCM overhead field are not equal to "1011" for 3 consecutive frames. TCM-BIAE status
+is accessible via register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>.
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>, TCM-TIM, TCM-AIS, TCM-LCK and TCM-OCI), TCM-BIAE is set to false.
+</P>
+<A NAME="TCM_BDI"></A>
+<H4>2.2.3.9. ODU TCM Backward Defect Indication (BDI) Monitoring</H4>
+<P>
+(G.798/6.2.6.6.1)
+</P>
+<P>
+TCM-BDI is declared if the BDI bit in the TCM overhead field (byte 3, bit 5) is "1" for 5 consecutive frames. TCM-BDI is cleared if the
+TCM-BDI bit in the TCM overhead field is "0" for 5 consecutive frames. TCM-BDI status is available through register <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>.
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>, TCM-TIM, TCM-AIS, TCM-LCK and TCM-OCI), TCM-BDI is set to false.
+</P>
+<A NAME="TCM_IAE"></A>
+<H4>2.2.3.10. ODU TCM Incoming Alignment Error (IAE) Monitoring</H4>
+<P>
+(G.798/6.2.6.10.2)
+</P>
+<P>
+TCM-IAE is declared if the STAT bits in the TCM overhead are equal to "010" for 3 consecutive frames. TCM-IAE is cleared if the STAT
+bits in the TCM overhead are not equal to "010" for 3 consecutive frames process. TCM-IAE status is accessible through register
+<A HREF="#ODU_TCM_STS">ODU_TCM_STS</A>
+</P>
+<P>
+During signal fail conditions (<A HREF="#OTU_TSF">OTU-TSF</A>, TCM-TIM, TCM-AIS, TCM-LCK and TCM-OCI), TCM-IAE is set to false.
+</P>
+<A NAME="toc23"></A>
+<H3>2.2.4. FTFL Message Acess</H3>
+<P>
+(G.709/15.8.2.5)
+</P>
+<P>
+The received fault type and fault location (FTFL) message is stored into a 256-byte memory, which is accessible via the FTFL Access
+registers (see section <A HREF="#FTFL_ACCESS">FTFL Access</A> of this document). The TFFL byte is located in row 2, column 14 of the ODU overhead.
+The 256-byte FTFL message is aligned with the ODU multiframe (<I>i.e.</I>, byte 0 of the 256-byte FTFL is present at ODU multiframe
+position 0, byte 1 of the 256-byte FTFL is present at ODU multiframe position 1, byte 2 of the 256-byte FTFL is present at ODU
+multiframe position 2, etc.). The 256-byte FTFL message consists of two 128-byte fields: the forward and backward fields. The forward
+field is allocated to bytes 0 through 127 of the FTFL message. The backward field is allocated to bytes 128 through 255 of the FTFL
+message.
+</P>
+<P>
+Note: ODU-AIS does not replace the FTFL field with the all ones pattern. This means that FTFL is valid during ODU-AIS (obviously, FTFL
+is not valid if the ODU-AIS is due to an <A HREF="#OTU_TSF">OTU-TSF</A>.
+</P>
+<A NAME="toc24"></A>
+<H3>2.2.5. APS/PCC Monitoring</H3>
+<P>
+(Pending)
+</P>
+<A NAME="toc25"></A>
+<H2>2.3. OPU Receive Processing</H2>
+<P>
+(G.798/14.3.1.3)
+</P>
+<P>
+The OPU receive process performs the ODU path to CBR adaptation sink function (G.798/14.3.1.3). This function recovers the constant
+bit rate client signal from the OPU payload using the justification control information (JC overhead) to determine if a data or stuff
+byte is present within the NJO and PJO bytes. It extracts the OPU overhead and monitors the reception of the correct
+payload type. Under signal fail condition, the client data is replaced by a PN-11 sequence (generic AIS).
+</P>
+<A NAME="OPU_PLM"></A>
+<H3>2.3.1. OPU Payload Mismatch (PLM) Supervision</H3>
+<P>
+(G.798/6.2.4.1)
+</P>
+<P>
+OPU-PLM is declared if the received OPU payload type is not equal to the expected payload type(s) for 3 consecutive multiframes.
+OPU-PLM is cleared if the received payload type is equal to the expected payload type(s) for 3 consecutive multiframes. OPU-PLM status
+is accessible via register <A HREF="#OPU_STS">OPU_STS</A>. Up to two expected payload types can be configured in register <A HREF="#OPU_EXP_PT">OPU_EXP_PT</A>. If only one
+payload type is accepted, then both <A HREF="#OPU_EXP_PT">OPU_EXP_PT</A>[EXP_PT_1] and <A HREF="#OPU_EXP_PT">OPU_EXP_PT</A>[EXP_PT_2] fields must be set to the same value.
+</P>
+<P>
+During server (ODU) signal fail condition (<A HREF="#ODU_TSF">ODU_TSF</A>), OPU-PLM is set to false.
+</P>
+<P>
+The received Payload Type (PT) is accessible via register <A HREF="#OPU_RX_PT">OPU_RX_PT</A>. This register is updated when a new PT is received for 3
+consecutive multiframes.
+</P>
+<A NAME="toc27"></A>
+<H3>2.3.2. OPU Multiplex Structure Identifier Mismatch (MSIM) Supervision</H3>
+<P>
+  (Pending)
+</P>
+<A NAME="toc28"></A>
+<H3>2.3.3. Client Data Extraction</H3>
+<P>
+(G.798/14.3.1.3)
+</P>
+<P>
+The constant bit rate (CBR) client data is extracted from the OPU payload using the justification control information (JC overhead) to
+determine if a data or stuff byte is present within the NJO and PJO bytes.
+</P>
+<P>
+Two counters are provided to accumulate the count of positive and negative justification events. The positive justification counter
+is accessible via register <A HREF="#RX_PJUST_CNT">RX_PJUST_CNT</A>. The negative justification counter is accessible via register <A HREF="#RX_NJUST_CNT">RX_NJUST_CNT</A>.
+</P>
+<P>
+During server (ODU) signal fail condition (<A HREF="#ODU_TSF">ODU_TSF</A>) or OPU-PLM, a generic AIS (PN-11) pattern is output to the client within 2
+frames. On clearing of the signal fail condition the generic AIS pattern is removed within 2 frames with normal data being output.
+The generic AIS pattern is defined in clause 16.6 of G.709.
+</P>
+<A NAME="toc29"></A>
+<H3>2.3.4. Client AIS Monitoring</H3>
+<P>
+(G.798/6.2.6.3.3)
+</P>
+<P>
+For Client AIS detection, the reverse PN-11 process is applied to the entire OPU payload. At the output of this process an all-ZEROs
+pattern will occur if the input data is the PN-11 generic AIS sequence. Both the output and input signals are constantly checked over
+an 8192-bit interval for the number of none ZERO bits (= ONE bits). If the number of ONE bits per interval at the output is less than
+256 and the number of ONE bits per interval at the input is above or equal to 256 in 3 consecutive intervals, CBR-AIS is raised.
+If the number of ONE bits at the output is above or equal to 256 or the number of ONE bits at the input is below 256 in 3 consecutive
+intervals, CBR-AIS is cleared. The reverse PN-11 process is described in G.798/6.2.6.3.3.
+</P>
+<P>
+The CBR-AIS status is available through register <A HREF="#OPU_STS">OPU_STS</A>.
+</P>
+<A NAME="toc30"></A>
+<H3>2.3.5. OPU PRBS Monitoring</H3>
+<P>
+(G.709/17.4.2)
+</P>
+<P>
+Recommendation G.709 defines the mapping of a PRBS test signal into OPU. At the receiver side, the OTN frame performs the TSE check.
+The Test sequence errors (TSEs) are bit errors in the PRBS data stream extracted from the OPU payload area and are detected whenever
+the PRBS detector is in lock and the received data bit does not match the expected value.
+</P>
+<P>
+A counter is provided to accumulate the count of TSEs. This counter is accessible via register OPU_TSE_CNT. When a TSE occurs, the bit
+OPU_TSE is set in register <A HREF="#OPU_STS">OPU_STS</A>. If the detector goes out of lock, the bit OPU_LSS (Loss of Sequence Synchronization) is set in
+register <A HREF="#OPU_STS">OPU_STS</A>. Both OPU_TSE and OPU_LSS are automatically cleared when <A HREF="#OPU_STS">OPU_STS</A> is read.
+</P>
+<A NAME="toc31"></A>
+<H1>3. Transmit Processing</H1>
+<A NAME="toc32"></A>
+<H2>3.1. OTU Layer Transmit Processing</H2>
+<P>
+The OTU transmit processing includes the following functions
+</P>
+ <OL>
+ <LI>OCh to OTU adaptation source function with FEC (G.798/12.3.1.1)
+ <LI>OTU trail termination source function (G.798/13.2.1.1)
+ <LI>OTU to ODU adaptation source function (G.798/13.3.1.1)
+ </OL>
+
+<P></P>
+<A NAME="toc33"></A>
+<H3>3.1.1. FAS and MFAS Insertion</H3>
+<P>
+The OA1, OA2 FAS bytes and the MFAS byte are inserted in the OTU frame according to described in G.709.
+</P>
+<A NAME="toc34"></A>
+<H3>3.1.2. SMOH-TTI Insertion</H3>
+<P>
+The trail trace identifier is inserted in the TTI byte position of the SM field. The transmitted TTI is provided by the microprocessor
+via the <A HREF="#TTI_ACCESS">TTI Access Registers</A>. The trail trace format is described in clause 15.2 of G.709.
+</P>
+<P>
+The 64-byte TTI signal is aligned with the OTU multiframe and transmitted four times per multiframe. Byte 0 of the 64-byte TTI signal
+is present at OTU multiframe positions 0x00, 0x40, 0x80 and 0xC0.
+</P>
+<A NAME="toc35"></A>
+<H3>3.1.3. SMOH-BDI Insertion</H3>
+<P>
+The backward defect indication is inserted in the BDI bit position of the SM field. Upon the declaration/clearing of
+<A HREF="#OTU_SSF">OTU-SSF</A> or SM-TIM at the receive side, the transmitter inserts/removes the BDI indication within 50 ms.
+</P>
+<P>
+SMOH-BDI &lt;- <A HREF="#OTU_SSF">OTU-SSF</A> or SM-TIM
+</P>
+<A NAME="toc36"></A>
+<H3>3.1.4. SMOH-BEI/BIAE Insertion</H3>
+<P>
+(G.709/15.7.2.1.4)
+(G.798/13.2.1.1)
+</P>
+<P>
+If a OTU frame slip occurrs at the receive side, the value "1011" is inserted into the BEI/BIAE bits of the SM field.
+If SM-IAE is false, the the BEI/BIAE bits of the SM field contain the count of interleaved-bit blocks that have been detected in
+at the receive side (SM-BIP). Upon the detection of incoming alignment error or a number of errors at the receiver, the transmitter
+inserts the value in the BEI/BIAE bits within 50 ms.
+</P>
+<P>
+SMOH-BIAE &lt;- SM-IAE
+</P>
+<A NAME="toc37"></A>
+<H3>3.1.5. SMOH-BIP8 Insertion</H3>
+<P>
+(G.709/15.7.2.1.2)
+</P>
+<P>
+The OTU SM BIP-8 is computed over the bits in the OPU (columns 15 to 3824) area of OTU frame i, and inserted in the OTU SM BIP-8
+overhead location in OTU frame i+2:
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/otu_bip.jpg" BORDER="0" ALT=""></center>  
+<A NAME="toc38"></A>
+<H3>3.1.6. SMOH-IAE Insertion</H3>
+<P>
+(G.798/13.2.2.1)
+</P>
+<P>
+If a frame synchronous mapping for the ODU client data is used, the incoming alignment error information is inserted into the IAE field
+of the SMOH. Upon the declaration of the alignment error, the IAE indication is inserted for the next 16 multiframes. Each new
+declaration of IAE restarts the 16 multiframe insertion time.
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TD><B>Note:</B> frame synchronous mapping for the ODU client data is currently unsupported. SMOH-IAE is allways set to zero</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc39"></A>
+<H2>3.2. ODU Layer Transmit Processing</H2>
+<P>
+The ODU transmit processing includes the following functions:
+</P>
+ <OL>
+ <LI>ODU PM trail termination source function (G.798/14.2.1.1)
+ <LI>ODU PM to CBR mapping adaptation source function (G.798/14.3.1.1 and 14.3.1.2)
+ <LI>ODU TCM trail termination source function (G.798/14.5.1.1.1)
+ </OL>
+
+<P></P>
+<A NAME="toc40"></A>
+<H3>3.2.1. PMOH-TTI Insertion</H3>
+<P>
+The trail trace identifier is inserted in the TTI byte position of the PM field. The transmitted TTI is provided by the microprocessor
+via the <A HREF="#TTI_ACCESS">TTI Access Registers</A>. The trail trace format is described in clause 15.2 of G.709.
+</P>
+<P>
+The 64-byte TTI signal is aligned with the OTU multiframe and transmitted four times per multiframe. Byte 0 of the 64-byte TTI signal
+is present at OTU multiframe positions 0x00, 0x40, 0x80 and 0xC0.
+</P>
+<A NAME="toc41"></A>
+<H3>3.2.2. PMOH-BDI Insertion</H3>
+<P>
+The backward defect indication is inserted in the BDI bit position of the PM field. Upon the declaration/clearing of
+<A HREF="#OTU_TSF">OTU-TSF</A> or <A HREF="PM_TIM">PM-TIM</A> at the receive side, the transmitter inserts/removes the BDI indication within 50 ms.
+</P>
+<PRE>
+  PMOH-BDI &lt;- OTU-TSF or PM-TIM
+</PRE>
+<P></P>
+<A NAME="toc42"></A>
+<H3>3.2.3. PMOH-BEI Insertion</H3>
+<P>
+(G.798/14.2.1.1)
+</P>
+<P>
+BEI bits of the PM field contain the count of interleaved-bit blocks that have been detected in at the receive side (PM-BIP).
+Upon the detection of incoming alignment error or a number of errors at the receiver, the transmitter inserts the value in the BEI
+bits within 50 ms.
+</P>
+<A NAME="toc43"></A>
+<H3>3.2.4. PMOH-BIP8 Insertion</H3>
+<P>
+(G.709/15.8.2.1.2)
+</P>
+<P>
+The ODU PM BIP-8 is computed over the bits in the OPU (columns 15 to 3824) area of ODU frame i, and inserted in the ODU PM BIP-8
+overhead location in the ODU frame i+2, as shown in picture below:
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/odu_bip.jpg" BORDER="0" ALT=""></center>  
+<A NAME="toc44"></A>
+<H3>3.2.5. PMOH-STAT Insertion</H3>
+<P>
+The transmitted PMOH STAT field is force to value 001 - Normal path signal (Table 15-3/G.709).
+</P>
+<A NAME="toc45"></A>
+<H3>3.2.6. ODU LCK Maintenance Signal Insertion</H3>
+<P>
+The LCK maintenance signal is generated on operator request in order to lock the signal from user access while the operator is, for
+example, performing set-up tests. In this case, the ODU signal is replaced by fixed pattern "0101 0101" indicated as locked (LCK).
+The LCK insertion is configured via the ODU_SRC_SIGNAL field of register <A HREF="#ODU_PM_CFG">ODU_PM_CFG</A>.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/odu_lck.jpg" BORDER="0" ALT=""></center>  
+<A NAME="toc46"></A>
+<H3>3.2.7. ODU OCI Maintenance Signal Insertion</H3>
+<P>
+OCI in OTN is equivalent to Unequipped in SDH. During OCI insertion, the entire ODU signal is replaced by fixed pattern "0110 0110".
+The OCI insertion is configured via the ODU_SRC_SIGNAL field of register <A HREF="#ODU_PM_CFG">ODU_PM_CFG</A>.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/odu_oci.jpg" BORDER="0" ALT=""></center>  
+<A NAME="toc47"></A>
+<H3>3.2.8. ODU AIS Insertion</H3>
+<P>
+When field ODU_SRC_SIGNAL of register <A HREF="#ODU_PM_CFG">ODU_PM_CFG</A> is set to 'Force AIS', the ODU signal is replaced by a All Ones pattern, excluding only
+the FTFL field. This register is suposed to be used only for test purposes.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/odu_ais.jpg" BORDER="0" ALT=""></center>  
+<A NAME="toc48"></A>
+<H2>3.3. OPU Layer Transmit Processing</H2>
+<A NAME="toc49"></A>
+<H3>3.3.1. Client Data Mapping and Justification Control</H3>
+<P>
+The client data is read out of the buffer and mapped into the OPU payload. The justification control (JC) bits are generated based on
+the justification decision performed in the current frame according to the specification in clause 17.1 of G.709.
+If the client data mapping into the OPU is performed according to bit synchronous mode, neither negative nor positive justification
+will occur, <I>i.e.</I>, no data will be written onto the NJO byte and data will always be written onto the PJO byte (G.798/14.3.1.2). The
+mapping mode is configured via register <A HREF="#OPU_CFG">OPU_CFG</A>.
+</P>
+<P>
+Two counters are provided to accumulate the count of positive and negative justification events. The positive justification counter
+is accessible via register <A HREF="#TX_PJUST_CNT">TX_PJUST_CNT</A>. The negative justification counter is accessible via register <A HREF="#TX_NJUST_CNT">TX_NJUST_CNT</A>.
+</P>
+<A NAME="toc50"></A>
+<H3>3.3.2. Payload Type (PT) Insertion</H3>
+<P>
+The OTU payload type (PT) is inserted into the PT byte position of the PSI overhead as defined in clause 15.9.2.1 of G.709.
+</P>
+<A NAME="toc51"></A>
+<H3>3.3.3. OPU PRBS Insertion</H3>
+<P>
+(G.709/17.4.2)
+</P>
+<P>
+For test purposes a 2 147 483 647-bit pseudo-random test sequence (2^31 - 1) as specified in 5.8/O.150 can be mapped into the OPU
+payload. Groups of 8 successive bits of the 2 147 483 647-bit pseudo-random test sequence signal are mapped into each byte of the ODU
+payload.
+</P>
+<P>
+The PRBS insertion is enabled via register <A HREF="#OPU_CFG">OPU_CFG</A>. When the PRBS is enabled, the microprocessor must set the transmitted payload
+type to 0xFE - "PRBS test signal mapping", according to Table 15-8/G.709.
+</P>
+<A NAME="toc52"></A>
+<H1>4. Microprocessor Interface</H1>
+<A NAME="toc53"></A>
+<H2>4.1. Signals</H2>
+<P>
+The OTN frames interfaces to the micprocessor through the interface depicted below. The bus data width is equal to 16 and the address
+width is 8. 
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/upc_interface.png" BORDER="0" ALT=""></center>  
+<P>
+All the configuration and status informations are presented to the microprocessor as a set of memory-mapped registers. Section
+<A HREF="#REGISTER_DESCRIPTION">Register Description</A> of this document describes the behaviour of all of these registers.
+</P>
+<P>
+The write access timing is show below. Only one clock cycle is required to perform write operations.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/upc_wr_access.png" BORDER="0" ALT=""></center>  
+<P>
+The read access takes 8 clock periods. The signal <I>rd_en</I> is a 1-clock pulse that signalizes the end of the read operation. This
+pulse is by RC and RLC registers (see <A HREF="#REGISTER_TYPES">Register Types</A>) for clearing their latches.
+</P>
+  <center><IMG ALIGN="middle" SRC="figures/upc_rd_access.png" BORDER="0" ALT=""></center>    
+<A NAME="toc54"></A>
+<H2>4.2. Conventions</H2>
+<A NAME="toc55"></A>
+<H3>4.2.1. Bit numbering conventions</H3>
+ <UL>
+ <LI>Bytes and words are defined with bit 7 or 15 as the MSB and bit 0 as the LSB
+ </UL>
+
+<P></P>
+<A NAME="toc56"></A>
+<H3>4.2.2. Status register conventions</H3>
+ <UL>
+ <LI>All alarm conditions are represented as a logic high level in the corresponding status register. If a value 0 is read from a status
+    register, this must be interpreted as "no alarms".
+ <LI>All the event and error counters are suposed to be read in 10ms intervals. If the read interval is greater than 10ms, an overflow
+   can occurr. In the case of an overflow, the couters will saturate to all-ones.
+ </UL>
+
+<P></P>
+<A NAME="REGISTER_TYPES"></A>
+<H3>4.2.3. Register Types</H3>
+<P>
+Five different behaviors are allowed for the microprocessor interfacing registers. They are listed in table below.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Abbreviation</TH>
+<TH>Register Type</TH>
+</TR>
+<TR>
+<TD ALIGN="center">RO</TD>
+<TD>Read only</TD>
+</TR>
+<TR>
+<TD ALIGN="center">RW</TD>
+<TD>Read/Write</TD>
+</TR>
+<TR>
+<TD ALIGN="center">WO</TD>
+<TD>Write only</TD>
+</TR>
+<TR>
+<TD ALIGN="center">RC</TD>
+<TD>Read and clear</TD>
+</TR>
+<TR>
+<TD ALIGN="center">RLC</TD>
+<TD>Read, latch and clear</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+The read only (RO), write only (WO) and read/write (RW) register types are self-explained and do not need further descritpion.
+</P>
+<P>
+Read and clear (RC) registers are a special type of read only (RO) registers, where the read operation causes a latch to be cleared.
+This kind of behaviour is usually required for alarm status registers. Some alarm events can have a short duration time (<I>i.e.</I>, a
+few milliseconds or even microseconds) while the microprocessor real-time task usually runs once each 10 milliseconds. In order to
+prevent an alarm event from being lost, a latch is used to keep the alarm indication active until it has been read by the
+microprocessor. When a RC register is read, the following operations are performed:
+</P>
+ <OL>
+ <LI>The latched status value is read by the microprocessor
+ <LI>The latch is cleared
+ </OL>
+
+<P></P>
+<P>
+Read, latch and clear (RLC) registers are used for reading counter values. The counters are usually synchronous to the data processing
+clock, which is not necessarily synchronous to the microprocessor interface clock. This can lead to erroneous reading if the counter
+increments during the microprocessor read access. In order to avoid this error, the counter value is saved to a temporary latch before
+being read by the microprocessor. This latch is guaranteed to be static during the entire read cycle time.
+</P>
+<P>
+A latch enable is required in order to allow the counter to be saved to the temporary latch. In RLC registers, this enable is
+automatically generated at the end of the microprocessor read cycle. When a RLC register is read, the following operations are
+performed:
+</P>
+ <OL>
+ <LI>The latched counter value is read by the microprocessor
+ <LI>The current counter value is latched for the next read cycle
+ <LI>Counter is cleared
+ </OL>
+
+<P></P>
+<P>
+For counters that occupy more than one memory address (i.e. counters that are larger than 16 bits), both latching and clearing are
+performed by reading the least significant register. In other words, this means that the least significant register must be read last.
+</P>
+<A NAME="REGISTER_DESCRIPTION"></A>
+<H1>5. Register Description</H1>
+<A NAME="toc59"></A>
+<H2>5.1. Register Map</H2>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Register Name</TH>
+<TH>Description</TH>
+<TH>Offset</TH>
+</TR>
+<TR>
+<TD><A HREF="#OTU_STS_PTR">OTU_STS_PTR</A></TD>
+<TD>OTU status pointer</TD>
+<TD>0x00</TD>
+</TR>
+<TR>
+<TD><A HREF="#OTU_STS">OTU_STS</A></TD>
+<TD>OTU status</TD>
+<TD>0x01</TD>
+</TR>
+<TR>
+<TD><A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A></TD>
+<TD>OTU configuration pointer</TD>
+<TD>0x02</TD>
+</TR>
+<TR>
+<TD><A HREF="#OTU_CFG">OTU_CFG</A></TD>
+<TD>OTU configuration</TD>
+<TD>0x03</TD>
+</TR>
+<TR>
+<TD><A HREF="#SM_BEI_CNT">SM_BEI_CNT</A></TD>
+<TD>OTU BEI counter</TD>
+<TD>0x04</TD>
+</TR>
+<TR>
+<TD><A HREF="#SM_BIP_CNT">SM_BIP_CNT</A></TD>
+<TD>OTU BIP error counter</TD>
+<TD>0x05</TD>
+</TR>
+<TR>
+<TD><A HREF="#OTU_OOF_CNT">OTU_OOF_CNT</A></TD>
+<TD>OTU Out of frame envent counter</TD>
+<TD>0x06</TD>
+</TR>
+<TR>
+<TD><A HREF="#OTU_FRAME_CNT">OTU_FRAME_CNT</A></TD>
+<TD>OTU Received frames counter</TD>
+<TD>0x07</TD>
+</TR>
+<TR>
+<TD><A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A></TD>
+<TD>TTI access control</TD>
+<TD>0x08</TD>
+</TR>
+<TR>
+<TD><A HREF="#TTI_DATA">TTI_DATA</A></TD>
+<TD>TTI read/write data</TD>
+<TD>0x09</TD>
+</TR>
+<TR>
+<TD><A HREF="#FTFL_ACCESS_CTRL">FTFL_ACCESS_CTRL</A></TD>
+<TD>FTFL access control</TD>
+<TD>0x0A</TD>
+</TR>
+<TR>
+<TD><A HREF="#FTFL_DATA">FTFL_DATA</A></TD>
+<TD>FTFL read/write data</TD>
+<TD>0x0B</TD>
+</TR>
+<TR>
+<TD><A HREF="#ODU_PM_STS">ODU_PM_STS</A></TD>
+<TD>ODU PM Status</TD>
+<TD>0x0C</TD>
+</TR>
+<TR>
+<TD><A HREF="#ODU_PM_CFG">ODU_PM_CFG</A></TD>
+<TD>ODU PM Configuration</TD>
+<TD>0x0D</TD>
+</TR>
+<TR>
+<TD><A HREF="#PM_BEI_CNT">PM_BEI_CNT</A></TD>
+<TD>ODU PM BEI counter</TD>
+<TD>0x0E</TD>
+</TR>
+<TR>
+<TD><A HREF="#PM_BIP_CNT">PM_BIP_CNT</A></TD>
+<TD>ODU PM BIP error counter</TD>
+<TD>0x0F</TD>
+</TR>
+<TR>
+<TD><A HREF="#OPU_TX_PT">OPU_TX_PT</A></TD>
+<TD>ODU Tx payload types</TD>
+<TD>0x12</TD>
+</TR>
+<TR>
+<TD><A HREF="#OPU_CFG">OPU_CFG</A></TD>
+<TD>OPU Configuration</TD>
+<TD>0x19</TD>
+</TR>
+<TR>
+<TD><A HREF="#RX_PJUST_CNT">RX_PJUST_CNT</A></TD>
+<TD>Rx Positive Justification Counter</TD>
+<TD>0x1B</TD>
+</TR>
+<TR>
+<TD><A HREF="#RX_NJUST_CNT">RX_NJUST_CNT</A></TD>
+<TD>Rx Negative Justification Counter</TD>
+<TD>0x1C</TD>
+</TR>
+<TR>
+<TD><A HREF="#TX_PJUST_CNT">TX_PJUST_CNT</A></TD>
+<TD>Tx Positive Justification Counter</TD>
+<TD>0x1D</TD>
+</TR>
+<TR>
+<TD><A HREF="#TX_NJUST_CNT">TX_NJUST_CNT</A></TD>
+<TD>Tx Negative Justification Counter</TD>
+<TD>0x1E</TD>
+</TR>
+<TR>
+<TD><A HREF="#TCM_STS_PTR">TCM_STS_PTR</A></TD>
+<TD>TCM Status Pointer</TD>
+<TD>0x13</TD>
+</TR>
+<TR>
+<TD><A HREF="#ODU_TCM_STS">ODU_TCM_STS</A></TD>
+<TD>ODU TCM Status</TD>
+<TD>0x15</TD>
+</TR>
+<TR>
+<TD><A HREF="#TCM_CFG_PTR">TCM_CFG_PTR</A></TD>
+<TD>TCM Configuration Pointer</TD>
+<TD>0x14</TD>
+</TR>
+<TR>
+<TD><A HREF="#ODU_TCM_CFG">ODU_TCM_CFG</A></TD>
+<TD>ODU TCM Configuration</TD>
+<TD>0x16</TD>
+</TR>
+<TR>
+<TD><A HREF="#TCM_BEI_CNT">TCM_BEI_CNT</A></TD>
+<TD>TCM BEI counter</TD>
+<TD>0x17</TD>
+</TR>
+<TR>
+<TD><A HREF="#TCM_BIP_CNT">TCM_BIP_CNT</A></TD>
+<TD>TCM BIP error counter</TD>
+<TD>0x18</TD>
+</TR>
+<TR>
+<TD><A HREF="#FEC_STS_PTR">FEC_STS_PTR</A></TD>
+<TD>FEC Status pointer</TD>
+<TD>0x1F</TD>
+</TR>
+<TR>
+<TD><A HREF="#FEC_CORRERR_CNT_HI">FEC_CORRERR_CNT_HI</A></TD>
+<TD>FEC Corrected errors counter</TD>
+<TD>0x20</TD>
+</TR>
+<TR>
+<TD><A HREF="#FEC_CORRERR_CNT_LO">FEC_CORRERR_CNT_LO</A></TD>
+<TD>FEC Corrected errors counter</TD>
+<TD>0x21</TD>
+</TR>
+<TR>
+<TD><A HREF="#FEC_UNCORR_CNT">FEC_UNCORR_CNT</A></TD>
+<TD>FEC Uncorrectable errors counter</TD>
+<TD>0x22</TD>
+</TR>
+<TR>
+<TD><A HREF="#OPU_TSE_CNT">OPU_TSE_CNT</A></TD>
+<TD>OPU PRBS TSE Error counter</TD>
+<TD>0x23</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc60"></A>
+<H2>5.2. OTU Layer Registers</H2>
+<A NAME="OTU_STS_PTR"></A>
+<H3>5.2.1. OTU_STS_PTR - OTU Status Pointer (0x00)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..4</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3..0</TD>
+<TD ALIGN="center">STS_PTR</TD>
+<TD ALIGN="center">RC</TD>
+<TD>This pointer is used to address a specific OTN framer in cases where multiple instances are present</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OTU_STS"></A>
+<H3>5.2.2. OTU_STS - OTU Status (0x01)</H3>
+<P>
+This registers reports the OTU Layer status. All alarm indications remain latched until the register has been read by the
+microprocessor. In cases where multiple OTN framers are instanced, the register <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is used to select which instance the
+<A HREF="#OTU_STS">OTU_STS</A> is related to. If only one OTN instance is present, <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..14</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">13</TD>
+<TD ALIGN="center"><A HREF="#OCH_LOS">OCH_LOS</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Loss of signal (this is a latched version of the SFP/XFP RX_LOS pin)</TD>
+</TR>
+<TR>
+<TD ALIGN="center">12</TD>
+<TD ALIGN="center"><A HREF="#OTU_OOF">OTU_OOF</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>This bit is set to indicate that the frame alignment process has entered the OOF state</TD>
+</TR>
+<TR>
+<TD ALIGN="center">11</TD>
+<TD ALIGN="center"><A HREF="#OTU_LOF">OTU_LOF</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>This bit is set to declare a Loss of Frame defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">10</TD>
+<TD ALIGN="center"><A HREF="#OTU_OOM">OTU_OOM</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>This bit is set to indicate that an Out of Multiframe event has occurred</TD>
+</TR>
+<TR>
+<TD ALIGN="center">9</TD>
+<TD ALIGN="center"><A HREF="#OTU_LOM">OTU_LOM</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>This bit is set to declare a Loss of Multirame defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">8</TD>
+<TD ALIGN="center"><A HREF="#OTU_AIS">OTU_AIS</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU Alarm indication signal defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7</TD>
+<TD ALIGN="center"><A HREF="#OTU_OOF">OTU_IAE</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU Incoming alignment error (Rx frame slip)</TD>
+</TR>
+<TR>
+<TD ALIGN="center">6</TD>
+<TD ALIGN="center"><A HREF="#SM_BIP">SM_BIP</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a BIP-8 error has occurred</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD ALIGN="center"><A HREF="#SM_BEI">SM_BEI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a backward error indication has been received</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4</TD>
+<TD ALIGN="center"><A HREF="#SM_IAE">SM_IAE</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU SM Incoming alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center"><A HREF="#SM_BIAE">SM_BIAE</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU SM Backward incoming alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center"><A HREF="#SM_BDI">SM_BDI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU SM Backward defect indication defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center"><A HREF="#SM_TIM">SM_TIM</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU SM Trail trace identifier mismatch</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center"><A HREF="#SM_TIM">SM_TIU</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU SM Trail trace identifier unstable</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OTU_CFG_PTR"></A>
+<H3>5.2.3. OTU_CFG_PTR - OTU Configuration Pointer (0x02)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..4</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3..0</TD>
+<TD ALIGN="center">CFG_PTR</TD>
+<TD ALIGN="center">RC</TD>
+<TD>This pointer is used to address a specific OTN framer in cases where multiple instances are present</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OTU_CFG"></A>
+<H3>5.2.4. OTU_CFG - OTU Configuration (0x03)</H3>
+<P>
+This register is used to set the operational configuration of the OTU layer. In cases where multiple OTN framers are instanced, the
+register <A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A> is used to select which instance the <A HREF="#OTU_CFG">OTU_CFG</A> is related to. If only one OTN instance is present, <A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A>
+is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..5</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4</TD>
+<TD ALIGN="center">TTI_DAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of DAPI field in the section TTI string. When set to '0', a DAPI mismatch will not generate SM-TIM</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center">TTI_SAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of SAPI field in the section TTI string. When set to '0', a SAPI mismatch will not generate SM-TIM</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">LASER_FOFF</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Forces the laser off (disables ALS). This bit has precedence over LASER_FON</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">LASER_FON</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Forces the laser on (disables ALS)</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">OPERATION</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables the physical port operation</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="SM_BEI_CNT"></A>
+<H3>5.2.5. SM_BEI_CNT - OTU SM BEI Counter (0x04)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center">BEI_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">Section BEI error count</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="SM_BIP_CNT"></A>
+<H3>5.2.6. SM_BIP_CNT - OTU SM BIP-8 Error Counter (0x05)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center"><A HREF="#SM_BIP">BIP_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">Section BIP-8 error count</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OTU_OOF_CNT"></A>
+<H3>5.2.7. OTU_OOF_CNT - OTU Out of Frame Event Counter (0x06)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..10</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">RC</TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>9..0</TD>
+<TD ALIGN="center"><A HREF="#OTU_OOF">OOF_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">OOF event counter (a OOF event is a change from state IF to OOF)</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OTU_FRAME_CNT"></A>
+<H3>5.2.8. OTU_FRAME_CNT - OTU Received Frames Counter (0x07)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..12</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>11..0</TD>
+<TD ALIGN="center">FRAME_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">This counter stores the count of Received frames count</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc69"></A>
+<H2>5.3. ODU Layer Path Monitoring Registers</H2>
+<A NAME="ODU_PM_STS"></A>
+<H3>5.3.1. ODU_PM_STS - ODU Path Monitoring Status (0x0C)</H3>
+<P>
+This registers reports the ODU Layer path monitoring (PM) status. All alarm indications remain latched until the register has been read
+by the  microprocessor. In cases where multiple OTN framers are instanced, the register <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is used to select which instance
+the <A HREF="#OTU_PM_STS">OTU_PM_STS</A> is related to. If only one OTN instance is present, <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..8</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN="center">7</TD>
+<TD ALIGN="center"><A HREF="#PM_BIP">PM_BIP</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a BIP-8 error has occurred</TD>
+</TR>
+<TR>
+<TD ALIGN="center">6</TD>
+<TD ALIGN="center"><A HREF="#PM_BEI">PM_BEI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a backward error indication has been received</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD ALIGN="center"><A HREF="#PM_BIAE">PM_BIAE</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU PM Incoming alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4</TD>
+<TD ALIGN="center"><A HREF="#ODU_AIS">ODU_AIS</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU Backward incoming alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center"><A HREF="#ODU_OCI">ODU_OCI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU PM Trail trace identifier mismatch</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center"><A HREF="#ODU_LCK">ODU_LCK</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU PM Alarm indication signal defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center"><A HREF="#PM_BDI">PM_BDI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU PM Backward defect indication defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center"><A HREF="#PM_TIM">PM_TIM</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>ODU PM Trail trace identifier mismatch</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="PM_BEI_CNT"></A>
+<H3>5.3.2. PM_BEI_CNT - ODU Path BEI Counter (0x0E)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center"><A HREF="#PM_BEI">BEI_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">Path BEI error count</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="PM_BIP_CNT"></A>
+<H3>5.3.3. PM_BIP_CNT - ODU BIP Path Error Counter (0x0F)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center"><A HREF="#PM_BIP">BIP_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">Path BIP-8 error count</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="ODU_PM_CFG"></A>
+<H3>5.3.4. ODU_PM_CFG - ODU PM Configuration (0x0D)</H3>
+<P>
+This register is used to set ODU Path Monitoring (PM) operational parameters. In cases where multiple OTN framers are instanced, the
+register <A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A> is used to select which instance the <A HREF="#ODU_PM_CFG">ODU_PM_CFG</A> is related to. If only one OTN instance is present,
+<A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A> is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="right">19..5</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4..3</TD>
+<TD ALIGN="right">ODU_SRC_SIGNAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Selects the ODU source signal: <br> 0 - Normal ODU data <br> 1 - Force OCI <br> 2 - Force LCK <br> 3 - Force AIS</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">OPU_PT_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of the received ODU Payload Type (PT). When set to '0', disables <A HREF="#OPU_PLM">OPU-PLM</A> generation</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">TTI_DAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of DAPI field in the PM TTI string. When set to '0', a DAPI mismatch will not generate <A HREF="#PM_TIM">PM-TIM</A></TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">TTI_SAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of SAPI field in the PM TTI string. When set to '0', a SAPI mismatch will not generate <A HREF="#PM_TIM">PM-TIM</A></TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc74"></A>
+<H2>5.4. ODU Layer Tandem Connection Monitoring Registers</H2>
+<A NAME="TCM_STS_PTR"></A>
+<H3>5.4.1. TCM_STS_PTR - TCM Status Pointer (0x13)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..3</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2..0</TD>
+<TD ALIGN="center">STS_PTR</TD>
+<TD ALIGN="center">RW</TD>
+<TD>TCM Status Pointer. Addresses a specific TCM channel for status reading: <br> 0 - TCM1 <br> . <br> . <br> 5 - TCM6</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="ODU_TCM_STS"></A>
+<H3>5.4.2. ODU_TCM_STS - ODU Tandem Connection Status (0x15)</H3>
+<P>
+This register reports the status of the TCM channel addressed by <A HREF="#TCM_STS_PTR">TCM_STS_PTR</A>. All alarm indications remain latched until the register
+has been read by the  microprocessor. In cases where multiple OTN framers are instanced, the register <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is used to select
+which instance the <A HREF="#ODU_TCM_STS">ODU_TCM_STS</A> and <A HREF="#TCM_STS_PTR">TCM_STS_PTR</A> are related to. If only one OTN instance is present, <A HREF="#OTU_STS_PTR">OTU_STS_PTR</A> is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..10</TD>
+<TD></TD>
+<TD></TD>
+<TD></TD>
+</TR>
+<TR>
+<TD ALIGN="center">9</TD>
+<TD ALIGN="center"><A HREF="#TCM_LTC">TCM_LTC</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Loss of Tandem Connection</TD>
+</TR>
+<TR>
+<TD ALIGN="center">8</TD>
+<TD ALIGN="center"><A HREF="#TCM_BIP">TCM_BIP</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a BIP-8 error has occurred</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7</TD>
+<TD ALIGN="center"><A HREF="#TCM_BEI">TCM_BEI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a backward error indication has been received</TD>
+</TR>
+<TR>
+<TD ALIGN="center">6</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5</TD>
+<TD ALIGN="center"><A HREF="#TCM_BIAE">TCM_BIAE</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Incommig alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">4</TD>
+<TD ALIGN="center"><A HREF="#TCM_AIS">TCM_AIS</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Backward incoming alignment error defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center"><A HREF="#TCM_OCI">TCM_OCI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Trail trace identifier mismatch</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center"><A HREF="#TCM_LCK">TCM_LCK</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Alarm indication signal defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center"><A HREF="#TCM_BDI">TCM_BDI</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Backward defect indication defect</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center"><A HREF="#TCM_TIM">TCM_TIM</A></TD>
+<TD ALIGN="center">RC</TD>
+<TD>TCM Trail trace identifier mismatch</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TCM_BEI_CNT"></A>
+<H3>5.4.3. TCM_BEI_CNT - ODU TCM BEI Counter (0x17)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center"><A HREF="#TCM_BEI">BEI_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="center">TCM BEI error counter of the TCM channel addressed by <A HREF="#TCM_STS_PTR">TCM_STS_PTR</A></TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TCM_BIP_CNT"></A>
+<H3>5.4.4. TCM_BIP_CNT - ODU TCM BIP Error Counter (0x18)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">15</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD ALIGN="center">Reserved for future use</TD>
+</TR>
+<TR>
+<TD>14..0</TD>
+<TD ALIGN="center"><A HREF="#TCM_BIP">BIP_CNT</A></TD>
+<TD ALIGN="center">RLC</TD>
+<TD ALIGN="right">TCM BIP-8 error counter of the TCM channel addressed by <A HREF="#TCM_STS_PTR">TCM_STS_PTR</A></TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TCM_CFG_PTR"></A>
+<H3>5.4.5. TCM_CFG_PTR - TCM Configuration Pointer (0x14)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..3</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2..0</TD>
+<TD ALIGN="center">STS_PTR</TD>
+<TD ALIGN="center">RW</TD>
+<TD>TCM Status Pointer. Addresses a specific TCM channel for configuration: <br> 0 - TCM1 <br> . <br> . <br> 5 - TCM6</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="ODU_TCM_CFG"></A>
+<H3>5.4.6. ODU_TCM_CFG - ODU Tandem Connection Configuration (0x16)</H3>
+<P>
+This register is used to set the operational configuration of the TCM channel addressed by <A HREF="#TCM_CFG_PTR">TCM_CFG_PTR</A>. In cases where multiple OTN
+framers are instanced, the register <A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A> is used to select which instance the <A HREF="#ODU_TCM_CFG">ODU_TCM_CFG</A> and <A HREF="#TCM_CFG_PTR">TCM_CFG_PTR</A> are related to.
+If only one OTN instance is present, <A HREF="#OTU_CFG_PTR">OTU_CFG_PTR</A> is ignored.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>19..3</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">TCM_MODE</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Selects the operation mode of TCM channel addressed by <A HREF="#TCM_CFG_PTR">TCM_CFG_PTR</A>: <br> 0 - Transparent <br> 1 - Operational</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">TTI_DAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of DAPI field in the TCM TTI string. When set to '0', a DAPI mismatch will not generate TCM-TIM</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">TTI_SAPI_EVAL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Enables evaluation of SAPI field in the TCM TTI string. When set to '0', a SAPI mismatch will not generate TCM-TIM</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="FTFL_ACCESS"></A>
+<H2>5.5. FTFL Access</H2>
+<A NAME="FTFL_ACCESS_CTRL"></A>
+<H3>5.5.1. FTFL_ACCESS_CTRL - FTFL Access Control (0x0A)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>19..1</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD>FTFL_SEL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>FTFL selection. Writing this register also causes the FTFL_DATA pointer to be reset: <br> 0 - Transmitted FTFL <br> 1 - Received FTFL</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="FTFL_DATA"></A>
+<H3>5.5.2. FTFL_DATA - FTFL Data Register (0x0B)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">19..8</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7..0</TD>
+<TD>FTFL_DATA</TD>
+<TD ALIGN="center">RW</TD>
+<TD>This register is used to access the transmitted and received <A HREF="#FTFL_ACCESS">FTFL</A>, according to configured in register <A HREF="#FTFL_ACCESS_CTRL">FTFL_ACCESS_CTRL</A>[FTFL_SEL]. The read/write pointer is automatically incremented by reading or writing this register</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc84"></A>
+<H2>5.6. OPU Layer Path Monitoring Registers</H2>
+<A NAME="OPU_CFG"></A>
+<H3>5.6.1. OPU_CFG - OPU Configuration (0x19)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="right">19..2</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">CBR_MAP_MODE</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Selects the Client data mapping mode: <br> 0 - Asynchronous <br> 1 - Bit synchronous</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">OPU_PRBS_EN</TD>
+<TD ALIGN="center">RW</TD>
+<TD>This bit enables the mapping of a (2^31 – 1) PRBS test signal as specified in O.150 into the OPU payload</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">OPU_TSE_ADD</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Writing a '1' and then a '0' to this bit causes a single bit error to be inserted into the OPU PRBS sequence</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OPU_STS"></A>
+<H3>5.6.2. OPU_STS - OPU Status (0x1A)</H3>
+<P>
+This register reports the OPU layer status. All alarm indications remain latched until the register has been read by the  microprocessor.
+</P>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="right">19..4</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3</TD>
+<TD ALIGN="center">OPU_LSS</TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a PRBS "Loss of Sequence Synchronization" has been detected in the OPU payload</TD>
+</TR>
+<TR>
+<TD ALIGN="center">2</TD>
+<TD ALIGN="center">OPU_TSE</TD>
+<TD ALIGN="center">RC</TD>
+<TD>Indicates that a PRBS error has been detected in the OPU payload</TD>
+</TR>
+<TR>
+<TD ALIGN="center">1</TD>
+<TD ALIGN="center">CBR_AIS</TD>
+<TD ALIGN="center">RC</TD>
+<TD>Client alarm indication signal</TD>
+</TR>
+<TR>
+<TD ALIGN="center">0</TD>
+<TD ALIGN="center">OPU_PLM</TD>
+<TD ALIGN="center">RC</TD>
+<TD>OTU Payload Mismatch</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OPU_EXP_PT"></A>
+<H3>5.6.3. OPU_EXP_PT - ODU Expected Payload Types (0x11)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..8</TD>
+<TD ALIGN="center">EXP_PT_1</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Expected payload type 1</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7..0</TD>
+<TD ALIGN="center">EXP_PT_2</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Expected payload type 2</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OPU_TX_PT"></A>
+<H3>5.6.4. OPU_TX_PT - ODU Tx Payload Type (0x12)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..8</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7..0</TD>
+<TD ALIGN="center">TX_PT</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Transmit payload type (according to G.709 Table 15-8)</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OPU_RX_PT"></A>
+<H3>5.6.5. OPU_RX_PT - OPU Rx Payload Type (0x10)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..8</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7..0</TD>
+<TD ALIGN="center">RX_PT</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Received payload type</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="OPU_TSE_CNT"></A>
+<H3>5.6.6. OPU_TSE_CNT - OPU PRBS Test Sequence Error Counter (0x23)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD ALIGN="center">ERR_CNT</TD>
+<TD>RLC</TD>
+<TD>OPU PRBS Error Counter</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TX_PJUST_CNT"></A>
+<H3>5.6.7. TX_PJUST_CNT - Tx Positive Justification Events Counter</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD ALIGN="right">TX_PJUST_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>Tx positive justification events counter</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TX_NJUST_CNT"></A>
+<H3>5.6.8. TX_NJUST_CNT - Tx Negative Justification Events Counter</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD ALIGN="right">TX_NJUST_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>Tx negative justification events counter</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="RX_PJUST_CNT"></A>
+<H3>5.6.9. RX_PJUST_CNT - Rx Positive Justification Events Counter</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD ALIGN="right">RX_PJUST_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>Rx positive justification events counter</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="RX_NJUST_CNT"></A>
+<H3>5.6.10. RX_NJUST_CNT - Rx Negative Justification Events Counter</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD ALIGN="right">RX_NJUST_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>Rx negative justification events counter</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TTI_ACCESS"></A>
+<H2>5.7. TTI Access</H2>
+<P>
+The Trail Trace Identifier (TTI) read and write access is performed through a dedicated set of registers, referred as TTI Access
+registers. These registers are <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A> and <A HREF="#TTI_DATA">TTI_DATA</A>. The following TTI access operations are supported:
+</P>
+  <UL>
+  <LI>Read/write the transmitted SM/PM/TCM string
+  <LI>Read/write the expected SM/PM/TCM string
+  <LI>Read the received (accepted) SM/PM/TCM string
+  </UL>
+
+<P></P>
+<P>
+In order to avoid a wrong received TTI to be reported during bit errors, the APIs must be present for three consecutive multiframes
+before being accepted. This is the persistence process described in G.789 appendix IV.2. The persistence process for SAPI, DAPI and
+Operator Specific fields run independently of each other.
+</P>
+<P>
+<A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A> is used to select the identifier which will be accessed (<I>i.e.</I>: OTU SM, OTU PM or ODU TCMi). This register also
+selects the string type (<I>i.e.</I>: transmitted, received or expected).
+</P>
+<P>
+Once the desired TTI has been selected via <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A>, the characters of the string can be sequentially read or write through
+register <A HREF="#TTI_DATA">TTI_DATA</A>. Field <I>TTI_PTR</I> of register <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A> can be used to set the read/write pointer to a specific location.
+This can be useful to configure only a subset of the TTI string, like DAPI or Operator Specific Field. 
+</P>
+<A NAME="TTI_ACCESS_CTRL"></A>
+<H3>5.7.1. TTI_ACCESS_CTRL - Trail Trace Identifier Access Control (0x08)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">19..11</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">10..9</TD>
+<TD>TTI_TYPE</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Selects the TTI type: <br> 0 - Transmitted TTI <br> 1 - Expected TTI <br> 2 - Received TTI</TD>
+</TR>
+<TR>
+<TD ALIGN="center">8..6</TD>
+<TD>TTI_SEL</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Addresses a specific TTI String: <br> 0 - OTU SM <br> 1 - ODU PM <br> 2 - ODU TCM1 <br> . <br> . <br> 7 - ODU TCM6</TD>
+</TR>
+<TR>
+<TD ALIGN="center">5..0</TD>
+<TD>TTI_PTR</TD>
+<TD ALIGN="center">RW</TD>
+<TD>Sets the read/write pointer to a specific location (0 to 63)     inside the TTI string</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="TTI_DATA"></A>
+<H3>5.7.2. TTI_DATA - Trail Trace Identifier Data Register (0x09)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">19..8</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">7..0</TD>
+<TD>TTI_CHAR</TD>
+<TD ALIGN="center">RW</TD>
+<TD>This register is used to read/write the characters of the string addressed by <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A>[TTI_TYPE] and <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A>[TTI_SEL]. The read/write pointer is automatically incremented by writing to this register. The pointer can be set to a specific location by writing the field <I>TTI_PTR</I> of register <A HREF="#TTI_ACCESS_CTRL">TTI_ACCESS_CTRL</A></TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="toc98"></A>
+<H2>5.8. FEC Registers</H2>
+<A NAME="FEC_STS_PTR"></A>
+<H3>5.8.1. FEC_STS_PTR - FEC Status Pointer (0x1F)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">19..4</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3..0</TD>
+<TD ALIGN="center">SUBROW</TD>
+<TD>RW</TD>
+<TD>Addresses one of the 16 FEC sub-rows for status reading. The contents of registers <A HREF="#FEC_CORRERR_CNT_HI">FEC_CORRERR_CNT_HI</A>, <A HREF="#FEC_CORRERR_CNT_LO">FEC_CORRERR_CNT_LO</A> and <A HREF="#FEC_UNCORR_CNT">FEC_UNCORR_CNT</A> are related to this sub-row: <br> 0 - Sub-row #1 <br> . <br> . <br> 15 - Sub-row #16</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="FEC_CORRERR_CNT_HI"></A>
+<H3>5.8.2. FEC_CORRERR_CNT_HI - FEC Corrected Errors Counter Higher Bits (0x20)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD ALIGN="center">19..4</TD>
+<TD ALIGN="center">-</TD>
+<TD></TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD ALIGN="center">3..0</TD>
+<TD>CORRERR_CNT_HI</TD>
+<TD ALIGN="center">RO</TD>
+<TD>This register contains the higher bits of the counter that accumulates the number of errors corrected by the FEC sub-row given by <A HREF="#FEC_STS_PTR">FEC_STS_PTR</A>[SUBROW]</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="FEC_CORRERR_CNT_LO"></A>
+<H3>5.8.3. FEC_CORRERR_CNT_LO - FEC Corrected Errors Counter Lower Bits (0x21)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..0</TD>
+<TD>CORRERR_CNT_LO</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>This register contains the lower bits of the counter that accumulates the number of errors corrected by the FEC sub-row given by <A HREF="#FEC_STS_PTR">FEC_STS_PTR</A>[SUBROW]</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<A NAME="FEC_UNCORR_CNT"></A>
+<H3>5.8.4. FEC_UNCORR_CNT - FEC Uncorrectable Errors Counter (0x22)</H3>
+<TABLE ALIGN="center" CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Bit</TH>
+<TH>Name</TH>
+<TH>Type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>15..14</TD>
+<TD ALIGN="center">-</TD>
+<TD ALIGN="center">RC</TD>
+<TD>Reserved for future use</TD>
+</TR>
+<TR>
+<TD>13..0</TD>
+<TD>UNCORR_CNT</TD>
+<TD ALIGN="center">RLC</TD>
+<TD>Number of received sub-rows containing uncorrectable errors (this count considers only the sub-row addressed by <A HREF="#FEC_STS_PTR">FEC_STS_PTR</A>[SUBROW])</TD>
+</TR>
+</TABLE>
+
+<P></P>
+
+<!-- html code generated by txt2tags 2.3 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags C:<A HREF="#projetos">projetos</A>LP-CORES<A HREF="#otn_framer">otn_framer</A>Documentacao\otn_framer_ds.t2t -->
+</BODY></HTML>

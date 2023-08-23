@@ -1,0 +1,179 @@
+
+
+%!target: html
+%!options: --style style.css
+%!encoding: iso-8859-1
+
++ V.24 Interface (v24_interface) +
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Recommendation V.24 ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The ITU-T recommendation V.24 defines the interconnecting circuits at the interface between data terminal equipment (DTE) and data
+circuit-terminating equipment for the transfer of binary data, control and timing signals and analogue signals. The complete list of
+the V.24 signals is shown below.
+
+|| Circuit number | Circuit name                                    |  Ground  | Data      |           |  Control  |           |  Timing    |            |
+ |                |                                                 |          | From  DCE |  To DCE   | From  DCE |  To DCE   | From  DCE  |  To DCE    |
+ |  102           | Signal ground or common return                  |  X       |           |           |           |           |            |            |
+ |  102a          | DTE common return                               |  X       |           |           |           |           |            |            |
+ |  102b          | DCE common return                               |  X       |           |           |           |           |            |            |
+ |  102c          | Common return                                   |  X       |           |           |           |           |            |            |
+ |  103           | Transmitted data                                |          |           |  X        |           |           |            |            |
+ |  104           | Received data                                   |          |  X        |           |           |           |            |            |
+ |  105           | Request to send                                 |          |           |           |           |  X        |            |            |
+ |  106           | Ready for sending                               |          |           |           |  X        |           |            |            |
+ |  107           | Data set ready                                  |          |           |           |  X        |           |            |            |
+ |  108/1         | Connect data set to line                        |          |           |           |           |  X        |            |            |
+ |  108/2         | Data terminal ready                             |          |           |           |           |  X        |            |            |
+ |  109           | Data channel received line signal detector      |          |           |           |  X        |           |            |            |
+ |  110           | Data signal quality detector                    |          |           |           |  X        |           |            |            |
+ |  111           | Data signal rate selector (DTE)                 |          |           |           |           |  X        |            |            |
+ |  112           | Data signal rate selector (DCE)                 |          |           |           |  X        |           |            |            |
+ |  113           | Transmitter signal element timing (DTE)         |          |           |           |           |           |            |  X         |
+ |  114           | Transmitter signal element timing (DCE)         |          |           |           |           |           |  X         |            |
+ |  115           | Receiver signal element timing  (DCE)           |          |           |           |           |           |  X         |            |
+ |  116/1         | Back-up switching in direct mode                |          |           |           |           |  X        |            |            |
+ |  116/2         | Back-up switching in authorized mode            |          |           |           |           |  X        |            |            |
+ |  117           | Standby indicator                               |          |           |           |  X        |           |            |            |
+ |  118           | Transmitted backward channel data               |          |           |  X        |           |           |            |            |
+ |  119           | Received backward channel data                  |          |  X        |           |           |           |            |            |
+ |  120           | Transmit backward channel line signal           |          |           |           |           |  X        |            |            |
+ |  121           | Backward channel ready                          |          |           |           |  X        |           |            |            |
+ |  122           | Backward channel received line signal detector  |          |           |           |  X        |           |            |            |
+ |  123           | Backward channel signal quality detector        |          |           |           |  X        |           |            |            |
+ |  124           | Select frequency groups                         |          |           |           |           |  X        |            |            |
+ |  125           | Calling indicator                               |          |           |           |  X        |           |            |            |
+ |  126           | Select transmit frequency                       |          |           |           |           |  X        |            |            |
+ |  127           | Select receive frequency                        |          |           |           |           |  X        |            |            |
+ |  128           | Receiver signal element timing (DTE)            |          |           |           |           |           |            |  X         |
+ |  129           | Request to receive                              |          |           |           |           |  X        |            |            |
+ |  130           | Transmit backward tone                          |          |           |           |           |  X        |            |            |
+ |  131           | Received character timing                       |          |           |           |           |           |  X         |            |
+ |  132           | Return to non-data mode                         |          |           |           |           |  X        |            |            |
+ |  133           | Ready for receiving                             |          |           |           |           |  X        |            |            |
+ |  134           | Received data present                           |          |           |           |  X        |           |            |            |
+ |  135           | Received energy present                         |          |           |           |  X        |           |            |            |
+ |  136           | New signal                                      |          |           |           |           |  X        |            |            |
+ |  140           | Loopback/Maintenance test                       |          |           |           |           |  X        |            |            |
+ |  141           | Local loopback                                  |          |           |           |           |  X        |            |            |
+ |  142           | Test indicator                                  |          |           |           |  X        |           |            |            |
+ |  191           | Transmitted voice answer                        |          |           |           |           |  X        |            |            |
+ |  192           | Received voice answer                           |          |           |           |  X        |           |            |            |
+
+
+Recommendation V.24 does not contain electrical specifications. The electrical characteristics of the interfaces are detailed in
+recommendations V.11, V.35 and V.36 and others.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ V.24 Interfaces in DATACOM Products ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The V.24 interfaces present in DATACOM products act allways as DCEs. The most commonly used electrical standards are V.35 and V.11/V.36
+(with 25-pin connectors) and 15-pin V.11.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ V.35/V.11/V.36 Signal List (25-pin connector) +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+|| Circuit number | Circuit name                                    |  Type     |  Direction (DCE) |
+ |  102           | Signal ground or common return                  |  Ground   |    -             |
+ |  103           | DTE Transmitted data                            |  Data     |    In            |
+ |  104           | DTE Received data                               |  Data     |    Out           |
+ |  105           | Request to send                                 |  Control  |    In            |
+ |  106           | Ready for sending                               |  Control  |    Out           |
+ |  107           | Data set ready                                  |  Control  |    Out           |
+ |  108           | Data terminal ready                             |  Control  |    In            |
+ |  109           | Data channel received line signal detector      |  Control  |    Out           |
+ |  113           | Transmitter signal element timing (DTE)         |  Clock    |    In            |
+ |  114           | Transmitter signal element timing (DCE)         |  Clock    |    Out           |
+ |  115           | Receiver signal element timing  (DCE)           |  Clock    |    Out           |
+ |  128           | Receiver signal element timing (DTE)            |  Clock    |    In            |
+ |  140           | Loopback/Maintenance test                       |  Control  |    In            |
+ |  141           | Local loopback                                  |  Control  |    In            |
+ |  142           | Test indicator                                  |  Control  |    Out           |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ V.11 Signal List (15-pin connector) +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+|| Circuit number | Circuit name                                      |  Type     |  Direction (DCE) |
+ |  102           | Signal ground or common return                    |  Ground   |    -             |
+ |  103           | DTE Transmitted data                              |  Data     |    In            |
+ |  104           | DTE Received data                                 |  Data     |    Out           |
+ |  *105 / 106    | Request to send  /  Ready for sending             |  Control  |    In / Out      |
+ |  108           | Data terminal ready                               |  Control  |    In            |
+ |  109           | Data channel received line signal detector        |  Control  |    Out           |
+ |  *113 / 114    | Transmitter Clock (DTE) / Transmitter Clock (DCE) |  Clock    |    In  / Out     |
+ |  115           | Receiver signal element timing  (DCE)             |  Clock    |    Out           |
+
+
+ * These are dual-purpose pins. Straps are used to configure them as inputs or outputs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Naming Conventions ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Timing Diagram ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  [figures/v24_timing_diagram.png]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Block Diagram ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  [figures/v24_block_diagram.png]
+
+
++++ Normal Data Flow +++
+
+  [figures/v24_normal_flow.png]
+
+
+++ Tests ++
+
+
++++ Loopbacks +++
+
+  [figures/v24_loop_flow.png]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ ModelSim Simulation ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
++++ TCL Source files +++
+
+
+   ||         File                                  |   Content                                     |
+    | serial_interface/Simulacao/v24_defines.tcl    | Register offsets and clock table definition   |
+    | serial_interface/Simulacao/v24_interface.tcl  | Configuration functions                       |
+    | serial_interface/Simulacao/modulo/v24_cfg.tcl | Testbench configuration                       |
+    
+    
++++ Testbench usage +++
+
+```
+# Loads the scripts
+source v24_cfg.tcl
+
+# Selects the interface rate. N is an integer ranging from 0 to 32 (x 64k). The value 0 disables the operation.
+v24_rate_sel N
+
+
+
+```
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ V.24 Lua Class ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+    
+    The Lua class for the //v24_interface// is available at the //dmlua// repository. The path is //dmlua/etc/lp/dev/v24_interface.lua.

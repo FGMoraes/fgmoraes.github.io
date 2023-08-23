@@ -1,0 +1,6 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/cluster_scheduler.c" name="/home/ruaro/hemps/hemps_trunk/software/modules/cluster_scheduler.c">
+<area shape="rect" id="node2" href="$cluster__scheduler_8h.html" title="This module defines the function relative to mapping a new app and a new task into a given slave proc..." alt="" coords="5,109,140,136"/>
+<area shape="rect" id="node4" href="$utils_8h.html" title="This module defines utils functions. " alt="" coords="216,109,273,136"/>
+<area shape="rect" id="node5" href="$processors_8h.html" title="This module defines function relative to the slave processor management by the manager kernel..." alt="" coords="297,109,395,136"/>
+<area shape="rect" id="node6" href="$applications_8h.html" title="Defines structures Application, Task, and Dependence. " alt="" coords="419,109,521,136"/>
+</map>

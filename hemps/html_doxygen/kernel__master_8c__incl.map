@@ -1,0 +1,12 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/kernel/master/kernel_master.c" name="/home/ruaro/hemps/hemps_trunk/software/kernel/master/kernel_master.c">
+<area shape="rect" id="node2" href="$kernel__master_8h.html" title="Header of kernel_master with important defines. " alt="" coords="17,117,132,143"/>
+<area shape="rect" id="node4" href="$utils_8h.html" title="This module defines utils functions. " alt="" coords="157,117,291,143"/>
+<area shape="rect" id="node5" href="$plasma_8h.html" title="Plasma Hardware Definitions. " alt="" coords="316,117,460,143"/>
+<area shape="rect" id="node6" href="$services_8h.html" title="Kernel services definitions. This services are used to identifies a packet. " alt="" coords="485,117,635,143"/>
+<area shape="rect" id="node7" href="$packet_8h.html" title="This module defines the ServiceHeader structure. This structure is used by all software components to..." alt="" coords="781,206,931,233"/>
+<area shape="rect" id="node9" href="$new__task_8h.html" title="This module defines the structure and some the function of NewTask FIFO. &#160;The NewTask structure store..." alt="" coords="590,206,757,233"/>
+<area shape="rect" id="node10" href="$cluster__scheduler_8h.html" title="This module defines the function relative to mapping a new app and a new task into a given slave proc..." alt="" coords="761,109,900,151"/>
+<area shape="rect" id="node11" href="$reclustering_8h.html" title="../../modules/reclustering.h" alt="" coords="925,117,1102,143"/>
+<area shape="rect" id="node12" href="$applications_8h.html" title="Defines structures Application, Task, and Dependence. " alt="" coords="1006,206,1109,233"/>
+<area shape="rect" id="node13" href="$processors_8h.html" title="This module defines function relative to the slave processor management by the manager kernel..." alt="" coords="1133,206,1307,233"/>
+</map>

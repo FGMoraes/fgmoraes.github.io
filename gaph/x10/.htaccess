@@ -1,0 +1,6 @@
+AuthUserFile /home/PORTOALEGRE/10049372/passmoraes
+AuthName "Projeto X10"
+AuthType Basic
+<Limit GET>
+require user moraes
+</Limit>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2316"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="C:\projetos\PD1411\upc_interface\Documentacao\figures"
+   sodipodi:docname="uart_debug_top.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\projetos\PD1411\upc_interface\Documentacao\figures\uart_debug_top.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs2318">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path13236"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="367.7507"
+     inkscape:cy="742.21556"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1280"
+     inkscape:window-height="977"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
+     showgrid="true"
+     gridspacingx="20px"
+     gridspacingy="20px"
+     inkscape:grid-bbox="false"
+     inkscape:grid-points="true"
+     objecttolerance="13.7"
+     gridtolerance="50" />
+  <metadata
+     id="metadata2321">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#e2d843;fill-opacity:0.7329843;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2352"
+       width="280"
+       height="260"
+       x="160"
+       y="152.36218" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3323"
+       transform="translate(44.328125,-56.436661)"><flowRegion
+         id="flowRegion3325"><rect
+           id="rect3327"
+           width="125.71428"
+           height="20"
+           x="194.28572"
+           y="472.36218" /></flowRegion><flowPara
+         id="flowPara3329"
+         style="font-size:16px">UART_DEBUG</flowPara></flowRoot>    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 480,262.36218 C 440,262.36218 400,262.36218 400,262.36218"
+       id="path16109"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 400,302.36218 C 440,302.36218 480,302.36218 480,302.36218"
+       id="path3336"
+       sodipodi:nodetypes="cc" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3338"
+       transform="translate(106.29687,-126.56808)"><flowRegion
+         id="flowRegion3340"><rect
+           id="rect3342"
+           width="258.57144"
+           height="98.571426"
+           x="381.42856"
+           y="423.79074" /></flowRegion><flowPara
+         id="flowPara3344">TX DATA</flowPara></flowRoot>    <flowRoot
+       transform="translate(105.08398,-170.90687)"
+       id="flowRoot3348"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3350"><rect
+           y="423.79074"
+           x="381.42856"
+           height="98.571426"
+           width="258.57144"
+           id="rect3352" /></flowRegion><flowPara
+         id="flowPara3354">RX DATA</flowPara></flowRoot>    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 200,232.36218 C 160,232.36218 120,232.36218 120,232.36218"
+       id="path5322"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 120,272.36218 C 160,272.36218 200,272.36218 200,272.36218"
+       id="path6293"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path6295"
+       d="M 200,192.36218 C 160,192.36218 120,192.36218 120,192.36218"
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path6297"
+       d="M 200,312.36218 C 160,312.36218 120,312.36218 120,312.36218"
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 200,332.36218 C 160,332.36218 120,332.36218 120,332.36218"
+       id="path6299"
+       sodipodi:nodetypes="cc" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6301"
+       transform="translate(-346.73437,-237.81594)"><flowRegion
+         id="flowRegion6303"><rect
+           id="rect6305"
+           width="258.57144"
+           height="98.571426"
+           x="381.42856"
+           y="423.79074" /></flowRegion><flowPara
+         id="flowPara6307">BUS_ADDR</flowPara></flowRoot>    <flowRoot
+       transform="translate(-356.8125,-197.81594)"
+       id="flowRoot6309"
+       xml:space="preserve"><flowRegion
+         id="flowRegion6311"><rect
+           y="423.79074"
+           x="381.42856"
+           height="98.571426"
+           width="258.57144"
+           id="rect6313" /></flowRegion><flowPara
+         id="flowPara6315">BUS_WDATA</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6317"
+       transform="translate(-353.29687,-157.92163)"><flowRegion
+         id="flowRegion6319"><rect
+           id="rect6321"
+           width="258.57144"
+           height="98.571426"
+           x="381.42856"
+           y="423.79074" /></flowRegion><flowPara
+         id="flowPara6323">BUS_RDATA</flowPara></flowRoot>    <flowRoot
+       transform="translate(-336.38672,-117.83356)"
+       id="flowRoot6325"
+       xml:space="preserve"><flowRegion
+         id="flowRegion6327"><rect
+           y="423.79074"
+           x="381.42856"
+           height="98.571426"
+           width="258.57144"
+           id="rect6329" /></flowRegion><flowPara
+         id="flowPara6331">BUS_NCS</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6333"
+       transform="translate(-337.92187,-97.833559)"><flowRegion
+         id="flowRegion6335"><rect
+           id="rect6337"
+           width="258.57144"
+           height="98.571426"
+           x="381.42856"
+           y="423.79074" /></flowRegion><flowPara
+         id="flowPara6339">BUS_NRD</flowPara></flowRoot>    <path
+       sodipodi:nodetypes="cc"
+       id="path6341"
+       d="M 200,352.36218 C 160,352.36218 120,352.36218 120,352.36218"
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6353"
+       transform="translate(-342.61523,-77.833559)"><flowRegion
+         id="flowRegion6355"><rect
+           id="rect6357"
+           width="258.57144"
+           height="98.571426"
+           x="381.42856"
+           y="423.79074" /></flowRegion><flowPara
+         id="flowPara6359">BUS_NWR</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#e26f43;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6361"
+       width="60"
+       height="80"
+       x="340"
+       y="242.36218" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot7332"
+       transform="translate(160.28418,238.38219)"><flowRegion
+         id="flowRegion7334"><rect
+           id="rect7336"
+           width="89.285713"
+           height="41.42857"
+           x="192.85715"
+           y="38.790752" /></flowRegion><flowPara
+         id="flowPara7338">UART</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:#99c693;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7340"
+       width="80"
+       height="220"
+       x="200"
+       y="172.36218" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot8319"
+       style="text-align:center;text-anchor:middle"
+       transform="translate(-121.72949,239.52379)"><flowRegion
+         id="flowRegion8321"><rect
+           id="rect8323"
+           width="77.142853"
+           height="42.14286"
+           x="322.85715"
+           y="30.219324"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara8325">CONTROL</flowPara><flowPara
+         id="flowPara8327">LOGIC</flowPara></flowRoot>    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 340,262.36218 C 300,262.36218 280,262.36218 280,262.36218"
+       id="path8329"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path9498"
+       d="M 277.51594,302.36218 C 317.51594,302.36218 337.51594,302.36218 337.51594,302.36218"
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 118.34396,372.36218 C 158.34396,372.36218 198.34396,372.36218 198.34396,372.36218"
+       id="path2217"
+       sodipodi:nodetypes="cc" />
+    <flowRoot
+       transform="translate(-335.26172,-57.904019)"
+       id="flowRoot2219"
+       xml:space="preserve"><flowRegion
+         id="flowRegion2221"><rect
+           y="423.79074"
+           x="381.42856"
+           height="98.571426"
+           width="258.57144"
+           id="rect2223" /></flowRegion><flowPara
+         id="flowPara2225">BUS_CLK</flowPara></flowRoot>  </g>
+</svg>

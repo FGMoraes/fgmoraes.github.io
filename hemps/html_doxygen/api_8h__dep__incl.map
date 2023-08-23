@@ -1,0 +1,6 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/include/api.h" name="/home/ruaro/hemps/hemps_trunk/software/include/api.h">
+<area shape="rect" id="node2" href="$kernel__slave_8c.html" title="Kernel slave is the system slave used to execute user&#39;s tasks. " alt="" coords="5,199,183,255"/>
+<area shape="rect" id="node3" href="$communication_8h.html" title="Defines the PipeSlot and MessageRequest structures. " alt="" coords="188,95,365,151"/>
+<area shape="rect" id="node4" href="$communication_8c.html" title="Implements the PIPE and MessageRequest structures management. This module is only used by slave kerne..." alt="" coords="207,199,384,255"/>
+<area shape="rect" id="node5" href="$task__migration_8c.html" title="This module implements function relative to task migration. This module is used by slave kernel..." alt="" coords="408,199,585,255"/>
+</map>

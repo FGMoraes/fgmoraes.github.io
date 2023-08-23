@@ -1,0 +1,10 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/include/plasma.h" name="/home/ruaro/hemps/hemps_trunk/software/include/plasma.h">
+<area shape="rect" id="node2" href="$kernel__master_8c.html" title="Kernel master is the system manager kernel. " alt="" coords="5,109,183,165"/>
+<area shape="rect" id="node3" href="$kernel__slave_8c.html" title="Kernel slave is the system slave used to execute user&#39;s tasks. " alt="" coords="207,109,384,165"/>
+<area shape="rect" id="node4" href="$communication_8c.html" title="Implements the PIPE and MessageRequest structures management. This module is only used by slave kerne..." alt="" coords="408,109,585,165"/>
+<area shape="rect" id="node5" href="$local__scheduler_8c.html" title="local_scheduler is a kernel module in charge of implementing task scheduling following a LST (Least S..." alt="" coords="609,109,787,165"/>
+<area shape="rect" id="node6" href="$packet_8c.html" title="This module implements function relative to programming the DMNI to send and receibe a packet..." alt="" coords="811,109,988,165"/>
+<area shape="rect" id="node7" href="$pending__service_8c.html" title="This module implements function relative a FIFO of the incomming packets (ServiceHeader FIFO) receive..." alt="" coords="1012,109,1189,165"/>
+<area shape="rect" id="node8" href="$task__migration_8c.html" title="This module implements function relative to task migration. This module is used by slave kernel..." alt="" coords="1213,109,1391,165"/>
+<area shape="rect" id="node9" href="$utils_8c.html" title="This module implements utils functions. " alt="" coords="1415,109,1592,165"/>
+</map>

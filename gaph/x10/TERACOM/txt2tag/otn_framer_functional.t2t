@@ -1,0 +1,11 @@
+OTN Framer Functional Description
+$Id: otn_framer_functional.t2t,v 1.1 2008/05/14 17:03:40 paulo Exp $
+
+
+%!target: html
+%!options: --toc --toc-level 3
+%!options: --style style.css
+%!encoding: iso-8859-1
+
+
+%!include: client_interface.t2t

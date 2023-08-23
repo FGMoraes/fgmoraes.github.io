@@ -1,0 +1,6 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/processors.h" name="/home/ruaro/hemps/hemps_trunk/software/modules/processors.h">
+<area shape="rect" id="node2" href="$kernel__master_8c.html" title="Kernel master is the system manager kernel. " alt="" coords="5,109,183,165"/>
+<area shape="rect" id="node3" href="$cluster__scheduler_8c.html" title="Selects where to execute a task and application &#160;Cluster scheduler implements the cluster resources m..." alt="" coords="207,109,384,165"/>
+<area shape="rect" id="node4" href="$processors_8c.html" title="This module implements function relative to the slave processor management by the manager kernel..." alt="" coords="408,109,585,165"/>
+<area shape="rect" id="node5" href="$reclustering_8c.html" title="This module implements function relative to reclustering This module is used by the kernel manager &#160;R..." alt="" coords="609,109,787,165"/>
+</map>

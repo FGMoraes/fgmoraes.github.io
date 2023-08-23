@@ -1,0 +1,9 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/reclustering.c" name="/home/ruaro/hemps/hemps_trunk/software/modules/reclustering.c">
+<area shape="rect" id="node2" href="$reclustering_8h.html" title="reclustering.h" alt="" coords="24,109,124,136"/>
+<area shape="rect" id="node5" href="$packet_8h.html" title="This module defines the ServiceHeader structure. This structure is used by all software components to..." alt="" coords="150,184,222,211"/>
+<area shape="rect" id="node6" href="$services_8h.html" title="Kernel services definitions. This services are used to identifies a packet. " alt="" coords="199,109,338,136"/>
+<area shape="rect" id="node7" href="$utils_8h.html" title="This module defines utils functions. " alt="" coords="362,109,420,136"/>
+<area shape="rect" id="node8" href="$cluster__scheduler_8h.html" title="This module defines the function relative to mapping a new app and a new task into a given slave proc..." alt="" coords="444,109,578,136"/>
+<area shape="rect" id="node9" href="$processors_8h.html" title="This module defines function relative to the slave processor management by the manager kernel..." alt="" coords="406,184,504,211"/>
+<area shape="rect" id="node4" href="$applications_8h.html" title="Defines structures Application, Task, and Dependence. " alt="" coords="22,184,125,211"/>
+</map>

@@ -1,0 +1,867 @@
+X10GIGA Programmable Logic Datasheet
+PD1461
+$Id: x10giga_ds.t2t,v 1.7 2008/11/13 20:53:36 bucker Exp $
+
+
+%!target: html
+%!options: --toc --toc-level 3
+%!options: --style style.css
+%!encoding: iso-8859-1
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Base Addresses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!preproc: E2P_BASE       "0x0000"
+%!preproc: GLOBAL_BASE    "0x0100"
+%!preproc: GENERAL_BASE   "0x0200"
+%!preproc: OTN_BASE       "0x0300"
+%!preproc: CLIENT_BASE    "0x0500"
+%!preproc: EPLD_BASE      "0xD000"
+%!preproc: UPC_BASE       "0xE000"
+%!preproc: FT_BASE        "0x0F00"
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Register Offsets (GENERAL_BASE)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%!preproc: XFP_INIT_OFFSET             "0x00"
+%!preproc: LINE_XFP_STS_OFFSET         "0x01"
+%!preproc: CLIENT_XFP_STS_OFFSET       "0x02"
+%!preproc: I2C_CTRL_OFFSET             "0x03"
+%!preproc: I2C_ADDR_OFFSET             "0x04"
+%!preproc: I2C_DATA_OFFSET             "0x05"
+%!preproc: SFP1_STS_OFFSET             "0x06"
+%!preproc: SFP2_STS_OFFSET             "0x07"
+%!preproc: SFP3_STS_OFFSET             "0x08"
+%!preproc: SFP4_STS_OFFSET             "0x09"
+%!preproc: SFP5_STS_OFFSET             "0x0A"
+
+%!preproc: SETG_REFCLK_SEL_OFFSET      "0x0E"
+%!preproc: EXT_CLKOUT_SEL_OFFSET       "0x0F"
+
+%!preproc: PHY_INIT_OFFSET             "0x10"
+%!preproc: PHY_STS_OFFSET              "0x11"
+%!preproc: PHY_DEV_ADDR_OFFSET         "0x12"
+%!preproc: PHY_MII_CTRL_OFFSET         "0x13"
+%!preproc: PHY_REG_ADDR_OFFSET         "0x14"
+%!preproc: PHY_REG_DATA_OFFSET         "0x15"
+
+%!preproc: PHY_PRBS_CFG_OFFSET         "0x16"
+%!preproc: PHY_PRBS_STS_OFFSET         "0x17"
+%!preproc: LINE_DCM_PS_CTRL_OFFSET     "0x18"
+%!preproc: CLIENT_DCM_PS_CTRL_OFFSET   "0x19"
+%!preproc: LINE_TXDCM_STS_OFFSET       "0x1A"
+%!preproc: LINE_TXDCM_TAP_HI_OFFSET    "0x1B"
+%!preproc: LINE_TXDCM_TAP_LO_OFFSET    "0x1C"
+%!preproc: LINE_RXDCM_STS_OFFSET       "0x1D"
+%!preproc: LINE_RXDCM_TAP_HI_OFFSET    "0x1E"
+%!preproc: LINE_RXDCM_TAP_LO_OFFSET    "0x1F"
+%!preproc: CLIENT_TXDCM_STS_OFFSET     "0x20"
+%!preproc: CLIENT_TXDCM_TAP_HI_OFFSET  "0x21"
+%!preproc: CLIENT_TXDCM_TAP_LO_OFFSET  "0x22"
+%!preproc: CLIENT_RXDCM_STS_OFFSET     "0x23"
+%!preproc: CLIENT_RXDCM_TAP_HI_OFFSET  "0x24"
+%!preproc: CLIENT_RXDCM_TAP_LO_OFFSET  "0x25"
+
+%!preproc: DCM_LOCK_STS_OFFSET         "0x2F"
+
+%!preproc: GTP_CFG_CTRL_OFFSET         "0x30"
+%!preproc: GTP_CFG_ADDR_OFFSET         "0x31"
+%!preproc: GTP_CFG_DATA_HI_OFFSET      "0x32"
+%!preproc: GTP_CFG_DATA_LO_OFFSET      "0x33"
+%!preproc: GTP_CFG_STS_OFFSET          "0x34"
+%!preproc: GTP_PTR_OFFSET              "0x35"
+%!preproc: GTP_RST_OFFSET              "0x36"
+%!preproc: GTP_POLARITY_OFFSET         "0x37"
+%!preproc: GTP_LOOP_CTRL_OFFSET        "0x38"
+%!preproc: GTP_CTRL_OFFSET             "0x39"
+%!preproc: GTP_CNTHI_ERR_OFFSET        "0x3A"
+%!preproc: GTP_CNTLO_ERR_OFFSET        "0x3B"
+%!preproc: GTP_STS_OFFSET              "0x3C"                                             
+
+%!preproc: SW_RST_OFFSET               "0x3F"
+
+%!preproc: VCXO_SEL_OFFSET             "0x40"
+%!preproc: VCXO_CFG_OFFSET             "0x41"
+%!preproc: VCXO_STS_OFFSET             "0x42"
+%!preproc: VCXO_CALIB_HDATA_OFFSET     "0x43"
+%!preproc: VCXO_CALIB_LDATA_OFFSET     "0x44"
+%!preproc: DAC_VAL_HDATA_OFFSET        "0x45"
+%!preproc: DAC_VAL_LDATA_OFFSET        "0x46"
+
+%!preproc: FIFO_RIO_STS_OFFSET         "0x50"
+
+%!preproc: FPGA_TEMP_MSB_OFFSET        "0x80"
+%!preproc: FPGA_TEMP_LSB_OFFSET        "0x81"
+%!preproc: PHY_TEMP_MSB_OFFSET         "0x90"
+%!preproc: PHY_TEMP_LSB_OFFSET         "0x91"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Register Offsets (CLIENT_BASE)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%!preproc: CLIENT_OP_CFG_OFFSET		  "0x00"
+%!preproc: CLIENT_TEST_CFG_OFFSET	  "0x01"
+%!preproc: CLIENT_STS_OFFSET	      "0x08"
+
+
+%!postproc(html): '\\(\w+)\\' '<A HREF="#\1">\1</A>'
+%!postproc(html): '{([^}]*)}' '<\1>'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ Introduction +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++ Microprocessor Interface +
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Register Map ++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ || Base address       | Register Group                                    |
+  |  E2P_BASE          | [E2PROM access registers #E2PROM]                 |
+  |  GLOBAL_BASE       | [Global registers #GLOBAL]                        |
+  |  GENERAL_BASE      | [General purpose registers #GENERAL]              |
+  |  OTN_BASE          | [OTN framer registers #OTN_FRAMER]                |
+  |  CLIENT_BASE       | [Client interface registers #CLIENT]              |
+  |  EPLD_BASE         | [EPLD interface registers #EPLD]                  |
+  |  FT_BASE           | [Factory test specific registers  #FACTORY_TEST]  |
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ EEPROM (Base = E2P_BASE) ++[E2PROM]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A range of offsets is reserved for E2PROM access. The behaviour of the registers inside this range is described in DM800 Interface Card
+Common Datasheet, located at "dmprojetos/PD14/PD1400 - 860 Shelf & Accessories/DocProjeto/LogicaProgramavel"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Global Registers (Base = GLOBAL_BASE) ++[GLOBAL]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Global registers are common to all DM800 interface cards. Detailed description can be found at
+"dmprojetos/PD14/PD1400 - 860 Shelf & Accessories/DocProjeto/LogicaProgramavel"
+
+The CHIP_ID value is 0x79.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ General Purpose Registers (Base = GENERAL_BASE) ++[GENERAL]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+|| Offset                      |  Register Name                           | Description                              |
+|  XFP_INIT_OFFSET             |  \XFP_INIT\                              | XFP Initialization                       |
+|  LINE_XFP_STS_OFFSET         |  \LINE_XFP_STS\                          | Line XFP Status                          |
+|  CLIENT_XFP_STS_OFFSET       |  \CLIENT_XFP_STS\                        | Line XFP Status                          |
+|  I2C_CTRL_OFFSET             |  \I2C_CTRL\                              | XFP serial interface control             |
+|  I2C_ADDR_OFFSET             |  \I2C_ADDR\                              | I2C address                              |
+|  I2C_DATA_OFFSET             |  \I2C_DATA\                              | I2C data                                 |
+|  SETG_REFCLK_SEL_OFFSET      |  \SETG_REFCLK_SEL\                       | T0 Reference Selection                   |
+|  EXT_CLKOUT_SEL_OFFSET       |  \EXT_CLKOUT_SEL\                        | T4 Reference Selection                   |
+|  PHY_INIT_OFFSET             |  \PHY_INIT\                              | PHY initialization                       |
+|  PHY_STS_OFFSET              |  \PHY_STS\                               | PHY Status                               |
+|  PHY_DEV_ADDR_OFFSET         |  \PHY_DEV_ADDR\                          | PHY device address                       |
+|  PHY_MII_CTRL_OFFSET         |  \PHY_MII_CTRL\                          | PHY MII Control                          |
+|  PHY_REG_ADDR_OFFSET         |  \PHY_REG_ADDR\                          | PHY register address                     |
+|  PHY_REG_DATA_OFFSET         |  \PHY_REG_DATA\                          | PHY data register                        |
+|  PHY_PRBS_CFG_OFFSET         |  \PHY_PRBS_CFG\                          | PHY PRBS Configuration                   |
+|  PHY_PRBS_STS_OFFSET         |  \PHY_PRBS_STS\                          | PHY PRBS Status                          |
+|  LINE_DCM_PS_CTRL_OFFSET     |  \LINE_DCM_PS_CTRL\                      | Line PHY DCM phase shifting control      |
+|  CLIENT_DCM_PS_CTRL_OFFSET   |  \CLIENT_DCM_PS_CTRL\                    | Client PHY DCM phase shifting control    |
+|  LINE_TXDCM_STS_OFFSET       |  \LINE_TXDCM_STS\                        | Line Tx training DCM status              |
+|  LINE_TXDCM_TAP_HI_OFFSET    |  [LINE_TXDCM_TAP_HI #LINE_TXDCM_TAP]     | Line Tx DCM Phase Shift Tap (MSB)        |
+|  LINE_TXDCM_TAP_LO_OFFSET    |  [LINE_TXDCM_TAP_LO #LINE_TXDCM_TAP]     | Line Tx DCM Phase Shift Tap (LSB)        |
+|  LINE_RXDCM_STS_OFFSET       |  \LINE_RXDCM_STS\                        | Line Rx training DCM status              |
+|  LINE_RXDCM_TAP_HI_OFFSET    |  [LINE_RXDCM_TAP_HI #LINE_RXDCM_TAP]     | Line Rx training DCM tap (MSB)           |
+|  LINE_RXDCM_TAP_LO_OFFSET    |  [LINE_RXDCM_TAP_LO #LINE_RXDCM_TAP]     | Line Rx training DCM tap (LSB)           |
+|  CLIENT_TXDCM_STS_OFFSET     |  \CLIENT_TXDCM_STS\                      | Line Tx training DCM status              |
+|  CLIENT_TXDCM_TAP_HI_OFFSET  |  [CLIENT_TXDCM_TAP_HI #CLIENT_TXDCM_TAP] | Line Line Tx DCM Phase Shift Tap (MSB)   |
+|  CLIENT_TXDCM_TAP_LO_OFFSET  |  [CLIENT_TXDCM_TAP_LO #CLIENT_TXDCM_TAP] | Line Line Tx DCM Phase Shift Tap (LSB)   |
+|  CLIENT_RXDCM_STS_OFFSET     |  \CLIENT_RXDCM_STS\                      | Line Rx training DCM status              |
+|  CLIENT_RXDCM_TAP_HI_OFFSET  |  [CLIENT_RXDCM_TAP_HI #CLIENT_RXDCM_TAP] | Line Rx training DCM tap (MSB)           |
+|  CLIENT_RXDCM_TAP_LO_OFFSET  |  [CLIENT_RXDCM_TAP_LO #CLIENT_RXDCM_TAP] | Line Rx training DCM tap (LSB)           |
+|  DCM_LOCK_STS_OFFSET         |  \DCM_LOCK_STS\                          | DCM Lock status                          |
+|  GTP_CFG_CTRL_OFFSET         |  \GTP_CFG_CTRL\                          | GTP DUAL configuration control           |
+|  GTP_CFG_ADDR_OFFSET         |  \GTP_CFG_ADDR\                          | GTP DUAL configuration address           |
+|  GTP_CFG_DATA_HI_OFFSET      |  \GTP_CFG_DATA_HI\                       | GTP DUAL configuration data (MSB)        |
+|  GTP_CFG_DATA_LO_OFFSET      |  \GTP_CFG_DATA_LO\                       | GTP DUAL configuration data (LSB)        |
+|  GTP_CFG_STS_OFFSET          |  \GTP_CFG_STS\                           | GTP DUAL configuration status            |
+|  GTP_PTR_OFFSET              |  \GTP_PTR\                               | GTP transceiver pointer                  |
+|  GTP_RST_OFFSET              |  \GTP_RST\                               | GTP transceiver reset                    |
+|  GTP_STS_OFFSET              |  \GTP_STS\                               | GTP transceiver status                   |
+|  GTP_POLARITY_OFFSET         |  \GTP_POLARITY\                          | GTP transceiver polarity configuration   |
+|  GTP_LOOP_CTRL_OFFSET        |  \GTP_LOOP_CTRL\                         | GTP transceiver loopback control         |
+|  GTP_CTRL_OFFSET             |  \GTP_CTRL\                              | GTP transceiver Control                  |
+|  GTP_CNTHI_ERR_OFFSET        |  \GTP_CNTHI_ERR\                         | GTP transceiver BERT error counter (MSB) |
+|  GTP_CNTLO_ERR_OFFSET        |  \GTP_CNTLO_ERR\                         | GTP transceiver BERT error counter (LSB) |
+|  SW_RST_OFFSET               |  \SW_RST\                                | Software reset                           |
+|  VCXO_SEL_OFFSET             |  \VCXO_SEL\                              | VCXO selection                           |
+|  VCXO_CFG_OFFSET             |  \VCXO_CFG\                              | VCXO configuration                       |
+|  VCXO_STS_OFFSET             |  \VCXO_STS\                              | VCXO status                              |
+|  VCXO_CALIB_HDATA_OFFSET     |  [VCXO_CALIB_HDATA #VCXO_CALIB_DATA]     | VCXO calibration data (MSB)              |
+|  VCXO_CALIB_LDATA_OFFSET     |  [VCXO_CALIB_LDATA #VCXO_CALIB_DATA]     | VCXO calibration data (LSB)              |
+|  DAC_VAL_HDATA_OFFSET        |  [DAC_VAL_HDATA #DAC_VAL_DATA]           | DAC value (MSB)                          |
+|  DAC_VAL_LDATA_OFFSET        |  [DAC_VAL_LDATA #DAC_VAL_DATA]           | DAC value (LSB)                          |
+|  FPGA_TEMP_MSB_OFFSET        |  \FPGA_TEMP_MSB\                         | FPGA temperature (MSB)                   |
+|  FPGA_TEMP_LSB_OFFSET        |  \FPGA_TEMP_LSB\                         | FPGA temperature (LSB)                   |
+|  PHY_TEMP_MSB_OFFSET         |  \PHY_TEMP_MSB\                          | PHY temperature (MSB)                    |
+|  PHY_TEMP_LSB_OFFSET         |  \PHY_TEMP_LSB\                          | PHY temperature (LSB)                    |
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ XFP Status and Initialization +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+++++ XFP_INIT - XFP Initialization (XFP_INIT_OFFSET) ++++[XFP_INIT]
+
+|| Bit   |  Type  |  Name              | Description                                                          |
+|  7..2  |  -     |  -                 | Reserved for future use.                                             |
+|  1     |  RW    |  CLIENT_PDOWN/RST  | Client XFP Reset and power down: {br} 0 – Normal operation {br} 1 – Powerdown {br} (A falling edge of this register causes the XFP to be reset) |
+|  0     |  RW    |  LINE_PDOWN/RST    | Line XFP Reset and power down: {br} 0 – Normal operation {br} 1 – Powerdown {br} (A falling edge of this register causes the XFP to be reset)   |
+
+++++ LINE_XFP_STS - Line XFP Status (LINE_XFP_STS_OFFSET) ++++[LINE_XFP_STS]
+
+|| Bit   |  Type  |  Name         | Description                                                             |
+|  7..5  |  -     |  -            | Reserved for future use.                                                |
+|  4     |  RO    |  LASER_ON     | ALS status (non-latched): {br} 0 – Laser off {br} 1 – Laser on {br}     |
+|  3     |  RO    |  LOS          | Loss of signal {br} 1 - Signal absent (latched) {br} 0 - Signal present |
+|  2     |  RO    |  NINTERRUPT   | Active low interrupt (fail or critial alarm): {br} 1 - No integrrupt {br} 0 - interrupt (latched)    |
+|  1     |  RO    |  MOD_NR       | Module not ready. Indicates a XFP fail condition. {br} 1 - Fail (latched) {br} 0 - Normal operation  |
+|  0     |  RO    |  MOD_ABS      | XFP module presence indication: {br} 1 - Module present {br} 0 - Module absent (latched)             |
+
+++++ CLIENT_XFP_STS - Client XFP Status (CLIENT_XFP_STS_OFFSET) ++++[CLIENT_XFP_STS]
+
+|| Bit   |  Type  |  Name         | Description                                                             |
+|  7..5  |  -     |  -            | Reserved for future use.                                              |
+|  4     |  RO    |  LASER_ON     | ALS status (non-latched): {br} 0 – Laser off {br} 1 – Laser on {br}     |
+|  3     |  RO    |  LOS          | Loss of signal {br} 1 - Signal absent (latched) {br} 0 - Signal present |
+|  2     |  RO    |  NINTERRUPT   | Active low interrupt (fail or critial alarm): {br} 1 - No integrrupt {br} 0 - interrupt (latched)    |
+|  1     |  RO    |  MOD_NR       | Module not ready. Indicates a XFP fail condition. {br} 1 - Fail (latched) {br} 0 - Normal operation  |
+|  0     |  RO    |  MOD_ABS      | XFP module presence indication: {br} 1 - Module present {br} 0 - Module absent (latched)             |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ I2C Devices Register Access +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The XFP modules and the AnyRate VCXOs have internal registers which are accessible through an I2C bus controlled by the FPGA.
+The microprocessor can perform I2C read and write operations using FPGA registers \I2C_ADDR\, \I2C_DATA\ and \I2C_CTRL\.
+The read and write procedures are described in fluxograms below. Writing \I2C_CTRL\ causes the requested operation to be initiated.
+
+**Read Procedure:**
+
+  [figures/xfp_read.png]  
+  
+**Write Procedure:**  
+  
+  [figures/xfp_write.png]  
+
+For detailed information on XFP internal registers, please refer to the SFF Commitee's INF-8077i document (10 Gigabit Small Form Factor
+Pluggable Module).
+
+For information on the AnyRate VCXO programming, please refer to SiLabs' [Si571 device datasheet references/si570_anyrate.pdf].
+
+++++ I2C_CTRL - I2C Control (I2C_CTRL_OFFSET) ++++[I2C_CTRL]
+
+|| Bit    |  type |  Name          | Description                                                  |
+|  7..4   |  RW   |  DEV_SEL       | I2C device selection: {br} 0 - Line XFP {br} 1 - Client XFP {br} 2 - PHY1 (Line) Tx VCXO {br} 3 - PHY2 (Client) Tx VCXO {br} 4 - SFP1 Tx VCXO {br} 5 - SFP2 Tx VCXO {br} 6 - SFP3 Tx VCXO {br} 7 - SFP4 Tx VCXO {br} 8 - SFP5 Tx VCXO {br} 9 - ICBUS Tx VCXO {br} 11..15 - Invalid |
+|  3      |  -    |  -             | Reserved for future use                                      |
+|  2      |  RO   |  ERROR         | Falha na comunicação I2C: {br} 1 - Erro {br} 0 - Ok          |
+|  1      |  RO   |  BUSY          | Interface status: {br} 1 - Busy {br} 0 - Idle                |
+|  0      |  RW   |  OPERATION     | Operation: {br} 1 - Write {br} 0 - Read                      |
+
+++++ I2C_ADDR - I2C Address (I2C_ADDR_OFFSET) ++++[I2C_ADDR]
+
+|| Bit    |  type |  Name          | Description                                                  |
+|  7..0   |  -    |  I2C_ADDR      | I2C register address                                         |
+
+++++ I2C_DATA - I2C Data (I2C_DATA_OFFSET) ++++[I2C_DATA]
+
+|| Bit    |  type |  Name          | Description                                                  |
+|  7..0   |  -    |  I2C_DATA      | I2C read/write data                                          |
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Clock Source Selection +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ SETG_REFCLK_SEL – MPU SETG Reference Clock Selection (SETG_REFCLK_SEL_OFFSET) ++++[SETG_REFCLK_SEL]
+
+|| Bit   |  type  |  Name             | Description                                                                                                          |
+|  7..1  |  -     |  -                | Reserved for future use.                                                                                             |
+|   0    |  RW    |  CLK_SEL          | Selects the clock reference to be sent to MPU's T0 clock generator: {br} 0 - Client Rx Clock {br} 1 -  Line Rx Clock |
+
+++++ EXT_CLKOUT_SEL – MPU External Clock Output Reference Selection (EXT_CLKOUT_SEL_OFFSET) ++++[EXT_CLKOUT_SEL]
+
+|| Bit   |  type  |  Name             | Description                                                                                                          |
+|  7..1  |  -     |  -                | Reserved for future use.                                                                                             |
+|   0    |  RW    |  CLK_SEL          | Selects the clock reference to be sent to MPU's T4 clock generator: {br} 0 - Client Rx Clock {br} 1 -  Line Rx Clock |
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ PHY Initialization and Status +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ PHY_INIT - PHY Initialization (PHY_INIT_OFFSET) ++++[PHY_INIT]
+
+|| Bit   |  type  |  Name        | Description                |
+|  7..4  |  -     |  -           | Reserved for future use. |
+|  3     |  RW    |  DCM2_RESET  | PHY2 (Client) DCM reset. Must be asserted for at least 200ms. |
+|  2     |  RW    |  PHY2_RESET  | PHY2 (Client) reset. Must be asserted for at least 100ns.     |
+|  1     |  RW    |  DCM1_RESET  | PHY1 (Line) DCM reset. Must be asserted for at least 200ms.   |
+|  0     |  RW    |  PHY1_RESET  | PHY1 (Line) reset. Must be asserted for at least 100ns.       |
+
+ | Note: The DCM must allways be reset after PHY reset |
+
+++++ PHY_STS - PHY Status (PHY_STS_OFFSET) ++++[PHY_STS]
+
+|| Bit    |  type  |  Name             | Description                                      |
+ |  7..6  |  -     |  -                | Reserved for future use.                         |
+ |  5     |  RO    |  PHY2_TX_LOCKDET  | PHY2 (Client) Transmit lock detect (CSU_REFCLK). |
+ |  4     |  RO    |  PHY2_RX_LOCKDET  | PHY2 (Client) Receive lock detect.               |
+ |  3     |  RO    |  PHY2_TXRX_ALARM  | PHY2 (Client) Transmit or Receive Alarm.         |
+ |  2     |  RO    |  PHY1_TX_LOCKDET  | PHY1 (Line) Transmit lock detect (CSU_REFCLK).   |
+ |  1     |  RO    |  PHY1_RX_LOCKDET  | PHY1 (Line) Receive lock detect.                 |
+ |  0     |  RO    |  PHY1_TXRX_ALARM  | PHY1 (Line) Transmit or Receive Alarm.           |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ PHY Register Access +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The client and line PHYs have internal registers which are accessible through an MII interface controlled by the FPGA.
+The microprocessor can perform MII read and write operations using FPGA registers \PHY_DEV_ADDR\, \PHY_REG_ADDR\, \PHY_REG_DATA\ and
+\PHY_MII_CTRL\. The read and write procedures are described in fluxograms below. Writing \PHY_MII_CTRL\ causes the requested
+operation to be initiated.
+
+**Read Procedure:**
+
+  [figures/xfp_read.png]  
+  
+**Write Procedure:**  
+  
+  [figures/xfp_write.png] 
+  
+
+++++ PHY_DEV_ADDR - PHY Selection and MII device address (PHY_DEV_ADDR_OFFSET) ++++[PHY_DEV_ADDR]
+
+||  Bit   |  type  |  Name      | Description                                                      |
+ |  7..6  |  -     |  -         | Reserved for future use.                                         |
+ |   5    |  RW    |  PHY_SEL   | PHY Chip selection: {br} 0 - PHY1 (Line) {br} 1 - PHY2 (Client)  |
+ |  4..0  |  RW    |  DEV_ADDR  | MII Device Address                                               |
+
+++++ PHY_MII_CTRL - PHY MII Control (PHY_MII_CTRL_OFFSET) ++++[PHY_MII_CTRL]
+
+|| Bit   |  type  |  Name       | Description                       |
+|  7..2  |  -     |  -          | Reserved for future use.          |
+|  1     |  RO    |  BUSY       | MII interface status: {br} 1 - Busy {br} 0 -  Available |
+|  0     |  RW    |  OPERATION  | MII operation: {br} 1 - Write {br} 0 - Read             |
+
+++++ PHY_REG_ADDR - PHY Register address (PHY_REG_ADDR_OFFSET) ++++[PHY_REG_ADDR]
+
+|| Bit   |  type  |  Name      | Description                 |
+|  7..0  |  RW    |  REG_ADDR  | PHY Register address        |
+
+++++ PHY_REG_DATA - PHY Register Data (PHY_REG_DATA_OFFSET) ++++[PHY_REG_DATA]
+
+|| Bit   |  type  |  Name     | Description                |
+|  7..0  |  RW    |  DATA     | Dado leitura/escrita PHY.  |
+
+
+For detailed information on PHY internal registers, please refer to the AMCC S19237 datasheet (Note: due to NDA restrictions DATACOM
+cannot release this datasheet for third parties).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ PHY Interface PRBS and Bus Training +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ PHY_PRBS_CFG - PHY Psendo-random Bit Sequence (PRBS) Configuration (PHY_PRBS_CFG_OFFSET) ++++[PHY_PRBS_CFG]
+
+|| Bit    |  type  |  Name               | Description                                                          |
+|  7..4   |  -     |  -                  | Reserved for future use.                                             |
+|  3      |  RW    |  LINE_PRBS_ERRADD   | Writing '1' and then '0' to this bit causes a single bit error to be added into the line PRBS   |
+|  2      |  RW    |  LINE_PRBS_EN       | Enables transmission of 2^23 - 1 PRBS to the Line PHY                                           |                           
+|  1      |  RW    |  CLIENT_PRBS_ERRADD | Writing '1' and then '0' to this bit causes a single bit error to be added into the client PRBS |
+|  0      |  RW    |  CLIENT_PRBS_EN     | Enables transmission of 2^23 - 1 PRBS to the Client PHY              |
+
+++++ PHY_PRBS_STS - PHY PRBS Status (PHY_PRBS_STS_OFFSET) ++++[PHY_PRBS_STS]
+
+|| Bit    |  type  |  Name              | Description                 |
+|  7..2   |  -     |  -                 | Reserved for future use.    |
+|  1      |  RO    |  CLIENT_PRBS_ERR   | Client PRBS error           |
+|  0      |  RO    |  LINE_PRBS_ERR     | Line PRBS error             |
+
+++++ LINE_DCM_PS_CTRL - Line Interface DCM Phase Shift Control (LINE_DCM_PS_CTRL_OFFSET) ++++[LINE_DCM_PS_CTRL]
+
+|| Bit |  type  |  Name      | Description                                                                                               |
+ |  7  |  RO    |  DONE_RX   | Rx DCM phase shift operation status: {br} 0 - In progress {br} 1 - Done                                   |
+ |  6  |  RW    |  DEC_RX    | Rx DCM phase shift decrement: writing a '1' to this bit causes the phase shift to be decremented by 1 tap |
+ |  5  |  RW    |  INC_RX    | Rx DCM phase shift increment: writing a '1' to this bit causes the phase shift do be incremented by 1 tap |
+ |  4  |  RW    |  RESET_RX  | Rx DCM reset: in order to properly reset the DCM, this but must be set to '1' for at least 200ms          |
+ |  3  |  RO    |  DONE_TX   | Tx DCM phase shift operation status: {br} 0 - In progress {br} 1 - Done                                   |
+ |  2  |  RW    |  DEC_TX    | Tx DCM phase shift decrement: writing a '1' to this bit causes the phase shift to be decremented by 1 tap |
+ |  1  |  RW    |  INC_TX    | Tx DCM phase shift increment: writing a '1' to this bit causes the phase shift do be incremented by 1 tap |
+ |  0  |  RW    |  RESET_TX  | Tx DCM reset: in order to properly reset the DCM, this but must be set to '1' for at least 200ms          |
+ 
+
+++++ CLIENT_DCM_PS_CTRL - Client Interface DCM Phase Shift Control (CLIENT_DCM_PS_CTRL_OFFSET) ++++[CLIENT_DCM_PS_CTRL]
+
+|| Bit |  type  |  Name      | Description                                                                                               |
+ |  7  |  RO    |  DONE_RX   | Rx DCM phase shift operation status: {br} 0 - In progress {br} 1 - Done                                   |
+ |  6  |  RW    |  DEC_RX    | Rx DCM phase shift decrement: writing a '1' to this bit causes the phase shift to be decremented by 1 tap |
+ |  5  |  RW    |  INC_RX    | Rx DCM phase shift increment: writing a '1' to this bit causes the phase shift do be incremented by 1 tap |
+ |  4  |  RW    |  RESET_RX  | Rx DCM reset: in order to properly reset the DCM, this but must be set to '1' for at least 200ms          |
+ |  3  |  RO    |  DONE_TX   | Tx DCM phase shift operation status: {br} 0 - In progress {br} 1 - Done                                   |
+ |  2  |  RW    |  DEC_TX    | Tx DCM phase shift decrement: writing a '1' to this bit causes the phase shift to be decremented by 1 tap |
+ |  1  |  RW    |  INC_TX    | Tx DCM phase shift increment: writing a '1' to this bit causes the phase shift do be incremented by 1 tap |
+ |  0  |  RW    |  RESET_TX  | Tx DCM reset: in order to properly reset the DCM, this but must be set to '1' for at least 200ms          |
+ 
+   | Note: the DCM lock status is available via register \DCM_STS\ |  
+
+
+++++ LINE_TXDCM_STS - Line Tx DCM Status (LINE_TXDCM_STS_OFFSET) ++++[LINE_TXDCM_STS]
+
+|| Bit |  type |  Name    | Description                   |
+|  7   |  -    |          | Reserved for future use       |
+|  6   |  RO   |  PSUN    | Phase shift underflow         |
+|  5   |  RO   |  PSOV    | Phase shift overflow          |
+|  4   |  RO   |  PSVIOL  | Phase shift violation         |
+|  3   |  RO   |  PSDONE  | Phase shift done              |
+|  2   |  RO   |  PSEN    | Enable phase shift            |
+|  1   |  RO   |  RST     | Reset                         |
+|  0   |  RO   |  LOCK    | Status lock                   |
+
+
+++++ LINE_TXDCM_TAP_HI/LINE_TXDCM_TAP_LO - Line Tx DCM Tap (LINE_TXDCM_TAP_HI_OFFSET/LINE_TXDCM_TAP_LO_OFFSET) ++++[LINE_TXDCM_TAP]
+
+These register report the current DCM phase shift Tap.
+
+**Offset LINE_TXDCM_TAP_HI_OFFSET:**
+
+|| Bit   |  type  |  Name       | Description                           |
+|  7..1  |  -     |  -          | Reserved for future use.              |
+|  0     |  RO    |  TAP_CNT[8] | Contador de TAPs do DCM training Tx.  |
+
+**Offset LINE_TXDCM_TAP_LO_OFFSET:**
+
+|| Bit   |  type  |  Name           | Description                           |
+|  7..0  |  RO    |  TAP_CNT[7..0]  | Contador de TAPs do DCM training Tx.  |
+
+
+++++ LINE_RXDCM_STS - Line Rx DCM Status (LINE_RXDCM_STS_OFFSET) ++++[LINE_RXDCM_STS]
+
+|| Bit |  type |  Name    | Description                   |
+|  7   |  -    |          | Reserved for future use       |
+|  6   |  RO   |  PSUN    | Phase shift underflow         |
+|  5   |  RO   |  PSOV    | Phase shift overflow          |
+|  4   |  RO   |  PSVIOL  | Phase shift violation         |
+|  3   |  RO   |  PSDONE  | Phase shift done              |
+|  2   |  RO   |  PSEN    | Enable phase shift            |
+|  1   |  RO   |  RST     | Reset                         |
+|  0   |  RO   |  LOCK    | Status lock                   |
+
+
+++++ LINE_RXDCM_TAP_HI/LINE_RXDCM_TAP_LO - Line Rx DCM TAP (LINE_RXDCM_TAP_HI_OFFSET/LINE_RXDCM_TAP_LO_OFFSET) ++++[LINE_RXDCM_TAP]
+
+These register report the current DCM phase shift Tap.
+
+**Offset LINE_RXDCM_TAP_HI_OFFSET:**
+
+|| Bit   |  type  |  Name       | Description                           |
+|  7..1  |  -     |  -          | Reserved for future use.              |
+|  0     |  RO    |  TAP_CNT[8] | Contador de TAPs do DCM training Rx.  |
+
+**Offset LINE_RXDCM_TAP_LO_OFFSET:**
+
+|| Bit   |  type  |  Name           | Description                           |
+|  7..0  |  RO    |  TAP_CNT[7..0]  | Contador de TAPs do DCM training Rx.  |
+
+
+++++ CLIENT_TXDCM_STS - Client Tx DCM Status (CLIENT_TXDCM_STS_OFFSET) ++++[CLIENT_TXDCM_STS]
+
+|| Bit |  type |  Name    | Description                   |
+|  7   |  -    |          | Reserved for future use       |
+|  6   |  RO   |  PSUN    | Phase shift underflow         |
+|  5   |  RO   |  PSOV    | Phase shift overflow          |
+|  4   |  RO   |  PSVIOL  | Phase shift violation         |
+|  3   |  RO   |  PSDONE  | Phase shift done              |
+|  2   |  RO   |  PSEN    | Enable phase shift            |
+|  1   |  RO   |  RST     | Reset                         |
+|  0   |  RO   |  LOCK    | Status lock                   |
+
+
+++++ CLIENT_TXDCM_TAP_HI/CLIENT_TXDCM_TAP_LO - Client Tx DCM Tap (CLIENT_TXDCM_TAP_HI_OFFSET/CLIENT_TXDCM_TAP_LO_OFFSET) ++++[CLIENT_TXDCM_TAP]
+
+These register report the current DCM phase shift Tap.
+
+**Offset CLIENT_TXDCM_TAP_HI_OFFSET:**
+
+|| Bit   |  type  |  Name       | Description                           |
+|  7..1  |  -     |  -          | Reserved for future use.              |
+|  0     |  RO    |  TAP_CNT[8] | Contador de TAPs do DCM training Tx.  |
+
+**Offset CLIENT_TXDCM_TAP_LO_OFFSET:**
+
+|| Bit   |  type  |  Name           | Description                           |
+|  7..0  |  RO    |  TAP_CNT[7..0]  | Contador de TAPs do DCM training Tx.  |
+
+
+++++ CLIENT_RXDCM_STS - Client Rx DCM Status (CLIENT_RXDCM_STS_OFFSET) ++++[CLIENT_RXDCM_STS]
+
+|| Bit |  type |  Name    | Description                   |
+|  7   |  -    |          | Reserved for future use       |
+|  6   |  RO   |  PSUN    | Phase shift underflow         |
+|  5   |  RO   |  PSOV    | Phase shift overflow          |
+|  4   |  RO   |  PSVIOL  | Phase shift violation         |
+|  3   |  RO   |  PSDONE  | Phase shift done              |
+|  2   |  RO   |  PSEN    | Enable phase shift            |
+|  1   |  RO   |  RST     | Reset                         |
+|  0   |  RO   |  LOCK    | Status lock                   |
+
+
+++++ CLIENT_RXDCM_TAP_HI/CLIENT_RXDCM_TAP_LO - Client Rx DCM TAP (CLIENT_RXDCM_TAP_HI_OFFSET/CLIENT_RXDCM_TAP_LO_OFFSET) ++++[CLIENT_RXDCM_TAP]
+
+These register report the current DCM phase shift Tap.
+
+**Offset CLIENT_RXDCM_TAP_HI_OFFSET:**
+
+|| Bit   |  type  |  Name       | Description                           |
+|  7..1  |  -     |  -          | Reserved for future use.              |
+|  0     |  RO    |  TAP_CNT[8] | Contador de TAPs do DCM training Rx.  |
+
+**Offset CLIENT_RXDCM_TAP_LO_OFFSET:**
+
+|| Bit   |  type  |  Name           | Description                           |
+|  7..0  |  RO    |  TAP_CNT[7..0]  | Contador de TAPs do DCM training Rx.  |
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Internal Status +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ DCM_LOCK_STS – DCM Lock Status (DCM_LOCK_STS_OFFSET) ++++[DCM_LOCK_STS]
+
+||  Bit   |  type  |  Name      | Description                                                 |
+ |  7..0  |  RO    |  DCM_LOCK  | DCM lock status: {br} 0 – Unlocked {br} 1 – Locked          |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ GTP Control and Polarity Configuration +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ GTP_PTR - GTP Transceiver Pointer (GTP_PTR_OFFSET) ++++[GTP_PTR]
+
+
+|| Bit    |  type |  Name          | Description                    |
+|  7..6   |  -    |  -             | Reserved for future use        |
+|  5..0   |  RW   |  GTP_ADDR      | Selects a GTP transceiver      |
+
+
+++++ GTP_RST - Multi Gigabit Transceiver Reset (GTP_RST_OFFSET) ++++[GTP_RST]
+
+
+|| Bit    |  type |  Name          | Description                                                                       |
+|  7..4   |  -    |  -             | Reserved for future use                                                           |
+|  3      |  RW   |  RX_BUFF_RST   | Reset do buffer de recepção do GTP: {br} 0 - Desabilitado {br} 1 - Habilitado     |
+|  2      |  RW   |  TX_PCS_RESET  | Reset da transmissão: {br} 0 - Desabilitado {br} 1 - Habilitado                   |
+|  1      |  RW   |  RX_PCS_RESET  | Reset da recepção: {br} 0 - Desabilitado {br} 1 - Habilitado                      |
+|  0      |  RW   |  GTP_DUAL_RST  | Reset GTP DUAL tile: {br} 0 - Desabilitado {br} 1 - Habilitado                    |
+
+
+++++ GTP_STS - Multi Gigabit Tranceiver Status (GTP_STS_OFFSET) ++++[GTP_STS]
+
+
+|| Bit    |  type  |  Name           | Description                  |
+|  7..4   |  -     |  -              | Reserved for future use      |
+|  3      |  RO    |  TX_BUFF_ERROR  | Tx buffer overflow/underflow |
+|  2      |  RO    |  RX_BUFF_ERROR  | Rx buffer overflow/underflow |
+|  1      |  RO    |  RST_DONE       | Reset done                   |
+|  0      |  RO    |  PLL LOCK       | Shared PLL lock              |
+
+
+++++ GTP_POLARITY - Multi Gigabit Transceiver Polarity (GTP_POLARITY_OFFSET) ++++[GTP_POLARITY]
+
+
+|| Bit    |  type |  Name             | Description                                                              |
+|  7..2   |  -    |  -                | Reserved for future use                                                  |
+|  1      |  RW   |  GTP_TXPOLARITY   | Seleciona polaridade de Tx do GTP: {br} 0 - Não inverte {br} 1 - Inverte |
+|  0      |  RW   |  GTP_RXPOLARITY   | Seleciona polaridade de Rx do GTP: {br} 0 - Não inverte {br} 1 - Inverte |
+
+
+++++ GTP_LOOP_CTRL - Multi Gigabit Transceiver Loop Control (GTP_LOOP_CTRL_OFFSET) ++++[GTP_LOOP_CTRL]
+
+
+|| Bit    |  type |  Name         | Description                                                                   |
+|  7..2   |  -    |  -            | Reserved for future use.                                                      |
+|  1      |  RW   |  SER_LOOP_EN  | Habilita back-end loop serial: {br} 0 - Desabilitado {br} 1 - Habilitado      |
+|  0      |  RW   |  PAR_LOOP_EN  | Habilita back-end loop paralelo: {br} 0 - Desabilitado {br} 1 - Habilitado    |
+
+
+++++ GTP_CTRL - Multi Gigabit Transceiver Config (GTP_CTRL_OFFSET) ++++[GTP_CTRL]
+
+|| Bit    |  type |  Name          | Description                                                   |
+|  7..4   |  -    |  -             | Reserved for future use                                       |
+|  3      |  RW   |  BERT_ERR_CLR  | Limpa erro de BERT do GTP selecionado                         |
+|  2      |  RW   |  BERT_ERR_INS  | Insere erro de BERT no GTP selecionado                        |
+|  1      |  RW   |  SEND_BERT     | Habilita envio de BERT ao GTP selecionado                     |
+|  0      |  RW   |  SEND_COMMA    | Envia padrão de alinhamento de byte para o GTP selecionado    |
+
+
+**IMPORTANTE:** Deve-se sempre antes de iniciar o teste de BERT enviar um padrão de alinhamento para o GTP a ser testado{br}
+                e após isso o BERT está pronto para ser analisado.
+
+
+++++ GTP_CNTHI_ERR - Multi Gigabit Transceiver Counter BERT Error High (GTP_CNTHI_ERR_OFFSET) ++++[GTP_CNTHI_ERR]
+
+
+|| Bit    |  type |  Name          | Description                               |
+|  7      |  RO   |  BERT_ERROR    | Erro de BERT lachado                      |
+|  6..0   |  RO   |  GTP_ERR_CNTHI | Parte alta do contador de erro de BERT    |
+
+
+**NOTA:** O MSB da parte alta do contador de erro de BERT possui o status de erro de BERT lacthado.
+
+
+++++ GTP_CNTLO_ERR - Multi Gigabit Transceiver Counter BERT Error High (GTP_CNTLO_ERR_OFFSET) ++++[GTP_CNTHI_ERR]
+
+
+|| Bit    |  type |  Name          | Description                               |
+|  7..0   |  RO   |  GTP_ERR_CNTLO | Parte baixa do contador de erro de BERT   | 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ GTP Register Access +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The dynamic configuration port of the GTP DUALs are accessible to the microprocessor through registers \GTP_CFG_ADDR\, \GTP_CFG_DATA_HI\, 
+\GTP_CFG_DATA_LO\, \GTP_CFG_STS\ and \GTP_CFG_CTRL\. Writing \GTP_CFG_CTRL\ causes the requested operation to be initiated. 
+
+The read and write accesses to GTP DUAL registers must follow the following procedure:
+
+ + Write the GTP DUAL internal register address in \GTP_CFG_ADDR\
+ + If the operation to be performed is a write, the data must be written to \GTP_CFG_DATA_HI\ and \GTP_CFG_DATA_LO\
+ + Select the GTP DUAL and the operation via register \GTP_CFG_CTRL\. Writing this register will cause the operation to be initiated
+ + Wait until busy indication goes low (register \GTP_CFG_STS\)
+ + If read operation, read the data through registers \GTP_CFG_DATA_HI\ and \GTP_CFG_DATA_LO\
+ +
+ 
+**Important:** the configuration is applied for both transceivers in the tile.
+
+++++ GTP_CFG_CTRL - GTP DUAL Configuration Control (GTP_CFG_CTRL_OFFSET) ++++[GTP_CFG_CTRL]
+
+|| Bit   |  type  |  Name       | Description                                                               |
+|  7     |  RW    |  OPERATION  | This bit selects the operation: {br} 0 – Write {br} 1 – Read              |
+|  6..4  |  -     |  -          | Reserved for future use                                                   |
+|  3..0  |  RW    |  SELECTOR   | Selects a GTP DUAL                                                        |
+
+++++ GTP_CFG_ADDR - GTP DUAL Configuration Address (GTP_CFG_ADDR_OFFSET) ++++[GTP_CFG_ADDR]
+
+|| Bit   |  type  |  Name     | Description                                 |
+|  7..0  |  RW    |  ADDR     | GTP internal register address               |
+
+++++ GTP_CFG_DATA_HI - GTP DUAL Configuration Data High (GTP_CFG_DATA_HI_OFFSET) ++++[GTP_CFG_DATA_HI]
+
+|| Bit   |  type  |  Name     | Description                          |
+|  7..0  |  RW    |  DATA_HI  | GTP read/write data (higher byte)    |
+
+++++ GTP_CFG_DATA_LO - GTP DUAL Configuration Data Low (GTP_CFG_DATA_LO_OFFSET) ++++[GTP_CFG_DATA_LO]
+
+|| Bit   |  type  |  Name     | Description                          |
+|  7..0  |  RW    |  DATA_LO  | GTP read/write data (lower byte)     |
+
+++++ GTP_CFG_STS - GTP DUAL Configuration Status (GTP_CFG_STS_OFFSET) ++++[GTP_CFG_STS]
+
+||  Bit   |  type  |  Name           | Description                                                               |
+ |  7     |  RO    |  BUSY           | GTP DUAL configuration interface status: {br} 0 – Available {br} 1 – Busy |
+ |  6..0  |  -     |  -              | Reserved for future use      |
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Software Reset +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ SW_RST - Software Reset (SW_RST_OFFSET) ++++[SW_RST]
+
+
+|| Bit   |  type |  Name        | Description                                                       |
+|  7     |  RW   |  GLOBAL_RST  | Reset de toda a lógica: {br} 0 - Desabilitado {br} 1 - Habilitado |
+|  6     |  RW   |  MBZ_RST     | Reset do MicroBlaze: {br} 0 - Desabilitado {br} 1 - Habilitado    |
+|  5..0  |  -    |  -           | Reserved for future use.                                          |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ VCXO Control +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ VCXO_SEL - VCXO control selection (VCXO_SEL_OFFSET) ++++[VCXO_SEL]
+
+|| Bit   |  type |  Name        | Description                                        |
+ | 7..2  |  -    |  -           | Reserved for future use                            |
+ | 1..0  |  RW   |  VCXO_PTR    | Pointer that indicates the VCXO to be configured   |
+
+||  VCXO  |  Number  |
+ |  PHY1  |    0     |
+ |  PHY2  |    1     |
+ |  ICBUS |    2     |
+
+++++ VCXO_CFG - VCXO control configuration (VCXO_CFG_OFFSET) ++++[VCXO_CFG]
+
+|| Bit   |  type |  Name        | Description                                         |
+ | 7..1  |  -    |  -           | Reserved for future use                             |
+ | 0     |  RW   |  VCXO_MODE   | Select VCXO mode: {br} 0 - Normal {br} 1 - Freerun  | 
+
+
+++++ VCXO_STS - VCXO control status (VCXO_STS_OFFSET) ++++[VCXO_STS]
+
+|| Bit   |  type |  Name        | Description                     |
+ | 7..1  |  -    |  -           | Reserved for future use         |
+ | 0     |  RO   |  REFB_LOS    | Recovered clock reference loss  |
+
+++++ VCXO_CALIB_HDATA/VCXO_CALIB_LDATA - Calibration Data of VCXO (VCXO_CALIB_HDATA_OFFSET/VCXO_CALIB_LDATA_OFFSET) ++++[VCXO_CALIB_DATA]
+
+These register report the current DCM phase shift Tap.
+
+**Offset VCXO_CALIB_HDATA_OFFSET:**
+
+|| Bit   |  type |  Name        | Description                           |
+ | 7..6  |  -    |  -           | Reserved for future use               | 
+ | 5..0  |  RW   |  DATA[13..8] | Calibration data to be aplied to VCXO |
+
+**Offset VCXO_CALIB_LDATA_OFFSET:**
+
+|| Bit   |  type |  Name        | Description                           |
+ | 7..0  |  RW   |  DATA[7..0]  | Calibration data to be aplied to VCXO |
+
+++++ DAC_VAL_HDATA/DAC_VAL_LDATA - DAC Value of VCXO Control (DAC_VAL_HDATA_OFFSET/DAC_VAL_LDATA_OFFSET) ++++[DAC_VAL_DATA]
+
+These register report the current DAC value of VCXO control.
+
+**Offset DAC_VAL_HDATA_OFFSET:**
+
+|| Bit   |  type |  Name         | Description              |
+ | 7..6  |  -    |  -            | Reserved for future use  | 
+ | 5..0  |  RW   |  VALUE[13..8] | DAC value                |
+
+**Offset DAC_VAL_LDATA_OFFSET:**
+
+|| Bit   |  type |  Name         | Description              |
+ | 7..0  |  RW   |  VALUE[7..0]  | DAC value                |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Temperature Status +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+++++ FPGA_TEMP_MSB (FPGA_TEMP_MSB_OFFSET) ++++[FPGA_TEMP_MSB]
+
+
+|| Bit   |  type  |  Name      | Description                                |
+|  7..0  |  RO    |  TEMP_MSB  | Temperatura FPGA byte mais significativo   |
+
+
+++++ FPGA_TEMP_LSB (FPGA_TEMP_LSB_OFFSET) ++++[FPGA_TEMP_LSB]
+
+
+|| Bit   |  type  |  Name      | Description                                |
+|  7..0  |  RO    |  TEMP_LSB  | Temperatura FPGA byte menos significativo  |
+
+
+++++ PHY_TEMP_MSB (PHY_TEMP_MSB_OFFSET) ++++[PHY_TEMP_MSB]
+
+
+|| Bit   |  type  |  Name      | Description                                                         |
+|  7     |  RO    |  TEMP_ERR  | Indicação de erro na leitura do sensor: {br} 1 - Erro {br} 0 - Ok   |
+|  6..0  |  RO    |  TEMP_MSB  | Temperatura PHY byte mais significativo                             |
+
+
+++++ PHY_TEMP_LSB (PHY_TEMP_LSB_OFFSET) ++++[PHY_TEMP_LSB]
+
+
+|| Bit   |  type  |  Name      | Description                                |
+|  7..0  |  RO    |  TEMP_LSB  | Temperatura PHY byte menos significativo  |
+
+
+O valor de todos os sensores de temperatura é representado em complemento de 2 e composto conforme descrição abaixo:
+
+Temperatura = TEMP_MSB[6..0] & TEMP_LSB
+
+Temperatura[14..11] = Reserved for future use {br}
+Temperatura[10..03] = Inteiro (bit 3 resolução = 1°C) {br}
+Temperatura[02..00] = Decimal (resolução = 0.125°C) {br}
+
+|| Temperatura (°C)  |  Valor binário        |
+|  +125              |  0000 0011 1110 1000  |
+|  +25               |  0000 0000 1100 1000  |
+|  +1                |  0000 0000 0000 1000  |
+|  +0.125            |  0000 0000 0000 0001  |
+|  0                 |  0000 0000 0000 0000  |
+|  -0.125            |  0000 0111 1111 1111  |
+|  -1                |  0000 0111 1111 1000  |
+|  -25               |  0000 0111 0011 1000  |
+|  -55               |  0000 0110 0100 1000  |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ OTN Framer Register (Base = OTN_BASE) ++[OTN_FRAMER]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+OTN framer internal registers are described in [OTN Framer Datasheet otn_framer/otn_framer_ds.html].
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Client Interface Registers (Base = CLIENT_BASE) ++[CLIENT]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Register Map +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+|| Offset                    |  Register Name           | Description                           |
+|  CLIENT_OP_CFG_OFFSET      |  \CLIENT_OP_CFG\         | Client Port Operational Configuration |
+|  CLIENT_TEST_CFG_OFFSET    |  \CLIENT_TEST_CFG\       | Client Port Test Configuration        |
+|  CLIENT_STS_OFFSET         |  \CLIENT_STS\            | Client Port Status                    |
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
++++ Register Description +++
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+++++ CLIENT_OP_CFG - Client Port Operational Configuration (CLIENT_OP_CFG_OFFSET) ++++[CLIENT_OP_CFG]
+
+|| Bit  |  Type |  Name        | Description                                       |
+|  7..5 |  -    |  -           | Reserved for future use                           |
+|  2    |  RW   |  OP_EN       | Port operation: {br} 0 – Disable {br} 1 – Enable  |
+|  1..0 |  -    |  -           | Reserved for future use                           |
+
+++++ CLIENT_TEST_CFG – Client Port Test Configuration (CLIENT_TEST_CFG_OFFSET) ++++[CLIENT_TEST_CFG]
+
+|| Bit   |  Type  |  Name              | Description                                                            |
+|  7..5  |  -     |  -                 | Reserved for future use                                                |
+|  4     |  RW    |  LASER_MAN_RESTART | Laser manual restart                                                   |
+|  3     |  RW    |  LASER_FORCE_OFF   | Laser force off: {br} 0 – Normal operation {br} 1 – Forced off         |
+|  2     |  RW    |  LASER_FORCE_ON    | Laser force on: {br}  0 – Normal operation {br} 1 – Forced on          |
+|  1..0  |  -     |  -                 | Reserved for future use                                               |
+
+
+++++ CLIENT_STS – Client Port Status (CLIENT_STS_OFFSET) ++++[CLIENT_STS]
+
+|| Bit    |  Type  |  Name       | Description                             |
+|  15     |  RO    |  rLOS       | Loss of signal                          |
+|  14     |  RO    |  rLOF       | Loss of frame (only for SDH client)     |
+|  13..12 |  -     |  -          | Reserved for future use                 |
+|  11     |  RO    |  LASER_OFF  | Laser status: {br} 0 - On {br} 1 - Off  |
+|  10..0  |  -     |  -          | Reserved for future use                 |
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ EPLD Registers (Base = EPLD_BASE) ++[EPLD]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ (To be defined)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++ Factory Test Specific Registers (Base = FT_BASE) ++[FACTORY_TEST]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ (To be defined)

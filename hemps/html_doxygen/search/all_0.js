@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['abs',['abs',['../utils_8c.html#aaa87dddb1e62142fd07ee17db1b5d673',1,'abs(int num):&#160;utils.c'],['../utils_8h.html#a2503bc813e76c9ff8b3523db10bdc06e',1,'abs(int):&#160;stdlib.h']]],
+  ['active',['active',['../structReclustering.html#a6472d9555c76fc079f47dab8808f64e9',1,'Reclustering']]],
+  ['add_5ffifo',['add_fifo',['../pending__service_8c.html#a91163b0b78e8ae0104f61b3ae9f63512',1,'pending_service.c']]],
+  ['add_5fnew_5ftask',['add_new_task',['../new__task_8c.html#ab6e4a7feaa30f3b11e41d9e116209bce',1,'add_new_task(NewTask *input):&#160;new_task.c'],['../new__task_8h.html#ac44c1e0c35d6c746a512c2f811f87ccc',1,'add_new_task(NewTask *):&#160;new_task.c']]],
+  ['add_5fpending_5fservice',['add_pending_service',['../pending__service_8c.html#acb4233ee2ff4a48fa14020abb5f643ba',1,'add_pending_service(ServiceHeader *pending_service):&#160;pending_service.c'],['../pending__service_8h.html#a16807ac2caacc0cafc3317e3f2a26a22',1,'add_pending_service(ServiceHeader *):&#160;pending_service.c']]],
+  ['add_5fpipe',['add_PIPE',['../communication_8c.html#ab7a2b9bc181be80ddede59870bddcf7a',1,'add_PIPE(int producer_task, int consumer_task, Message *msg):&#160;communication.c'],['../communication_8h.html#ac6a3635669af133ca22fcb603eebefda',1,'add_PIPE(int, int, Message *):&#160;communication.c']]],
+  ['add_5fprocesor',['add_procesor',['../processors_8c.html#a2631570ee4acbff3922b1efb49dd4512',1,'add_procesor(int proc_address):&#160;processors.c'],['../processors_8h.html#a8931fc8d62e2f79cb541c708c3734501',1,'add_procesor(int):&#160;processors.c']]],
+  ['add_5ftask',['add_task',['../processors_8c.html#a528c4580177eb7d00083d0afe5bac745',1,'add_task(int proc_address, int task_id):&#160;processors.c'],['../processors_8h.html#a267348c0c30db2a14cd18aa810469954',1,'add_task(int, int):&#160;processors.c']]],
+  ['add_5ftask_5flocation',['add_task_location',['../task__location_8c.html#a173c87e62ae1d108dd805f8953050bd7',1,'add_task_location(int task_ID, int proc):&#160;task_location.c'],['../task__location_8h.html#af4b5f18613fa27889564e7f529b53242',1,'add_task_location(int, int):&#160;task_location.c']]],
+  ['address',['address',['../structProcessor.html#ab488b5789f3ce60a21fd3bf01c2fa109',1,'Processor']]],
+  ['allocate_5fcluster_5fresource',['allocate_cluster_resource',['../cluster__scheduler_8c.html#a97690efc6e2e046a01d6b2a70e56245f',1,'allocate_cluster_resource(int cluster_index, int nro_resources):&#160;cluster_scheduler.c'],['../cluster__scheduler_8h.html#a02e16e9866336db49ee91f26cf435790',1,'allocate_cluster_resource(int, int):&#160;cluster_scheduler.c']]],
+  ['allocated',['ALLOCATED',['../applications_8h.html#aaa0db48d5bc1e51c3fde24e3b8ade641',1,'applications.h']]],
+  ['allocated_5fproc',['allocated_proc',['../structTask.html#a6aa4b8399b4d3216080cf3abb3796eda',1,'Task']]],
+  ['allocated_5fprocessor',['allocated_processor',['../structNewTask.html#a945733d3e8bbb7e5657d97c6be5b47b3',1,'NewTask']]],
+  ['api_2eh',['api.h',['../api_8h.html',1,'']]],
+  ['app_5fid',['app_ID',['../structApplication.html#ac085c06443540cb5131b66f64d54e077',1,'Application']]],
+  ['app_5freq_5freg',['app_req_reg',['../kernel__master_8h.html#a82aa102b0980beac8fffff385e5fed15',1,'kernel_master.h']]],
+  ['application',['Application',['../structApplication.html',1,'']]],
+  ['application_5fmapping',['application_mapping',['../cluster__scheduler_8c.html#a6a45a15916ffa221f5e00bb1b543e435',1,'application_mapping(int cluster_id, int app_id):&#160;cluster_scheduler.c'],['../cluster__scheduler_8h.html#a40c980f9276d8a54c1a2eac9adf6fa70',1,'application_mapping(int, int):&#160;cluster_scheduler.c']]],
+  ['applications',['applications',['../applications_8c.html#a6ccfbf18604bfbd47ef9f4c4f0eb9eb7',1,'applications.c']]],
+  ['applications_2ec',['applications.c',['../applications_8c.html',1,'']]],
+  ['applications_2eh',['applications.h',['../applications_8h.html',1,'']]]
+];

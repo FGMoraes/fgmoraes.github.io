@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="C:\projetos\PD1414\serial_interface\Documentacao\figures"
+   sodipodi:docname="v24_timing_diagram.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\projetos\PD1414\serial_interface\Documentacao\figures\v24_timing_diagram.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path7366"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         id="path13233"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path13236"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="449.99258"
+     inkscape:cy="541.81255"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1280"
+     inkscape:window-height="977"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
+     showgrid="true"
+     gridspacingx="20px"
+     gridspacingy="20px"
+     inkscape:grid-points="true"
+     inkscape:grid-bbox="false"
+     gridtolerance="50"
+     objecttolerance="10"
+     guidetolerance="10" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Plancton">
+    <rect
+       y="552.36218"
+       x="20"
+       height="320"
+       width="720"
+       id="rect8372"
+       style="fill:#dcd5d5;fill-opacity:0.71372549;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot10314"
+       style="font-size:22px"
+       transform="translate(29.617187,151.0167)"><flowRegion
+         id="flowRegion10316"><rect
+           id="rect10318"
+           width="516"
+           height="32.999969"
+           x="104"
+           y="-120.63779"
+           style="font-size:22px" /></flowRegion><flowPara
+         id="flowPara10320">Receive Timing (Rx clock inversion disabled)</flowPara></flowRoot>    <flowRoot
+       transform="translate(26.410645,631.0167)"
+       style="font-size:22px"
+       id="flowRoot10322"
+       xml:space="preserve"><flowRegion
+         id="flowRegion10324"><rect
+           style="font-size:22px"
+           y="-120.63779"
+           x="104"
+           height="32.999969"
+           width="516"
+           id="rect10326" /></flowRegion><flowPara
+         id="flowPara10328">Transmit Timing (Tx clock inversion disabled)</flowPara></flowRoot>    <rect
+       style="fill:#dcd5d5;fill-opacity:0.71372551;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7400"
+       width="720"
+       height="400"
+       x="20"
+       y="72.362183" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Fundo">
+    <path
+       sodipodi:type="arc"
+       style="fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5385"
+       sodipodi:cx="140"
+       sodipodi:cy="512.36218"
+       sodipodi:rx="3.7357821"
+       sodipodi:ry="3.5597677"
+       d="M 143.73578,512.36218 A 3.7357821,3.5597677 0 1 1 143.73578,512.35728"
+       sodipodi:start="0"
+       sodipodi:end="6.2818086"
+       inkscape:transform-center-x="20.411612"
+       inkscape:transform-center-y="20.5"
+       transform="matrix(1,0,4.3116266e-3,1,97.830806,89.09057)"
+       sodipodi:open="true" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Mend);stroke-opacity:1"
+       d="M 244.82003,601.22952 C 254.63114,615.19488 250.65366,635.96614 250.65366,635.96614"
+       id="path6357" />
+    <path
+       sodipodi:open="true"
+       transform="matrix(1,0,4.3116266e-3,1,417.79089,89.09057)"
+       inkscape:transform-center-y="20.5"
+       inkscape:transform-center-x="20.411612"
+       sodipodi:end="6.2818086"
+       sodipodi:start="0"
+       d="M 143.73578,512.36218 A 3.7357821,3.5597677 0 1 1 143.73578,512.35728"
+       sodipodi:ry="3.5597677"
+       sodipodi:rx="3.7357821"
+       sodipodi:cy="512.36218"
+       sodipodi:cx="140"
+       id="path7332"
+       style="fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc" />
+    <path
+       id="path7334"
+       d="M 565.31044,600.52241 C 575.12155,614.48777 571.14407,635.25903 571.14407,635.25903"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Mend);stroke-opacity:1" />
+    <path
+       sodipodi:open="true"
+       transform="matrix(1,0,4.3116266e-3,1,97.830806,250.09057)"
+       inkscape:transform-center-y="20.5"
+       inkscape:transform-center-x="20.411612"
+       sodipodi:end="6.2818086"
+       sodipodi:start="0"
+       d="M 143.73578,512.36218 A 3.7357821,3.5597677 0 1 1 143.73578,512.35728"
+       sodipodi:ry="3.5597677"
+       sodipodi:rx="3.7357821"
+       sodipodi:cy="512.36218"
+       sodipodi:cx="140"
+       id="path7348"
+       style="fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:type="arc" />
+    <path
+       id="path7350"
+       d="M 244.82003,762.22952 C 254.63114,776.19488 250.65366,796.96614 250.65366,796.96614"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Mend);stroke-opacity:1" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path7352"
+       sodipodi:cx="140"
+       sodipodi:cy="512.36218"
+       sodipodi:rx="3.7357821"
+       sodipodi:ry="3.5597677"
+       d="M 143.73578,512.36218 A 3.7357821,3.5597677 0 1 1 143.73578,512.35728"
+       sodipodi:start="0"
+       sodipodi:end="6.2818086"
+       inkscape:transform-center-x="20.411612"
+       inkscape:transform-center-y="20.5"
+       transform="matrix(1,0,4.3116266e-3,1,417.79089,250.09057)"
+       sodipodi:open="true" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Mend);stroke-opacity:1"
+       d="M 565.31044,761.52241 C 575.12155,775.48777 571.14407,796.25903 571.14407,796.25903"
+       id="path7354" />
+  </g>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#59839e;fill-opacity:1;fill-rule:evenodd;stroke:#020202;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect8252"
+       width="20"
+       height="0"
+       x="400"
+       y="272.36218" />
+    <rect
+       style="opacity:1;fill:#59839e;fill-opacity:1;fill-rule:evenodd;stroke:#020202;stroke-width:4;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect11187"
+       width="20"
+       height="0"
+       x="500"
+       y="252.36218" />
+    <g
+       id="g7344"
+       transform="translate(40,2.3913867e-7)">
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="path2318"
+         d="M 100,152.36218 C 100,152.36218 100,152.36218 100,152.36218 L 180,152.36218 L 180,132.36218 L 340,132.36218"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path2320"
+         d="M 340,132.36218 C 340,152.36218 340,152.36218 340,152.36218 L 500,152.36218 L 500,132.36218 L 660,132.36218"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2326"
+       transform="translate(1.3574219,-62.351208)"><flowRegion
+         id="flowRegion2328"><rect
+           id="rect2330"
+           width="125.1579"
+           height="58.689861"
+           x="57.982754"
+           y="199.59143" /></flowRegion><flowPara
+         id="flowPara2332">CT-113 (in)</flowPara></flowRoot>    <flowRoot
+       transform="translate(1.3574219,-22.957656)"
+       id="flowRoot2338"
+       xml:space="preserve"><flowRegion
+         id="flowRegion2340"><rect
+           y="199.59143"
+           x="57.982754"
+           height="58.689861"
+           width="125.1579"
+           id="rect2342" /></flowRegion><flowPara
+         id="flowPara2344">CT-103 (in)</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 140,172.36218 C 220,172.36218 220,172.36218 220,172.36218 L 240,192.36218 L 540,192.36218 L 560,172.36218 L 700,172.36218"
+       id="path2348" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 700,192.36218 C 560,192.36218 560,192.36218 560,192.36218 L 540,172.36218 L 240,172.36218 L 220,192.36218 L 140,192.36218"
+       id="path2350" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1,4;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 380,112.36218 C 380,212.36218 380,212.36218 380,212.36218"
+       id="path2352" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3323"
+       style="text-align:center;text-anchor:middle"
+       transform="translate(22.56543,2.3913867e-7)"><flowRegion
+         id="flowRegion3325"><rect
+           id="rect3327"
+           width="146.37109"
+           height="38.183765"
+           x="284.25693"
+           y="221.51173"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara3329">CT-103 sampled here</flowPara><flowPara
+         id="flowPara3331">(CT-113 falling edge)</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5271"
+       transform="translate(80.765625,33.835315)"><flowRegion
+         id="flowRegion5273"><rect
+           id="rect5275"
+           width="128.69344"
+           height="34.648232"
+           x="282.84271"
+           y="58.170074" /></flowRegion><flowPara
+         id="flowPara5277">Rx Clock = CT-113</flowPara></flowRoot>    <g
+       id="g7340"
+       transform="translate(40,2.3913867e-7)">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 100,356.24046 C 100,356.24046 100,356.24046 100,356.24046 L 180,356.24046 L 180,336.24046 L 340,336.24046"
+         id="path5279"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 340,336.24046 C 340,356.24046 340,356.24046 340,356.24046 L 500,356.24046 L 500,336.24046 L 660,336.24046"
+         id="path5281" />
+    </g>
+    <flowRoot
+       transform="translate(1.3574219,141.52708)"
+       id="flowRoot5283"
+       xml:space="preserve"><flowRegion
+         id="flowRegion5285"><rect
+           y="199.59143"
+           x="57.982754"
+           height="58.689861"
+           width="125.1579"
+           id="rect5287" /></flowRegion><flowPara
+         id="flowPara5289">CT-114 (out)</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5291"
+       transform="translate(1.3574219,180.92063)"><flowRegion
+         id="flowRegion5293"><rect
+           id="rect5295"
+           width="125.1579"
+           height="58.689861"
+           x="57.982754"
+           y="199.59143" /></flowRegion><flowPara
+         id="flowPara5297">CT-103 (in)</flowPara></flowRoot>    <path
+       id="path5299"
+       d="M 140,372.36218 C 220,372.36218 220,372.36218 220,372.36218 L 240,392.36218 L 540,392.36218 L 560,372.36218 L 700,372.36218"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path5301"
+       d="M 700,392.36218 C 560,392.36218 560,392.36218 560,392.36218 L 540,372.36218 L 240,372.36218 L 220,392.36218 L 140,392.36218"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path5303"
+       d="M 380,316.24046 C 380,416.24046 380,416.24046 380,416.24046"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1,4;stroke-dashoffset:0;stroke-opacity:1" />
+    <flowRoot
+       transform="translate(22.56543,203.87828)"
+       style="text-align:center;text-anchor:middle"
+       id="flowRoot5305"
+       xml:space="preserve"><flowRegion
+         id="flowRegion5307"><rect
+           style="text-align:center;text-anchor:middle"
+           y="221.51173"
+           x="284.25693"
+           height="38.183765"
+           width="146.37109"
+           id="rect5309" /></flowRegion><flowPara
+         id="flowPara5311">CT-103 sampled here</flowPara><flowPara
+         id="flowPara5313">(CT-114 falling edge)</flowPara></flowRoot>    <flowRoot
+       transform="translate(80.62207,233.83532)"
+       id="flowRoot5315"
+       xml:space="preserve"><flowRegion
+         id="flowRegion5317"><rect
+           y="58.170074"
+           x="282.84271"
+           height="34.648232"
+           width="128.69344"
+           id="rect5319" /></flowRegion><flowPara
+         id="flowPara5321">Rx Clock = CT-114</flowPara></flowRoot>    <g
+       id="g7336"
+       transform="translate(60,60)">
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="path5333"
+         d="M 100,552.36218 C 100,552.36218 100,552.36218 100,552.36218 L 180,552.36218 L 180,532.36218 L 340,532.36218"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path5335"
+         d="M 340,532.36218 C 340,552.36218 340,552.36218 340,552.36218 L 500,552.36218 L 500,532.36218 L 660,532.36218"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5337"
+       transform="translate(21.357422,406.93591)"><flowRegion
+         id="flowRegion5339"><rect
+           id="rect5341"
+           width="125.1579"
+           height="58.689861"
+           x="57.982754"
+           y="199.59143" /></flowRegion><flowPara
+         id="flowPara5343">CT-115 (out)</flowPara></flowRoot>    <flowRoot
+       transform="translate(21.357422,446.32946)"
+       id="flowRoot5345"
+       xml:space="preserve"><flowRegion
+         id="flowRegion5347"><rect
+           y="199.59143"
+           x="57.982754"
+           height="58.689861"
+           width="125.1579"
+           id="rect5349" /></flowRegion><flowPara
+         id="flowPara5351">CT-104 (out)</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 160,632.36218 C 240,632.36218 240,632.36218 240,632.36218 L 260,652.36218 L 560,652.36218 L 580,632.36218 L 720,632.36218"
+       id="path5353" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 720,652.36218 C 580,652.36218 580,652.36218 580,652.36218 L 560,632.36218 L 260,632.36218 L 240,652.36218 L 160,652.36218"
+       id="path5355" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5359"
+       style="text-align:center;text-anchor:middle"
+       transform="translate(-106.31445,450.49157)"><flowRegion
+         id="flowRegion5361"><rect
+           id="rect5363"
+           width="146.37109"
+           height="38.183765"
+           x="284.25693"
+           y="221.51173"
+           style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara5365">CT-104 updated on the</flowPara><flowPara
+         id="flowPara5367">rising edge of CT-115</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5369"
+       transform="translate(101.91992,504.54821)"><flowRegion
+         id="flowRegion5371"><rect
+           id="rect5373"
+           width="128.69344"
+           height="34.648232"
+           x="282.84271"
+           y="58.170074" /></flowRegion><flowPara
+         id="flowPara5375">Tx Clock = CT-115</flowPara></flowRoot>    <g
+       id="g7356"
+       transform="translate(60,221)">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 100,552.36218 C 100,552.36218 100,552.36218 100,552.36218 L 180,552.36218 L 180,532.36218 L 340,532.36218"
+         id="path7358"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 340,532.36218 C 340,552.36218 340,552.36218 340,552.36218 L 500,552.36218 L 500,532.36218 L 660,532.36218"
+         id="path7360" />
+    </g>
+    <flowRoot
+       transform="translate(-18.642578,567.93591)"
+       id="flowRoot7362"
+       xml:space="preserve"><flowRegion
+         id="flowRegion7364"><rect
+           y="199.59143"
+           x="57.982754"
+           height="58.689861"
+           width="125.1579"
+           id="rect7366" /></flowRegion><flowPara
+         id="flowPara7368">CT-128/CT-113 (in)</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot7370"
+       transform="translate(21.357422,607.32946)"><flowRegion
+         id="flowRegion7372"><rect
+           id="rect7374"
+           width="125.1579"
+           height="58.689861"
+           x="57.982754"
+           y="199.59143" /></flowRegion><flowPara
+         id="flowPara7376">CT-104 (out)</flowPara></flowRoot>    <path
+       id="path7378"
+       d="M 160,793.36218 C 240,793.36218 240,793.36218 240,793.36218 L 260,813.36218 L 560,813.36218 L 580,793.36218 L 720,793.36218"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path7380"
+       d="M 720,813.36218 C 580,813.36218 580,813.36218 580,813.36218 L 560,793.36218 L 260,793.36218 L 240,813.36218 L 160,813.36218"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <flowRoot
+       transform="translate(-115.17969,610.49157)"
+       style="text-align:center;text-anchor:middle"
+       id="flowRoot7382"
+       xml:space="preserve"><flowRegion
+         id="flowRegion7384"><rect
+           style="text-align:center;text-anchor:middle"
+           y="221.51173"
+           x="284.25693"
+           height="30.850449"
+           width="175.74307"
+           id="rect7386" /></flowRegion><flowPara
+         id="flowPara7388">CT-104 updated on the</flowPara><flowPara
+         id="flowPara7390">rising edge of CT-113/128</flowPara></flowRoot>    <flowRoot
+       transform="translate(70.422852,665.54821)"
+       id="flowRoot7392"
+       xml:space="preserve"><flowRegion
+         id="flowRegion7394"><rect
+           y="58.170074"
+           x="282.84271"
+           height="14.192108"
+           width="177.15729"
+           id="rect7396" /></flowRegion><flowPara
+         id="flowPara7398">Tx Clock = CT-128 or CT-113</flowPara></flowRoot>  </g>
+</svg>

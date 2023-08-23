@@ -1,0 +1,1412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
+<TITLE>Projeto x10GiGa</TITLE>
+</HEAD>
+<BODY>
+
+<DIV CLASS="header" ID="header">
+<H1>Projeto x10GiGa</H1>
+<H2>GAPH - DATACOM</H2>
+<H3>Atualizado em 23/04/2009 as 15h10min.</H3>
+</DIV>
+
+<DIV CLASS="body" ID="body">
+<P>
+<br>
+</P>
+<A NAME="toc1"></A>
+<H1>Menu</H1>
+<P>
+<br>
+</P>
+<DIV CLASS="toc" ID="toc">
+  <UL>
+  <LI><A HREF="#toc1">Menu</A>
+  <LI><A HREF="#toc2">1. Sobre o projeto</A>
+  <LI><A HREF="#toc3">2. Cronograma</A>
+  <LI><A HREF="#toc4">3. Documentação gerada pela equipe TERACOM</A>
+  <LI><A HREF="#toc5">4. Documentação gerada pela equipe PUCRS</A>
+    <UL>
+    <LI><A HREF="#toc6">4.1. Módulos para Recepção e Transmissão de Frames</A>
+    <LI><A HREF="#toc7">4.2. Reed-Solomon</A>
+    <LI><A HREF="#toc8">4.3. Módulos para Inserção e Recepção de Carga Útil</A>
+    <LI><A HREF="#toc9">4.4. Apresentação</A>
+    </UL>
+  <LI><A HREF="#toc10">5. Esquemático da Placa do Projeto x10Giga</A>
+  <LI><A HREF="#toc11">6. Organização do x10Giga</A>
+  <LI><A HREF="#toc12">7. x10Giga-v0.0</A>
+  <LI><A HREF="#toc13">8. Geração de Frames</A>
+    <UL>
+    <LI><A HREF="#toc14">8.1. Arquivo de Configuração</A>
+    <LI><A HREF="#toc15">8.2. Utilização por interface iterativa</A>
+    <LI><A HREF="#toc16">8.3. Utilização por linha de comando</A>
+    <LI><A HREF="#toc17">8.4. Arquivos Gerados</A>
+    </UL>
+  <LI><A HREF="#toc18">9. Simulação</A>
+    <UL>
+    <LI><A HREF="#toc19">9.1. Caso A</A>
+    <LI><A HREF="#toc20">9.2. Caso B</A>
+    <LI><A HREF="#toc21">9.3. Caso C</A>
+    <LI><A HREF="#toc22">9.4. Caso D</A>
+    </UL>
+  <LI><A HREF="#toc23">10. Síntese</A>
+    <UL>
+    <LI><A HREF="#toc24">10.1. Sintese por script</A>
+    <LI><A HREF="#toc25">10.2. Relatório Área</A>
+    <LI><A HREF="#toc26">10.3. Relatório Timing</A>
+    </UL>
+  <LI><A HREF="#toc27">11. Sobre este documento</A>
+  </UL>
+
+</DIV>
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc2"></A>
+<H1>1. Sobre o projeto</H1>
+<P>
+<br>
+</P>
+<P>
+O projeto x10Giga surgiu da parceria entre a TERACOM, empresa desenvolvedora de 
+equipamentos de telecomunicação, e o Grupo de Apoio ao Projeto de Hardware (GAPH) 
+da Faculdade de Informática (FACIN) da Pontifícia Universidade Católica do Rio 
+Grande do Sul (PUCRS). O projeto visa desenvolver um transponder capaz de 
+transmitir sinais SDH (Synchronous Digital Hierarchy) e Gigabit Ethernet sobre 
+redes do tipo OTN (Optical Transport Network) com enlaces ópticos em longas 
+distâncias. O desenvolvimento será em protótipos de hardware que permitirão 
+realizar a depuração e a validação de todos os módulos implementados.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc3"></A>
+<H1>2. Cronograma</H1>
+<P>
+<br>
+</P>
+<P>
+O andamento das tarefas pode ser visualizado aqui: <A HREF="./cronograma/Cronograma.html">cronograma</A>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc4"></A>
+<H1>3. Documentação gerada pela equipe TERACOM</H1>
+<P>
+<br>
+</P>
+<UL>
+<LI><A HREF="./TERACOM/x10Giga_functional.html">Functional Description - x10Giga</A>: Descrição funcional, incluindo a interface com o processador MicroBlaze.
+<LI><A HREF="./TERACOM/otn_framer_functional.html">Functional Description - OTN Framer</A>: Inferface do cliente.
+<LI><A HREF="./TERACOM/pll_x10Giga.html">PLL: Recuperação de Relógio</A>: Relação entre o PLL e a interface com o cliente.
+<LI><A HREF="./TERACOM/otn_framer_ds.html">Datasheet - OTN Framer</A>: Descrição do protocolo OTN com os registradores.
+<LI><A HREF="./TERACOM/x10Giga_ds.html">Datasheet - x10Giga Programmable Logic</A>: Descrição detalhada dos registradores.
+<LI><A HREF="./TERACOM/OTN_alarms_summary.html">Summary - OTN Alarms</A>: Resumo dos registradores contendo alarme.
+<LI><A HREF="./TERACOM/mii_interface_functional.html">Functional Description: MII Interface</A>
+<LI><A HREF="./TERACOM/mii_interface_ds.html">MII Interface</A>
+<LI><A HREF="./TERACOM/uart_debug.html">Functional Description: UART Debug</A>
+<LI><A HREF="./TERACOM/client_interface.html">Interface com o Cliente</A>
+<LI><A HREF="./TERACOM/Virtual_Machine_InstGuide.html">Manual de Instalação da Máquina Virtual</A>
+<LI><A HREF="./TERACOM/LP_Scripts_UserGuide.html">Guia de Utilização de Scripts LUA</A>
+<LI><A HREF="./TERACOM/CVS_KeyReg_Guide.html">Cadastro e Utilização CVN TERACOM</A>
+</UL>
+
+<P>
+<br>
+</P>
+<A NAME="toc5"></A>
+<H1>4. Documentação gerada pela equipe PUCRS</H1>
+<P>
+<br>
+</P>
+<A NAME="toc6"></A>
+<H2>4.1. Módulos para Recepção e Transmissão de Frames</H2>
+<P>
+O documento abaixo apresenta a descrição detalhada dos frames OTN, assim como a 
+descrição dos módulos: Alinhador, Embaralhador/Desembaralhador, Extrator de 
+cabeçalho:
+<A HREF="./documents/TCC-Framer.pdf">TCC-Framer</A>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc7"></A>
+<H2>4.2. Reed-Solomon</H2>
+<P>
+O desenvolvimento dos circuitos de detecção e correção de erros é detalhado no 
+documento: 
+<A HREF="./documents/TCC-Reed-Solomon.pdf">TCC-Reed-Somomon</A>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc8"></A>
+<H2>4.3. Módulos para Inserção e Recepção de Carga Útil</H2>
+<P>
+Desenvolvimento de Módulos de Hardware para extração e inserção de carga útil 
+10 gigabit ethernet em quadros OTN:
+<A HREF="./documents/Proposta-TCC-Carga-Util.pdf">Proposta-TCC-Carga-Util</A>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc9"></A>
+<H2>4.4. Apresentação</H2>
+<P>
+A <A HREF="./documents/x10Giga-Apresentacao.ppt">apresentação</A> do x10Giga contém um 
+descrição detalhada dos módulos do projeto.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc10"></A>
+<H1>5. Esquemático da Placa do Projeto x10Giga</H1>
+<P>
+<br>
+</P>
+<UL>
+<LI><A HREF="./projeto/Esquematico/esquema_x10Giga_180608.pdf">Esquemático da Placa do Projeto</A>
+</UL>
+
+<P>
+<br>
+</P>
+<A NAME="toc11"></A>
+<H1>6. Organização do x10Giga</H1>
+<P>
+<br>
+</P>
+<P>
+Visando o trabalho em equipe e uma boa organização do projeto os arquivos estão
+sendo mantidos em um repositório <A HREF="./documents/SVN-Book.pdf">SVN</A>. Para acesso ao 
+repositório usa-se qualquer cliente subversion. O cliente recomendado é o 
+TortoiseSNV e pode ser baixado aqui: <A HREF="http://tortoisesvn.net/downloads">TortoiseSVN</A>
+</P>
+<P>
+O endereço de acesso ao repositório do projeto é (acesso pela PUCRS dentro da 
+rede da FACIN):
+</P>
+<PRE>
+svn://naxos/x10
+</PRE>
+<P></P>
+<P>
+O acesso ao repositório também pode ser feito remotamente como segue abaixo:
+</P>
+<PRE>
+svn://201.54.139.40/x10
+</PRE>
+<P></P>
+<P>
+Os arquivos do repositório do projeto estão organizado da seguinte forma:
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="./images/svn-x10Giga.jpg" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>	
+</P>
+<P>
+Segue uma breve explicação de cada uma das pastas a cima:
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>DIRETÓRIOS</TH>
+<TH>DESCRIÇÃO</TH>
+</TR>
+<TR>
+<TD>AETest</TD>
+<TD>Software utilizado para enviar e receber dados da MainBus</TD>
+</TR>
+<TR>
+<TD>Framer</TD>
+<TD>TCC: Módulos para recepção e transmissão de frames</TD>
+</TR>
+<TR>
+<TD>Geraframes</TD>
+<TD>Software utilizado para geração de frames</TD>
+</TR>
+<TR>
+<TD>MainBus</TD>
+<TD>Módulo usado para interfacear o x10Giga com uma interface PCI</TD>
+</TR>
+<TR>
+<TD>Reed-Solomon</TD>
+<TD>TCC: Módulos de Detecção e correção de erros</TD>
+</TR>
+<TR>
+<TD>x10Giga</TD>
+<TD>Diretório principal de desenvovimento do projeto</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Segue a descrição de cada um dos diretórios do projeto:
+</P>
+<P>
+<br>	
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>DIRETÓRIOS</TH>
+<TH>DESCRIÇÃO</TH>
+</TR>
+<TR>
+<TD>tags</TD>
+<TD>Versoes lançadas</TD>
+</TR>
+<TR>
+<TD>x10Giga-v0.0</TD>
+<TD>Versão inicial do projeto</TD>
+</TR>
+<TR>
+<TD>trunk</TD>
+<TD>Diretório principal de desenvovimento</TD>
+</TR>
+<TR>
+<TD>Constraints</TD>
+<TD>Arquivos de regras para prototipação</TD>
+</TR>
+<TR>
+<TD>Documentacao</TD>
+<TD>Documentação do projeto</TD>
+</TR>
+<TR>
+<TD>HDL</TD>
+<TD>Arquivos fonte</TD>
+</TR>
+<TR>
+<TD>Client</TD>
+<TD>HDLs do cliente</TD>
+</TR>
+<TR>
+<TD>Global</TD>
+<TD>HDLs globais</TD>
+</TR>
+<TR>
+<TD>Interface-SE</TD>
+<TD>HDLs da interface com o software embarcado</TD>
+</TR>
+<TR>
+<TD>Receive</TD>
+<TD>HDLs do receive</TD>
+</TR>
+<TR>
+<TD>Send</TD>
+<TD>HDLs do send</TD>
+</TR>
+<TR>
+<TD>Simulacao</TD>
+<TD>Script e arquivos para simulação</TD>
+</TR>
+<TR>
+<TD>Client</TD>
+<TD>Arquivos necessários para simulação do cliente</TD>
+</TR>
+<TR>
+<TD>Interface-SE</TD>
+<TD>Arquivos necessários para simulação da interface com o software embarcado</TD>
+</TR>
+<TR>
+<TD>Sintese</TD>
+<TD>Script para síntese do projeto</TD>
+</TR>
+<TR>
+<TD>Testbench</TD>
+<TD>Arquivos fonte de teste</TD>
+</TR>
+<TR>
+<TD>Client</TD>
+<TD>HDLs de testbench do cliente</TD>
+</TR>
+<TR>
+<TD>Interface-SE</TD>
+<TD>HDLs de testbench da interface com o software embarcado</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Descrição dos VHDls do projeto:
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>HDL</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>x10_top.vhd</TD>
+<TD>Entidade TOP do projeto</TD>
+</TR>
+<TR>
+<TH>HDL/Client</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>extratorPayload.vhd</TD>
+<TD>Extrator de carga útil</TD>
+</TR>
+<TR>
+<TD>extratorPayload_asincFifo.vhd</TD>
+<TD>Fila assíncrona do tipo FIFO</TD>
+</TR>
+<TR>
+<TD>extratorPayload_deslocador.vhd</TD>
+<TD>Deslocador</TD>
+</TR>
+<TR>
+<TD>extratorPayload_justCtrl.vhd</TD>
+<TD>Controle de justificativas</TD>
+</TR>
+<TR>
+<TD>extratorPayload_votacao.vhd</TD>
+<TD>Contabiliza votos para justificativa</TD>
+</TR>
+<TR>
+<TH>HDL/Global</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>dcm_ise.vhd</TD>
+<TD>Digital clock manager</TD>
+</TR>
+<TR>
+<TD>top_frame_fec_se.vhd</TD>
+<TD>TOP frame receive</TD>
+</TR>
+<TR>
+<TD>x10_conv_pkg.vhd</TD>
+<TD>Conversões</TD>
+</TR>
+<TR>
+<TD>x10_global.vhd</TD>
+<TD>Constantes globais e registradores</TD>
+</TR>
+<TR>
+<TH>HDL/Interface-SE</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>banco_reg.vhd</TD>
+<TD>Banco de registradores</TD>
+</TR>
+<TR>
+<TD>extrator.vhd</TD>
+<TD>Extrator</TD>
+</TR>
+<TR>
+<TD>interface_se.vhd</TD>
+<TD>Interface com o software embarcado</TD>
+</TR>
+<TR>
+<TH>HDL/Receive</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>alinhador.vhd</TD>
+<TD>Alinhador</TD>
+</TR>
+<TR>
+<TD>assinatura.vhd</TD>
+<TD>Gera assunaturas</TD>
+</TR>
+<TR>
+<TD>decoder_rs.vhd</TD>
+<TD>Decodificador Reed Solomon</TD>
+</TR>
+<TR>
+<TD>fieldTable.vhd</TD>
+<TD>Field table</TD>
+</TR>
+<TR>
+<TD>framer.vhd</TD>
+<TD>Framer</TD>
+</TR>
+<TR>
+<TD>rs_mult_generic.vhd</TD>
+<TD>Multiplicador Reed Solomon Genérico</TD>
+</TR>
+<TR>
+<TD>scrambler.vhd</TD>
+<TD>Embaralhador</TD>
+</TR>
+<TR>
+<TD>top_receive.vhd</TD>
+<TD>TOP frame receive</TD>
+</TR>
+<TR>
+<TH>HDL/Send</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>encoder.vhd</TD>
+<TD>Codificador</TD>
+</TR>
+<TR>
+<TD>top_send.vhd</TD>
+<TD>TOP receive</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc12"></A>
+<H1>7. x10Giga-v0.0</H1>
+<P>
+<br>
+</P>
+<UL>
+<LI>Transponder x10Giga em loop-back (sem cliente):
+<P></P>
+<br>
+<P></P>
+</UL>
+
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="./images/overview.png" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>
+</P>
+<P>
+A figura acima ilustra a versão inicial do projeto, mostrando a integração dos 
+módulos desenvolvidos. O Framer contém o módulo alinhador de quadros e o 
+desembaralhador. O módulo alinhador de quadros é responsável por alinhar os 
+quadros utilizando-se da seqüência de alinhamento. Os módulos embaralhador e 
+desembaralhador são responsáveis por embaralhar e desembaralhar os dados, de 
+forma que não ocorram longas seqüências de 0s ou de 1s, o que garante uma 
+suficiente troca de estados dos bits facilitando a regeneração do relógio e 
+evitando uma possível repetição da seqüência de alinhamento. O módulo de extração 
+dos cabeçalhos é utilizado para extrair o conteúdo dos cabeçalhos possibilitando 
+a identificação de falhas, alarmes, tipo de dado transportado, origem e destino 
+contidos nos quadros OTN G709. Os decoders utilizam-se do FEC para corrigir 
+eventuais erros de transmissão aplicando o algoritmo Reed-Solomon. Já o módulo 
+encoder gera o overhead do FEC.
+</P>
+<P>
+A versão incial do projeto pode ser acessada pelo SVN utilizando o endereço:
+</P>
+<PRE>
+svn://naxos/x10/x10Giga/tags/x10Giga-v0.0
+</PRE>
+<P></P>
+<P>
+Pode-se também fazer o download da mesma: <A HREF="./projeto/x10Giga-v0.0.zip">x10Giga-v0.0.zip</A>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc13"></A>
+<H1>8. Geração de Frames</H1>
+<P>
+<br>
+</P>
+<P>
+O <A HREF="./projeto/Geraframe-v0.6.zip">geraframes</A> foi desenvolvido para facilitar a 
+criação de multiframes utilizados para as simulações e testes em FPGA. Este 
+software foi desenvolvido para Linux.
+</P>
+<P>
+Para compilá-lo basta digitar o seguinte comando:
+</P>
+<PRE>
+$ make
+</PRE>
+<P></P>
+<P>
+Comando para remover arquivos gerados e limpar o diretório:
+</P>
+<PRE>
+$ make clean
+</PRE>
+<P></P>
+<P>
+Comando para limpar apenas arquivos gerados:
+</P>
+<PRE>
+$ make organize
+</PRE>
+<P></P>
+<P>
+Pra ustilizá-lo basta digitar:
+</P>
+<PRE>
+$ ./geraframe
+</PRE>
+<P></P>
+<P>
+O geraframes pode ser utilizado através da interface iterativa ou por linha de 
+comando. Detalhes da utilização do geraframes serão vistas a baixo.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc14"></A>
+<H2>8.1. Arquivo de Configuração</H2>
+<P>
+Para carregar os parâmetros utiliza-se um arquivo de configuração. As simulações 
+mostradas no item 6 contêm os arquivos de configuração que as geraram, 
+para referência. Um guia do mesmo pode ser gerado pela própria ferramenta, 
+escolhendo a opção 2 no menu inicial.
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="images/geraframe1.png" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>	
+</P>
+<P>
+Assim é criado um arquivo padrão (config.x10). O arquivo de configurações é 
+composto por vários campos, contendo as opções e as possibilidades para cada 
+parâmetro. Segue abaixo o detalhamento destes parâmetros:
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Campo</TH>
+<TH>Parâmetro</TH>
+</TR>
+<TR>
+<TD>FILE_OUT</TD>
+<TD>Nome do arquivo de saída</TD>
+</TR>
+<TR>
+<TD>BASE_OUT</TD>
+<TD>Base dos arquivos gerados (HEX, BIN ou HEXBIN)</TD>
+</TR>
+<TR>
+<TD>GEN_MEM_MS</TD>
+<TD>HEX/BIN/NO</TD>
+</TR>
+<TR>
+<TD>PRINT_AFTER</TD>
+<TD>NO/OVERHEAD/PAYLOAD/FEC/ERRO/SCRAM</TD>
+</TR>
+<TR>
+<TD>RAMB_OUT</TD>
+<TD>Cria ou não os VHDLS das BlockRAMS(para testes emulados)(YES/NO)</TD>
+</TR>
+<TR>
+<TD>ASSINATURA</TD>
+<TD>Cria ou não a assinatura de cada 64 bits, (YES/NO)</TD>
+</TR>
+<TR>
+<TD>TEST_SIGNAL</TD>
+<TD>O conteúdo do Payload(PRBS/NULL) Null equivale a um payload de 0's</TD>
+</TR>
+<TR>
+<TD>FEC</TD>
+<TD>Escolhe se desejas calcular o FEC ou não (YES/NO)</TD>
+</TR>
+<TR>
+<TD>NUMERRORS</TD>
+<TD>Número de erros inseridos, 0 a 128</TD>
+</TR>
+<TR>
+<TD>TIPERRORS</TD>
+<TD>Tipo de inserção de erros, (RAJADA/RANDOM)</TD>
+</TR>
+<TR>
+<TD>ALIGNMENT</TD>
+<TD>Tamanho do desalinhamento, 0 a 63</TD>
+</TR>
+<TR>
+<TD>SCRAMBLING</TD>
+<TD>Embaralhamento do frame (YES/NO)</TD>
+</TR>
+<TR>
+<TD>FAS</TD>
+<TD>Colocar ou não o FAS (YES/NO)</TD>
+</TR>
+<TR>
+<TD>MFAS</TD>
+<TD>Calcular ou não o MFAS, o contador de multi-frame(YES/NO)</TD>
+</TR>
+<TR>
+<TD>SM_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>SM_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>SM_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>GCC0</TD>
+<TD>NO/ex.: #### #### #### ... #### (0..255 hex 2 bytes)</TD>
+</TR>
+<TR>
+<TD>RES1</TD>
+<TD>NO/ex.: #### #### #### ... #### (0..255 hex 2 bytes)</TD>
+</TR>
+<TR>
+<TD>RES2</TD>
+<TD>NO/ex.: ###### ###### ... ###### (0..255 hex 3 bytes)</TD>
+</TR>
+<TR>
+<TD>TCM_ACT</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM6_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM6_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM6_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM5_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM5_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM5_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM4_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM4_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM4_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>FTFL</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM3_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM3_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM3_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM2_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM2_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM2_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM1_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM1_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>TCM1_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>PM_TTI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>PM_BIP8</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>PM_ALARMS</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>EXP</TD>
+<TD>NO/ex.: #### #### #### ... #### (0..255 hex 2 bytes)</TD>
+</TR>
+<TR>
+<TD>GCC1</TD>
+<TD>NO/ex.: #### #### #### ... #### (0..255 hex 2 bytes)</TD>
+</TR>
+<TR>
+<TD>GCC2</TD>
+<TD>NO/ex.: #### #### #### ... #### (0..255 hex 2 bytes)</TD>
+</TR>
+<TR>
+<TD>APS_PCC</TD>
+<TD>NO/ex.: ######## ######## ... ######## (0..255 hex 4 bytes)</TD>
+</TR>
+<TR>
+<TD>RES3</TD>
+<TD>NO/ex.: ############ ############ ... ############ (0..255 hex 6 bytes)</TD>
+</TR>
+<TR>
+<TD>PSI</TD>
+<TD>NO/ex.: ## ## ## ## ## ... ## (0..255 hex bytes)</TD>
+</TR>
+<TR>
+<TD>JUSTIF_CTRL</TD>
+<TD>NO/RANDOM/EXAUSTIVO</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc15"></A>
+<H2>8.2. Utilização por interface iterativa</H2>
+<P>
+Uma vez criado o arquivo de configuração, execute novamente o aplicativo e 
+escolha a opção 1. Carregue o arquivo de configuração desejado e escolha a 
+quantidade de frames que devem ser gerados.
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="images/geraframe2.png" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>	
+</P>
+<P>
+O programa então informará o progresso da criação e finalizará mostrando todos 
+os parâmetros escolhidos para gerar os frames.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc16"></A>
+<H2>8.3. Utilização por linha de comando</H2>
+<P>
+O geraframe possui alguns comandos de linha de comando para facilitar a criação
+de diversos arquivos de configuração diferentes e também a inserção do mesmo em
+algum possível script de configuração.
+</P>
+<P>
+Para utilizar o geraframes por linha de comando:
+</P>
+<PRE>
+$ ./geraframe &lt;parametros&gt;
+</PRE>
+<P></P>
+<P>
+Os possiveis agumentos são:
+</P>
+<PRE>
+Parametros: -h                         : Mostra este help
+            -cf &lt;arquivo-configuracao&gt; : Seta arquivo de configuração
+            -qf &lt;quantidade-de-frames&gt; : Seta a quantidade de frames
+</PRE>
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc17"></A>
+<H2>8.4. Arquivos Gerados</H2>
+<P>
+O greaframes pode criar até três diretórios diferentes dependendo do arquivo de 
+configuração.
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Diretório</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>FILE_OUT</TD>
+<TD>Arquivo texto contendo com os multiframes gerados (64 bits por linha)</TD>
+</TR>
+<TR>
+<TD>RAMB_OUT</TD>
+<TD>BRAMs em VHDL contendo as memórias preenxidas com os multiframes</TD>
+</TR>
+<TR>
+<TD>ASSINATURA_OUT</TD>
+<TD>Assinaturas de saída para futura comparação dos dados de teste</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Os arquivos gerados que são colocados no diretório FILE_OUT têm a seguinte sintaxe:
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Arquivo Gerado</TH>
+<TH>Descrição</TH>
+</TR>
+<TR>
+<TD>&lt;nome&gt;_bin&lt;xxxx&gt;.in</TD>
+<TD>Arquivo de entrada BINARIO no dispositivo/software de testes</TD>
+</TR>
+<TR>
+<TD>&lt;nome&gt;_hex&lt;xxxx&gt;.in</TD>
+<TD>Arquivo de entrada HEXADECIMAL no dispositivo/software de testes</TD>
+</TR>
+<TR>
+<TD>&lt;nome&gt;_hex&lt;xxxx&gt;.comp</TD>
+<TD>Arquivo de entrada HEXADECIMAL esperado quando arquivo com erros é inserido</TD>
+</TR>
+<TR>
+<TD>&lt;nome&gt;&lt;xxxx&gt;.graf</TD>
+<TD>Arquivo de DEBUG (visualização do(s) frame(s) userfriendly)</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Onde o &lt;nome&gt; é o nome do arquivo passado pelo campo FILE_OUT do arquivo de 
+configuração, o &lt;xxxx&gt; é o número do arquivo caso o geraframes seja executado 
+multiplas vezes.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc18"></A>
+<H1>9. Simulação</H1>
+<P>
+<br>
+</P>
+<P>
+Para simulação usa-se o simulador Modelsim com as bibliotecas da Xilinx.
+</P>
+<P>
+Um dos scripts usado para simulação é, por exemplo, 
+<A HREF="./projeto/x10Giga-v0.0/Simulacao/CasoA/topA.do">topA.do</A>.
+</P>
+<P>
+<br>
+</P>
+<PRE>
+quit -sim
+
+vmap unisim  <$XILINX/vhdl/mti_se/unisim>
+vmap simprim <$XILINX/vhdl/mti_se/simprim>
+vmap simprims_ver <$XILINX/verilog/mti_se/simprims_ver>
+vmap unisims_ver <$XILINX/verilog/mti_se/unisims_ver>
+vmap xilinxcorelib <$XILINX/vhdl/mti_se/xilinxcorelib>
+
+vlib work
+
+################################################################################
+################################################################################
+
+# x10Giga (Projeto propriamente dito)
+
+	#vcom -work work ../../HDL/x10_assinatura.vhd
+	vcom -work work ../../HDL/x10_alinhador.vhd
+	vcom -work work ../../HDL/x10_scrambler.vhd
+	vcom -work work ../../HDL/x10_framer.vhd
+	vcom -work work ../../HDL/fieldTable.vhd
+	vcom -work work ../../HDL/rsmult_generic.vhd
+	vcom -work work ../../HDL/decode.vhd
+	vcom -work work ../../HDL/encode.vhd
+	vcom -work work ../../HDL/frame_receive.vhd
+	vcom -work work ../../HDL/frame_send.vhd
+	vcom -work work ../../HDL/dcm_ise.vhd
+
+# TOP x10Giga (Top diferente do TOP PRINCIPAL)
+	
+	vcom -work work ../../Testbench/CasoA/top_frame_fec.vhd
+
+# Compila o Testbench
+
+	vcom -work work ../../Testbench/CasoA/tb_topA.vhd
+
+################################################################################
+################################################################################	
+	
+vsim -t 1ps -lib work top_tb
+radix hexadecimal
+do wave.do
+run 3 ms
+</PRE>
+<P></P>
+<P>
+<br>
+</P>
+<P>
+O script compila as partes essenciais do projeto junto com o seu respectivo 
+testbench.
+</P>
+<P>
+Para a simulação do projeto foram criados quatro casos de testes. Cada um destes
+casos utiliza um script igual ao mostrado acima, mas com um testbench
+tb_top.vhd diferente. Estes casos serão comentados a seguir.
+</P>
+<P>
+Depois de compilados os arquivos, é simulado o tb_top.vhd que por sua vez 
+carrega o seu respectivo arquivo de entrada (casoA.txt, casoB.txt, etc) criado 
+através do geraframes.
+</P>
+<P>
+Uma vez finalizada a simulação, o script abre um waveform e salva um arquivo 
+output_dec_.txt contendo toda a saída (inclusive todos os dados de antes e 
+depois das transmissões), lembrando que os dados da saída estão embaralhados. 
+</P>
+<P>
+O arquivo de saída pode ser facilmente comparado com as entradas utilizando 
+ferramentas como <A HREF="http://winmerge.org/">winmerge</A>.
+</P>
+<P>
+<br>
+</P>
+<P>
+Os diretórios necessários para as simulações dos quatro casos de teste descritos
+a seguir pode ser vista no arquivo compactado do projeto ou com o seguinte 
+arquivo simplificado: <A HREF="./projeto/TestCases.zip">casos de teste</A>
+</P>
+<P>
+<B>Como simular</B>: Para simular, deve-se entrar no diretório referente ao caso de 
+teste, como por exemplo:
+</P>
+<P>
+<br>
+</P>
+<PRE>
+./x10Giga/Simulacao/CasoA/
+</PRE>
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Clicar em simula-v&lt;x.x&gt;.bat. Se o script não funcionar, deve-se abrir o modelsim, 
+e mudar o diretório corrente para o diretório mostrado acima.
+</P>
+<P>
+Digite no prompt  "do topA.do", espere a simulação terminar e veja os resultados 
+no waveform ou no arquivo de saída criado (outputA.out). Este é um teste muito 
+longo, demorando aproximadamente 3 ms para acabar (resultando em horas de 
+simulação). Uma vez terminada a simulação, o waveform será aberto, contendo 
+sinais de interesse para entender o funcionamento dos módulos.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc19"></A>
+<H2>9.1. Caso A</H2>
+<P>
+<B>Objetivo:</B> Testar a robustez do algoritmo para transmissões de longa 
+duração, como terá de suportar no mundo real.
+</P>
+<P>
+<B>Arquivo de entrada:</B> Este caso de teste simula uma longa série de multi-frames, 
+258, com payload gerado através de uma seqüência PRBS (Pseudo Random Bit Stream), 
+sem erros, perfeitamente alinhados utilizando embaralhamento. 
+</P>
+<P>
+O MFAS vai de 0 a 255, este caso testa apenas se consegue passar mais de 255 
+frames.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc20"></A>
+<H2>9.2. Caso B</H2>
+<P>
+<B>Objetivo:</B> Este caso de teste será utilizado para demonstrar a eficiência do 
+FEC. Com 128 erros tem-se o pior caso do FEC. Podemos ver na simulação que todos 
+os erros são corrigidos, o sinal Saída (des)embaralhador mostra os erros e a 
+Saída Receiver estes corrigidos.
+</P>
+<P>
+<B>Arquivo de entrada:</B> 5 frames com payload composto 
+de 0's, com 128 erros, alinhado e embaralhado.
+</P>
+<P>
+<B>Sinais de interesse</B>: Aqui nos interessa o sinal Saída (des)embaralhador e 
+Saída Receiver.
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="images/simulacao-casob.jpg" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Podemos ver que o sinal não corrigido ((des)embaralhador) deveria conter apenas 
+0's mas contém alguns 1's no meio. Na saída do receiver, porém, estes erros 
+foram corrigidos.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc21"></A>
+<H2>9.3. Caso C</H2>
+<P>
+<B>Objetivo:</B> Este caso de teste verifica a correção do desalinhamento, neste caso está desalinhado 
+em 59 bits.
+</P>
+<P>
+<B>Arquivo de entrada:</B> 5 frames. O payload é composto por 0's e sem erros. 
+Como podemos ver no waveform e no arquivo de saída outputC.txt, o alinhamento é 
+consertado.
+</P>
+<P>
+<B>Sinais de interesse:</B> Aqui nos interessa o sinal Saída (des)embaralhador, 
+módulo seguinte à correção do alinhamento.
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="images/simulacao-casoc.jpg" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>
+</P>
+<P>
+Em casos de desalinhamento, o FAS aparece deslocado na palavra (nos casos de 
+teste com 0's), porém na saída do receiver podemos ver que o FAS está começando 
+corretamente alinhado com a palavra.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc22"></A>
+<H2>9.4. Caso D</H2>
+<P>
+<B>Objetivo:</B> Um teste mais abrangente, uma situação com desalinhamento e alguns 
+erros através dos multiframes. 
+</P>
+<P>
+<B>Arquivo de entrada:</B> 10 frames com payload composto de 0's e com 30 erros 
+distribuídos aleatoriamente.
+</P>
+<P>
+<br>
+</P>
+	<BLOCKQUOTE>
+	<center><IMG ALIGN="middle" SRC="images/simulacao-casoc.jpg" BORDER="0" ALT=""></center>
+	</BLOCKQUOTE>
+<P></P>
+<P>
+<br>	
+</P>
+<A NAME="toc23"></A>
+<H1>10. Síntese</H1>
+<P>
+<br>
+</P>
+<P>
+A síntese é realizada através da ferramenta ISE da Xilinx. Pode-se usar o ISE e 
+suas ferramentas através da interface gráfica ou em modo texto com um script 
+feito em batch/shell dependendo do sistema operacional.
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc24"></A>
+<H2>10.1. Sintese por script</H2>
+<P>
+Desenvolvemos um script Batch (windows) para a sintese lógica e física do projeto:
+<A HREF="./projeto/x10Giga-v0.0/Sintese/sintetiza-v1.3.bat">sintetiza-v1.3.bat</A>. Usamos a
+versão mais 10 do ISE com as últimas atualizações.
+</P>
+<P>
+A interface do VHDL com o hardware e outras configurações é feita com um arquivo 
+de contraints. O arquivo de constraints que usamos para a versão incial do projeto
+pode ser visto aqui: <A HREF="./projeto/x10Giga-v0.0/Constraints/top_frame_fec.ucf">xc4vfx100-ff1152-11.ucf</A>
+</P>
+<P>
+O arquivo de constraints foi modificado a partir do arquivo fornecido pela 
+Dini Group, empresa que desenvolveu a placa que usamos para síntese. Pode-se notar
+que a interface que faz o acesso a PCI está mapeada em pinos determinados. Na 
+abordagem inicial configuramos apenas a frequência e o comportamento físico de
+alguns pinos como o de clock.
+</P>
+<P>
+OBS.: O projeto está sendo sintetizado para um FPGA da Xilinx. As caracterísitcas 
+deste FPGA podem ser vistas a baixo:
+</P>
+<PRE>
+FAMÍLIA : VIRTEX4
+DEVICE  : XC4VFX100
+PACKAGE : FF1152
+SPEED   : -11
+</PRE>
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc25"></A>
+<H2>10.2. Relatório Área</H2>
+<P>
+O relatório completo de área encontra-se aqui: 
+<A HREF="./documents/XST-Relatorio/top_frame_fec_summary.html">Relatório de Área</A>
+</P>
+<P>
+<br>
+</P>
+<TABLE BORDER="1">
+<TR>
+<TH>Logic Utilization</TH>
+<TH>Used</TH>
+<TH>Available</TH>
+<TH>Utilization Note(s)</TH>
+</TR>
+<TR>
+<TD>Number of Slice Flip Flops</TD>
+<TD>20,496</TD>
+<TD>84,352</TD>
+<TD>24%</TD>
+</TR>
+<TR>
+<TD>DCM autocalibration logic</TD>
+<TD>7</TD>
+<TD>20,496</TD>
+<TD>1%</TD>
+</TR>
+<TR>
+<TD>Number of 4 input LUTs</TD>
+<TD>51,690</TD>
+<TD>84,352</TD>
+<TD>61%</TD>
+</TR>
+<TR>
+<TD>DCM autocalibration logic</TD>
+<TD>4</TD>
+<TD>51,690</TD>
+<TD>1%</TD>
+</TR>
+<TR>
+<TH>Logic Distribution</TH>
+<TH></TH>
+<TH></TH>
+<TH></TH>
+</TR>
+<TR>
+<TD>Number of occupied Slices</TD>
+<TD>30,751</TD>
+<TD>42,176</TD>
+<TD>72%</TD>
+</TR>
+<TR>
+<TD>Number of Slices containing only related logic</TD>
+<TD>30,751</TD>
+<TD>30,751</TD>
+<TD>100%</TD>
+</TR>
+<TR>
+<TD>Number of Slices containing unrelated logic</TD>
+<TD>0</TD>
+<TD>30,751</TD>
+<TD>0%</TD>
+</TR>
+<TR>
+<TD>Total Number of 4 input LUTs</TD>
+<TD>52,537</TD>
+<TD>84,352</TD>
+<TD>62%</TD>
+</TR>
+<TR>
+<TD>Number used as logic</TD>
+<TD>51,690</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number used as a route-thru</TD>
+<TD>818</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number used as 16x1 RAMs</TD>
+<TD>1</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number used as Shift registers</TD>
+<TD>28</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number of bonded IOBs</TD>
+<TD>135</TD>
+<TD>576</TD>
+<TD>23%</TD>
+</TR>
+<TR>
+<TD>Number of BUFG/BUFGCTRLs</TD>
+<TD>3</TD>
+<TD>32</TD>
+<TD>9%</TD>
+</TR>
+<TR>
+<TD>Number used as BUFGs</TD>
+<TD>3</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number used as BUFGCTRLs</TD>
+<TD>0</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number of FIFO16/RAMB16s</TD>
+<TD>24</TD>
+<TD>376</TD>
+<TD>6%</TD>
+</TR>
+<TR>
+<TD>Number used as FIFO16s</TD>
+<TD>0</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number used as RAMB16s</TD>
+<TD>24</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Number of DCM_ADVs</TD>
+<TD>1</TD>
+<TD>12</TD>
+<TD>8%</TD>
+</TR>
+<TR>
+<TD>Total equivalent gate count for design</TD>
+<TD>2,069,663</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+<TR>
+<TD>Additional JTAG gate count for IOBs</TD>
+<TD>6,480</TD>
+<TD>-</TD>
+<TD>-</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+<br>
+</P>
+<A NAME="toc26"></A>
+<H2>10.3. Relatório Timing</H2>
+<P>
+O relatório completo de timing, gerado pela ferramenta de sintese (XST) pode ser 
+visualizado aqui: <A HREF="./documents/XST-Relatorio/top_frame_fec.syr">XST Report</A>
+</P>
+<P>
+<B>Timing Summary</B><br>
+Speed Grade: <B>-11</B><br>
+Minimum period: <B>3.719ns</B> (Maximum Frequency: <B>268.890MHz</B>)<br>
+Minimum input arrival time before clock: <B>1.198ns</B><br>
+Maximum output required time after clock: <B>5.260ns</B><br>
+</P>
+<P>
+<br>
+</P>
+<A NAME="toc27"></A>
+<H1>11. Sobre este documento</H1>
+<P>
+<br>
+</P>
+<P>
+Este documento foi gerado usando o programa TXT2TAG. 
+Para saber mais sobre o programa visite a <A HREF="http://txt2tags.sourceforge.net/">página</A> 
+do programa. O programa pode ser baixado diretamente (para windows) com o link: 
+<A HREF="http://txt2tags-win.sourceforge.net/txt2tags-2.3-sa-ptbr.exe">txt2tags-2.3-sa-ptbr.exe</A>
+</P>
+<P>
+Para facilitar a geração da página é usado o seguinte script: 
+<A HREF="./TXT2HTML.bat">TXT2HTML.bat</A>
+e o arquivo fonte é o <A HREF="./index.t2t">index.tst</A>
+</P>
+<P>
+Mais informações sobre o TXT2TAGS:
+</P>
+<UL>
+<LI><A HREF="./documents/txt2tags-quickref-pt.pdf">Quick Reference</A>
+<LI><A HREF="http://txt2tags.sourceforge.net/pt/guia-usuario.html">Guia do usuário</A>
+<P></P>
+<br>
+<br>
+<br>
+<br>
+</UL>
+
+</DIV>
+
+<!-- html code generated by txt2tags 2.3 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags -\-outfile=index.html index.t2t -->
+</BODY></HTML>

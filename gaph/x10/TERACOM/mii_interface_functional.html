@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.sf.net">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" TYPE="text/css" HREF="style.css">
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<FONT SIZE="4">
+</FONT></CENTER>
+
+<H1>1. MII Interface (mii_interface)</H1>
+<H2>1.1. MII Interface - Overview</H2>
+<P>
+This component is loosely based on the IEEE Draft P802.3u MII Management Interface standard.
+</P>
+<H2>1.2. Frame Format</H2>
+<P>
+At the rising edge of <B>rst</B>, the MII standard device loads the device address into the REGISTER ADDRESS and uses it to
+decode accesses to its registers. After a power-on reset, the MII specification defines a set of thirty-two 16-bit status and control 
+registers. The frame is formatted as follows (in bit order across MDIO)
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH></TH>
+<TH>Start of Frame</TH>
+<TH>Operation Code</TH>
+<TH>Device Address</TH>
+<TH>Register Address</TH>
+<TH>Turn-Around</TH>
+<TH>Data</TH>
+<TH>Idle</TH>
+</TR>
+<TR>
+<TD>Read</TD>
+<TD ALIGN="center">01</TD>
+<TD ALIGN="center">10</TD>
+<TD ALIGN="center">AAAAA</TD>
+<TD ALIGN="center">RRRRRRRR</TD>
+<TD ALIGN="center">Z0</TD>
+<TD>DDDDDDDDDDDDDDDD</TD>
+<TD ALIGN="center">Z</TD>
+</TR>
+<TR>
+<TD>Write</TD>
+<TD ALIGN="center">01</TD>
+<TD ALIGN="center">01</TD>
+<TD ALIGN="center">AAAAA</TD>
+<TD ALIGN="center">RRRRRRRR</TD>
+<TD ALIGN="center">10</TD>
+<TD>DDDDDDDDDDDDDDDD</TD>
+<TD ALIGN="center">Z</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<P>
+The figure bellow shows the driver configuration implemented in this programmable logic description. Note that data output turn to 
+tri-state mode when the module is in read mode. This action is executed by the logic being it not crontroled by user.
+</P>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_buff_impl.png" BORDER="0" ALT="">
+</P>
+<H2>1.3. Management Frame Format Description</H2>
+<P>
+<B>Start of frame</B>: Start of frame is indicated by <B>01</B> pattern.
+</P>
+<P>
+<B>Operation code</B>: The operation code field indicates the type of transaction being performed by the frame. A <B>01</B> pattern indicates 
+that the frame payload contains data to be written to the register. A <B>10</B> pattern indicates that the frame payload will contain data 
+to be read from the register.
+</P>
+<P>
+<B>Device Address</B>: The device compares the address bits of the device address field to the latched address bits. If they are equal, 
+the device proceeds with the access. If they are not equal, the device ignores the access and does not drive the <B>mdio</B> signal.
+</P>
+<P>
+<B>Register address</B>: This field is used to select the registers to be accessed. The register address 8 bits.
+</P>
+<P>
+<B>Turnaround</B>: This field between register address field and data field is used to avoid contention on <B>mdio</B>.
+</P>
+<P>
+<B>Data field</B>: This field has 16 bits (MII standard) width but its contents is configurable by generics. When a smaller data width is 
+chosen, the MSBs is driven to '0' and the written word is placed in the LSBs. The first bit transmitted is bit 15. Data bits are 
+latched in or out of the MII device on the rising edge of <B>mdc* for write operation and falling edge of **mdc</B> for read operation.
+</P>
+<P>
+<B>Idle condition</B>: A final clock puts <B>mdio</B> back in an idle state (<B>mdio</B> is tri-stated and pulled-up). Thus in the idle state 
+all the drivers are disabled and the MII bus is in the high impedance state. The MII device bus requires idle state for 1 clock period.
+</P>
+<P>
+<I><B>NOTE:</B> Some devices needs more the one <B>mdc</B> clock periods in idle state, in contrast to the IEEE Draft P802.3u that requires</I>
+<I>idle state for one clock periods.</I>
+</P>
+<H3>1.3.1. Turnaround</H3>
+<P>
+The figure bellow shows the functional timing for the turn around (TA) portion of a read access. The arrows on the clock edges indicate 
+which edge is used by the MII device for each event. The MII device clocks data in on <B>mdc's</B> rising edge and clocks data out on 
+<B>mdc's</B> falling edge.
+</P>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_read_action.png" BORDER="0" ALT="">
+</P>
+<UL>
+<LI><B>Step 1</B>: A '1' is being clocked in on the rising edge of <B>mdc</B> as the last bit of the register address field;
+<P></P>
+<LI><B>Step 2</B>: A ‘Z’ is being clocked into the MII device on the rising edge of <B>mdc</B>. This is the first part of the turn around which 
+gives time for the driver to turn off and to allow data to be driven by the MII device. On the falling edge of the same clock period, 
+the MII device drives a '0' on to <B>mdio</B> as the second part of the turn around;
+<P></P>
+<LI><B>Step 3</B>: A '0' is being clocked out from the MII device on the falling edge. This is the first '0' of the 16-bit data field.
+</UL>
+
+<P>
+<I><B>IMPORTANT:</B> For a read transaction, the <B>mdio</B> should be in a tri-state for the first part of the turn around. The device drives</I>
+<I>a zero during the second part of the turn around. The figure bellow shows which clock edges are being used for the turn around during</I>
+<I>the read operation.</I>
+</P>
+<P>
+For a write transaction, the system will drive a '1' for the first bit time, and a '0' for the second bit time of the turn around. 
+Look at figure bellow for which clock edges are being used for the turn around during the write operation.
+</P>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_write_action.png" BORDER="0" ALT="">
+</P>
+<P>
+The figure above shows the functional timing for the turn around (TA) portion of a write access. The arrows on the clock edges indicate 
+which edge is used by the MII device for each event. The data is clocked in the MII device on the <B>mdc's</B> rising edge.
+</P>
+<UL>
+<LI>Step A - A '1' is being clocked in on the rising edge of <B>mdc</B> as the last bit of the register address field;
+<LI>Step B - A '1' is being clocked into the <B>mdio</B> on the rising edge of <B>mdc</B>. This is the first part of the turn around;
+<LI>Step C - A '0' is being clocked into the MII device on the rising edge of <B>mdc</B> as the second part of the turn around.
+</UL>
+
+<H2>1.4. Block Diagram</H2>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_interface_bd.png" BORDER="0" ALT="">
+</P>
+<H2>1.5. Finite State Machine (FSM) Implemented</H2>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_fsm.png" BORDER="0" ALT="">
+</P>
+<H2>1.6. Generics &amp; Ports</H2>
+<P>
+dkasdpas
+</P>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_top.png" BORDER="0" ALT="">
+</P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Generic</TH>
+<TH>type</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD>CLK_EDGE</TD>
+<TD>std_logic</TD>
+<TD>Defines sensible edge of the mii interface driver</TD>
+</TR>
+<TR>
+<TD>MASTER_CLK_DIV</TD>
+<TD>integer</TD>
+<TD>Indicates master clock division to generate fsm clock</TD>
+</TR>
+<TR>
+<TD>ST_WR</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines pattern to start a write frame</TD>
+</TR>
+<TR>
+<TD>ST_RD</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines pattern to start a read frame</TD>
+</TR>
+<TR>
+<TD>CODE_WR</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines write code pattern</TD>
+</TR>
+<TR>
+<TD>CODE_RD</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines read code pattern</TD>
+</TR>
+<TR>
+<TD>TURN_AROUND_WR</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines turn-around code to write action (sended)</TD>
+</TR>
+<TR>
+<TD>TURN_AROUND_RD</TD>
+<TD>integer</TD>
+<TD>Defines turn-around position in read action</TD>
+</TR>
+<TR>
+<TD>DEV_ADDR_WIDTH</TD>
+<TD>integer</TD>
+<TD>Defines device address width</TD>
+</TR>
+<TR>
+<TD>REG_ADDR_WIDTH</TD>
+<TD>integer</TD>
+<TD>Defines register address width</TD>
+</TR>
+<TR>
+<TD>DATA_WIDTH</TD>
+<TD>integer</TD>
+<TD>Defines data width with uPC</TD>
+</TR>
+<TR>
+<TD>DATA_COM_WIDTH</TD>
+<TD>integer</TD>
+<TD>Defines data width of MII interface</TD>
+</TR>
+<TR>
+<TD>DATA_STUFF</TD>
+<TD>integer</TD>
+<TD>Defines stuff word width</TD>
+</TR>
+<TR>
+<TD>TXBUS_EDGE</TD>
+<TD>std_logic</TD>
+<TD>Indicates Tx clock edge of MII interface</TD>
+</TR>
+<TR>
+<TD>RXBUS_EDGE</TD>
+<TD>std_logic</TD>
+<TD>Indicates Rx clock edge of MII interface</TD>
+</TR>
+<TR>
+<TD>OPTIMIZATION</TD>
+<TD>string</TD>
+<TD>Inicates how optimization is used (not implemented yet)</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<TABLE CELLPADDING="4" BORDER="1">
+<TR>
+<TH>Port</TH>
+<TH>Orientation</TH>
+<TH>type</TH>
+<TH>Description</TH>
+<TH>Data Size (bits)</TH>
+</TR>
+<TR>
+<TD>rst</TD>
+<TD ALIGN="center">in</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Resets the MII interface module</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>clk</TD>
+<TD ALIGN="center">in</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Clock of MII interface module</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>clk_en</TD>
+<TD ALIGN="center">in</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Clock enable of MII interface module</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>mii_req</TD>
+<TD ALIGN="center">in</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Commands start frame transmition</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>rw_operation</TD>
+<TD ALIGN="center">in</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Indicates how operation will be made<br> <B>0</B>: Read<br> <B>1</B>: Write</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>busy</TD>
+<TD ALIGN="center">out</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Indicates to uPC interface the status of MII interface module. <B>0</B>: Free<br> <B>1</B>: Busy</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>dev_addr</TD>
+<TD ALIGN="center">in</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines address of device to be accessed</TD>
+<TD>DEV_ADDR_WIDTH</TD>
+</TR>
+<TR>
+<TD>reg_addr</TD>
+<TD ALIGN="center">in</TD>
+<TD>std_logic_vector</TD>
+<TD>Defines address of register to be accessed</TD>
+<TD>REG_ADDR_WIDTH</TD>
+</TR>
+<TR>
+<TD>din</TD>
+<TD ALIGN="center">in</TD>
+<TD>std_logic_vector</TD>
+<TD>Input data (uPC interface to MII interface)</TD>
+<TD>DATA_WIDTH</TD>
+</TR>
+<TR>
+<TD>dout</TD>
+<TD ALIGN="center">out</TD>
+<TD>std_logic_vector</TD>
+<TD>Output data (MII interface to uPC interface)</TD>
+<TD>DATA_WIDTH</TD>
+</TR>
+<TR>
+<TD>mdc</TD>
+<TD ALIGN="center">out</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Clock of MII interface</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+<TR>
+<TD>mdio</TD>
+<TD ALIGN="center">inout</TD>
+<TD ALIGN="center">std_logic</TD>
+<TD>Data line of MII interface</TD>
+<TD ALIGN="center">1</TD>
+</TR>
+</TABLE>
+
+<P></P>
+<H2>1.7. Operation's Communication</H2>
+<P>
+Here is presented two simple example of write and read communication with MII interface module.
+</P>
+<H3>1.7.1. Write Comunication</H3>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_wr_frm.png" BORDER="0" ALT="">
+</P>
+<P>
+In the picture above is presented a write communication whit MII interface module. Note that the first two bits is a start frame 
+indication, after came anothers two bits that indicates the read/write operation, in this case a write operation. The next field in 
+MII frame is the device address followed by register address. Then thera a two bits that indicates turn-around (for this example these 
+bits are "10"). The data came in the next useful field and the last field is a ilustration of the idle MII bus condition.
+</P>
+<H3>1.7.2. Read Comunication</H3>
+<P>
+<IMG ALIGN="middle" SRC="figures/mii_rd_frm.png" BORDER="0" ALT="">
+</P>
+<P>
+The picture above shows a read communication whit MII interface module. Note that the first two bits (start frame) is equal the first 
+two bits of write communication frame. The read/write operation field has a read pattern, and the device and register addresses is the 
+same as showed in write frame comunication, but the turn-around field has a read turn-around patters ("1Z"). The following fields are 
+equal as the write frame communication, the difference is in the clock edge that register data, that inverts in read turn-around.
+</P>
+<H1>2. References</H1>
+<P>
+<B>IEEE Draft P802.3u</B>
+</P>
+
+<!-- html code generated by txt2tags 2.3 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags .\serial_interface\mii_interface_functional.t2t -->
+</BODY></HTML>

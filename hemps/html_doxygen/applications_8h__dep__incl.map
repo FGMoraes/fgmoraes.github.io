@@ -1,0 +1,7 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/applications.h" name="/home/ruaro/hemps/hemps_trunk/software/modules/applications.h">
+<area shape="rect" id="node2" href="$reclustering_8h.html" title="/home/ruaro/hemps/hemps\l_trunk/software/modules\l/reclustering.h" alt="" coords="132,109,309,165"/>
+<area shape="rect" id="node3" href="$kernel__master_8c.html" title="Kernel master is the system manager kernel. " alt="" coords="5,213,183,269"/>
+<area shape="rect" id="node5" href="$applications_8c.html" title="Implements the function to manage a insertion, accessing, and remotion of an applications structure T..." alt="" coords="333,109,511,165"/>
+<area shape="rect" id="node6" href="$cluster__scheduler_8c.html" title="Selects where to execute a task and application &#160;Cluster scheduler implements the cluster resources m..." alt="" coords="535,109,712,165"/>
+<area shape="rect" id="node4" href="$reclustering_8c.html" title="This module implements function relative to reclustering This module is used by the kernel manager &#160;R..." alt="" coords="207,213,384,269"/>
+</map>

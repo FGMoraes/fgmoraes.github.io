@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" href="resources/icone.png">
+<head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" media="all" href="common.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="workview.js"></script>
+        <title>HeMPS Multiprocessor System on Chip</title>
+
+        <STYLE type="text/css">
+            code{
+              background-color:#EEEEEE;
+              font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+              font-size: 10pt;
+            }
+        </STYLE>
+
+</head>
+
+
+<body>
+        <header role="banner">
+
+        <div>
+        <h1 class="pageName">HeMPS</h1>
+        <h1 id="slogan">Hermes Multiprocessor System on Chip</h1>
+        <p><a href="https://github.com/GaphGroup/hemps" > <img src="resources/Github.png"></a> </p>
+        </div>
+        </header>
+        <div id="floating_menu-anchor"></div> <!--Ver depois como fazer isso sozinho -->
+        <div id="floating_menu">
+        <ul>
+            <li><a href="index.html">HeMPS</a></li>
+            <li><a href="memphis.html">Memphis</a></li>
+            <li><a href="getting_started.html">Getting Started</a></li>
+            <li><a href="relatedwork.html">Publications</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="html_doxygen/files.html">Soft.Doc.</a></li>
+            <li><a href="about.html">About Gaph</a></li>
+            <!--<li><a href="faq.html">FAQ</a></li>-->
+        </ul>
+        </div>
+
+
+        <div class=container>
+            <div class=texto>
+                <h2>
+                    <h1 >File Structure</h1>
+<pre>                  
+<code>
++-- README.txt
+|
++-- applications                 #  example of applications
+|   +-- MPEG4
+|   +-- MWD
+|   +-- VOPD
+|   +-- aes
+|   +-- dijkstra
+|   +-- dtw
+|   +-- fixe_base_test_16
+|   +-- mpeg
+|   +-- prod_cons
+|   +-- synthetic
+|
++-- build_env                    # software to build the environment 
+|   +-- HeMPS_Debugger.jar
+|   +-- bin
+|   +-- deloream_env.py
+|   +-- makes
+|   +-- scripts
+|   +-- testcase_builder.py
+|   +-- waves
+|
++-- docs
+|
++-- hardware                     # hardware description - VHDL and SystemC
+|   +-- sc
+|   |   +-- hemps.cpp
+|   |   +-- hemps.h
+|   |   +-- pe
+|   |   |   +-- dmni
+|   |   |   +-- memory
+|   |   |   +-- pe.cpp
+|   |   |   +-- pe.h
+|   |   |   +-- processor
+|   |   |   +-- router
+|   |   +-- standards.h
+|   |   +-- test_bench.cpp
+|   |   +-- test_bench.h
+|   +-- vhdl
+|       +-- hemps.vhd
+|       +-- pe
+|       |   +-- dmni
+|       |   +-- memory
+|       |   +-- pe.vhd
+|       |   +-- processor
+|       |   +-- router
+|       +-- standards.vhd
+|       +-- test_bench.vhd
+|
++-- software                     #  operating system code
+|   +-- boot_task
+|   +-- include
+|   +-- kernel
+|   |   +-- master
+|   |   +-- slave
+|   +-- modules
+|
++-- testcases                    # examples of testcases
+    +-- example.yaml
+    +-- regression
+        +-- 12x12_4x4_2t.yaml
+        +-- 16x16_4x4_2t.yaml
+        +-- 3x3_3x3_2t.yaml
+        +-- 6x6_3x3_2t.yaml
+        +-- 8x8_4x4_2t.yaml
+        +-- 8x8_4x4_3t.yaml
+        +-- 8x8_4x4_4t.yaml
+        +-- 9x9_3x3_2t.yaml
+        +-- 9x9_3x3_3t.yaml
+        +-- 9x9_3x3_4t.yaml
+
+</code>
+</pre>    
+
+
+    </body>
+</html>
+
+
+

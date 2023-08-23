@@ -1,0 +1,180 @@
+%-------------------------------------------------------------------------------
+%-- ARQUIVO      : DS_uart_interface.t2t
+%-- TÍTULO       : Datasheet UART interface
+%-- PROJETO      : LP-CORES
+%-- AUTOR        : Carlos Adail SCHERER Junior
+%-- FINALIDADE   : Descrição do bloco UART interface
+%-- NOTAS        :
+%-- REVISÃO      : $Id: DS_uart_interface.t2t,v 1.3 2008/01/17 18:32:19 scherer Exp $
+%-- DEPENDÊNCIAS :
+%-------------------------------------------------------------------------------
+%-- ATENÇÃO      : Este documento é propriedade de Teracom Telemática LTDA.
+%--                O uso ou duplicação não autorizados desta descrição são
+%--                estritamente proibidos.
+%-------------------------------------------------------------------------------
+Datasheet LP-CORES
+UART interface
+
+%!target: html
+%!options: --toc --toc-level 4
+%!options: --style style.css
+%!encoding: iso-8859-1
+
+%!postproc(html): '{([^}]*)}' '<\1>'
+
+= Introdução =
+
+Este bloco implementa uma interface UART padrão parametrizável em função do clock de entrada e do baud rate desejado
+para a transmissão e recepção através de uma interface serial. Permite a instanciação de FIFOs de transmissão
+e recepção e a habilitação de interface uPC padrão.
+
+
+= Funcionamento e interface =
+
+A interface UART é composta por dois blocos internos, além de dois blocos de FIFOs, que podem ou não ser utilizados.
+
+Os dois blocos internos são os seguintes:
+- TX (bloco de transmissão de dados): recebe os dados através da interface conectada à sua entrada paralela, passa-os
+por um serializador e envia-os através da interface serial de saída.
+- RX (bloco de recepção de dados): recebe os dados através do sinal de entrada da interface serial, passa-os por um
+deserializador e envia-os à interface conectada à sua saída paralela.
+
+
+Os endereços dos offsets de configuração são os seguintes:
+
+||  Offset |  Tipo |  Nome                 |  Descrição                                                   |
+|  0       |   WO  |  UARTDATA_CFG_OFFSET  |  Offset de dados da UART                                     |
+|  1       |   WO  |  UARTSTS_CFG_OFFSET   |  Offset de status da UART (copia sts_reg para upccfg_rdata)  |
+|  2       |   WO  |  UARTMODE_CFG_OFFSET  |  Offset de modo de operação da UART                          |
+|  3       |   WO  |  UARTBR_CFG_OFFSET    |  Offset de configuração do baud rate da UART*                |
+	*Temporariamente desabilitado. Fixo em 9600 bps.
+
+
+Quanto aos parâmetros da interface, são os seguintes:
+
+||  Parâmetro       |  Tipo       |  Valores padrão  |  Significado                                                         |
+|  ENABLE_UPC_INT   |  boolean    |  TRUE            |  Habilita interface com processador para controle                    |
+|  CFGCLK_EDGE      |  std_logic  |  '1'             |  Define borda clock utilizada na configuração (0=falling/1=rising)*  |
+|  CFGDBUS_WIDTH    |  integer    |  8               |  Tamanho do barramento de dado da configuração uPC*                  |
+|  CFGABUS_WIDTH    |  integer    |  3               |  Tamanho do barramento de endereço da configuração uPC*              |
+|  CFG_RDBACK_EN    |  boolean    |  TRUE            |  Habilita readback nas posições não utilizadas de memória*           |
+|  RDBACK_MEM_TYPE  |  string     |  "DRAM"          |  Tipo de memória de readback*                                        |
+|  BAUD_RATE        |  integer    |  57_600          |  Baud rate desejado em bps                                           |
+|  CLK_FREQ         |  integer    |  155_520         |  Frequência do clock de entrada em KHz                               |
+|  FIFO_EN          |  boolean    |  FALSE           |  Habilitação das FIFOs                                               |
+|  TX_FIFO_WIDTH    |  integer    |  8               |  Largura dos dados da FIFO TX                                        |
+|  RX_FIFO_WIDTH    |  integer    |  8               |  Largura dos dados da FIFO RX                                        |
+	*Válidos somente quando ENABLE_UPC_INT = TRUE.
+
+
+Os sinais disponíveis na interface UART são os seguintes:
+
+||  Sinal              |  Tipo  |  Largura        |  Significado                                      |
+|  upccfg_wdata        |  IN    |  CFGDBUS_WIDTH  |  Dado de escrita no UART                          |
+|  upccfg_rdata        |  OUT   |  CFGDBUS_WIDTH  |  Dado de leitura no UART                          |
+|  upccfg_offset       |  IN    |  CFGABUS_WIDTH  |  Offset do registrador*                           |
+|  upccfg_offset_latch |  IN    |  CFGABUS_WIDTH  |  Offset latcheado                                 |
+|  upccfg_wr           |  IN    |  1              |  Habilitação de escrita                           |
+|  upccfg_rd           |  IN    |  1              |  Habilitação de leitura                           |
+|  upccfg_clk          |  IN    |  1              |  Clock                                            |
+|  upccfg_clken        |  IN    |  1              |  Clock enable                                     |
+|  rst                 |  IN    |  1              |  Reset síncrono UART                              |
+|  clk                 |  IN    |  1              |  Clock UART                                       |
+|  clk_en              |  IN    |  1              |  Clock enable UART                                |
+|  tx_buffer_sts       |  OUT   |  1              |  Status do buffer de transmissão (0=free/1=busy)  |
+|  rx_data_avail       |  OUT   |  1              |  Byte recebido disponível (ativo alto)            |
+|  parity_en           |  IN    |  1              |  Transmite paridade (ativo alto)**                |
+|  length_cfg          |  IN    |  1              |  Tamanho do dado ('0'=8 bits/'1'=7 bits)**        |
+|  parity_type         |  IN    |  1              |  Paridade ('0'=even/'1'=odd)**                    |
+|  stop_bit_cfg        |  IN    |  1              |  Stop bit ('0'=1 bit/'1'=2 bits)**                |
+|  tx_pdata_en         |  IN    |  1              |  Habilitação de transmissão de dado**             |
+|  rx_pdata_en         |  IN    |  1              |  Habilitação de recepção de dado**                |
+|  tx_pdata            |  IN    |  8              |  Dados paralelos transmissão**                    |
+|  rx_pdata            |  OUT   |  8              |  Dados paralelos recepção**                       |
+|  tx_data             |  OUT   |  1              |  Dados seriais de transmissão                     |
+|  rx_data             |  IN    |  1              |  Dados seriais de recepção                        |
+	*Desconectado.
+	{br}
+	**Ignorado quando ENABLE_UPC_INT = TRUE.
+
+
+Na tabela anterior, os sinais de conexão à uma interface uPC padrão são facilmente identificáveis pelo prefixo
+**upccfg_**. Caso a interface uPC seja habilitada, a comunicação ocorre da seguinte forma:
+- Para a transmissão, o primeiro dado pode ser enviado através da interface a partir da habilitação do sinal
+**upccfg_wr**, endereçando em **upccfg_offset_latch** e disponibilizando o dado em **upccfg_wdata**.
+Para os próximos bytes, deve-se esperar pela sinalização de **tx_buffer_sts**.
+- Para a recepção, o primeiro dado deve ser recebido a partir da sinalização de **rx_data_avail**. Habilitando o sinal
+**upccfg_rd** e endereçando o offset **0** em **upccfg_offset_latch**, o dado pode ser capturado em **upccfg_rdata**.
+
+
+Caso contrário, a comunicação ocorre da seguinte forma:
+- Para a transmissão, o primeiro dado pode ser enviado através da interface a partir da habilitação do sinal
+**tx_pdata_en** e disponibilizando o dado em **tx_pdata**. Para os próximos bytes, deve-se esperar pela sinalização de
+**tx_buffer_sts**.
+- Para a recepção, o primeiro dado deve ser recebido a partir da sinalização de **rx_data_avail**. Habilitando o sinal
+**rx_pdata_en** e obtendo o dado em **rx_pdata**.
+
+
+Sinais adicionais de habilitação de paridade, tamanho dos dados, tipo de paridade e quantidade de stop bits devem ser
+controlados pela interface conectada à UART.
+
+O sinal **sts_reg** (interno ao bloco) armazena o status atual das interfaces TX e RX da UART. Seu valor pode ser lido
+a partir do endereçamento do offset **1**. Da mesma forma, pode ser obtido através da avaliação das interrupções
+**int_tx_out** e **int_rx_out**.
+
+||  Bit  |  Tipo  |  Nome           |  Descrição                                 |
+|  7..4  |   --   |  sts_reg[7..4]  |  Reservado                                 |
+|  2     |   RO   |  sts_reg[2]     |  Erro na recepção                          |
+|  1     |   RO   |  sts_reg[1]     |  Byte disponível na interface de recepção  |
+|  0     |   RO   |  sts_reg[0]     |  Interface de transmissão livre            |
+
+
+= Registradores de acesso à UART através da interface uPC =
+
+Para escrever na UART o processador deve observar o status TX_BUF_AVAIL do registrador UART_STS antes de iniciar o
+envio de cada byte, que é ativado por escritas no registrador UART_DATA.
+Para ler na UART o processador deve observar, a cada byte lido do registrador UART_DATA, os status RX_READY e RX_ERROR
+do registrador UART_STS.
+O mapa de registradores está descrito nas tabelas a seguir.
+
+Registrador UART_DATA – UART Data (0x050)
+||  Bit  |  Nome  |  Descrição                         |  Tipo  |
+|  7..0  |  DATA  |  Dados de escrita/leitura da UART  |   RW   |
+
+Registrador UART_STS – UART Status (0x051)
+||  Bit  |  Nome          |  Descrição                    |  Tipo  |
+|  7..3  |  --            |  Reservados para uso futuro.  |   --   |
+|  2     |  RX_ERROR      |  Indica que houve erro na recepção. {br} 0 – Sem erros {br} 1 – Erro na recepção  |   RO   |
+|  1     |  RX_READY      |  Indica chegada de novos bytes no buffer de recepção da UART. {br} 0 – Não existem bytes no buffer {br} 1 – Existem bytes para serem lidos no buffer  |   RO   |
+|  0     |  TX_BUF_AVAIL  |  Disponibilidade de buffer de transmissão da UART. {br} 0 – Buffer cheio {br} 1 – Buffer disponível  |   RO   |
+
+Registrador UART_MODE_CFG – UART Mode Configuration (0x052)
+||  Bit  |  Nome          |  Descrição                    |  Tipo  |
+|  7..4  |  --            |  Reservados para uso futuro.  |   --   |
+|  3     |  DATA_LENGTH   |  Largura do dado. {br} 0 – 8 bits (default) {br} 1 – 7 bits  |   WO   |
+|  2     |  STOP_BIT_CFG  |  Configuração de stop bit. {br} 0 – 1 bit (default) {br} 1 – 2 bits  |   WO   |
+|  1..0  |  PARITY_CFG    |  Configuração de paridade. {br} 0 – Sem paridade (default) {br} 1 – Paridade ímpar {br} 2 – Paridade par {br} 3 – Inválido  |   WO   |
+
+Registrador UART_BR_CFG – UART Baud Rate Configuration (0x053)
+||  Bit  |  Nome    |  Descrição                     |  Tipo  |
+|  7..0  |  BR_SEL  |  Baud Rate de operação da porta. Este registrador está temporariamente desabilitado e a operação está fixada em 9600 bps.  |   --   |
+
+
+= Configuração =
+A configuração do baud rate, tanto de transmissão, quanto de recepção, dependem de dois parâmetros, sejam eles o baud
+rate desejado e o clock de entrada na interface UART. A partir destes valores, o divisor utilizado como referência
+para o contador, é dado pela equação:
+
+	int(Divisor) = (Frequência do clock de entrada)*1000/16*(Baud rate desejado), onde:
+		//Divisor//, é o parâmetro de entrada para o contador do receptor; {br}
+		//int()//, extrai a parte inteira do resultado da equação; {br}
+		//Frequência do clock de entrada//, dado em **KHz**; {br}
+		//Baud rate desejado//, dado em **bps**.
+
+A tabela a seguir, ilustra possíveis configurações e os divisores resultantes (representado somente a parte inteira) a
+partir do fornecimento dos valores de baud rate e clock de entrada.
+
+|| Frequência do {br} clock de entrada (KHz) | Baud rate (bps) | Divisor |
+| {center} {br} {br} 155520 {br} {br} | {center} 9600 {br} 14400 {br} 28800 {br} 33600 {br} 57600 | {center} 1012 {br} 675 {br} 337 {br} 289 {br} 168  |
+| {center} {br} {br}  18432 {br} {br} | {center} 9600 {br} 14400 {br} 28800 {br} 33600 {br} 57600 | {center} 120 {br} 80 {br} 40 {br} 34 {br} 20  |
+

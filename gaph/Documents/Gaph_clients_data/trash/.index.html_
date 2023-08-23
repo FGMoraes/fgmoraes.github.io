@@ -1,0 +1,67 @@
+<html>
+
+	<head>
+		<title>Users</title>
+	</head>
+
+	<body>
+		<center>
+
+		<?  
+
+		//function to encrypt the string
+		function encode5t($str, $length)
+		{
+			for($i=0; $i<$length;$i++)  
+			{
+				$str=strrev(base64_encode($str)); //apply base64 first and then reverse the string
+			}
+		
+			return $str;
+		}
+ 
+		//function to decrypt the string
+		function decode5t($str, $length)
+		{
+			for($i=0; $i<$length;$i++)
+			{
+				$str=base64_decode(strrev($str)); //apply base64 first and then reverse the string
+			}
+
+			return $str;
+		} 
+	
+		$dados = array("Email", "Senha", "Nome", "Sobrenome", "Instituição", "Accept informations by email");
+		$cont = 0;
+		
+		$arquivo = ".Atlas_users.txt";
+		$arquivo = file("$arquivo");
+
+		foreach($arquivo as $texto) 
+		{	
+			$texto = decode5t($texto, 5);
+
+			$tok = strtok($texto,",");
+
+			echo "<table border='1' cellpadding='0' cellspacing='0' width='50%' bgcolor='#3366CC'>";
+			
+			while ($tok !== false) 
+			{
+				if($cont!=1)
+				{
+					echo "	<tr>
+								<td width=35%' align='right' height='19'><b><font color='#FFFFFF'>".$dados[$cont]."&nbsp;</font></b></td>
+								<td width='65%' height='19'><p style='margin-left: 6; margin-top: 0'><font color='#FFFFFF'>".$tok."</font></td>
+							</tr>";
+				}
+				$tok = strtok(",");
+				$cont++;
+			}
+			$cont = 0;
+			echo "</table><BR>";
+		}			
+?>  
+  
+		</center>
+	</body>
+</html>

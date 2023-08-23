@@ -1,0 +1,60 @@
+#NET "ACLKA" loc =H19 | IOSTANDARD = LVDS_25 | TNM_NET = ACLKA;
+#NET "ACLKAN" loc =H18 | IOSTANDARD = LVDS_25;
+#NET "SYSCLK_A" loc =AE21 | IOSTANDARD = LVCMOS33 | TNM_NET = SYSCLK_A;
+#NET "FPGA_A_RSTn" loc =AG18 | IOSTANDARD = LVCMOS33; 
+
+NET "ACLKA" loc =H19;
+NET "ACLKAN" loc =H18;
+NET "SYSCLK_A" loc =AE21;
+NET "FPGA_A_RSTn" loc =AG18; 
+
+NET "MB[0]" loc =AK17;
+NET "MB[1]" loc =AG21;
+NET "MB[2]" loc =C9;
+NET "MB[3]" loc =E28;
+NET "MB[4]" loc =D5;
+NET "MB[5]" loc =F25;
+NET "MB[6]" loc =H22;
+NET "MB[7]" loc =F6;
+NET "MB[8]" loc =G8;
+NET "MB[9]" loc =AJ24;
+NET "MB[10]" loc =J29;
+NET "MB[11]" loc =P32;
+NET "MB[12]" loc =P27;
+NET "MB[13]" loc =W31;
+NET "MB[14]" loc =V27;
+NET "MB[15]" loc =AH22;
+NET "MB[16]" loc =AG32;
+NET "MB[17]" loc =AK29;
+NET "MB[18]" loc =AH27;
+NET "MB[19]" loc =AH24;
+NET "MB[20]" loc =AK18;
+NET "MB[21]" loc =H9;
+NET "MB[22]" loc =AG22;
+NET "MB[23]" loc =C8;
+NET "MB[24]" loc =F28;
+NET "MB[25]" loc =D4;
+NET "MB[26]" loc =G25;
+NET "MB[27]" loc =G22;
+NET "MB[28]" loc =G6;
+NET "MB[29]" loc =H8;
+NET "MB[30]" loc =J9;
+NET "MB[31]" loc =K29;
+NET "MB[32]" loc =N32;
+NET "MB[33]" loc =P26;
+NET "MB[34]" loc =W30;
+NET "MB[35]" loc =W27;
+NET "MB[36]" loc =AJ22;
+
+NET "SYSCLK_A" PERIOD=20.00 ns HIGH 50%;
+NET "MB[*]" OFFSET = IN 8.5000 ns VALID 9.5000 ns BEFORE "SYSCLK_A";
+NET "MB[*]" OFFSET = OUT 10.000 ns AFTER "SYSCLK_A";
+
+# Set driver characteristics for maximum main bus performance
+NET "MB[*]" SLEW = FAST;
+NET "MB[*]" DRIVE = 24;
+
+NET "ACLKA" IOSTANDARD = LVDS_25;
+NET "ACLKAN" IOSTANDARD = LVDS_25;
+
+NET "ACLKA" PERIOD=2.500 ns HIGH 50%;

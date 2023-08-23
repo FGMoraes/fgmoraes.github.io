@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['task',['task',['../structDependence.html#a61f9ce95c231a60b33b8aaf727f77dff',1,'Dependence::task()'],['../structProcessor.html#add29364fced4c13fc3b38c6b9ee35c7b',1,'Processor::task()'],['../structReclustering.html#a2836e617e1015a0a2cad099470e9d1a8',1,'Reclustering::task()']]],
+  ['task_5fid',['task_ID',['../structNewTask.html#a59345f8512fbe08059d0879712318e75',1,'NewTask']]],
+  ['task_5flocation',['task_location',['../task__location_8c.html#a57f8045dc843743304630ad07a87b4a9',1,'task_location.c']]],
+  ['tasks',['tasks',['../structApplication.html#af2bd4077155eb882d118b4f81fd6688e',1,'Application']]],
+  ['tasks_5fnumber',['tasks_number',['../structApplication.html#ae1237a3d594ca9d2bfab5d633c71cde9',1,'Application']]],
+  ['tcb_5fptr',['tcb_ptr',['../structScheduling.html#aa923647e30c0792862454e7d308b8d31',1,'Scheduling']]],
+  ['tcbs',['tcbs',['../task__control_8c.html#a0ed65b5d21adfe893d746e05b3a7029c',1,'task_control.c']]],
+  ['terminated_5fapp_5fcount',['terminated_app_count',['../kernel__master_8c.html#a4ec746c48b4590718dccdab17428dcce',1,'kernel_master.c']]],
+  ['terminated_5ftask_5fmaster',['terminated_task_master',['../kernel__master_8c.html#a11946e05959596e1210a02cebec8f517',1,'kernel_master.c']]],
+  ['terminated_5ftasks',['terminated_tasks',['../structApplication.html#a94d7b22e3831c4c63fe82fa058cc4e41',1,'Application']]],
+  ['text_5flenght',['text_lenght',['../structTCB.html#affd05270674527a1a68e36846179e164',1,'TCB']]],
+  ['time_5fslice',['time_slice',['../local__scheduler_8c.html#af177692ae7d9a34db3869d02a311177f',1,'local_scheduler.c']]],
+  ['timestamp',['timestamp',['../structServiceHeader.html#a5d14c2b5015637a28256137f2fec2152',1,'ServiceHeader']]],
+  ['total_5fmpsoc_5fresources',['total_mpsoc_resources',['../kernel__master_8c.html#a94fa1636170dd4d1987ae833808fb13f',1,'kernel_master.c']]],
+  ['total_5fslack_5fsamples',['total_slack_samples',['../structProcessor.html#a05856d3ef983fa2ab52db67a4e416ecb',1,'Processor']]],
+  ['total_5fslack_5ftime',['total_slack_time',['../kernel__slave_8c.html#ab10edae9b9b0e9dcf4d46bafc7082787',1,'kernel_slave.c']]],
+  ['transaction',['transaction',['../structServiceHeader.html#a0979eeb397184083c98cfa21dd8a0da5',1,'ServiceHeader']]]
+];

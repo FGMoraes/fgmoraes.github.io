@@ -1,0 +1,6 @@
+<map id="/home/ruaro/hemps/hemps_trunk/software/modules/communication.c" name="/home/ruaro/hemps/hemps_trunk/software/modules/communication.c">
+<area shape="rect" id="node2" href="$communication_8h.html" title="Defines the PipeSlot and MessageRequest structures. " alt="" coords="79,109,200,136"/>
+<area shape="rect" id="node5" href="$plasma_8h.html" title="Plasma Hardware Definitions. " alt="" coords="224,109,356,136"/>
+<area shape="rect" id="node6" href="$utils_8h.html" title="This module defines utils functions. " alt="" coords="380,109,437,136"/>
+<area shape="rect" id="node4" href="$api_8h.html" title="Implements the API for the user&#39;s task and defines the structure Message, used by tasks to exchange m..." alt="" coords="157,191,263,218"/>
+</map>
