@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Fernando Gehm Moraes </title>
+<link rel="icon"  type="image/jpg" href="../figs/fer_icon.jpg">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="pubs.css" rel="stylesheet" type="text/css">
+
+<style>
+table, td, th { border: 1px solid black;      height: 30px;   border-spacing: 1px 1px;}
+td { text-align:center; background-color:white;}
+th { text-align:left;   background-color:white; color:black; font-weight:bold;}
+</style>
+
+<script> 
+
+      function checkPassword(url) {
+          let input = prompt("Please enter the password (or e-mail to fernando.moraes@pucrs.br");
+          const encryptedInput = encrypt(input);
+          const actualEncryptedArray = [432, 160, 72, 208, 240, 64, 704, 584, 600, 584, 576];
+          if (arraysEqual(encryptedInput, actualEncryptedArray)) {
+              window.location = url;
+          } else {
+              alert("Incorrect password!");
+          }
+      }
+      
+      function arraysEqual(a, b) {
+          if (a === b) return true;
+          if (a == null || b == null) return false;
+          if (a.length !== b.length) return false;
+      
+          for (let i = 0; i < a.length; i++) {
+              if (a[i] !== b[i]) return false;
+          }
+          return true;
+      }
+
+      function encrypt(plainText) {
+          let encrypted = [];
+          for (let i = 0; i < plainText.length; i++) {
+              let charCode = plainText.charCodeAt(i);
+              charCode = (charCode ^ 123) << 3;
+              encrypted.push(charCode);
+          }
+          return encrypted;
+      }
+
+
+
+   </script>
+
+
+</head>
+
+
+
+<body>
+
+<!-- *********** MENU DE TOPO  ********************************************* -->
+<!-- *********** lembrar de inserir fim de div ao final do body  *********** -->
+<div style="position:fixed; width: 100vw;  left: 0px; top: 0px; z-index: 20; height: 45px;  background: #ADD8E6; ">
+    <object width="100%" height="60" type="text/html" data="menu_top.html"></object>
+</div>
+<div style="position:absolute; width: 100%;  left: 0px; top: 50px; z-index: 10;">
+<!-- *********** FIM DO MENU DE TOPO  *************************************** -->
+
+<h2>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;Monografias dos alunos orientado pelo Moraes</h2>
+
+<h3>Novembro 2008 (old, no more updated)</h3>
+<br>
+
+<table width="100%" style="margin:auto; background-color:wheat;">
+
+  <tr>
+    <td width="28%"><b>Aluno(a) </b></td>
+    <td width="12%"><b>Proposta de TI1 </b></td>
+    <td width="12%"><b>&nbsp;&nbsp;T11&nbsp;&nbsp;</b></td>
+    <td width="12%"><b>&nbsp;&nbsp;TI2&nbsp;&nbsp;</b></td>
+    <td width="12%"><b>&nbsp;&nbsp;PEP&nbsp;&nbsp;</b></td>
+    <td width="12%"><b>Seminário de Andamento</b></td>
+    <td width="12%"><b>Dissertação</b></td>
+  </tr>
+
+  <tr>
+    <th>  Ewerton Artur Cappelatti  </th>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_ewerton.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_ewerton.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_ewerton.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_ewerton.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_ewerton.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_ewerton.pdf');"><i>pdf (85)</i></a></td>
+  </tr>
+
+  <tr>
+    <th> Paulo César Furlanetto Marques  </th>
+    <td>-</td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_paulo_cesar.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_paulo_cesar.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_paulo_cesar.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_paulo_cesar.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_paulo_cesar.pdf');"><i>pdf (79) </i></a></td>
+  </tr>
+
+  <tr>
+    <th>Daniel Gomes Mesquita   </th>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_mesquita.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_mesquita.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_mesquita.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_mesquita.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_mesquita.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_mesquita.pdf');"><i>pdf (90) </i></a></td>
+  </tr>
+
+  <tr>
+    <th>Jose Carlos Sant´Anna Palma  </th>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_jpalma.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_jpalma.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_jpalma.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_jpalma.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_jpalma.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_jpalma.pdf');"><i>pdf (90) </i></a></td>
+  </tr>
+  
+  <tr>
+    <th> Alexandre de Morais Amory </th>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_amory.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_amory.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_amory.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_amory.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_amory.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_amory.pdf');"><i>pdf (100) </i></a></td>
+  </tr>
+
+
+  <tr>
+     <th>Luciano Copello Ost</th>
+    <td>-</td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_ost.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_ost.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_ost.doc');"><i>doc</i></a></td>
+    <td> -</td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_ost.pdf');"><i>pdf (91) </i></a></td>
+  </tr>
+  <tr>
+    <th>Luiz Carlos Mieres Caruso</th>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td><a href="dissertacoes/dissertacao_caruso.pdf"><i>pdf (95) </i></a></td>
+  </tr>
+  <tr>
+     <th>Leandro Heleno Möller</th>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_moller.doc');"><i>doc</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_moller.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_moller.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_moller.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andamento_moller.pdf');"><i>pdf</i></a></td>
+    <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_moller.pdf');"><i>pdf (98) </i></a></td>
+  </tr>
+  <tr>
+      <th>Leonel Pablo Tedesco</th>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_leonel.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_leonel.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_leonel.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_leonel.doc');"><i>doc</i></a></td>
+      <td>-</td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_leonel.pdf');"><i>pdf (95) </i></a></td>
+  </tr>
+  <tr>
+      <th>Aline Vieira de Mello</th>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_TI_1_aline.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_aline.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_TI_2_aline.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_aline.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andandamento_aline.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_aline.pdf');"><i>pdf (100) </i></a></td>
+  </tr>
+
+
+  <tr>
+      <th>Cristiane Raquel Woszezenki</th>
+      <td> -</td>
+      <td> -</td>
+      <td> -</td>
+      <td> <a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_cris.doc');"><i>doc</i></a></td>
+      <td> <a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_seminario_andamento_cris.doc');"><i>doc</i></a></td>
+      <td> <a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_cris.pdf');"><i>pdf (95) </i></a></td>
+  </tr>
+
+  <tr>
+      <th>Everton Alceu Carara</th>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/1_proposta_ti-1_carara.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/2_TI_1_carara.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/3_IP1_carara.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/4_PEP_carara.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_SA_carara.doc');"><i>doc</i></a> - 
+          <a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/5_SA_carara.ppt');"><i>ppt</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/6_dissertacao_carara_homologacao_final.doc');"><i>doc</i></a></td>
+  </tr>
+
+
+  <tr>
+      <th>Guilherme Montez Guindani</th>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/Proposta_TI_I_guindani.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/TI-I_guindani_v1.1.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/TI-II_guindani_v0.7.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/PEP_guindani_v3.0.doc');"><i>doc</i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/monografias/SA_guindani_v1.2.doc');"><i>doc</i></a></td>
+      <td>-</td>
+  </tr>
+
+</table>
+
+</div>
+</body>
+</html>

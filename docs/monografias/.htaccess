@@ -1,6 +1,0 @@
-AuthUserFile /home/PORTOALEGRE/10049372/passmoraes
-AuthName "Textos dos alunos Moraes"
-AuthType Basic
-<Limit GET>
-require user moraes
-</Limit>

@@ -3,7 +3,7 @@
 <head>
 <title>Fernando Gehm Moraes </title>
 <link rel="icon"  type="image/jpg" href="../figs/fer_icon.jpg">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="pubs.css" rel="stylesheet" type="text/css">
 
 <style>
@@ -11,6 +11,44 @@ table, td, th { border: 1px solid black;      height: 30px;   border-spacing: 1p
 td { text-align:center; background-color:white;}
 th { text-align:left;   background-color:white; color:black; font-weight:bold;}
 </style>
+
+<script> 
+
+      function checkPassword(url) {
+          let input = prompt("Please enter the password (or e-mail to fernando.moraes@pucrs.br");
+          const encryptedInput = encrypt(input);
+          const actualEncryptedArray = [432, 160, 72, 208, 240, 64, 704, 584, 600, 584, 576];
+          if (arraysEqual(encryptedInput, actualEncryptedArray)) {
+              window.location = url;
+          } else {
+              alert("Incorrect password!");
+          }
+      }
+      
+      function arraysEqual(a, b) {
+          if (a === b) return true;
+          if (a == null || b == null) return false;
+          if (a.length !== b.length) return false;
+      
+          for (let i = 0; i < a.length; i++) {
+              if (a[i] !== b[i]) return false;
+          }
+          return true;
+      }
+
+      function encrypt(plainText) {
+          let encrypted = [];
+          for (let i = 0; i < plainText.length; i++) {
+              let charCode = plainText.charCodeAt(i);
+              charCode = (charCode ^ 123) << 3;
+              encrypted.push(charCode);
+          }
+          return encrypted;
+      }
+
+
+
+   </script>
 
 
 </head>
@@ -35,7 +73,7 @@ th { text-align:left;   background-color:white; color:black; font-weight:bold;}
 <table width="100%" style="margin:auto; background-color:wheat;">
 
   <tr>
-    <td width="28%"><b>Aluno </b></td>
+    <td width="28%"><b>Aluno(a) </b></td>
     <td width="12%"><b>Proposta de TI1 </b></td>
     <td width="12%"><b>&nbsp;&nbsp;T11&nbsp;&nbsp;</b></td>
     <td width="12%"><b>&nbsp;&nbsp;TI2&nbsp;&nbsp;</b></td>
@@ -138,7 +176,7 @@ th { text-align:left;   background-color:white; color:black; font-weight:bold;}
       <td><a href="../docs/monografias/3_TI_2_aline.doc"><i>doc</i></a></td>
       <td><a href="../docs/monografias/4_PEP_aline.doc"><i>doc</i></a></td>
       <td><a href="../docs/monografias/5_seminario_andandamento_aline.doc"><i>doc</i></a></td>
-      <td><a HREF="../docs/dissertacoes/dissertacao_aline.pdf"><i>pdf (100) </i></a></td>
+      <td><a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_aline.pdf');"><i>pdf (100) </i></a></td>
   </tr>
 
 
@@ -149,7 +187,7 @@ th { text-align:left;   background-color:white; color:black; font-weight:bold;}
       <td> -</td>
       <td> <a href="../docs/monografias/4_PEP_cris.doc"><i>doc</i></a></td>
       <td> <a href="../docs/monografias/5_seminario_andamento_cris.doc"><i>doc</i></a></td>
-      <td> <a HREF="../docs/dissertacoes/dissertacao_cris.pdf"><i>pdf (95) </i></a></td>
+      <td> <a href="javascript:void(0);" onclick="checkPassword('../docs/dissertacoes/dissertacao_cris.pdf');"><i>pdf (95) </i></a></td>
   </tr>
 
   <tr>
