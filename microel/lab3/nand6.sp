@@ -1,5 +1,5 @@
 * FERNANDO MORAES - MICROELETRONICA - PUCRS
-* revisao em 10/set/2023
+* revisao em 11/set/2023
 *************************************************************
 *              ==> entrada 1 e' a mais proxima do gnd 
 *              ==> entrada 2 a mais proxima da saida
