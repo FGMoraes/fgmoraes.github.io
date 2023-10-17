@@ -5,12 +5,12 @@ include "st65.scs"
 simulator lang=spice
 
 ******************************************************************
-** TRANSITOR SIZING AND OUTPUT LOAD USED DURING THIS SIMULATION
+** PARTE 1 - TRANSITOR SIZING AND OUTPUT LOAD USED DURING THIS SIMULATION (não alterar)
 ******************************************************************
 .param Wp=0.3  Wn=0.15  Cload=3fF
 
 ******************************************************************
-** BASIC GATES
+** BASIC GATES Portas lógicas utilizadas pelos flip-flops (não alterar)
 ******************************************************************
 .subckt inv in out  vcc
 MP1 out in vcc  vcc   psvtgp w=wp l=0.06
@@ -49,7 +49,7 @@ X2 n1 clkG vcc inv
 .ends clckg
 
 ******************************************************************
-**  FLIP-FLOPS  
+** PARTE 3 - DESCRIÇÃO DOS FLIP-FLOPS  
 ******************************************************************
 .subckt latch D Q ck nck vcc
 X1 D   Y           vcc inv
@@ -94,7 +94,7 @@ X1 nQ  Q    vcc inv
 .ends ff_pulse
 
 ******************************************************************
-** CIRCUIT DESCRIPTION
+** PARTE 4 - CIRCUIT DESCRIPTION   completar
 ******************************************************************
 
 **** parte 1 - LATCH ***********
@@ -112,8 +112,8 @@ C1 q_latch 0 Cload
 *C41
 
 ** parte 3 - divisor de clock **************
-X6  nq4 q4 nq4 CK nCK vcc ff_static
-C61 q4  0 clms
+*X6  <completar> ff_static
+*C61 <completar> clms
 
 ** parte 4 - contador  **************
 .ic v(f0)=0 v(f1)=0 v(f2)=0 v(f3)=0 v(nf0)=1 v(nf1)=1 v(nf2)=1 v(nf3)=1
@@ -129,7 +129,7 @@ c5 f0 0 Cload
 
 
 ******************************************************************
-** SIMULATION CONTROL AND CLOCK/INPUT SOURCES
+**  PARTE 5 - SIMULATION CONTROL AND CLOCK/INPUT SOURCES (não alterar)
 ******************************************************************
 
 ** SIMULATION TIME
@@ -158,7 +158,9 @@ v2 Din 0 pwl(    0n   0   0.3n   0
 Xb3 Din  D2   vcc inv
 Xb4 D2   D    vcc invX4
 
-
+******************************************************************
+**  PARTE 6 - COMANDOS DE MEDIDA (não alterar)
+******************************************************************
 .measure tran t_fr trig v(CK) val=0.5 td=0.5n rise = 1 targ v(qE) val=0.5 rise = 1
 .measure tran t_fs trig v(CK) val=0.5 td=0.5n rise = 2 targ v(qE) val=0.5 fall = 1
 
@@ -175,6 +177,9 @@ Xb4 D2   D    vcc invX4
 .measure tran t3_F_PULSADO param = 't_ps * 1e12'
 .measure tran t3_R_PULSADO param = 't_pr * 1e12'
 
+******************************************************************
+**  PARTE 7 - CARGA PARA O CICRUITO 3 - DIVISOR DE CLOCK    completar
+******************************************************************
 .param clms=20fF    
 *.alter
 *.param clms=80fF
