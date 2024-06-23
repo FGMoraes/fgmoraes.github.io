@@ -9,7 +9,7 @@
   <STYLE type="text/css">
 
         .div_area_selecao 
-                { position: fixed;  top:  35px;      left:  80px;      
+                { position: fixed;  top:  35px;      left:  60px;      
                   font-weight: bold; font-size: 12pt;   color: black; }
 
         .show_year_selection 
@@ -58,11 +58,12 @@
 
    <script> 
 
-
-   function type_paper(x) {
-       console.log("Option selected:", x);
     
-      var paper_classes = ["general", "Cmpsoc", "Csec", "Cfault", "Cenergy", "Cnoc", "CSDN", "Cmapping", "Cmigration", "Cfpga"];
+   function type_paper(x) {
+
+      console.log("Option selected:", x);
+    
+      var paper_classes = ["general", "Cmpsoc", "Csec", "Cfault", "Cenergy", "Cnoc", "CSDN", "Cmapping", "Cmigration", "Cfpga", "CRV5", "CML"];
 
       // Esconde todas as classes de papers
       for (var ix = 0; ix < paper_classes.length; ix++) {
@@ -97,17 +98,15 @@
         elems[0].style.display = "none";
       }
 
-      // Mostrar o título da classe selecionada
-      if (x > 0) {
-
-        // Mostrar a classe de papers selecionada
+      if (x > 0) { // Mostrar a classe de papers selecionada
         elems = document.getElementsByClassName(paper_classes[x]);
         console.log("Showing elements of class:", paper_classes[x], "Count:", elems.length);
         for (var i = 0; i < elems.length; i++) {
             elems[i].style.visibility = "visible";
             elems[i].style.display = "list-item";
         }
-      } else {
+      } 
+      else {
         // Se "ALL, sorted by year" é selecionado, mostrar todos os elementos
         for (var ix = 0; ix < paper_classes.length; ix++) {
             var elems = document.getElementsByClassName(paper_classes[ix]);
@@ -115,14 +114,13 @@
             for (var i = 0; i < elems.length; i++) {
                 elems[i].style.visibility = "visible";
                 elems[i].style.display = "list-item";
-
             }
         }
       }
 
       // Certificar que a área de rolagem está habilitada
       document.querySelector('.div_conferences').style.overflowY = 'scroll';
-      console.log("Scroll enabled for .div_conferences");
+      // console.log("Scroll enabled for .div_conferences");
    }
 
 
@@ -158,8 +156,6 @@
           return encrypted;
       }
 
-
-
    </script>
 
 </head>
@@ -191,9 +187,11 @@
                   <option value=4> Energy and low power</option>
                   <option value=5> NoC - Network on Chip</option>
                   <option value=6> SDN</option>
-                  <option value=7> Mapping</option>
+                  <option value=7> Task Mapping</option>
                   <option value=8> Task Migration</option>
                   <option value=9> FPGA and Reconfigurable</option>
+                  <option value=10> RISC-V</option>
+                  <option value=11> Machine Learning</option>
           </select>
 </div>
 
@@ -263,14 +261,14 @@
 <p id="a2024" class="year">2024</p>
 <ol class="start">
 
-<li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2024/LASCAS24_Carlos');"><b> 
+<li class="Csec CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2024/LASCAS24_Carlos');"><b> 
       Hardware Acceleration of Authenticated Encryption with Associated Data via RISC-V Instruction Set Extensions in Low Power Embedded Systems </b></a><br>
       GEWEHR, Carlos; MOURA, Nicolas; LUZA, Lucas; BERNARDON, Eduardo; CALAZANS, Ney; , GARIBOTTI, Rafael; MORAES, Fernando Gehm <br>
        <a href="http://dx.doi.org/10.1109/LASCAS60203.2024.10506132" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: LASCAS, 2024 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2024/LASCAS24_Willian');"><b> 
+<li class="CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2024/LASCAS24_Willian');"><b> 
       RS5: An Integrated Hardware and Software Ecosystem for RISC-V Embedded Systems </b></a><br>
       NUNES, Willian Analdo; ZOTTO, Angelo Elias Dal; BORGES, Caroline da Silva; MORAES, Fernando Gehm <br>
        <a href="http://dx.doi.org/10.1109/LASCAS60203.2024.10506171" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
@@ -278,7 +276,7 @@
 </li>
 
 
-<li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Angelo');"><b> 
+<li class="Csec CML">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Angelo');"><b> 
       A Machine Learning Approach for Traffic Anomaly Detection in NoC-based Manycores</b></a><br>
       DAL ZOTTO, Angelo Elias; MORAES, Fernando Gehm.<br>
        <!-- <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> -->
@@ -286,7 +284,7 @@
 </li>
 
 
-<li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Iacana');"><b> 
+<li class="Cenergy CML">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Iacana');"><b> 
       Enhancing Manycore Lifetime Through Reinforcement Learning Task Mapping and Migration</b></a><br>
       WEBER, Iaçanã; ZANINI, Vitor Balbinot; MORAES, Fernando Gehm.<br>
        <!-- <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> -->
@@ -300,16 +298,14 @@
       In: SBCCI, 2024 <br>
 </li>
 
-<li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2024/ISVLSI_ost');"><b> 
+<li class="Cnoc Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2024/ISVLSI_ost');"><b> 
       Soft Error Assessment of UAV Control Algorithms Running in Resource-constrained Microprocessors</b></a><br>
       HANNEMAN, Alex; GAVA, Jonas; VANCIN, Paulo; KAIM-KHANI, Aqsa; AMIRI, Sam; GARIBOTTI, Rafael; MORAES, Fernando Gehm; CALAZANS, Ney; REIS, Ricardo Augusto da Luz; OST, Luciano.<br>
        <!-- <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> -->
       In: ISVLSI, 2024 <br>
 </li>
 
-
 </ol>
-
 
 
 <p id="a2023" class="year">2023</p>
@@ -325,7 +321,7 @@
 </li>
 
 
-<li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_Carlos');"><b> 
+<li class="Csec CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_Carlos');"><b> 
       Improving the Efficiency of Cryptography Algorithms on Resource-Constrained Embedded Systems via RISC-V Instruction Set Extensions </b></a><br>
       GEWEHR, Carlos; MORAES, Fernando Gehm <br>
        <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
@@ -349,7 +345,7 @@
 </li>
 
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_William');"><b> 
+<li class="CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_William');"><b> 
       Validating an Automated Asynchronous Synthesis Environment with a Challenging Design: RISC-V </b></a><br>
       NUNES, Willian; SARTORI, Marcos; MOREIRA, Matheus; MORAES, Fernando Gehm; CALAZANS, Ney <br>
       <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261656" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
@@ -357,7 +353,7 @@
 </li>
 
 
-<li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Iacana');"><b> 
+<li class="Cmpsoc CML">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Iacana');"><b> 
      FLEA - FIT-Aware Heuristic for Application Allocation in Many-Cores based on Q-Learning </b></a><br>
      WEBER, Iacana Ianiski; ZANINI, Vitor; MORAES, Fernando Gehm <br>
      <a href="http://dx.doi.org/10.1109/SBESC60926.2023.10324296" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
@@ -365,7 +361,7 @@
 </li>
 
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Reusch');"><b>
+<li class="CML">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Reusch');"><b>
      Deploying Machine Learning in Resource-Constrained Devices for Human Activity Recognition </b></a>
       <table>
        <tr>
@@ -379,8 +375,6 @@
         </tr>
       </table>
 </li>
-
-
 
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2023/NEWCAS_Eduardo');"><b> 
@@ -400,7 +394,7 @@
 <ol class="continue">
 
 
-<li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2022/ICECS_Dalzotto');"><b> 
+<li class="Cmpsoc Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2022/ICECS_Dalzotto');"><b> 
       Leveraging NoC-based Many-core Performance Through Runtime Mapping Defragmentation </b></a><br>
       DALZOTTO, Angelo; BORGES, Caroline; RUARO, Marcelo; MORAES, Fernando Gehm   <br>
       <a href="http://dx.doi.org/10.1109/ICECS202256217.2022.9970841" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
@@ -415,7 +409,7 @@
       In: ICECS, 2022 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2022/SBESC_Reusch');"><b> 
+<li class="CML">  <a href="javascript:void(0);" onclick="checkPassword('2022/SBESC_Reusch');"><b> 
       Assessment and Optimization of 1D CNN Model for Human Activity Recognition </b></a><br>
       REUSCH, Rafael; JURACY, LEONARDO R.; MORAES, Fernando Gehm   <br>
       <a href="http://dx.doi.org/10.1109/SBESC56799.2022.9964520" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
@@ -437,7 +431,7 @@
       In: ISCAS, 2022 <br>
 </li>
 
-<li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2022/sbcci22_rafael');"><b> 
+<li class="Csec Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2022/sbcci22_rafael');"><b> 
       Secure Communication with Peripherals in NoC-based Many-cores </b></a><br>
       FACCENDA, Rafael Follmann; COMARU, Gustavo; CAIMI, Luciano L.; MORAES, Fernando Gehm <br>
       <a href="http://dx.doi.org/10.1109/SBCCI55532.2022.9893244" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
@@ -499,20 +493,19 @@
       In: LASCAS, 2021 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2021/LASCAS21_Jura');"><b> 
+<li class="CML">  <a href="javascript:void(0);" onclick="checkPassword('2021/LASCAS21_Jura');"><b> 
      A TensorFlow and System Simulator Integration Approach to Estimate Hardware Metrics of Convolution Accelerators </b></a><br>
       JURACY, Leonardo; MOREIRA, Matheus;  AMORY, Alexandre; MORAES, Fernando Gehm  <br>
       <a href="http://dx.doi.org/10.1109/LASCAS51355.2021.9459183" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: LASCAS, 2021 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2021/SBESC21_Anderson');"><b> 
+<li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2021/SBESC21_Anderson');"><b> 
      ORCA RT-Bench: A Reference Architecture for Real-Time Simulator </b></a><br>
       JDOMINGUES, Anderson BENO, João AMORY, ALEXANDRE Gehm MORAES, Fernando  <br>
       <a href="http://dx.doi.org/10.1109/SBESC53686.2021.9628369" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBESC, 2021 <br>
 </li>
-
 
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2021/IBERCHIP21_Tadeu');"><b> 
@@ -538,14 +531,12 @@
      In: ISCAS, 2020 <br>
 </li>
 
-
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2020/2020_iscas_carara');"><b> 
       Lightweight Cryptographic Instruction Set Extension on Xtensa Processor</b></a><br>
       EISENKRAEMER, Gabriel; MORAES, Fernando Gehm; DE OLIVEIRA, LEONARDO LONDERO; CARARA, EVERTON   <br>
       <a href="http://dx.doi.org/10.1109/ISCAS45731.2020.9180579" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
      In: ISCAS, 2020 <br>
 </li>
-
 
 <li class="CSDN">  <a href="javascript:void(0);" onclick="checkPassword('2020/2020_sbcci_sdn');"><b> 
       Multiple-objective Management based on a Distributed SDN Architecture for Many-cores</b></a><br>
@@ -554,7 +545,6 @@
      In: SBCCI, 2020 <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2020/2020_sbcci_thermal');"><b> 
       Mapping and Migration Strategies for Thermal Management in Many-Core Systems</b></a><br>
       Da Silva, Alzemiro Henrique Lucas; Martins, André Luís Del Mestre; Moraes, Fernando Gehm <br>
@@ -562,14 +552,12 @@
      In: SBCCI, 2020 <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2020/2020_sbcci_gals');"><b> 
       Reducing NoC Energy Consumption Exploring Asynchronous end-to-end GALS Communication</b></a><br>
       WEBER, Iaçanã; OLIVEIRA, Leonardo; CARARA, Everton Alceu; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/SBCCI50935.2020.9189896" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
      In: SBCCI, 2020 <br>
 </li>
-
 
 </ol>
 
@@ -617,7 +605,7 @@
      In: SBCCI, 2019 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2019/2019_sbcci_korol');"><b> 
+<li class="CML">  <a href="javascript:void(0);" onclick="checkPassword('2019/2019_sbcci_korol');"><b> 
       A FPGA Parameterizable Multi-Layer Architecture for CNNs</b></a><br>
       KOROL, Guilherme; MORAES, Fernando Gehm <br>
       <a href="http://dx.doi.org/10.1145/3338852.3339840" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
@@ -667,15 +655,12 @@
       In: ISCAS, 2018 <br>
 </li>
 
-
-
 <li  class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_sbcci_bruno');"><b> 
       Secure Environment Architecture for MPSoCs</b></a><br>
       OLIVEIRA, Bruno; MEDINA, Henrique; SANTANA, Anderson; MORAES, Fernando Gehm <br>
        <a href="http://dx.doi.org/10.1109/SBCCI.2018.8533238" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
       In: SBCCI, 2018 <br>
 </li>
-
 
 
 <li  class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_sbcci_fochi');"><b> 
@@ -694,7 +679,6 @@
 </li>
 
 
-
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_lascas_caimi');"><b> 
       Runtime Creation of Continuous Secure Zones in Many-Core Systems for Secure Applications</b></a><br>
       CAIMI, Luciano; FOCHI, Vinicius; WACHTER, Eduardo; MORAES, Fernando Gehm <br>
@@ -709,14 +693,12 @@
       In: LASCAS, 2018 <br>
 </li>
 
-
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_icecs_caimi');"><b> 
       Secure Admission of Applications in Many-Cores </b></a><br>
       CAIMI, Luciano; FOCHI, Vinicius; MORAES, Fernando Gehm <br>
       <a href="http://dx.doi.org/10.1109/ICECS.2018.8618021" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
       In: ICECS, 2018 <br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_icecs_jean');"><b> 
      Evaluating Serialization for a Publish-Subscribe Based Middleware for MPSoCs </b></a><br>
@@ -725,7 +707,7 @@
      In: ICECS, 2018 <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_icecs_carara');"><b> 
+<li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_icecs_carara');"><b> 
      Exploring RSA Performance Up to 4096-Bit for Fast Security Processing on a Flexible Instruction Set Architecture Processor </b></a><br>
      MARCHESAN, Grégory; WEIRICH JUNIOR, Nelson; CULAU, Eduardo; WEBER, Iaçanã; MORAES, Fernando Gehm; CARARA, Everton Alceu <br>
      <a href="http://dx.doi.org/10.1109/ICECS.2018.8617840" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
@@ -836,13 +818,12 @@
       In: GLSVLSI, 2016, pp. 341-346. <br>
 </li>
 
-<li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2016/sbcci_castilhos');"><b> 
+<li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2016/sbcci_castilhos');"><b> 
       A Lightweight Software-based Runtime Temperature Monitoring Model for Multiprocessor Embedded Systems</b></a><br>
       CASTILHOS, Guilherme; OST, Luciano; MORAES, Fernando Gehm <br>   
       <a href="http://dx.doi.org/10.1109/SBCCI.2016.7724040" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2016.   <br>
 </li>
-
 
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2016/ICECS_Andre');"><b> 
       Runtime Energy Management for Many-Core Systems</b></a><br>
@@ -857,7 +838,6 @@
       <a href="http://dx.doi.org/10.1109/ICECS.2016.7841216" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
       In: ICECS, 2016, pp. 396-399. <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2016/ICECS_ruaro');"><b> 
       A Data Extraction and Debugging Framework for Large-Scale MPSoCs</b></a><br>
@@ -879,7 +859,6 @@
       <a href="http://dx.doi.org/10.1109/ICECS.2016.7841301" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
       In: ICECS, 2016, pp. 712-715. <br>
 </li>
-
 
 <li class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2016/LATS_wachter');"><b> 
       A layered approach for fault tolerant NoC-based MPSoCs - Special session: Dependable MPSoCs </b></a><br>
@@ -909,7 +888,6 @@
       In: ISCAS, 2015, pp. 1570-1573. <br>
 </li>
 
- 
 <li class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2015/ISCAS_fochi');"><b> 
       An Integrated Method for Implementing Online Fault Detection in NoC-based MPSoCs</b></a><br>
       FOCHI, Vinicius; WACHTER, Eduardo; ERICHSEN, Augusto; AMORY, Alexandre de Morais; MORAES, Fernando Gehm  <br>
@@ -2441,13 +2419,11 @@
       In: SBCCI, 2000, p. 281-286.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_sbcci_lasca');"><b> 
       LASCA - Interconnect Parasitic Extraction Tool for Deep-Submicron IC Design </b></a><br>
       FERREIRA, Fábio; MORAES, Fernando Gehm; REIS, Ricardo Augusto da Luz<br>
       In: SBCCI, 2000, p. 327-332.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_sbcci_WTROPIC');"><b> 
       WTROPIC: a WWW-based Macro-Cell Generator</b></a><br>
@@ -2456,13 +2432,11 @@
       In: SBCCI, 2000, p. 133-138. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_sbmicro');"><b>  
       Power Estimation at Logic-Level Considering Interconnection Capacitances</b></a><br>
       MARTINS, João Batista; FERREIRA, Fábio; REIS, Ricardo Augusto da Luz; MORAES, Fernando Gehm<br>
       In: SBMICRO, 2000.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_DCIS_rolf');"><b>  
       A Fast Prototyping Neural Network Model for Image Classification</b></a><br>
@@ -2470,13 +2444,11 @@
       In: DCIS, 2000, p. 836-841.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_DCIS_virtual');"><b>  
       A Physical Synthesis Design Flow Based on Virtual Components</b></a><br>
       MORAES, Fernando Gehm; ROBERT, Michel; AUVERGNE, Daniel; AZEMARD, Nadine<br>
       In: DCIS, 2000, p. 740-745.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_DCIS_place');"><b>  
       Deterministic versus Non-Deterministic Placement Algorithms for Automatic Layout Synthesis Tools</b></a><br>
@@ -2507,7 +2479,6 @@
       In: IFIP-VLSI-SOC, 1999, p. 415-426. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1999/99fie');"><b> 
       VLSI Hardware Design by Computer Science Students: How early can they start? How far can they go?</b></a><br>
       CALAZANS, Ney; MORAES, Fernando Gehm<br>
@@ -2520,7 +2491,6 @@
       MARQUES, Paulo Cesar; MORAES, Fernando Gehm; CALAZANS, Ney<br>
       In: IBERCHIP, 1999, p. 70-80.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1999/99iber_cleo');"><b> 
       Cleo-LIRMM: um experimento de implementação de processadores dedicados em plataformas de prototipação de sistemas embarcado</b></a><br>
@@ -2547,15 +2517,12 @@
       In: SBMICRO, 1998, p. 123-130.<br>
 </li>
 
-
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1998/98sbcci');"><b> 
       An Improved Path Enumeration Method Which Considers Different Fall and Rise Gate Delays</b></a><br>
       GUNTZEL, José Luiz; PINTO, Ana; MORAES, Fernando Gehm; REIS, Ricardo Augusto da Luz<br>
       <a href="http://dx.doi.org/10.1109/SBCCI.1998.715443" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 1998, p. 208-211. <br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1998/98patmos');"><b> 
       Estimation of Layout Densities for CMOS Digital Circuits</b></a><br>
