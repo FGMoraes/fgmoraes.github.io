@@ -9,16 +9,20 @@
   <STYLE type="text/css">
 
         .div_area_selecao 
-                { position: fixed;  top:  35px;      left:  80px;     overflow: hidden; 
+                { position: fixed;  top:  35px;      left:  80px;      
                   font-weight: bold; font-size: 12pt;   color: black; }
 
         .show_year_selection 
-                { position: fixed;  top:  82px;     left:  450px;    overflow: hidden; 
+                { position: fixed;  top:  82px;     left:  460px;    
                   font-weight: bold; font-size: 12pt;   color: black;  }
 
         .div_conferences 
                 { position: fixed;  top:  130px;     left:    5px;    overflow-y: scroll;
-                  height: 85%; }
+                  height: 90%;  width: 95%; }
+
+       .div_conferences2
+                { position: fixed;  top:  140px;     left:    2px;    overflow-y: scroll;
+                  height:  90%; width: 95%;  }
 
         ol.start { 
             counter-reset: mycounter; 
@@ -50,77 +54,77 @@
            width: 85vw;
           }
 
-
   </STYLE>
-
 
    <script> 
 
-       function type_paper(x) {
 
+   function type_paper(x) {
+       console.log("Option selected:", x);
+    
+      var paper_classes = ["general", "Cmpsoc", "Csec", "Cfault", "Cenergy", "Cnoc", "CSDN", "Cmapping", "Cmigration", "Cfpga"];
 
-            //    1/3 para nova classe:  coloque o nome e o título da classe
-            var paper_classes = ["general",  "Cmpsoc", "Csec", "Cfault",  "Cenergy", "Cnoc", "CSDN",  "Cmapping", "Cmigration", "Cfpga" ];
-            var title_classes = ["xx",       "Tmpsoc", "Tsec", "Tfault",  "Tenergy", "Tnoc", "TSDN", "Tmapping", "Tmigration", "Tfpga" ];
+      // Esconde todas as classes de papers
+      for (var ix = 0; ix < paper_classes.length; ix++) {
+        var elems = document.getElementsByClassName(paper_classes[ix]);
+        for (var i = 0; i < elems.length; i++) {
+            elems[i].style.visibility = "hidden";
+            elems[i].style.display = "none";
+        }
+     }
 
-           // -------  show or hide all classes ---------------------             
-           for(var ix = 0; ix < paper_classes.length; ix++){
+      // Mostrar ou esconder os anos conforme a opção selecionada (para o tipo de artigo não mostra o ano)
+      var elem_year = document.getElementsByClassName("year");
+      console.log("Year elements count:", elem_year.length);
+      for (var i = 0; i < elem_year.length; i++) {
+        if (x == 0) {
+            elem_year[i].style.visibility = "visible";
+            elem_year[i].style.display = "block";
+        } else {
+            elem_year[i].style.visibility = "hidden";
+            elem_year[i].style.display = "none";
+        }
+      }
 
-                  var elems = document.getElementsByClassName(paper_classes[ix]);   // all  elements with of class ix
+      // aqui mostra por ano, quando selecionamos um dado ano
+      var elems = document.getElementsByClassName("show_year_selection");
+      console.log("Show year selection elements count:", elems.length);
+      if (x == 0) {
+        elems[0].style.visibility = "visible";
+        elems[0].style.display = "block";
+      } else {
+        elems[0].style.visibility = "hidden";
+        elems[0].style.display = "none";
+      }
 
-                  for(var i = 0; i != elems.length; ++i) {
-                      if(x == 0)    // x==0 means display all classes
-                         { elems[i].style.visibility = "visible"; 
-                           elems[i].style.display = "list-item"; 
-                         }
-                       else  // otherwise hide all classes except the one specified by 'x'
-                         { elems[i].style.visibility = "hidden"; 
-                           elems[i].style.display = "none";
-                         }
-                  }
+      // Mostrar o título da classe selecionada
+      if (x > 0) {
 
-                  // hide the titles of the classes
-                  var elems = document.getElementsByClassName(title_classes[ix]);
-                  for(var i = 0; i != elems.length; ++i) {
-                      elems[i].style.visibility = "hidden"; 
-                      elems[i].style.display = "none"; 
-                   }   
-          }
+        // Mostrar a classe de papers selecionada
+        elems = document.getElementsByClassName(paper_classes[x]);
+        console.log("Showing elements of class:", paper_classes[x], "Count:", elems.length);
+        for (var i = 0; i < elems.length; i++) {
+            elems[i].style.visibility = "visible";
+            elems[i].style.display = "list-item";
+        }
+      } else {
+        // Se "ALL, sorted by year" é selecionado, mostrar todos os elementos
+        for (var ix = 0; ix < paper_classes.length; ix++) {
+            var elems = document.getElementsByClassName(paper_classes[ix]);
+            console.log("Showing all elements of class:", paper_classes[ix], "Count:", elems.length);
+            for (var i = 0; i < elems.length; i++) {
+                elems[i].style.visibility = "visible";
+                elems[i].style.display = "list-item";
 
-          /// ------ show or display the years - only when option is show all ------------------------------ 
-          var elem_year = document.getElementsByClassName("year");    
-          for(var i = 0; i != elem_year.length; ++i) {
-              if(x == 0)
-                   { elem_year[i].style.visibility = "visible"; 
-                     elem_year[i].style.display = "block";
-                   }
-              else
-                   { elem_year[i].style.visibility = "hidden"; 
-                     elem_year[i].style.display = "none";
-                   }
-           }
-           var elems = document.getElementsByClassName("show_year_selection");
-             if(x == 0)
-                   { elems[0].style.visibility = "visible"; 
-                     elems[0].style.display = "block";
-                   }
-              else
-                   { elems[0].style.visibility = "hidden"; 
-                     elems[0].style.display = "none";
-                   }
+            }
+        }
+      }
 
-           /// ------display the title of the selected paper class ------------------------------ 
-           var elems = document.getElementsByClassName(title_classes[x]);
-           elems[0].style.visibility = "visible"; 
-           elems[0].style.display = "block"; 
+      // Certificar que a área de rolagem está habilitada
+      document.querySelector('.div_conferences').style.overflowY = 'scroll';
+      console.log("Scroll enabled for .div_conferences");
+   }
 
-           /// ------display the selected paper class ------------------------------ 
-           var elems = document.getElementsByClassName(paper_classes[x]);
-           for(var i=0; i != elems.length; ++i) 
-                   { elems[i].style.visibility = "visible"; 
-                     elems[i].style.display = "list-item"; 
-                   }
-       }
 
       function checkPassword(url) {
           let input = prompt("Please enter the password (or e-mail to fernando.moraes@pucrs.br");
@@ -169,13 +173,11 @@
 </div>
 <!-- *********** FIM DO MENU DE TOPO  *************************************** -->
 
-<div style="position:absolute; width: 100%;  left: 0px; top: 45px; z-index: 30;">
 
 
 <!-- ######################################################### Select a subject form ################## 
-     2/3 - for a new class: put the right number and class title
+     for a new class: put the right number and class title
 -->
-
 <div class="div_area_selecao">
 
        <h2>Published Papers in Conferences and Symposiums</h2>
@@ -193,7 +195,6 @@
                   <option value=8> Task Migration</option>
                   <option value=9> FPGA and Reconfigurable</option>
           </select>
-      <hr>
 </div>
 
 <!-- ############################ Display the year selection when ALL papers are visible ################## -->
@@ -235,25 +236,25 @@
 
 
 <!-- ############################ Display the title of the subjects ################## -->
+
 <div class="div_conferences">
 
-      <!-- ######################################################### Select a subject form ################## 
-           3/3 - for a new class: put the right number and class title
-      -->
+      <!-- Títulos das classes -->
       <p style="display:none" class="TSDN">SDN</p>
-      <p style="display:none" class="Tsec">Securiry</p>
+      <p style="display:none" class="Tsec">Security</p>
+      <p style="display:none" class="TSDN">SDN</p>
+      <p style="display:none" class="Tsec">Security</p>
       <p style="display:none" class="Tfault">Fault Tolerance</p>
       <p style="display:none" class="Tenergy">Energy and low power</p>
       <p style="display:none" class="Tnoc">NoC - Network on Chip</p>
       <p style="display:none" class="Tmapping">Mapping</p>
       <p style="display:none" class="Tmigration">Task Migration</p>
       <p style="display:none" class="Tfpga">FPGA and Reconfigurable</p>
-      <p style="display:none" class="Tmpsoc">MPSoC and many-cores</p>
+      <p style="display:none" class="Tmpsoc">MPSoC and Manycores</p>
+</div>
 
-<!-- ########################################################################################## -->
-<!-- ###########################  STARTS THE CONFERENCE PAPERS ################################ -->
-<!-- ########################################################################################## -->
 
+<div class="div_conferences2"> 
 
 <!-- ########################################################################################## -->
 <!-- ###########################  STARTS THE CONFERENCE PAPERS ################################ -->
@@ -303,7 +304,7 @@
       Soft Error Assessment of UAV Control Algorithms Running in Resource-constrained Microprocessors</b></a><br>
       HANNEMAN, Alex; GAVA, Jonas; VANCIN, Paulo; KAIM-KHANI, Aqsa; AMIRI, Sam; GARIBOTTI, Rafael; MORAES, Fernando Gehm; CALAZANS, Ney; REIS, Ricardo Augusto da Luz; OST, Luciano.<br>
        <!-- <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> -->
-      In: SBCCI, 2024 <br>
+      In: ISVLSI, 2024 <br>
 </li>
 
 
@@ -357,7 +358,7 @@
 
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Iacana');"><b> 
-     FLEA - FIT-Aware Heuristic for Application Allocation in Many-Cores based on Q-Learning </b></a></br>
+     FLEA - FIT-Aware Heuristic for Application Allocation in Many-Cores based on Q-Learning </b></a>
      WEBER, Iacana Ianiski; ZANINI, Vitor; MORAES, Fernando Gehm <br>
      <a href="http://dx.doi.org/10.1109/SBESC60926.2023.10324296" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
      In: SBESC, 2023<br>
@@ -365,7 +366,7 @@
 
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Reusch');"><b>
-     Deploying Machine Learning in Resource-Constrained Devices for Human Activity Recognition </b></a></br>
+     Deploying Machine Learning in Resource-Constrained Devices for Human Activity Recognition </b></a>
       <table>
        <tr>
           <td>
@@ -2624,9 +2625,14 @@
 
 </ol>
 
-<p> &nbsp;&nbsp; &nbsp;&nbsp;
-
-
+<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
+<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
+<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
+<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
 </div>
+
+
+
+
 </body>
 </html>
