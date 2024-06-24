@@ -9,20 +9,16 @@
   <STYLE type="text/css">
 
         .div_area_selecao 
-                { position: fixed;  top:  35px;      left:  60px;      
+                { position: fixed;  top:  35px;   left:  60px;      
                   font-weight: bold; font-size: 12pt;   color: black; }
 
         .show_year_selection 
-                { position: fixed;  top:  82px;     left:  460px;    
+                { position: fixed;  top:  80px;   left:  550px;    
                   font-weight: bold; font-size: 12pt;   color: black;  }
 
         .div_conferences 
-                { position: fixed;  top:  130px;     left:    5px;    overflow-y: scroll;
-                  height: 90%;  width: 95%; }
-
-       .div_conferences2
-                { position: fixed;  top:  140px;     left:    2px;    overflow-y: scroll;
-                  height:  90%; width: 95%;  }
+                { position: fixed;  top:  120px;  left:    5px;    overflow-y: scroll;
+                  height: 90%;  width: 98%; }
 
         ol.start { 
             counter-reset: mycounter; 
@@ -74,9 +70,9 @@
         }
      }
 
-      // Mostrar ou esconder os anos conforme a opção selecionada (para o tipo de artigo não mostra o ano)
+      // Mostrar ou esconder os anos (blocos) conforme a opção selecionada (0 mestra todos os blocos de anos, senao >0 não mostra nenhum bloco)
       var elem_year = document.getElementsByClassName("year");
-      console.log("Year elements count:", elem_year.length);
+      //console.log("Year elements count:", elem_year.length);
       for (var i = 0; i < elem_year.length; i++) {
         if (x == 0) {
             elem_year[i].style.visibility = "visible";
@@ -87,9 +83,9 @@
         }
       }
 
-      // aqui mostra por ano, quando selecionamos um dado ano
+      // mostra o block de seleção de anos
       var elems = document.getElementsByClassName("show_year_selection");
-      console.log("Show year selection elements count:", elems.length);
+      //console.log("Show year selection elements count:", elems.length);
       if (x == 0) {
         elems[0].style.visibility = "visible";
         elems[0].style.display = "block";
@@ -100,7 +96,6 @@
 
       if (x > 0) { // Mostrar a classe de papers selecionada
         elems = document.getElementsByClassName(paper_classes[x]);
-        console.log("Showing elements of class:", paper_classes[x], "Count:", elems.length);
         for (var i = 0; i < elems.length; i++) {
             elems[i].style.visibility = "visible";
             elems[i].style.display = "list-item";
@@ -110,17 +105,12 @@
         // Se "ALL, sorted by year" é selecionado, mostrar todos os elementos
         for (var ix = 0; ix < paper_classes.length; ix++) {
             var elems = document.getElementsByClassName(paper_classes[ix]);
-            console.log("Showing all elements of class:", paper_classes[ix], "Count:", elems.length);
             for (var i = 0; i < elems.length; i++) {
                 elems[i].style.visibility = "visible";
                 elems[i].style.display = "list-item";
             }
         }
       }
-
-      // Certificar que a área de rolagem está habilitada
-      document.querySelector('.div_conferences').style.overflowY = 'scroll';
-      // console.log("Scroll enabled for .div_conferences");
    }
 
 
@@ -156,37 +146,67 @@
           return encrypted;
       }
 
+
+      function countArticlesPerYear() {
+          var years = document.getElementsByClassName('year');
+          var totalArticles = 0;
+      
+          // Primeiro, calcule o total de artigos
+          for (var i = 0; i < years.length; i++) {
+              var yearId = years[i].id;
+              var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get       the ol ID
+              var olElement = document.getElementById(olId);
+              
+              if (olElement) {
+                  totalArticles += olElement.getElementsByTagName('li').length;
+              }
+          }
+      
+          // Agora, atualize o texto de cada ano com a contagem de artigos e o total
+          for (var i = 0; i < years.length; i++) {
+              var yearId = years[i].id;
+              var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get       the ol ID
+              var olElement = document.getElementById(olId);
+              
+              if (olElement) {
+                  var articleCount = olElement.getElementsByTagName('li').length;
+                  years[i].textContent = years[i].textContent + " (" + articleCount + " articles from " +       totalArticles + ")";
+              }
+          }
+      }
+
+
+    window.onload = function() {
+        countArticlesPerYear();
+        type_paper(0);  // To ensure all papers are visible initially
+    };
+
+
    </script>
 
 </head>
 
 <body>
 
-<!-- *********** MENU DE TOPO - INCLUI UM ARQUIVO EXTERNO ********************************************* -->
-<!-- *********** lembrar de inserir fim de div ao final do body  *********** -->
+<!-- *********** MENU DE TOPO - INCLUI UM ARQUIVO EXTERNO ********************* -->
 <div style="position:fixed; width: 100vw;  left: 0px; top: 0px; z-index: 20; height: 45px;  background: #ADD8E6; ">
     <object width="100%" height="60" type="text/html" data="menu_top.html"></object>
 </div>
-<!-- *********** FIM DO MENU DE TOPO  *************************************** -->
 
-
-
-<!-- ######################################################### Select a subject form ################## 
-     for a new class: put the right number and class title
--->
+<!-- ####################################### Select a subject form #############-->
 <div class="div_area_selecao">
 
        <h2>Published Papers in Conferences and Symposiums</h2>
  
-       Select Paper by Subject:
+       Select Paper by Subject or Year:&nbsp;&nbsp;&nbsp;&nbsp;
           <select onchange="type_paper(this.value)">
-                  <option value=0> ALL, sorted by year</option>
+                  <option value=0> Select a year</option>
                   <option value=1> MPSoC and many-cores</option>
                   <option value=2> Security</option>
                   <option value=3> Fault Tolerance</option>
                   <option value=4> Energy and low power</option>
                   <option value=5> NoC - Network on Chip</option>
-                  <option value=6> SDN</option>
+                  <option value=6> SDN - Software Defined Network</option>
                   <option value=7> Task Mapping</option>
                   <option value=8> Task Migration</option>
                   <option value=9> FPGA and Reconfigurable</option>
@@ -195,7 +215,7 @@
           </select>
 </div>
 
-<!-- ############################ Display the year selection when ALL papers are visible ################## -->
+<!-- ####### Display the year selection when ALL papers are visible ################## -->
 <div class="show_year_selection">
 
     Year:
@@ -233,33 +253,15 @@
 </div>
 
 
-<!-- ############################ Display the title of the subjects ################## -->
 
-<div class="div_conferences">
-
-      <!-- Títulos das classes -->
-      <p style="display:none" class="TSDN">SDN</p>
-      <p style="display:none" class="Tsec">Security</p>
-      <p style="display:none" class="TSDN">SDN</p>
-      <p style="display:none" class="Tsec">Security</p>
-      <p style="display:none" class="Tfault">Fault Tolerance</p>
-      <p style="display:none" class="Tenergy">Energy and low power</p>
-      <p style="display:none" class="Tnoc">NoC - Network on Chip</p>
-      <p style="display:none" class="Tmapping">Mapping</p>
-      <p style="display:none" class="Tmigration">Task Migration</p>
-      <p style="display:none" class="Tfpga">FPGA and Reconfigurable</p>
-      <p style="display:none" class="Tmpsoc">MPSoC and Manycores</p>
-</div>
-
-
-<div class="div_conferences2">  
+<div class="div_conferences">  
 
 <!-- ########################################################################################## -->
 <!-- ###########################  STARTS THE CONFERENCE PAPERS ################################ -->
 <!-- ########################################################################################## -->
 
 <p id="a2024" class="year">2024</p>
-<ol class="start">
+<ol id="ol2024" class="start">
 
 <li class="Csec CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2024/LASCAS24_Carlos');"><b> 
       Hardware Acceleration of Authenticated Encryption with Associated Data via RISC-V Instruction Set Extensions in Low Power Embedded Systems </b></a><br>
@@ -309,7 +311,7 @@
 
 
 <p id="a2023" class="year">2023</p>
-<ol class="continue">
+<ol id="ol2023" class="continue">
 
 
 <li class="Csec">  
@@ -376,7 +378,6 @@
       </table>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2023/NEWCAS_Eduardo');"><b> 
       Assessment of Communication Protocols’ Latency in Co-processing Robotic Systems </b></a><br>
       PEREIRA, Eduardo LUZA, Lucas MOURA, Nicolas OST, Luciano CALAZANS, Ney MORAES, Fernando Gehm GARIBOTTI, Rafael  <br>
@@ -391,7 +392,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2022" class="year">2022</p>
-<ol class="continue">
+<ol id="ol2022" class="continue">
 
 
 <li class="Cmpsoc Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2022/ICECS_Dalzotto');"><b> 
@@ -461,7 +462,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2021" class="year">2021</p>
-<ol class="continue">
+<ol id="ol2021" class="continue">
 
 <li class="Cmpsoc Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2021/ICECS2021_Angelo');"><b> 
       Dynamic Mapping for Many-cores using Management Application Organization </b></a><br>
@@ -522,7 +523,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2020" class="year">2020</p>
-<ol class="continue">
+<ol id="ol2020" class="continue">
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2020/2020_iscas_ht');"><b> 
       Open-source NoC-based Many-Core for Evaluating Hardware Trojan Detection Methods</b></a><br>
@@ -566,7 +567,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2019" class="year">2019</p>
-<ol class="continue">
+<ol id="ol2019" class="continue">
 
 
 <li class="CSDN">  <a href="javascript:void(0);" onclick="checkPassword('2019/2019_nocs');"><b> 
@@ -632,7 +633,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2018" class="year">2018</p>
-<ol class="continue">
+<ol id="ol2018" class="continue">
 
 <li class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_iscas_bortolon');"><b> 
       Exploring the Impact of Soft Errors on NoC-Based Multiprocessor Systems</b></a><br>
@@ -721,7 +722,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2017" class="year">2017</p>
-<ol class="continue">
+<ol id="ol2017" class="continue">
 
 <li  class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2017/2017_iscas_caimi');"><b> 
       Activation of Secure Zones in Many-Core Systems with Dynamic Rerouting</b></a><br>
@@ -795,7 +796,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2016" class="year">2016</p>
-<ol class="continue">
+<ol id="ol2016" class="continue">
 
 <li  class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2016/ISCAS_ruaro');"><b> 
       DMNI: A Specialized Network Interface for NoC-based MPSoCs</b></a><br>
@@ -872,7 +873,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2015" class="year">2015</p>
-<ol class="continue">
+<ol id="ol2015" class="continue">
 
 <li  class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2015/ISCAS_barreto');"><b> 
       Fault Recovery Protocol for Distributed Memory MPSoCs</b></a><br>
@@ -980,7 +981,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2014" class="year">2014</p>
-<ol class="continue">
+<ol id="ol2014" class="continue">
 
 <li  class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2014/ISCAS_ruaro');"><b> 
       Tool-Set for NoC-Based MPSoC Debugging - a Protocol View Perspective</b></a><br>
@@ -1063,7 +1064,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2013" class="year">2013</p>
-<ol class="continue">
+<ol id="ol2013" class="continue">
 
 <li  class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2013/ICECS_mandelli');"><b> 
       Multi-level MPSoC Modeling for Reducing Software Development Cycle</b></a><br>
@@ -1130,7 +1131,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2012"  class="year">2012</p>
-<ol class="continue">
+<ol id="ol2012" class="continue">
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2012/ICECS12_8106_Madalozzo_Ruaro');"><b> 
       Evaluation of Adaptive Management Techniques in NoC-Based MPSoCs</b></a><br>
@@ -1218,7 +1219,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2011" class="year">2011</p>
-<ol class="continue">
+<ol id="ol2011" class="continue">
 
 <li  class="general">  <a href="javascript:void(0);" onclick="checkPassword('2011/2011_icecs_matheus');"><b>
       Adapting a C-Element Design Flow for Low Power</b></a><br>
@@ -1359,7 +1360,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2010"  class="year">2010</p>
-<ol class="continue">
+<ol id="ol2010" class="continue">
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_ICECS_ost');"><b> 
       Model-based Design Flow for NoC-based MPSoCs</b></a><br>
@@ -1490,7 +1491,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2009"  class="year">2009</p>
-<ol class="continue">
+<ol id="ol2009" class="continue">
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/2009_iscas_carara');"><b> 
       HeMPS - A Framework for NoC-Based MPSoC Generation</b></a><br>
@@ -1608,7 +1609,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2008"  class="year">2008</p>
-<ol class="continue">
+<ol id="ol2008" class="continue">
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_isvlsi_carara');"><b> 
       Deadlock-Free Multicast Routing Algorithm for Wormhole-Switched Mesh Networks-on-Chip</b></a><br>
@@ -1679,7 +1680,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2007" class="year">2007</p>
-<ol class="continue">
+<ol id="ol2007" class="continue">
 
 <li  class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_isvlsi_ewerson');"><b> 
       Congestion-Aware Task Mapping in NoC-based MPSoCs with Dynamic Workload</b></a><br>
@@ -1820,7 +1821,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2006" class="year">2006</p>
-<ol class="continue">
+<ol id="ol2006" class="continue">
 
 <li  class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2006/2006_soc_aline');"><b> 
       Evaluation of Current QoS Mechanisms in Networks on Chip</b></a><br>
@@ -1899,7 +1900,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2005" class="year">2005</p>
-<ol class="continue">
+<ol id="ol2005" class="continue">
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_sbcci_aline');"><b> 
       Virtual Channels in Networks on Chip: Implementation and Evaluation on Hermes NoC</b></a><br>
@@ -2043,7 +2044,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2004" class="year">2004</p>
-<ol class="continue">
+<ol id="ol2004" class="continue">
 
 <li  class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_DCIS');"><b> 
       Reconfiguration Control for Dynamically Reconfigurable Systems</b></a><br>
@@ -2119,7 +2120,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2003"  class="year">2003</p>
-<ol class="continue">
+<ol id="ol2003" class="continue">
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_vlsi_noc');"><b> 
       A Low Area Overhead Packet-switched Network on Chip: Architecture and Prototyping</b></a><br>
@@ -2219,7 +2220,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2002" class="year">2002</p>
-<ol class="continue">
+<ol id="ol2002" class="continue">
 
 <li  class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_sbcci_cosim');"><b> 
       A Heterogeneous and Distributed Co-Simulation Environment</b></a><br>
@@ -2311,7 +2312,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p  id="a2001" class="year">2001</p>
-<ol class="continue">
+<ol id="ol2001" class="continue">
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001_sbcci_can');"><b> 
       Using the CAN Protocol and Reconfigurable Computing Technology for Web-Based Smart House Automation</b></a><br>
@@ -2396,7 +2397,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2000"  class="year">2000</p>
-<ol class="continue">
+<ol id="ol2000" class="continue">
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_SCI');"><b> 
       Codesign of Fully Parallel Neural Network for a Classification Problem</b></a><br>
@@ -2471,7 +2472,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a1999" class="year">1999</p>
-<ol class="continue">
+<ol id="ol1999" class="continue">
 
 <li  class="general">  <a href="javascript:void(0);" onclick="checkPassword('1999/99vlsi');"><b> 
       A Virtual CMOS Library Approach for Fast Layout Synthesis</b></a><br>
@@ -2509,7 +2510,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a1998"  class="year">1998</p>
-<ol class="continue">
+<ol id="ol1998" class="continue">
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1998/98sbmicro');"><b> 
       Evaluation of Transistor Densities for Submicronic CMOS Technologies</b></a><br>
@@ -2535,7 +2536,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a1997" class="year">1997</p>
-<ol class="continue">
+<ol id="ol1997" class="continue">
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1997/97vlsi');"><b> 
       An Efficient Layout Style For Three-Metal CMOS Macro-Cells</b></a><br>
@@ -2569,7 +2570,7 @@
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a1996" class="year">1996</p>
-<ol class="continue">
+<ol id="ol1996" class="continue">
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1996/96iberchip');"><b>  
       An Environment To Design Digital Circuits Based On The Brazilian Gate-Array</b></a><br>
@@ -2594,8 +2595,7 @@
 
 <p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
 <p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
-<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
-<p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
+
 </div>
 
 
