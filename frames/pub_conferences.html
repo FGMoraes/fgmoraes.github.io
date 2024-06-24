@@ -6,7 +6,7 @@
 <link href="pubs.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <STYLE type="text/css">
+  <STYLE>
 
         .div_area_selecao 
                 { position: fixed;  top:  35px;   left:  60px;      
@@ -54,8 +54,8 @@
 
    <script> 
 
-    
-   function type_paper(x) {
+    // ####################################################################################-
+    function type_paper(x) {
 
       console.log("Option selected:", x);
     
@@ -111,10 +111,10 @@
             }
         }
       }
-   }
+    }
 
-       
-       function checkPassword(url) {
+    // ####################################################################################-
+    function checkPassword(url) {
            const actualEncryptedArray = [432, 160, 72, 208, 240, 64, 704, 584, 600, 584, 576];
            let savedPassword = sessionStorage.getItem("savedPassword");
        
@@ -135,10 +135,10 @@
            } else {
                alert("Incorrect password!");
            }
-       }
-       
-      
-      function arraysEqual(a, b) {
+    }
+
+    // ####################################################################################-
+    function arraysEqual(a, b) {
           if (a === b) return true;
           if (a == null || b == null) return false;
           if (a.length !== b.length) return false;
@@ -147,9 +147,10 @@
               if (a[i] !== b[i]) return false;
           }
           return true;
-      }
+    }
 
-      function encrypt(plainText) {
+    // ####################################################################################-
+    function encrypt(plainText) {
           let encrypted = [];
           for (let i = 0; i < plainText.length; i++) {
               let charCode = plainText.charCodeAt(i);
@@ -157,43 +158,42 @@
               encrypted.push(charCode);
           }
           return encrypted;
-      }
+    }
 
+    // ####################################################################################-
+    function countArticlesPerYear() {
+         var years = document.getElementsByClassName('year');
+         var totalArticles = 0;
+    
+         // Primeiro, calcula o total de artigos
+         for (var i = 0; i < years.length; i++) {
+             var yearId = years[i].id;
+             var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get the ol ID
+             var olElement = document.getElementById(olId);
+             
+             if (olElement) {
+                 totalArticles += olElement.getElementsByTagName('li').length;
+             }
+         }
+    
+         // Agora, atualiza o texto de cada ano com a contagem de artigos e o total
+         for (var i = 0; i < years.length; i++) {
+             var yearId = years[i].id;
+             var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get the ol ID
+             var olElement = document.getElementById(olId);
+             
+             if (olElement) {
+                 var articleCount = olElement.getElementsByTagName('li').length;
+                 years[i].textContent = years[i].textContent + " (" + articleCount + " articles from " +  totalArticles + ")";
+             }
+         }
+    }
 
-      function countArticlesPerYear() {
-          var years = document.getElementsByClassName('year');
-          var totalArticles = 0;
-      
-          // Primeiro, calcule o total de artigos
-          for (var i = 0; i < years.length; i++) {
-              var yearId = years[i].id;
-              var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get       the ol ID
-              var olElement = document.getElementById(olId);
-              
-              if (olElement) {
-                  totalArticles += olElement.getElementsByTagName('li').length;
-              }
-          }
-      
-          // Agora, atualize o texto de cada ano com a contagem de artigos e o total
-          for (var i = 0; i < years.length; i++) {
-              var yearId = years[i].id;
-              var olId = "ol" + yearId.substring(1);  // Remove the "a" prefix from the year ID to get       the ol ID
-              var olElement = document.getElementById(olId);
-              
-              if (olElement) {
-                  var articleCount = olElement.getElementsByTagName('li').length;
-                  years[i].textContent = years[i].textContent + " (" + articleCount + " articles from " +       totalArticles + ")";
-              }
-          }
-      }
-
-
+    // ####################################################################################-
     window.onload = function() {
         countArticlesPerYear();
         type_paper(0);  // To ensure all papers are visible initially
     };
-
 
    </script>
 
@@ -265,8 +265,6 @@
   </select>
 </div>
 
-
-
 <div class="div_conferences">  
 
 <!-- ########################################################################################## -->
@@ -290,14 +288,12 @@
       In: LASCAS, 2024 <br>
 </li>
 
-
 <li class="Csec CML">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Angelo');"><b> 
       A Machine Learning Approach for Traffic Anomaly Detection in NoC-based Manycores</b></a><br>
       DAL ZOTTO, Angelo Elias; MORAES, Fernando Gehm.<br>
        <!-- <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> -->
       In: SBCCI, 2024 <br>
 </li>
-
 
 <li class="Cenergy CML">  <a href="javascript:void(0);" onclick="checkPassword('2024/SBCCI24_Iacana');"><b> 
       Enhancing Manycore Lifetime Through Reinforcement Learning Task Mapping and Migration</b></a><br>
@@ -322,10 +318,11 @@
 
 </ol>
 
-
+<!-- ########################################################################################## -->
+<!-- ########################################################################################## -->
+<!-- ########################################################################################## -->
 <p id="a2023" class="year">2023</p>
 <ol id="ol2023" class="continue">
-
 
 <li class="Csec">  
       <a href="javascript:void(0);" onclick="checkPassword('2023/ISCAS_Rafa');"><b> 
@@ -335,14 +332,12 @@
       In: ISCAS, 2023 <br>
 </li>
 
-
 <li class="Csec CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_Carlos');"><b> 
       Improving the Efficiency of Cryptography Algorithms on Resource-Constrained Embedded Systems via RISC-V Instruction Set Extensions </b></a><br>
       GEWEHR, Carlos; MORAES, Fernando Gehm <br>
        <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261964" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
       In: SBCCI, 2023 <br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_Gustavo');"><b> 
       Secure Network Interface for Protecting IO Communication in Many-cores </b></a><br>
@@ -351,14 +346,12 @@
       In: SBCCI, 2023 <br>
 </li>
 
-
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_Nicolas');"><b> 
       Assessment of Lightweight Cryptography Algorithms on ARM Cortex-M Processors </b></a><br>
       MOURA, Nicolas; LUCENA, Joaquim; CALAZANS, Ney Laert Vilar; OST, Luciano; MORAES, Fernando Gehm; GARIBOTTI, Rafael<br>
       <a href="http://dx.doi.org/10.1109/SBCCI60457.2023.10261962" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2023 <br>
 </li>
-
 
 <li class="CRV5">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBCCI23_William');"><b> 
       Validating an Automated Asynchronous Synthesis Environment with a Challenging Design: RISC-V </b></a><br>
@@ -367,14 +360,12 @@
       In: SBCCI, 2023 <br>
 </li>
 
-
 <li class="Cmpsoc CML">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Iacana');"><b> 
      FLEA - FIT-Aware Heuristic for Application Allocation in Many-Cores based on Q-Learning </b></a><br>
      WEBER, Iacana Ianiski; ZANINI, Vitor; MORAES, Fernando Gehm <br>
      <a href="http://dx.doi.org/10.1109/SBESC60926.2023.10324296" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
      In: SBESC, 2023<br>
 </li>
-
 
 <li class="CML">  <a href="javascript:void(0);" onclick="checkPassword('2023/SBESC_Reusch');"><b>
      Deploying Machine Learning in Resource-Constrained Devices for Human Activity Recognition </b></a>
@@ -400,13 +391,11 @@
 
 </ol>
 
-
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2022" class="year">2022</p>
 <ol id="ol2022" class="continue">
-
 
 <li class="Cmpsoc Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2022/ICECS_Dalzotto');"><b> 
       Leveraging NoC-based Many-core Performance Through Runtime Mapping Defragmentation </b></a><br>
@@ -414,7 +403,6 @@
       <a href="http://dx.doi.org/10.1109/ICECS202256217.2022.9970841" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
       In: ICECS, 2022 <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2022/ICECS_Domingues');"><b> 
       Design-Time Scheduling of Periodic, Hard Real-Time Flows for NoC-based Systems </b></a><br>
@@ -437,7 +425,6 @@
       In: SBESC, 2022 <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2022/ISCAS_Alzemiro');"><b> 
       Reliability Assessment of Many-Core Dynamic Thermal Management </b></a><br>
       LUCAS, Alzemiro Henrique; WEBER, Iaçanã; DEL MESTRE MARTINS, André Luis;  MORAES, Fernando Gehm   <br>
@@ -459,7 +446,6 @@
       In: SBCCI, 2022 <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2022/sbcci22_domingues');"><b> 
       Design-Time Analysis of Real-Time Traffic for Networks-on-Chip using Constraint Models</b></a><br>
       DOMINGUES, ANDERSON R. P. JOHANN Fo., Sérgio AMORY, ALEXANDRE MORAES, Fernando Gehm  <br>
@@ -467,9 +453,7 @@
       In: SBCCI, 2022 <br>
 </li>
 
-
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -491,14 +475,12 @@
       In: SBCCI, 2021 <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2021/iscas_alzemiro');"><b> 
       Dynamic Thermal Management in Many-Core Systems Leveraged by Abstract Modeling </b></a><br>
       LUCAS, Alzemiro Henrique; WEBER, Iaçanã; DEL MESTRE MARTINS, André Luis;  MORAES, Fernando Gehm  <br>
       <a href="http://dx.doi.org/10.1109/ISCAS51556.2021.9401414" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISCAS, 2021 <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2021/LASCAS21_Geaninne');"><b> 
       Chronos: an Abstract NoC-based Manycore with Preserved Temporal and Spatial Traffic Distribution </b></a><br>
@@ -520,7 +502,6 @@
       <a href="http://dx.doi.org/10.1109/SBESC53686.2021.9628369" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBESC, 2021 <br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2021/IBERCHIP21_Tadeu');"><b> 
      Interfaces de Rede para Comunicação com Periféricos em MPSoCs
@@ -575,13 +556,11 @@
 
 </ol>
 
-
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <p id="a2019" class="year">2019</p>
 <ol id="ol2019" class="continue">
-
 
 <li class="CSDN">  <a href="javascript:void(0);" onclick="checkPassword('2019/2019_nocs');"><b> 
       Distributed SDN Architecture for NoC-based Many-core SoCs</b></a><br>
@@ -676,7 +655,6 @@
       In: SBCCI, 2018 <br>
 </li>
 
-
 <li  class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_sbcci_fochi');"><b> 
       Fault-tolerance at the Management Level in Many-core Systems</b></a><br>
       FOCHI, Vinicius; CAIMI, Luciano; Silva, Marcelo H.; WACHTER, Eduardo; MORAES, Fernando Gehm <br>
@@ -684,14 +662,12 @@
      In: SBCCI, 2018 <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_sbcci_carara');"><b> 
       Exploring Asynchronous End-to-End Communication Through a Synchronous NoC</b></a><br>
       WEBER, Iaçanã; OLIVEIRA, Leonardo; Silva, MORAES, Fernando Gehm; CARARA, Everton A.<br>
        <a href="http://dx.doi.org/10.1109/SBCCI.2018.8533228" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
      In: SBCCI, 2018 <br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2018/2018_lascas_caimi');"><b> 
       Runtime Creation of Continuous Secure Zones in Many-Core Systems for Secure Applications</b></a><br>
@@ -727,7 +703,6 @@
      <a href="http://dx.doi.org/10.1109/ICECS.2018.8617840" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>  
      In: ICECS, 2018 <br>
 </li>
-
 
 </ol>
 
@@ -772,14 +747,12 @@
       In: SOCC, 2017, pp. 367-374.<br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2017/2017_xgt4');"><b> 
       XGT4: an Industrial Grade, Open Source Tester for Multi-Gigabit Networks</b></a><br>
       JURACY, Leonardo R.; LAZZAROTTO, Felipe B.;  PIGATTO, Daniel; CALAZANS, Ney;  MORAES, Fernando Gehm <br>
       <a href="http://dx.doi.org/10.1109/ICECS.2017.8292042" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a> 
       In: ICECS, 2017.<br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2017/2017_sbcci_caimi');"><b> 
       Secure Admission and Execution of Applications in Many-core Systems</b></a><br>
@@ -917,7 +890,6 @@
 
 </li>
 
-
 <li class="Cenergy Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2015/sbcci_mandelli');"><b> 
       A Distributed Energy-aware Task Mapping to Achieve Thermal Balancing and Improve Reliability of Many-core Systems</b></a><br>
       MANDELLI, Marcelo; CASTILHOS, Guilherme, SASSATELLI, Gilles; OST, Luciano; MORAES, Fernando Gehm <br>
@@ -931,7 +903,6 @@
       <a href="http://dx.doi.org/10.1145/2800986.2800999" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>    
       In: SBCCI, 2015.   <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2015/icecs_ruaro');"><b> 
       A Hierarchical LST-Based Task Scheduler for NoC-Based MPSoCs with Slack-Time Monitoring Support </b></a><br>
@@ -989,7 +960,6 @@
 </li>
 </ol>
 
-
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1010,7 +980,6 @@
       In: ISCAS, 2014, pp. 1965-1968  <br>
 </li>
 
-
 <li class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2014/ISQED_wachter');"><b> 
       Runtime Fault Recovery Protocol for NoC-based MPSoCs</b></a><br>
       WACHTER, Eduardo; JURACY, Leonardo; ERICHSEN, Augusto; AMORY, Alexandre de Morais; MORAES, Fernando Gehm<br>
@@ -1025,14 +994,12 @@
       In: ISQED, 2014, pp. 408-411.  <br>
 </li>
 
-
 <li class="Cfault">  <a href="javascript:void(0);" onclick="checkPassword('2014/sbcci_wachter');"><b> 
       A Fast Runtime Fault Recovery Approach for NOC-Based MPSOCS for Performance Constrained Applications</b></a><br>
       WACHTER, Eduardo; ERICHSEN, Augusto; JURACY, Leonardo; AMORY, Alexandre de Morais; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/2660540.2660986" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>    
       In: SBCCI, 2014.   <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2014/sbcci_ruaro');"><b> 
       Runtime QoS Support for MPSOC: A Processor Centric Approach</b></a><br>
@@ -1041,14 +1008,12 @@
       In: SBCCI, 2014.   <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2014/icecs_douglas');"><b> 
       Effects of the NoC Architecture in the Performance of NoC-Based MPSoCs</b></a><br>
       SILVA, Douglas; OLIVEIRA, Bruno; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ICECS.2014.7050014" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>    
       In: ICECS, 2014, p p. 431-434.   <br>
 </li>
-
 
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2014/icecs_moraes');"><b> 
       A Method for NoC-based MPSoC Energy Consumption Estimation</b></a><br>
@@ -1063,7 +1028,6 @@
      <a href="http://dx.doi.org/10.1109/PATMOS.2014.6951893 " target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>    
      In: PATMOS, 2014.   <br>     
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2014/IBERCHIP_augusto');"><b> 
       Rede Paralela Dedicada a Serviços para Tolerância a Falhas em MPSoCs baseados em NoC</b></a><br>
@@ -1086,7 +1050,6 @@
       In: ICECS, 2013, pp. 489-492. <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2013/SOC_guindani');"><b> 
       Achieving QoS in NoC-based MPSoCs through Dynamic Frequency Scaling</b></a><br>
       GUINDANI, Guilherme Montez, MORAES, Fernando Gehm<br>
@@ -1108,7 +1071,6 @@
       In: SOC, 2013, 6p.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2013/DFT_matheus');"><b> 
       Charge Sharing Aware NCL Gates Design</b></a><br>
       MOREIRA, Matheus, OLIVEIRA, Bruno, MORAES, Fernando Gehm, CALAZANS, Ney<br>
@@ -1123,14 +1085,12 @@
       In: ISVLSI, 2013, pp. 8-13. <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2013/ISVLI_castilhos');"><b> 
       Distributed Resource Management in NoC-Based MPSoCs with Dynamic Cluster Sizes</b></a><br>
       CASTILHOS, Guilherme, MANDELLI, Marcelo, MADALOZZO, Guilherme, MORAES, Fernando Gehm<br>
      <a href="http://dx.doi.org/10.1109/ISVLSI.2013.6654651" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISVLSI, 2013, pp. 153-158<br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2013/DATE_wachter');"><b> 
       Topology-Agnostic Fault-Tolerant NoC Routing Method</b></a><br>
@@ -1167,14 +1127,12 @@
       In: ICECS, 2012, pp. 233-236.<br>
 </li>
 
-
 <li class="Cmigration">  <a href="javascript:void(0);" onclick="checkPassword('2012/iscas_2012_migracao');"><b> 
       Proposal and Evaluation of a Task Migration Protocol for NoC-based MPSoCs</b></a><br>
       MORAES, Fernando Gehm; MADALOZZO, Guilherme; CASTILHOS, Guilherme; CARARA, Everton Alceu<br>
       <a href="http://dx.doi.org/10.1109/ISCAS.2012.6272114" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISCAS, 2012, pp. 644-647. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2012/socc_mazenoc');"><b> 
       MAZENOC: Novel Approach for Fault-Tolerant NoC Routing</b></a><br>
@@ -1218,7 +1176,6 @@
       In: SPL, 2012, p. 1-6. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2012/spl_2012_hardnoc');"><b> 
       HardNoC: A Platform to Validate Networks on Chip through FPGA Prototyping</b></a><br>
       HECK,Guilherme; GUAZZELLI, Ricardo; MORAES, Fernando Gehm; CALAZANS, Ney; SOARES, Rafael<br>
@@ -1226,7 +1183,6 @@
       In: SPL, 2012, p. 15-20. <br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1247,7 +1203,6 @@
       <a href="http://dx.doi.org/10.1109/RSP.2011.5929991" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: RSP, 2011, p. 164-170. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2011/2011_rsp_edson');"><b> 
       Arbitration and Routing Impact on NoC Design</b></a><br>
@@ -1270,14 +1225,12 @@
       In: ISCAS, 2011, p. 1676-1679. <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2011/2011_iscas_gabriel');"><b> 
       Predictive Dynamic Frequency Scaling for Multi-Processor Systems-on-Chip</b></a><br>
       ALMEIDA, Gabriel Marchesan; BUSSEUIL, R.; CARARA, Everton Alceu; HERBERT, N.; VARYANI, S.; SASSATELLI, Gilles; BENOIT, Pascal; TORRES, Lionel; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ISCAS.2011.5937859" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISCAS, 2011, p. 1500-1503. <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2011/2011_date_carara');"><b> 
       Achieving Composability in NoC-Based MPSoCs Through QoS Management at Software Level </b></a><br>
@@ -1286,14 +1239,12 @@
       In: DATE, 2011, p. 417-422.<br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2011/2011_date_amory');"><b> 
       Evaluating Energy Consumption of Homogeneous MPSoCs using Spare Tiles </b></a><br>
       AMORY, Alexandre de Morais; OST, Luciano; MARCON, César; MORAES, Fernando Gehm <br>
       <a href="http://dx.doi.org/10.1109/DATE.2011.5763304 " target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: DATE, 2011, p. 1164-1167.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2011/sbcci_amory');"><b> 
       Early Estimation of Wire Length for Dedicated Test Access Mechanisms in Networks-on-Chip Based SoCs  
@@ -1313,7 +1264,6 @@
 
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2011/sbcci_raupp');"><b> 
       A Self-adaptable Distributed DFS Scheme for NoC-based MPSoCs</b></a><br>
       ROSA, Thiago Raupp da; GUINDANI, Guilherme Montez; CARDOSO, Douglas; CALAZANS, Ney; MORAES, Fernando Gehm<br>
@@ -1328,14 +1278,12 @@
       In: SBCCI, 2011, p. 215-220. <br>
 </li>
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2011/sbcci_mandelli');"><b>
       Multi-Task Dynamic Mapping onto NoC-based MPSoCs</b></a><br>
       MANDELLI, Marcelo; OST, Luciano; AMORY, Alexandre de Morais; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/2020876.2020920" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2011, p. 191-196. <br>
 </li>
-
 
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2011/sbcci_ost');"><b> 
       Exploring Dynamic Mapping Impact on NoC-based MPSoCs Performance Using a Model- based Framework</b></a><br>
@@ -1344,7 +1292,6 @@
       In: SBCCI, 2011, p. 185-190. <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2011/recosoc_tales');"><b> 
       Exploiting Multicast Messages in Cache-Coherence Protocols for NoC-based MPSoCs</b></a><br>
       CHAVES, Tales; CARARA, Everton Alceu; MORAES, Fernando Gehm<br>
@@ -1352,14 +1299,12 @@
       In: RECOSOC, 2011. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2011/recosoc_ost');"><b>
       Exploring Heterogeneous NoC-based MPSoCs: from FPGA to High-Level Modeling</b></a><br>
       OST, Luciano; ALMEIDA, Gabriel Marchesan; MANDELLI, Marcelo; WACHTER, Eduardo; VARYANI, S.; INDRUSIAK, Leandro Soares; SASSATELLI, Gilles; ROBERT, Michel; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ReCoSoC.2011.5981517" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: RECOSOC, 2011. <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2011/recosoc_wachter');"><b> 
       HeMPS-S: A Homogeneous NoC-Based MPSoCs Framework Prototyped in FPGAs</b></a><br>
@@ -1382,14 +1327,12 @@
       In: ICECS, 2010. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_fpl_moller');"><b> 
       Improving QoS of Multi-Layer Networks-On-Chip with Partial and Dynamic Reconfiguration of Routers</b></a><br>
       MOLLER, Leandro Heleno; FISCHER, Peter; MORAES, Fernando Gehm; INDRUSIAK, Leandro Soares; GLESNER, Manfred<br>
       <a href="http://dx.doi.org/10.1109/FPL.2010.53" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: FPL, 2010, p. 229-233. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_socc_carara');"><b> 
       Flow Oriented Routing for NoC</b></a><br>
@@ -1405,14 +1348,12 @@
       In: SOC, 2010, p. 84-88,. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_soc_ost');"><b> 
       A Case Study of Hierarchically Heterogeneous Application Modelling Using UML and Ptolemy II</b></a><br>
       MAATTA, Sanna; INDRUSIAK, Leandro Soares; OST, Luciano; MOLLER, Leandro Heleno; GLESNER, Manfred; MORAES, Fernando Gehm; NURMI, Jari<br>
       <a href="http://dx.doi.org/10.1109/ISSOC.2010.5625554" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SOC, 2010, p. 68-71. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_socc_julian');"><b> 
       Hermes-AA A 65nm Asynchronous NoC Router with Adaptive Routing</b></a><br>
@@ -1421,14 +1362,12 @@
       In: SOCC, 2010, p. 493-498. <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_indin');"><b> 
       Evaluating the impact of communication latency on applications running over on-chip multiprocessing platforms: a layered approach</b></a><br>
       INDRUSIAK, Leandro Soares; OST, Luciano; MORAES, Fernando Gehm; MAATTA, Sanna; NURMI, Jari; MOLLER, Leandro Heleno; GLESNER, Manfred<br>
       <a href="http://dx.doi.org/10.1109/INDIN.2010.5549443" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: INDIN, 2010, p. 148-153. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_sbcci_leonel');"><b> 
       Implementation and Evaluation of a Congestion Aware Routing Algorithm for Networks-on-Chip</b></a><br>
@@ -1437,14 +1376,12 @@
       In: SBCCI, 2010, p. 91-96. <br>
 </li>
 
-
 <li class="Cmigration">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_sbcci_gabriel');"><b> 
       Evaluating the Impact of Task Migration in Multi-Processor Systems-on-Chip</b></a><br>
       ALMEIDA, Gabriel Marchesan; VARYANI, S.; BUSSEUIL, R.; SASSATELLI, Gilles; TORRES, Lionel; BENOIT, Pascal; CARARA, Everton Alceu; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/1854153.1854174" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2010, p. 73-78. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_patmos_julian');"><b> 
       Hermes-A An Asynchronous NoC Router with Distributed Routing</b></a><br>
@@ -1453,7 +1390,6 @@
       In: PATMOS, 2010.<br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_bec_moller');"><b> 
        Graphical Interface for Debugging RTL Networks-on-Chip  </b></a><br>
        L. Moller, H. Jesus, F. Moraes, L. S. Indrusiak, T. Hollstein, M. Glesner <br>
@@ -1461,13 +1397,11 @@
        In: BEC, 2010 <br>
  </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_ACESMB_moller');"><b> 
       Model Based Approach to Heterogeneous Application Modelling for on-Chip Multicore Platforms</b></a><br>
       MAATTA, Sanna; INDRUSIAK, Leandro Soares; OST, Luciano; MOLLER, Leandro Heleno; GLESNER, Manfred; MORAES, Fernando Gehm; NURMI, Jari<br>
       In: ACES-MB, 2010.<br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_ReCoSoC_moller');"><b> 
       Instruction Set Simulator for MPSoCs based on NoCs and MIPS Processors</b></a><br>
@@ -1490,15 +1424,12 @@
      </table>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2010/2010_iberchip_odair');"><b> 
       Implementação e Avaliação de um MPSoC Homogêneo Interconectado por NoC</b></a><br>
       MOREIRA, Odair; MORAES, Fernando Gehm<br>
       In: IBERCHIP, 2010.<br>
 </li>
 </ol>
-
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1512,7 +1443,6 @@
       <a href="http://dx.doi.org/10.1109/ISCAS.2009.5118013" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISCAS, 2009, p. 1345-1348. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/2009_sbcci_ost');"><b> 
       A High Abstraction, High Accuracy Power Estimation Model for Networks-on-Chip 
@@ -1531,14 +1461,12 @@
      </table>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/2009_sbcci_leonel');"><b> 
       A Path-Load Based Adaptive Routing Algorithm for Networks-on-Chip</b></a><br>
       TEDESCO, Leonel Pablo; CLERMIDY, Fabien; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/1601896.1601926" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2009, p. 141-146. <br>
 </li>
-
 
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/ifip_vlsi_soc_2009_id49_carara');"><b> 
       Managing QoS Flows at Task Level in NoC-Based MPSoCs</b></a><br>
@@ -1547,14 +1475,12 @@
       In: IFIP-VLSI-SOC, 2009, p. 133-138. <br>
 </li>
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2009/ifip_vlsi_soc_2009_id47_carvalho');"><b> 
       Investigating Runtime Task Mapping for NoC-based Multiprocessor SoCs</b></a><br>
       CARVALHO, Ewerson; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/VLSISOC.2009.6041333" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: IFIP-VLSI-SOC, 2009, p. 71-76. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/ifip_vlsi_soc_2009_id48_alzemiro');"><b> 
       Crosstalk fault tolerant NoC - design and evaluation</b></a><br>
@@ -1563,14 +1489,12 @@
       In: IFIP-VLSI-SOC, 2009, p. 115-120. <br>
 </li>
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2009/soc09_carvalho');"><b> 
       Evaluation of Static and Dynamic Task Mapping Algorithms in NoC-Based MPSoCs</b></a><br>
       CARVALHO, Ewerson; MARCON, César; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/SOCC.2009.5335672" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SOC, 2009, p. 87-90. <br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2009/soc09_ost');"><b> 
       Characterizing Embedded Applications using a UML Profile</b></a><br>
@@ -1579,14 +1503,12 @@
       In: SOC, 2009, p. 172-175. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2009/codes+isss061-tedesco');"><b> 
       A monitoring and adaptive routing mechanism for QoS traffic on mesh NoC architectures</b></a><br>
       TEDESCO, Leonel Pablo; CLERMIDY, Fabien; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/1629435.1629451" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: CODES+ISSS, 2009, p. 109-117. <br>
 </li>
-
 
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2009/2009_nocs_guindani');"><b> 
       Increasing NoC Power Estimation Accuracy through a Rate-Based Model</b></a><br>
@@ -1595,7 +1517,6 @@
       In: NOCS, 2009. p. 89-89. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2009/reconfig09_Taciano');"><b> 
       Floating Point Hardware for Embedded Processors in FPGAs: Design Space Exploration for Performance and Area</b></a><br>
       RODOLFO, Taciano Ares; CALAZANS, Ney; MORAES, Fernando Gehm<br>
@@ -1603,14 +1524,12 @@
       In: Reconfig, 2009, p. 24-29. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2009/reconfig09_x10');"><b> 
       A 10 Gbps OTN Framer Implementation Targeting FPGA Devices</b></a><br>
       GUINDANI, Guilherme Montez; FERLINI, Frederico; Oliveira, J.; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ReConFig.2009.27" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: Reconfig, 2009, p. 30-35. <br>
 </li>
-
 
  <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2009/2009_sim_ctg');"> <b>
        HeMPS Station: an environment to evaluate distributed applications in NoC-based MPSoCs </b> </a> <br>
@@ -1631,20 +1550,17 @@
       In: ISVLSI, 2008, p. 341-346. <br>
 </li>
 
-
 <li class="Cenergy">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_isvlsi_guindani');"><b> 
       NoC Power Estimation at the RTL Abstraction Level </b></a><br>
       GUINDANI, Guilherme Montez; REINBRECHT, Cezar; ROSA, Thiago Raupp da; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: ISVLSI, 2008, p. 475-478. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_isvlsi_indrusiak');"><b> 
       Applying UML Interactions and Actor-oriented Simulation to the Design Space Exploration of Network-on-Chip Interconnects </b></a><br>
       INDRUSIAK, Leandro Soares; OST, Luciano; MOLLER, Leandro Heleno; MORAES, Fernando Gehm; GLESNER, Manfred<br>
       In: ISVLSI, 2008, p. 491-494. <br>
 </li>
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_sbcci_moraes');"><b> 
       MOTIM an Industrial Application Using NOCs</b></a><br>
@@ -1653,14 +1569,12 @@
       In: SBCCI, 2008, p. 182-187. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_sbcci_ost');"><b> 
       A Simplified Executable Model to Evaluate Latency and Throughput of Networks-on-Chip</b></a><br>
       OST, Luciano; MORAES, Fernando Gehm; INDRUSIAK, Leandro Soares; GLESNER, Manfred; MOLLER, Leandro Heleno; MAATTA, Sanna; NURMI, Jari<br>
       <a href="http://dx.doi.org/10.1145/1404371.1404420" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2008, p. 170-175. <br>
 </li>
-
 
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_soc_ewerson');"><b> 
       Congestion-aware Task Mapping in Heterogeneous MPSoCs 
@@ -1679,7 +1593,6 @@
       </table>
 </li>
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2008/2008_sies');"><b> 
       Validation of executable application models mapped onto network-on-chip platforms </b></a><br>
       MAATTA, Sanna; INDRUSIAK, Leandro Soares; OST, Luciano; MOLLER, Leandro Heleno; NURMI, Jari; GLESNER, Manfred; MORAES, Fernando Gehm<br>
@@ -1687,7 +1600,6 @@
       In: SIES, 2008, p. 118-125. <br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1702,14 +1614,12 @@
       In: ISVLSI, 2007, p. 459-460. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_isvlsi_motim');"><b> 
       MOTIM - A Scalable Architecture for Ethernet Switches</b></a><br>
       BASTOS, Erico; CARARA, Everton Alceu; PIGATTO, Daniel; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ISVLSI.2007.70" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISVLSI, 2007, p. 451-452 <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_isvlsi_palma');"><b> 
       Inserting Data Encoding Techniques into NoC-Based Systems</b></a><br>
@@ -1718,14 +1628,12 @@
       In: ISVLSI, 2007, p. 299-304. <br>
 </li>
 
-
 <li class="Cmpsoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_rsp_mpsoc');"><b> 
       Architectural Issues in Homogeneous NoC-Based MPSoC</b></a><br>
       SASSATELLI, Gilles; SAINT-JEAN , Nicolas; WOSZEZENKI, Cristiane; GREHS, Ismael Augusto; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/RSP.2007.12" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: RSP, 2007, p.  139-142. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_rsp_carara');"><b> 
       Communication Models in Networks-on-Chip</b></a><br>
@@ -1734,14 +1642,12 @@
       In: RSP, 2007, p.  57-60. <br>
 </li>
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_rsp_ewerson');"><b> 
       Heuristics for Dynamic Task Mapping in NoC-based Heterogeneous MPSoCs</b></a><br>
       CARVALHO, Ewerson; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/RSP.2007.26" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: RSP, 2007, p. 34-40. <br>
 </li>
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_rsp_caruso');"><b> 
       SPP-NIDS - A Sea of Processors Platform for Network Intrusion Detection Systems</b></a><br>
@@ -1750,14 +1656,12 @@
       In: RSP, 2007, p. 27-33. <br>
 </li>
 
-
 <li class="Cenergy Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_iscas_marcon');"><b> 
       Evaluation of Algorithms for Low Energy Mapping onto NoCs</b></a><br>
       MARCON, César; MORENO, Edson; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/ISCAS.2007.378471" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ISCAS, 2007,  p. 389-392. <br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_raw_mesquita');"><b> 
       A Cryptographic Coarse Grain Reconfigurable Architecture Robust Against DPA</b></a><br>
@@ -1766,14 +1670,12 @@
       In: RAW, 2007, p. 170-175. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_vts_amory');"><b> 
       DfT for the Reuse of Networks-on-Chip as Test Access Mechanism</b></a><br>
       AMORY, Alexandre de Morais; FERLINI, Frederico; LUBASZEWSKI, Marcelo Soares; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1109/vts.2007.26" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: VTS, 2007,  p. 435-440. <br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_ifip_vlisi_soc_mello');"><b> 
       Rate-based Scheduling Police for QoS Flows in Networks on Chip</b></a><br>
@@ -1782,15 +1684,12 @@
       In: IFIP-VLSI-SOC, 2007. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_iccd_julian');"><b> 
       SCAFFI: An intrachip FPGA asynchronous interface based on hard macros</b></a><br>
       PONTES, Julian; SOARES, Rafael; CARVALHO, Ewerson; MORAES, Fernando Gehm; CALAZANS, Ney<br>
       <a href="http://dx.doi.org/10.1109/ICCD.2007.4601950" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: ICCD, 2007, p. 541-546. <br>
 </li>
-
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_sbcci_leonel');"><b> 
       Buffer Sizing for QoS Flows in Wormhole Packet Switching NoCs</b></a><br>
@@ -1799,7 +1698,6 @@
       In: SBCCI, 2007, p. 99-104. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_sbcci_carara');"><b> 
       Router Architecture for High-Performance NoCs</b></a><br>
       CARARA, Everton Alceu; CALAZANS, Ney; MORAES, Fernando Gehm<br>
@@ -1807,13 +1705,11 @@
       In: SBCCI, 2007, p. 111-116. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_recosoc_moller');"><b> 
       A NoC-based Infrastructure to Enable Dynamic Self Reconfigurable System</b></a><br>
       MOLLER, Leandro Heleno; GREHS, Ismael Augusto; CARVALHO, Ewerson; SOARES, Rafael; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: RECOSOC, 2007.<br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2007/2007_ICECS_jpalma');"><b> 
       Reducing the Power Consumption in Networks-on-Chip Through Data Coding Schemes</b></a><br>
@@ -1828,7 +1724,6 @@
       In: REC, 2007, Lisboa. II Jornadas sobre Sistemas Reconfiguráveis. Lisboa: IST Press, p. 45-53, 2007.<br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1874,14 +1769,12 @@
       In: FPL, 2006, p. 881-884. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2006/2006_patmos_jpalma');"><b> 
       Adaptive Coding in Networks-on-Chip: Transition Activity Reduction versus Power Overhead of the Codec Circuitry</b></a><br>
       PALMA, José Carlos Sant'anna; ORTIZ, Alberto Garcia; MORAES, Fernando Gehm; GLESNER, Manfred; REIS, Ricardo Augusto da Luz<br>
       <a href="http://dx.doi.org/10.1007/11847083" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: PATMOS, 2006, p. 603-613. <br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2006/2006_ets_amory');"><b> 
       Wrapper Design for the Reuse of Networks-on-Chip as Test Access Mechanism</b></a><br>
@@ -1890,15 +1783,12 @@
       In: ETS, 2006, p. 213-218. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2006/2006_sbcci_tedesco');"><b> 
       Application Driven Traffic Modeling for NoCs</b></a><br>
       TEDESCO, Leonel Pablo; MELLO, Aline Vieira de; GIACOMET, Leonardo; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       <a href="http://dx.doi.org/10.1145/1150343.1150364" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2006, p. 62-67. <br>
 </li>
-
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2006/2006_sbcci_moller');"><b> 
       Infrastructure for Dynamic Reconfigurable Systems: Choices and Trade-offs</b></a><br>
@@ -1907,7 +1797,6 @@
       In: SBCCI, 2006, p. 44-49. <br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -1921,7 +1810,6 @@
       <a href="http://dx.doi.org/10.1145/1081081.1081128" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: SBCCI, 2005, p. 178-183. <br>
 </li>
-
 
 <li class="Cenergy Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_sbcci_zecarlos');"><b> 
       Mapping Embedded Systems onto NoCs - The Traffic Effect on Dynamic Energy Estimation</b></a><br>
@@ -1946,13 +1834,11 @@
       In: SBCCI, 2005, p. 115-120. <br>
 </li> 
 
-
 <li class="Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_vlsi_marcon');"><b>  
       Modeling the Traffic Effect for the Application Cores Mapping Problem onto NoCs</b></a><br>
       MARCON, César; PALMA, José Carlos Sant'anna; SUSIN, Altamiro Amadeu; REIS, Ricardo Augusto da Luz; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: IFIP-VLSI-SOC, 2005, p. 391-396.<br>
 </li> 
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_vlsi_severine');"><b> 
       Packet-switching Network-On-Chip features exploration and characterization</b></a><br>
@@ -1960,13 +1846,11 @@
       In: IFIP-VLSI-SOC, 2005, p. 403-408.<br>
 </li>
 
-
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_vlsi_mesquita');"><b> 
       Current Mask Generation: an analogical circuit to thwart DPA attack</b></a><br>
       MESQUITA, Daniel; TECHER, Jean-denis; TORRES, Lionel; ROBERT, Michel; CAMBOM, Gaston; SASSATELLI, Gilles; MORAES, Fernando Gehm<br>
       In: IFIP-VLSI-SOC, 2005, p. 539-544.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_itc_amory');"><b> 
       A Scalable Test Strategy for Network-on-Chip Routers</b></a><br>
@@ -1975,13 +1859,11 @@
       In: ITC, 2005, p. 591-599. <br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_dcis_gilles');"><b> 
       Mesh-based Network On Chip characterization: A GALS approach</b></a><br>
       SASSATELLI, Gilles; RISO, Séverine; TORRES, Lionel; ROBERT, Michel; MORAES, Fernando Gehm<br>
       In: DCIS, 2005, p. 10-15.<br>
 </li>
-
 
 <li class="Cmpsoc"> <a href="javascript:void(0);" onclick="checkPassword('2005/2005_multinoc');"><b> 
       MultiNoC: A Multiprocessing System Enabled by a Network on Chip (AWARD) </b></a><br>
@@ -1999,7 +1881,6 @@
      </table>
 </li>
 
-
 <li class="Cenergy Cmapping">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_mapping');"><b> 
       Exploring NoC Mapping Strategies: An Energy and Timing Aware Technique</b></a><br>
       MARCON, César; CALAZANS, Ney; MORAES, Fernando Gehm; SUSIN, Altamiro Amadeu; REIS, Igor Maicá; HESSEL, Fabiano<br>
@@ -2007,21 +1888,18 @@
       In: DATE, 2005, p. 502-507. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_date_test');"><b> 
       Test Time Reduction Reusing Multiple Processors in a Network-on-Chip Based Architecture</b></a><br>
-      MAMORY, Alexandre de Morais; LUBASZEWSKI, Marcelo Soares; MORAES, Fernando Gehm; MORENO, Edson<br>
+      AMORY, Alexandre de Morais; LUBASZEWSKI, Marcelo Soares; MORAES, Fernando Gehm; MORENO, Edson<br>
       <a href="http://dx.doi.org/10.1109/date.2005.304" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: DATE, 2005, p. 62-63. <br>
 </li>
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_latw_sdh');"><b> 
       Design, Validation and Prototyping of the EMS SDH STM-1 Mapper Soft-core</b></a><br>
       CALAZANS, Ney; MORAES, Fernando Gehm; MARCON, César; PALMA, José Carlos Sant'anna<br>
       In: LATW, 2005, p. 313-318.<br>
 </li>
-
 
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_aspdac_maia');"><b> 
       MAIA - A Framework for Networks on Chip Generation and Verification</b></a><br>
@@ -2030,13 +1908,11 @@
       In: ASP-DAC, 2005, p. 18-21. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_iberchip_nids');"><b> 
       Arquitetura Mar de Processadores para Detecção de Intrusão em Redes</b></a><br>
       CARUSO, Luiz Carlos Mieres; GUINDANI, Guilherme Montez; SCHIMITT, Hugo Webber; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: IBERCHIP, 2005, p. 247-250.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_iberchip_procreconf');"><b> 
       Processadores Reconfiguraveis: Estado da Arte</b></a><br>
@@ -2044,14 +1920,12 @@
       In: IBERCHIP, 2005, p. 110-113.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2005/2005_iberchip_canalvirtual');"><b> 
       Canais Virtuais em Redes Intra-Chip - Implementacao na rede HERMES</b></a><br>
       CARARA, Everton Alceu; MELLO, Aline Vieira de; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: IBERCHIP, 2005, p. 320-321.<br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -2065,13 +1939,11 @@
       In: DCIS, 2004.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_fpl_fipre');"><b> 
       FiPRe: An Implementation Model to Enable Self-Reconfigurable Applications</b></a><br>
       MOLLER, Leandro Heleno; CALAZANS, Ney; BRIÃO, Eduardo Wenzel; MORAES, Fernando Gehm; CARVALHO, Ewerson; CAMOZZATO, Daniel<br>
       In: FPL, 2004, p. 1042-1046.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_sbcci_padreh');"><b> 
       PADReH - A Framework for the Design and Implementation of Dynamically and Partially Reconfigurable Systems</b></a><br>
@@ -2086,13 +1958,11 @@
       In: SBCCI, 2004, p. 111-116. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_latw_soft_bist');"><b> 
       A Programmable Logic BIST Controller for IP Cores</b></a><br>
       AMORY, Alexandre de Morais; LUBASZEWSKI, Marcelo Soares; MORAES, Fernando Gehm<br>
       In: LATW, 2004, p. 104-111.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_latw_memory_test');"><b> 
       Applying Memory Test Algorithms to Embedded System</b></a><br>
@@ -2106,13 +1976,11 @@
       In: IBERCHIP, 2004, p. 210-216.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_iberchip_reconf');"><b> 
       Reconfiguração Parcial e Dinâmica para Núcleos de Propriedade Intelectual com Interfaces de Comunicação Padronizadas</b></a><br>
       BRIÃO, Eduardo Wenzel; CAMOZZATO, Daniel; RIES, Luís Henrique; MORAES, Fernando Gehm; CALAZANS, Ney<br>
       In: IBERCHIP, 2004, p. 446-456.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_iberchip_rscm');"><b> 
       Controle de Configurações em Sistemas Dinâmica e Parcialmente Reconfiguráveis</b></a><br>
@@ -2120,14 +1988,12 @@
       In: IBERCHIP, 2004, p. 435-445.<br>
 </li>
 
-
 <li class="Cnoc">  <a href="javascript:void(0);" onclick="checkPassword('2004/2004_reseau_scs');"><b> 
       Réseau d'Interconnexion pour les Systèmes sur Puce : le Réseau HERMES </b></a><br>
       RISO, Séverine; TORRES, Lionel; SASSATELLI, Gilles; ROBERT, Michel; MORAES, Fernando Gehm<br>
       In: SCS, 2004, Congres International de Signaux, Circuits et Systemes, 2004.<br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -2141,13 +2007,11 @@
       In: IFIP-VLSI-SOC, 2003, p. 318-323.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_vlsi_test');"><b> 
       Software-Based Test for Non-Programmable Cores in Bus-Based System-on-Chip Architectures</b></a><br>
       AMORY, Alexandre de Morais; OLIVEIRA, Leandro Augusto de; MORAES, Fernando Gehm<br>
       In: IFIP-VLSI-SOC, 2003, p. 174-179.<br>
 </li>
-
 
 <li class="Csec">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_vlsi_coarse');"><b> 
       Are coarse grain reconfigurable architectures suitable for cryptography?</b></a><br>
@@ -2155,13 +2019,11 @@
       In: IFIP-VLSI-SOC, 2003, p. 276-281.<br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_sbcci_dtc');"><b> 
       Design and Prototyping of Direct Torque Control of Induction Motors in FPGAs</b></a><br>
       FERREIRA, Sandro Binsfeld; HAFFNER, Felipe; PEREIRA, Luís Fernando Alves; MORAES, Fernando Gehm<br>
       In: SBCCI, 2003, p. 105-110.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_sbcci_systemc');"><b> 
       From VHDL Register Transfer Level to SystemC Transaction Level Modeling: a Comparative Case Study</b></a><br>
@@ -2169,13 +2031,11 @@
       In: SBCCI, 2003, p. 355-360.<br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_iscas');"><b> 
       Exploiting reconfigurability for low-power control of embedded processors</b></a><br>
       CARRO, Luigi; CÔRREA, E.; CARDOSO, R.; MORAES, Fernando Gehm; BAMPI, Sérgio<br>
       In: ISCAS, 2003, p. 421-424.<br>
 </li>
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_raw');"><b> 
       Remote and Partial Reconfiguration of FPGAs: Tools and Trends</b></a><br>
@@ -2184,7 +2044,6 @@
       In: RAW, 2003. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_date');"><b> 
       Development of a Tool-Set for Remote and Partial Reconfiguration of FPGAs</b></a><br>
       MORAES, Fernando Gehm; MESQUITA, Daniel; PALMA, José Carlos Sant'anna; MOLLER, Leandro Heleno; CALAZANS, Ney<br>
@@ -2192,13 +2051,11 @@
       In: DATE, 2003, p. 1122-1123. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_latw');"><b> 
       Software-Based Test Integration in a SoC Design Flow</b></a><br>
       AMORY, Alexandre de Morais; MORAES, Fernando Gehm; OLIVEIRA, Leandro Augusto de<br>
       In: LATW, 2003, p. 169-174.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_cobep');"><b> 
       Direct Torque Control with Stator Ripple Frequency Imposed by Dithering</b></a><br>
@@ -2206,13 +2063,11 @@
       In: COBEP, 2003, p. 10-20.<br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_fpga');"><b> 
       Design of a fingerprint system using a hardware/software environment</b></a><br>
       BONATO, Lee Vanderlei; MOLZ, Rolf Fredi; FURTADO, João Carlos; FERRÃO, Marcos Flores; MORAES, Fernando Gehm<br>
       In: FPGA, 2003, p. 240-240.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_iberchip1');"><b> 
       Comparação de Posicionamento Simulated Annealing e Quadratura no Gerador Automático de Macro-Células TROPIC</b></a><br>
@@ -2220,14 +2075,12 @@
       In: IBERCHIP, 2003.<br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2003/2003_iberchip2');"><b>
       Desenvolvimento de um Sistema Multiprocessado para Dispositivos FPGAs</b></a><br>
       MELLO, Aline Vieira de; MOLLER, Leandro Heleno; MORAES, Fernando Gehm<br>
       In: IBERCHIP, 2003.<br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -2242,7 +2095,6 @@
       In: SBCCI, 2002, p. 115-120. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_sbcci_cores');"><b> 
       Core Communication Interface for FPGAs</b></a><br>
       PALMA, José Carlos Sant'anna; MELLO, Aline Vieira de; MOLLER, Leandro Heleno; MORAES, Fernando Gehm; CALAZANS, Ney<br>
@@ -2250,13 +2102,11 @@
       In: SBCCI, 2002, p. 183-188. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_sbcci_mocs');"><b> 
       Requirements, Primitives and Models for Systems Specification</b></a><br>
       MARCON, César; CALAZANS, Ney; MORAES, Fernando Gehm<br>
       In: SBCCI, 2002, p. 323-328, 2002.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_fie_Bezerra');"><b> 
       An Adaptable Educational Platform for Engineering and IT Laboratory Based Courses</b></a><br>
@@ -2265,7 +2115,6 @@
       In: FIE, 2002, p. T1D22-T1D27. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_fie_architecture');"><b> 
       Teaching Computer Organization and Architecture with Hands-on Experience</b></a><br>
       CALAZANS, Ney; MORAES, Fernando Gehm; MARCON, César<br>
@@ -2273,20 +2122,17 @@
       In: FIE, 2002,  p. T2F15-T2F20. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_ictem_pucrs');"><b> 
       Deriving Different Computer Science Curricula from a Common Core of Disciplines</b></a><br>
       MORAES, Fernando Gehm; ZORZO, Avelino; CALAZANS, Ney<br>
       In: ICTEM, 2002, p. 43-49.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_iberchip_cosim');"><b>
       Desenvolvimento de um Ambiente de Co-Simulação Distribuído e Heterogêneo</b></a><br>
       AMORY, Alexandre de Morais; MORAES, Fernando Gehm; OLIVEIRA, Leandro Augusto de; HESSEL, Fabiano; CALAZANS, Ney<br>
       In: IBERCHIP, 2002.<br>
 </li>
-
 
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_iberchip_cores');"><b> 
       Interface de Comunicação de Cores em FPGAs</b></a><br>
@@ -2300,15 +2146,13 @@
       In: IBERCHIP, 2002.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2002/2002_hldvt');"><b>
       Prototyping of Embedded Digital Systems from SDL Language: a Case Study</b></a><br>
       MARCON, César; HESSEL, Fabiano; AMORY, Alexandre de Morais; RIES, Luís Henrique; MORAES, Fernando Gehm; CALAZANS, Ney<br>
       In: HLDVT, 2002, p. 133-138.<br>
 </li>
 
-
- <li class="general">  SIM -  Seminário Sul de Microeletrônica <br>
+<li class="general">  SIM -  Seminário Sul de Microeletrônica <br>
        <a href="javascript:void(0);" onclick="checkPassword('2002/2002_sim_reconf');"><b>
        Tool-Set for Remote and Partial Reconfiguration </b></a><br>
        <a href="javascript:void(0);" onclick="checkPassword('2002/2002_sim_vhdl_sdl');"><b>
@@ -2319,7 +2163,6 @@
        A Heterogeneous and Distributed Co-Simulation Environment </b></a><br>
  </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -2334,7 +2177,6 @@
       In: SBCCI, 2001, p. 38-43. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001_sbcci_jb');"><b> 
       Interconnection Length Estimation at Logic-Level</b></a><br>
       MARTINS, João Batista; MORAES, Fernando Gehm; REIS, Ricardo Augusto da Luz<br>
@@ -2342,13 +2184,11 @@
       In: SBCCI, 2001, p. 98-102. <br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001_sbrt');"><b> 
       Effective Industry-Academia Cooperation in Telecom: a Method, a Case Study and Some Initial Results</b></a><br>
       CALAZANS, Ney; MORAES, Fernando Gehm; MARCON, César; BLAUTH, Vitor Hugo; VALIATI, Ronaldo; MANFROI, Édson<br>
       In: SBrT, 2001.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001iberproc');"><b> 
       Um Ambiente de Compilação e Simulação para Processadores Embarcados Parametrizáveis</b></a><br>
@@ -2368,13 +2208,11 @@
       In: IBERCHIP, 2001.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001ibercan');"><b> 
       Sistema Integrado e Multiplataforma para Controle Remoto de Residências</b></a><br>
       MORAES, Fernando Gehm; AMORY, Alexandre de Morais; PETRINI JÚNIOR, J.<br>
       In: IBERCHIP, 2001.<br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001iberether');"><b>
       Projeto, Implementação e Validação de um IP Soft Core Ethernet sobre Dispositivos Reconfiguráveis</b></a><br>
@@ -2382,15 +2220,12 @@
       In: IBERCHIP, 2001.<br>
 </li>
 
-
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('2001/2001fpga');"><b>
       System Prototyping dedicated to Neural Network Real-Time Image Processing</b></a><br>
       MOLZ, Rolf Fredi; ENGEL, Paulo; MORAES, Fernando Gehm; TORRES, Lionel; MICHEL, Robert<br>
       In: SCI, 2001, p. 128-133.<br>
 </li>
 
-  
 <li class="Cfpga">
       SCR - Seminário de Computaçãoo Reconfigurável <br>
       <a href="javascript:void(0);" onclick="checkPassword('2001/2001_sbr_reckon');"><b>
@@ -2418,14 +2253,12 @@
       In: SCI, 2000, p. 128-133.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_mwscas');"><b> 
       Fast Interconnect Parasitic Extraction in Deep Submicron Using Bin-Based Algorithm</b></a><br>
       FERREIRA, Fábio; MORAES, Fernando Gehm; REIS, Ricardo Augusto da Luz<br>
       <a href="http://dx.doi.org/10.1109/MWSCAS.2000.951418" target="_blank"><img ALT=" " SRC="../figs/doi.png"  width="20"></a>
       In: MWSCAS, 2000. <br>
 </li>
-
 
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('2000/2000_sbcci_rolf');"><b> 
       Design of a Classification System for Rectangular Shapes Using a Co-Design Environment</b></a><br>
@@ -2499,7 +2332,6 @@
       In: FIE, 1999, p. c6-12-c6-17. <br>
 </li>
 
-
 <li class="Cfpga">  <a href="javascript:void(0);" onclick="checkPassword('1999/99iber_rot');"><b> 
       PMAZE: Modelagem e roteamento para FPGAs</b></a><br>
       MARQUES, Paulo Cesar; MORAES, Fernando Gehm; CALAZANS, Ney<br>
@@ -2563,13 +2395,11 @@
       In: IBERCHIP, 1997, p. 459-503.<br>
 </li>
 
-
 <li class="general">  <a href="javascript:void(0);" onclick="checkPassword('1997/97tentos');"><b> 
       TENTOS for Windows</b></a><br>
       MAHLMANN, L. G.; MORAES, Fernando Gehm; GUNTZEL, José Luiz; REIS, Ricardo Augusto da Luz<br>
       In: IBERCHIP, 1997, p. 513-522.<br>
 </li>
-
 
 <li class="general"> <a href="javascript:void(0);" onclick="checkPassword('1997/97sctf');"><b> 
       Hardsoft: Plataforma Reconfigurável Para Caracterização Sob Radiação de Componentes Eletrônicos Empregados Em Satélite</b></a><br>
@@ -2577,7 +2407,6 @@
       In: SCTF, 1997,  p. 139-152.<br>
 </li>
 </ol>
-
 
 <!-- ########################################################################################## -->
 <!-- ########################################################################################## -->
@@ -2610,9 +2439,5 @@
 <p> &nbsp;&nbsp; &nbsp;&nbsp; </p>
 
 </div>
-
-
-
-
 </body>
 </html>
