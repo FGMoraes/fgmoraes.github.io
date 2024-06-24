@@ -113,17 +113,30 @@
       }
    }
 
-
-      function checkPassword(url) {
-          let input = prompt("Please enter the password (or e-mail to fernando.moraes@pucrs.br");
-          const encryptedInput = encrypt(input);
-          const actualEncryptedArray = [432, 160, 72, 208, 240, 64, 704, 584, 600, 584, 576];
-          if (arraysEqual(encryptedInput, actualEncryptedArray)) {
-              window.location = "../docs/papers/" + url + ".pdf";
-          } else {
-              alert("Incorrect password!");
-          }
-      }
+       
+       function checkPassword(url) {
+           const actualEncryptedArray = [432, 160, 72, 208, 240, 64, 704, 584, 600, 584, 576];
+           let savedPassword = sessionStorage.getItem("savedPassword");
+       
+           if (savedPassword) {
+               const encryptedSavedPassword = encrypt(savedPassword);
+               if (arraysEqual(encryptedSavedPassword, actualEncryptedArray)) {
+                   window.location = "../docs/papers/" + url + ".pdf";
+                   return;
+               }
+           }
+       
+           let input = prompt("Please enter the password (or e-mail to fernando.moraes@pucrs.br");
+           const encryptedInput = encrypt(input);
+       
+           if (arraysEqual(encryptedInput, actualEncryptedArray)) {
+               sessionStorage.setItem("savedPassword", input);
+               window.location = "../docs/papers/" + url + ".pdf";
+           } else {
+               alert("Incorrect password!");
+           }
+       }
+       
       
       function arraysEqual(a, b) {
           if (a === b) return true;
