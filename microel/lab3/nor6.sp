@@ -65,10 +65,10 @@ Cl5 o6 0 Cload
 .measure tran n2_subida_out trig v(i2)   val=0.5  td=2n fall = 1      targ v(o2)  val=0.5        rise = 2
 .measure tran n2_descida_out trig v(i2)  val=0.5  td=2n rise = 2      targ v(o2)  val=0.5        fall = 2
  
-.measure tran t1_2_Fs   param = '1e12*n2_descida_vdd'
-.measure tran t2_2_Fo   param = '1e12*n2_descida_out' 
-.measure tran t3_2_Rs   param = '1e12*n2_subida_vdd'
-.measure tran t4_2_Ro   param = '1e12*n2_subida_out'
+.measure tran 2_Fs   param = '1e12*n2_descida_vdd'
+.measure tran 2_Fo   param = '1e12*n2_descida_out' 
+.measure tran 2_Rs   param = '1e12*n2_subida_vdd'
+.measure tran 2_Ro   param = '1e12*n2_subida_out'
 
 ...completar as medidas para outras NOR...
 
