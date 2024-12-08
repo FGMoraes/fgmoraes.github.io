@@ -1,0 +1,12 @@
+--
+--
+SOFTINCLUDE $UCDPRJDIR/.ukcds5/${UK_CDS_PREFIX}cds.lib 
+
+-- DEFINE analogLib $CDS_INST_DIR/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE functional $CDS_INST_DIR/tools/dfII/etc/cdslib/artist/functional
+DEFINE basic $CDS_INST_DIR/tools/dfII/etc/cdslib/basic
+DEFINE US_8ths $CDS_INST_DIR/tools/dfII/etc/cdslib/sheets/US_8ths
+
+
+
+DEFINE lab4 /home/moraes/micro_labs/toto/lab4XX/lab4
