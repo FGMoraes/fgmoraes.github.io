@@ -1,13 +1,12 @@
 * circuitos nor
 * FERNANDO MORAES   -  PUCRS
-* revisao em 07/abril/2024
+* revisao em 30/março/2025
 
 simulator lang=spectre insensitive=no
 include "st65.scs"
 simulator lang=spice
 
-.param Cload=3fF mob=2.4  wn=0.2  wp='2*wn*mob'
-
+.param Cload=4fF mob=2.45  wn=0.3  wp='2*wn*mob' 
 
 .SUBCKT	nor2	o1	s1	s2	vcc
 M1	10	s1	vcc	vcc	psvtgp	w=wp	l=0.06
@@ -16,7 +15,7 @@ M10	0	s1	o1	0	nsvtgp	w=wn	l=0.06
 M11	0	s2	o1	0	nsvtgp	w=wn	l=0.06
 .ENDS	nor2
 
-.SUBCKT	nor3	o1	s1	s2	s3	vcc   * Lembrar: entrada s1 próxima à vcc e entrada s2 próxima à saída 
+.SUBCKT	nor3	o1	s1	s2	s3	vcc
 ... completar ...
 .ENDS	nor3
 
@@ -64,12 +63,12 @@ Cl5 o6 0 Cload
 .measure tran n2_descida_vdd trig v(i1)  val=0.5  td=2n rise = 1      targ v(o2)  val=0.5        fall = 1
 .measure tran n2_subida_out trig v(i2)   val=0.5  td=2n fall = 1      targ v(o2)  val=0.5        rise = 2
 .measure tran n2_descida_out trig v(i2)  val=0.5  td=2n rise = 2      targ v(o2)  val=0.5        fall = 2
+  
+.measure tran t2_Fs   param = '1e12*n2_descida_vdd'
+.measure tran t2_Fo   param = '1e12*n2_descida_out' 
+.measure tran t2_Rs   param = '1e12*n2_subida_vdd'
+.measure tran t2_Ro   param = '1e12*n2_subida_out'
  
-.measure tran 2_Fs   param = '1e12*n2_descida_vdd'
-.measure tran 2_Fo   param = '1e12*n2_descida_out' 
-.measure tran 2_Rs   param = '1e12*n2_subida_vdd'
-.measure tran 2_Ro   param = '1e12*n2_subida_out'
-
-...completar as medidas para outras NOR...
+... completar ...
 
 .END
